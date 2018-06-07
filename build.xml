@@ -1,0 +1,83 @@
+<project name="swing-explorer-core" default="pack" basedir=".">
+
+  <!-- common properties -->
+  <loadproperties srcFile="../build.properties"/>
+
+
+  <property name="jar.file"  value="swexpl.jar" />
+  <property name="project.dir" location="${basedir}"/>
+  <property name="build.dir"   value="${project.dir}/target" />
+  <property name="classes.dir"   value="${build.dir}/classes" />
+  <property name="src.dir"     value="${project.dir}/src" />
+  <property name="swing-layout.file" value="swing-layout-1.0.3.jar" />
+
+  <!-- Compilation classpath -->
+  <path id="classpath">
+
+	<!-- own dependencies -->
+    <fileset dir="${basedir}/../swing-explorer-agent/target" includes="swag.jar" />
+
+    <!-- third party dependencies -->
+    <fileset dir="${project.dir}/lib" includes="*.jar"/>
+  </path>
+
+  <!-- ========================================= -->
+  <!-- Deletes directories created in this build -->
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Creates directories required in build process -->
+  <target name="init">
+	<mkdir dir="${build.dir}"/>
+    <mkdir dir="${classes.dir}"/>
+    <tstamp/>
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Compile project sources                       -->
+  <target name="compile" depends="init">
+    <!-- compile and facade classes -->
+    <javac destdir="${classes.dir}" classpathref="classpath" deprecation="on" failonerror="true" debug="true" target="1.5">
+      <src path="${src.dir}"/>
+    </javac>
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Cleans this project and recompiles sources    -->
+  <target name="recompile" depends="clean,compile">
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Packs classes into Jars -->
+  <target name="pack" depends="compile">
+    <tstamp />
+    <jar destfile="${build.dir}/${jar.file}" duplicate="preserve">
+      <fileset dir="${classes.dir}"/>
+
+      <manifest>
+        <attribute name="Main-Class" value="org.swingexplorer.Launcher" />
+        <attribute name="Implementation-Vendor" value="${vendor}" />
+        <attribute name="Implementation-Title" value="${ant.project.name} application" />
+        <attribute name="Implementation-Version" value="${build.version}" />
+        <attribute name="Date" value="${TODAY}" />
+      </manifest>
+
+	  <fileset dir="${project.dir}/resources"/>
+
+      <fileset file="${license.file.path}" />
+
+      <zipfileset src="lib/${swing-layout.file}">
+        <exclude name="META-INF/**" />
+      </zipfileset>
+    </jar>
+
+    <signjar jar="${build.dir}/${jar.file}" alias="mykey" keystore="${keystore.file.path}" storepass="${keystore.password}"/>
+  </target>
+
+</project>

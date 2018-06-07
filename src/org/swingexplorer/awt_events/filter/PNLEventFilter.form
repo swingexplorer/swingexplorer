@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.5" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="0"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="chbMouseReleased" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chbMousePressed" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chbKeyTyped" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chbKeyReleased" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chbKeyPressed" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="chbMouseDragged" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chbMouseWeel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chbMouseExited" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chbMouseEntered" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chbMouseMoved" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnSelectAll" linkSize="2" min="-2" pref="57" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="btnClearAll" linkSize="2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="chbMouseClicked" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSelectAll" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnClearAll" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="chbKeyPressed" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="chbKeyReleased" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="chbKeyTyped" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="chbMousePressed" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="chbMouseReleased" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="chbMouseMoved" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="chbMouseEntered" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="chbMouseExited" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="chbMouseDragged" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="chbMouseWeel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="chbMouseClicked" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JCheckBox" name="chbMouseClicked">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mouse clicked"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbMousePressed">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mouse pressed"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbMouseDragged">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mouse dragged"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbKeyPressed">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Key pressed"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbKeyReleased">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Key released"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbKeyTyped">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Key typed"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbMouseReleased">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mouse released"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbMouseMoved">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mouse moved"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbMouseEntered">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mouse entered"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbMouseExited">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mouse exited"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbMouseWeel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mouse weel"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSelectAll">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Select all"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSelectAllActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnClearAll">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Deselect all"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearAllActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
