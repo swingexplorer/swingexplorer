@@ -17,38 +17,40 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *   
  */
-package org.swingexplorer.personal;
+package org.swingexplorer;
 
 import java.awt.Component;
 
-import javax.swing.JComponent;
-
-import org.swingexplorer.Options;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.TreePath;
 
 /**
- * Class responsible for saving/restoring state of a component
- * between sessions.
- * @author  Maxim Zakharenkov
+ *
+ * @author Maxim Zakharenkov
  */
-public interface Personalizer {
+public class ActTreeSelectionChanged implements TreeSelectionListener {
+    
+    MdlSwingExplorer model;
+    PNLComponentTree pnlComponentTree;
+    
+    /* Creates a new instance of ActTreeSelectionChanged */
+    public ActTreeSelectionChanged(MdlSwingExplorer modelP, PNLComponentTree pnlComponentTreeP) {
+        model = modelP;
+        pnlComponentTree = pnlComponentTreeP;
+    }
 
-	/**
-	 * Installs personalizer for a component.
-	 * Personalizer may add some listeners to
-	 * the component which perform necessary configuration
-	 * on event because it is often only possible to
-	 * set component's sizes after a specific event occures 
-	 * (e.g. component becomes visible or resized first) 
-	 * @param options
-	 * @param component
-	 */
-	public void install(Options options, Component component);
-	
-	/**
-	 * The method is called by application before it closes
-	 * down. This method saves state of a personalized component into
-	 * the Options object provided to personalizer in the {@link #install(Options, JComponent)}
-	 * method.
-	 */
-	public void saveState();
+    public void valueChanged(TreeSelectionEvent e) {
+	    TreePath[] paths = e.getPaths();
+		for (TreePath curPath : paths) {
+
+			Component component = pnlComponentTree.getComponent(curPath);
+
+			if (e.isAddedPath(curPath)) {
+				model.addSelection(component);
+			} else {
+				model.removeSelection(component);
+			}
+		}
+    }    
 }
