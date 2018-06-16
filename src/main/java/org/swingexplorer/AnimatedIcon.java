@@ -143,7 +143,7 @@ public class AnimatedIcon implements Icon {
     
     /**
      * Makes progress indicator running.
-     * @param inProgress
+     * @param _inProgress
      */
     public void setInProgress(boolean _inProgress){
         if(inProgress == _inProgress) {
