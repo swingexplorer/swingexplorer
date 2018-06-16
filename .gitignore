@@ -1,0 +1,5 @@
+target
+
+# JetBrains IntelliJ
+.idea
+swingexplorer-core.iml

@@ -139,7 +139,7 @@ public class AnimatedLabel extends JLabel {
     
     /**
      * Makes progress indicator running.
-     * @param inProgress
+     * @param _inProgress
      */
     public void setInProgress(boolean _inProgress){
         

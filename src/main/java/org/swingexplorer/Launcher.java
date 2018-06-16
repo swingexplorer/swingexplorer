@@ -123,10 +123,10 @@ public class Launcher implements Runnable {
     static final String HELP = 
             "Swing Explorer application can be executed in 2 modes:\n" +
             "Simple mode (faster):\n" +
-            "  java -cp swexpl.jar[;<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n" +
+            "  java -cp swingexplorer-core-<version>.jar[;<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n" +
             "\n" +
             "Agent mode (slower, but has a bit more functionality):\n" +
-            "  java -javaagent:swag.jar -Xbootclasspath/a:swag.jar -cp swexpl.jar;[<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n";
+            "  java -javaagent:swingexplorer-agent-<version>.jar -Xbootclasspath/a:swingexplorer-agent-<version>.jar -cp swingexplorer-core-<version>.jar;[<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n";
     
 	public static void main(String[] args) {
         
