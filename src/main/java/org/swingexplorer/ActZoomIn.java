@@ -35,8 +35,8 @@ public class ActZoomIn extends RichAction {
         setIcon("zoom_in.png");
         model = modelP;
     }
+
     public void actionPerformed(ActionEvent e) {
-        // 
         double curScale = model.getDisplayScale();
         
         // calculate scale closest to 25*N

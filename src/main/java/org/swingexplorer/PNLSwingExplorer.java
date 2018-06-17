@@ -413,10 +413,10 @@ public class PNLSwingExplorer extends javax.swing.JPanel {
     class PlayerListenerImpl implements PlayerListener {
         
         public void imageRendered(ImageEvent evt) {
-            // listener should be removed and restored after
+            // Listener should be removed and restored after
             // setDisplayedComponentImage to avoid redundant reaction on
-            // change of "displayedComponentImage" property inside ModelListener
-            // without this slider in the player works very slowely
+            // change of "displayedComponentImage" property inside ModelListener.
+            // Without this, slider in the player works very slowly
             // because all operations are recalculated after slider is moved a bit
             application.model.removePropertyChangeListener(listener);
             

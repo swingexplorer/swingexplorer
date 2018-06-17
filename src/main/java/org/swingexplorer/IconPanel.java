@@ -63,9 +63,7 @@ public class IconPanel extends JComponent {
     public Rectangle getSelection() {
         return selection;
     }
-    
-    
-    
+
     public void setScale(double scaleP) {
         scale = scaleP;
         revalidate();

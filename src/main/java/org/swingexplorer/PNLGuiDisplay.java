@@ -58,7 +58,6 @@ public class PNLGuiDisplay extends JComponent {
 
     @Override
     protected void paintComponent(Graphics g_old) {
-
         Graphics2D g = (Graphics2D) g_old.create();
 
         if (model == null) {
@@ -78,11 +77,9 @@ public class PNLGuiDisplay extends JComponent {
 
         // paint all selected components
         for (Component comp : model.getSelectedComponents()) {
-            
             if(!SwingUtilities.isDescendingFrom(comp, model.getDisplayedComponent())) {
                 continue;
             }
-            
             Rectangle selRect = translateComponentBoundsToDisplay(comp);
             if (selRect != null) {
                 paintSelection((Graphics2D)g_old, selRect, getBorderInsets(comp));

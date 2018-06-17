@@ -97,8 +97,7 @@ public class MdlSwingExplorer {
         // those that are interested in this event
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
             if (listeners[i] == PropertyChangeListener.class) {
-                // Lazily create the event:
-                
+                // Lazily create the event
                 PropertyChangeEvent propertyChangeEvent = new PropertyChangeEvent(this, prop,
                             oldVal, newVal);
                 ((PropertyChangeListener) listeners[i + 1])
@@ -173,13 +172,12 @@ public class MdlSwingExplorer {
     }
     
     /**
-     * Clears current selection and sets one component
-     * selection. Equivalent to clearSelection and addSelection 
+     * Clears current selection and sets a new one-component
+     * selection. Equivalent to clearSelection followed by addSelection,
      * but fires only one change event.
      * @param comp component to select
      */
     public void setSelection(Component comp) {
-
         if(selectedComponents.size() == 1 && selectedComponents.get(0) == comp) {
             // this one component is already selected
             return;
@@ -212,15 +210,15 @@ public class MdlSwingExplorer {
     
     public void setDisplayedComponent(Component displayedComponent) throws DisplayableException {
 
-        // switching off EDT hanging events because  
-        // component's rendering operations takes quite long time in the EDT
-        // Unfortunately this operation must be in the EDT
-        // the flag will be set to false back after dispatching of the current
-        // event will be finished
+        // Switch off EDT hang events because
+        // component's rendering operations take quite a long time in the EDT.
+        // Unfortunately this operation must be in the EDT.
+        // The flag will be set to false back after dispatch of the current
+        // event is be finished.
         EDTDebugQueue.disableHangEvents = true;
         
         
-        // BasicComboPopup need to be shown/hidden in updateDisplayedComponentImage to update size
+        // BasicComboPopups need to be shown/hidden in updateDisplayedComponentImage to update size
         if(!(displayedComponent instanceof BasicComboPopup) &&
            !(displayedComponent instanceof JToolTip) &&
                         (displayedComponent.getWidth() <= 0 || displayedComponent.getHeight() <= 0)) {
@@ -243,7 +241,7 @@ public class MdlSwingExplorer {
     }
 
     /**
-     * Makes sues that component image is updated even if
+     * Makes sure that component image is updated even if
      * same component is passed as parameter
      * @param newDisplayedComponent new component to be displayed
      * @throws DisplayableException if there is a display problem
@@ -291,7 +289,7 @@ public class MdlSwingExplorer {
         
         if(displayedComponent != null) {
             
-            // basic popup and tooltip  must be shown before painting
+            // basic popup and tooltip must be shown before painting
             if(displayedComponent instanceof BasicComboPopup || displayedComponent instanceof JToolTip) {
                 ((JComponent)displayedComponent).setVisible(true);
             }
@@ -317,7 +315,7 @@ public class MdlSwingExplorer {
             setDisplayedComponentImage(new ImageIcon(img));
             
             
-            //  basic popup and tooltip must be shown before painting
+            // basic popup and tooltip must be shown before painting
             if(displayedComponent instanceof BasicComboPopup || displayedComponent instanceof JToolTip) {
                 ((JComponent)displayedComponent).setVisible(false);
             }
@@ -330,7 +328,7 @@ public class MdlSwingExplorer {
         Component comp = displayedComponent;
         int index = -1;
         
-        // constriucting path to top component
+        // constructing path to top component
         while(comp != null) {
             buf.insert(0, "/");
             
@@ -340,7 +338,7 @@ public class MdlSwingExplorer {
                     buf.insert(0, index);
                     buf.insert(0, '[');
                 }
-                //  memorize next index
+                // memorize next index
                 index = getComponentIndex(comp);
             }
             buf.insert(0, comp.getClass().getSimpleName());
@@ -354,7 +352,7 @@ public class MdlSwingExplorer {
     }
     
     /**
-     * Returns component's index inside it's parent
+     * Returns component's index inside its parent
      * @param comp the component to find the index of
      * @return the index of comp within its parent, or -1 if comp or parent are null
      */

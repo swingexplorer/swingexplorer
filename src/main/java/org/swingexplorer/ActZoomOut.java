@@ -39,7 +39,7 @@ public class ActZoomOut extends RichAction {
     public void actionPerformed(ActionEvent e) {
         double curScale = model.getDisplayScale();
         
-        //  calculate scale closest to 25*N
+        // calculate scale closest to 25*N
         int normalScale = ((int)(curScale*100))/25;
         normalScale = normalScale * 25  - 25;
         

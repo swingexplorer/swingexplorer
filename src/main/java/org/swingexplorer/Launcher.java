@@ -68,7 +68,7 @@ public class Launcher implements Runnable {
             }
         });
         
-        // we use own L&F for swing explorer to avoid conflict with application's L&F
+        // we use our own L&F for Swing Explorer to avoid conflict with application's L&F
         PlafUtils.applyCustomLookAndFeel(frmMain.getContentPane());
         
         // load options and set to interested parties
@@ -126,7 +126,6 @@ public class Launcher implements Runnable {
             "  java -javaagent:swingexplorer-agent-<version>.jar -Xbootclasspath/a:swingexplorer-agent-<version>.jar -cp swingexplorer-core-<version>.jar;[<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n";
     
     public static void main(String[] args) {
-        
         Method mainMethod = null;
         Class<?> mainClass = null;
         String[] newArgs = null;
@@ -154,7 +153,7 @@ public class Launcher implements Runnable {
             return;
         }
 
-        // launching Swing explorer
+        // launch Swing Explorer
         final Launcher app = new Launcher();
         try {
             SwingUtilities.invokeAndWait(app);
@@ -162,7 +161,7 @@ public class Launcher implements Runnable {
             e.printStackTrace();
         }
         
-        // launching application
+        // launch application
         try {
             mainMethod.invoke(mainClass, new Object[]{newArgs});
         } catch(Exception ex) {

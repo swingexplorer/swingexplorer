@@ -35,7 +35,7 @@ import org.swingexplorer.beans.BeanSaver;
 import org.swingexplorer.beans.Property;
 
 /**
- * Class holding all parametrizeable properties used in Swing Explorer
+ * Class holding all parameterizable properties used in Swing Explorer.
  * @author Maxim Zakharenkov
  */
 public class Options {
@@ -211,7 +211,7 @@ public class Options {
         return displayPreferredSize;
     }
     
-    /** Location of vertical divider between ree and work area
+    /** Location of vertical divider between tree and work area
      * @return current divider location
      */
     @Property(defaultValue="200")
@@ -261,8 +261,7 @@ public class Options {
     public Color getGridBrightColor() {
         return gridBrightColor;
     }
-    
-    
+
     public void setMeasureLineStroke(Stroke _stroke) {
         measureLineStroke = _stroke;
     }
@@ -365,7 +364,7 @@ public class Options {
     }
     
     /**
-     * Returns property value by name
+     * Gets property value by name
      * @param propertyName name of property to get
      * @return current value of named property
      */
@@ -374,7 +373,7 @@ public class Options {
     }
     
     /**
-     * Set property value by property name
+     * Sets property value by property name
      * @param propertyName name of property to set
      * @param value new value for named property
      */
@@ -383,14 +382,14 @@ public class Options {
     }
     
     /**
-     * Loads options from file
-     * file is determined by SysUtils.getOptionFilePath method
+     * Loads options from file.
+     * File is determined by SysUtils.getOptionFilePath().
      */
     public void load() {
         // load options if they exist from previous executions
         String optionFile = SysUtils.getOptionFilePath(false);
         try {
-            // here we reuse "load" mechanism of properties
+            // here we reuse "load" mechanism of Properties
             Properties props = new Properties();
             props.load(new FileInputStream(optionFile));
 
@@ -401,7 +400,7 @@ public class Options {
             }
             saver.load(this, map);
         } catch (FileNotFoundException e) {
-            // do nothing, default options will be used
+            // do nothing; default options will be used
             Log.general.info("Option file \"" + optionFile + "\" not found. Use default options.");
         } catch(IOException e) {
             Log.general.error("Can not load oprions from file " + optionFile, e);
@@ -409,8 +408,8 @@ public class Options {
     }
     
     /**
-     * Saves options to file
-     * file is determined by SysUtils.getOptionFilePath method
+     * Saves options to file.
+     * File is determined by SysUtils.getOptionFilePath()
      */
     public void save() {
         // save options
@@ -420,7 +419,7 @@ public class Options {
             HashMap<String, String> map = new HashMap<String, String>();
             saver.save(this, map);
         
-            // here we reuse "store" mechanism of properties
+            // here we reuse "store" mechanism of Properties
             Properties props = new Properties();
             for(Map.Entry<String, String> entry: map.entrySet()) {
                 props.put(entry.getKey(), entry.getValue());

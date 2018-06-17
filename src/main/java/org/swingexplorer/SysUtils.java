@@ -23,8 +23,7 @@ import java.io.File;
 import java.net.URI;
 
 /**
- * Helper class to deal with system properties
- * and logging
+ * Helper class to deal with system properties and logging
  * @author  Maxim Zakharenkov
  */
 public abstract class SysUtils {
@@ -82,7 +81,7 @@ public abstract class SysUtils {
     }
     
     /**
-     * JMX port Swing Explorer should listen to be
+     * JMX port that Swing Explorer should listen on to be
      * managed from outside.
      * @return port number or -1 if management should be disabled
      */
@@ -115,9 +114,9 @@ public abstract class SysUtils {
     }
 
     /**
-     * Opens given URI in the browser
+     * Opens a given URI in the browser
      * @param strUri URI to open
-     * @return true if operation succeded and false if not
+     * @return true if operation succeeded and false if not
      */
     public static boolean openBrowser(String strUri) {
         if(!SysUtils.isJava6()) {
@@ -144,21 +143,19 @@ public abstract class SysUtils {
 
     /**
      * Returns version-specific directory where Swing Explorer
-     * stores own files.
-     * @param autoCreate - indecates if directory should be created if it does
+     * stores its own files.
+     * @param autoCreate indicates if directory should be created if it does
      * not exist
      * @return full path
      */
     public static String getHomeDirectory(boolean autoCreate) {
-
-        // the exactly same implementation of this method is
-        // also presented in the both in the SysUtils class 
-        // and in the NB plug-in's Installer class 
-        // making any changes here please also copy them
+        // The exact same implementation of this method is
+        // also presented in both the SysUtils class
+        // and in the NB plug-in's Installer class.
+        // If making any changes here please also copy them
         // into both places
 
-
-        // obtain version, if version not found - we are in development mode
+        // obtain version; if version not found, we are in development mode
         String version = SysUtils.class.getPackage().getImplementationVersion();
         if(version == null) {
             version = "0.0.0";// development version
@@ -183,7 +180,7 @@ public abstract class SysUtils {
     
     
     /**
-     * Determines if logging options (levels, categories).
+     * Determines if we are logging options (levels, categories).
      * @return true if logging options
      */
     public static String getLogOptions() {
@@ -191,7 +188,7 @@ public abstract class SysUtils {
     }
     
     /**
-     * Determines if logging to console should be done instead of file.
+     * Determines if logging should be done to console instead of file.
      * @return true if logging should be done to console
      */
     public static boolean isLogToConsole() {

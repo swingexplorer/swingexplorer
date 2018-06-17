@@ -87,7 +87,7 @@ public class Log {
             // if this string was parsed once we consider that log level is not changed
             if(lastParsedLogDef != strLog) { 
                 
-                // parsing log string. E.g. debug,category1=info,category2=error
+                // parse log string. e.g. "debug,category1=info,category2=error"
                 int defaultLevel = LOG_ERROR; 
                 currentLevel = -1;
                 
@@ -159,7 +159,7 @@ public class Log {
                 }
             }
         } catch(Throwable ex) {
-            // catch all exceptions in case if there is
+            // catch all exceptions in case there is
             // a mistake in the logging code. logs are not written
             // in that case
         }

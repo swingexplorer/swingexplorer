@@ -33,7 +33,7 @@ import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
- *  Label supporting multiple icons to be set. 
+ * Label supporting multiple icons to be set.
  * The icons are changed during each defined interval.
  */
 @SuppressWarnings("serial")

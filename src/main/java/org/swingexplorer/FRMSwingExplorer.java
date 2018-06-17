@@ -68,7 +68,7 @@ public class FRMSwingExplorer extends JFrame {
         menuBar.add(mnuHelp);
         this.setJMenuBar(menuBar);
         
-        // doing the following operation through reflection
+        // do the following operation through reflection
         // this.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         // this is done to support JRE 1.5 as well
         try {

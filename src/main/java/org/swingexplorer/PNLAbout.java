@@ -60,7 +60,7 @@ public class PNLAbout extends javax.swing.JPanel {
     private JScrollPane scpAbout;
     private JTextPane txaAbout;
 
-    /** Creates new form PNLAbout */
+    /** Creates a new PNLAbout */
     public PNLAbout() {
         scpAbout = new JScrollPane();
         txaAbout = new JTextPane();
@@ -74,12 +74,12 @@ public class PNLAbout extends javax.swing.JPanel {
         add(scpAbout, BorderLayout.CENTER);
         setPreferredSize(new java.awt.Dimension(250, 170));        
         
-        // it is not easy to scroll document to top in Swing
-        // we need to set setAsynchronousLoadPriority for document and
-        // read through editor kit
+        // It is not easy to scroll document to top in Swing.
+        // We need to set setAsynchronousLoadPriority for document and
+        // read through editor kit.
         txaAbout.setContentType("text/html");
         EditorKit edKit = txaAbout.getEditorKit();
-        AbstractDocument doc = (AbstractDocument) edKit.createDefaultDocument();//(HTMLDocument) txaAbout.getDocument(); //new HTMLDocument();
+        AbstractDocument doc = (AbstractDocument) edKit.createDefaultDocument(); //(HTMLDocument) txaAbout.getDocument(); //new HTMLDocument();
         doc.setAsynchronousLoadPriority(-1);
         try {
             int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -98,7 +98,7 @@ public class PNLAbout extends javax.swing.JPanel {
         } 
         txaAbout.setDocument(doc);
         
-        // here is scrolling finally
+        // Here is scrolling finally
         txaAbout.scrollRectToVisible(new Rectangle(0, 0, 1, 1));
         
         txaAbout.addHyperlinkListener(new HyperlinkListener() {

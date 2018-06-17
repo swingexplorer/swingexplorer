@@ -127,8 +127,8 @@ public class PNLComponentTree extends javax.swing.JPanel {
         Enumeration<TreePath> expandPaths = treAll.getExpandedDescendants(pathToRoot);
 
         // because "setRoot" clears selection we need to 
-        // disable selection notification so that MdsSwingExplorer
-        // do not know about temporary losing of selection
+        // disable selection notification so that MdlSwingExplorer
+        // does not know about temporary loss of selection
         disableSelectionNotification();
         
         // set root model
@@ -139,8 +139,8 @@ public class PNLComponentTree extends javax.swing.JPanel {
 
         updateDisplayedComponentTree();
         
-        // restore selection from MdsSwingExplorer ane enable
-        // selection notification back
+        // restore selection from MdlSwingExplorer and re-enable
+        // selection notification
         setSelectComponents(model.getSelectedComponents());
         enableSelectionNotification();
     }
@@ -153,7 +153,7 @@ public class PNLComponentTree extends javax.swing.JPanel {
         // update displayed component tree
         if(model.getDisplayedComponent() != null) {                     
             
-            // momorize expanded state
+            // memorize expanded state
             TreePath pathToRoot = new TreePath(treDisplayed.getModel().getRoot());
             Enumeration<TreePath> expandPaths = treDisplayed.getExpandedDescendants(pathToRoot);
             
@@ -162,7 +162,7 @@ public class PNLComponentTree extends javax.swing.JPanel {
             DefaultMutableTreeNode displayedRoot =  (DefaultMutableTreeNode)path.getLastPathComponent();
             getTreeModel(treDisplayed).setRoot(displayedRoot);
             
-            // restore  expanded state
+            // restore expanded state
             GuiUtils.expandTreePaths(treDisplayed, expandPaths);
             treDisplayed.setEnabled(true);
         } else {
@@ -220,15 +220,14 @@ public class PNLComponentTree extends javax.swing.JPanel {
     }
     
     // returns component paths for given tree
-    TreePath[] getComponentPaths(JTree tree, Component...components) {
+    TreePath[] getComponentPaths(JTree tree, Component... components) {
 
         log("getComponentPaths");
         
         List<?> compList = Arrays.asList(components);
         ArrayList<TreePath> paths = new ArrayList<TreePath>();
 
-        //  iterating all tree elements 
-        
+        // iterate all tree elements
         DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
         
         Enumeration<?> preEnum = root.preorderEnumeration();
@@ -236,7 +235,7 @@ public class PNLComponentTree extends javax.swing.JPanel {
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) preEnum.nextElement();
             TreeNodeObject obj = (TreeNodeObject) node.getUserObject();
             
-            // check if the component in the array 
+            // check if the component is in the array
             if(compList.contains(obj.getComponent())) {
                  TreeNode[] pathArray = getTreeModel(tree).getPathToRoot(node);
                  
@@ -254,20 +253,17 @@ public class PNLComponentTree extends javax.swing.JPanel {
         // select components in All tree
         TreePath[] paths = getComponentPaths(treAll, components);
         
-          // remove selection listeners temporary to avoid notification
+        // remove selection listeners temporarily to avoid notification
         disableSelectionNotification();
         
         treAll.setSelectionPaths(paths);
-        
         if(paths.length > 0) {
             treAll.scrollPathToVisible(paths[0]);
         }
         
         // select component in Displayed tree
         paths = getComponentPaths(treDisplayed, components);
-        
         treDisplayed.setSelectionPaths(paths);
-
 
         enableSelectionNotification();
         
@@ -355,7 +351,6 @@ public class PNLComponentTree extends javax.swing.JPanel {
     static class TreeNodeObject {
         WeakReference<Component> objRef;
         String name;
-        
         
         TreeNodeObject(Component component, String _name) {
             

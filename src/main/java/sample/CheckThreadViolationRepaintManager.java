@@ -29,11 +29,11 @@ import javax.swing.RepaintManager;
 import javax.swing.SwingUtilities;
 
 /**
- * <p>This class is used to detect Event Dispatch Thread rule violations<br>
+ * <p>This class is used to detect Event Dispatch Thread rule violations.<br>
  * See <a href="http://java.sun.com/docs/books/tutorial/uiswing/misc/threads.html">How to Use Threads</a>
  * for more info</p>
  * 
- * <p>This is a modification of original idea of Scott Delap<br>
+ * <p>This is a modification of original idea of Scott Delap.<br>
  * Initial version of ThreadCheckingRepaintManager can be found here<br>
  * <a href="http://www.clientjava.com/blog/2004/08/20/1093059428000.html">Easily Find Swing Threading Mistakes</a>
  * </p>
@@ -94,15 +94,15 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
                 }
             }
             if (imageUpdate) {
-                //assuming it is java.awt.image.ImageObserver.imageUpdate(...) 
-                //image was asynchronously updated, that's ok 
+                // assuming it is java.awt.image.ImageObserver.imageUpdate(...)
+                // image was asynchronously updated; that's ok
                 return;
             }
             if (repaint && !fromSwing) {
-                //no problems here, since repaint() is thread safe
+                // no problems here, since repaint() is thread safe
                 return;
             }
-            //ignore the last processed component
+            // ignore the last processed component
             if (lastComponent != null && c == lastComponent.get()) {
                 return;
             }
@@ -117,9 +117,9 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
     }
 
     public static void main(String[] args) throws Exception {
-        //set CheckThreadViolationRepaintManager 
+        // set CheckThreadViolationRepaintManager
         RepaintManager.setCurrentManager(new CheckThreadViolationRepaintManager());
-        //Valid code  
+        // Valid code
         SwingUtilities.invokeAndWait(new Runnable() {
             public void run() {
                 test();
@@ -128,7 +128,7 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
         System.out.println("Valid code passed...");
         repaintTest();
         System.out.println("Repaint test - correct code");
-        //Invalide code (stack trace expected) 
+        // Invalid code (stack trace expected)
 //        test();
         SwingUtilities.invokeAndWait(new Runnable() {
             public void run() {
@@ -146,7 +146,7 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
         frame.dispose();
     }
 
-    //this test must pass
+    // this test must pass
     static void imageUpdateTest() {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

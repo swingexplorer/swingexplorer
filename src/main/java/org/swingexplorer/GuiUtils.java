@@ -104,15 +104,14 @@ final public class GuiUtils {
     public static Image getImage(Class<?> _class, String resourceName) {
         URL resource;
         if (_class != null) {
-            // Strange things happens here:
-            // The following code must work in web start,
+            // Strange things happen here:
+            // The following code works in web start,
             // but is not working in local Java application.
             resource = _class.getClassLoader().getResource(resourceName);
-            // that's why following code used:
+            // that's why the following code is used:
             if (resource == null) {
                 resource = _class.getResource(resourceName);
             }
-
         } else {
             resource = Thread.currentThread().getContextClassLoader().getResource(resourceName);
         }
@@ -195,7 +194,7 @@ final public class GuiUtils {
     /**
      * Centers specified child component on the specified container.
      * @param parent Container used to center on, if <code>null</code>
-     * then child is centered relatively to the whole screen.
+     * then child is centered relative to the whole screen.
      * @param child The component to be centered.
      */
     public static void center(Component parent, Component child) {
@@ -211,17 +210,15 @@ final public class GuiUtils {
      * @param component The component to be centered.
      */
     public static void center(Component component) {
-        // size will be restricted against screen size anyway
+        // size will be restricted against screen size anyway;
         // that's why boolean argument is false.
         // anyway this argument should not be removed - it is simply reserved
         // for future if MDI restriction will be required.
         center(new Point(0, 0), null, component, true);
-
     }
 
     private static void center(Point parentLocation, Dimension parentSize, Component component, boolean restrictSize) {
-
-        // this dimension is used to fit into screen after positioning performed
+        // this dimension is used to fit into screen after positioning is performed
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         if (parentSize == null) {
@@ -230,8 +227,8 @@ final public class GuiUtils {
 
         Dimension childSize = component.getSize();
 
-        // Disallows child GUI component have greater size than parent GUI
-        // container have.
+        // Disallows child GUI component to have greater size than parent GUI
+        // container has.
         // This method is reserved to restrict area when MDI component used.
         if (restrictSize) {
             if (childSize.height > parentSize.height) {
@@ -316,7 +313,6 @@ final public class GuiUtils {
     public static char getMnemonicFromText(String text) {
         if (text == null) {
             return NO_MNEMONIC;
-
         } else if (text.length() < 1) {
             return NO_MNEMONIC;
         }
@@ -350,16 +346,13 @@ final public class GuiUtils {
         JPopupMenu result = new JPopupMenu();
         for (int i = 0; i < actions.length; i++) {
             if (actions[i] != null) {
-
                 JMenuItem item = new JMenuItem(actions[i]) {
                     public void setText(String text) {
                         super.setText(GuiUtils.getTextWithoutMnemonic(text));
                     }
                 };
                 result.add(item);
-
             } else {
-
                 result.addSeparator();
             }
         }
@@ -367,12 +360,12 @@ final public class GuiUtils {
     }
 
     /**
-     * Adds listener to window that ensures that
+     * Adds a listener to window that ensures that
      * the window is not resized less then specified size.
-     * In case if it is resized anyway it restores the
-     * minimal size.
+     * In case it is resized anyway, the listener restores the
+     * minimum size.
      *
-     * @param wnd Window which size should be restricted.
+     * @param wnd Window whose size should be restricted.
      * @param minSize The minimum allowed size for the window.
      */
     public static void restrictWindowMinimumSize(final Window wnd, final Dimension minSize) {
@@ -382,8 +375,8 @@ final public class GuiUtils {
     /**
      * Adds listener to internal frame that ensures that
      * the frame is not resized less then specified size.
-     * In case if it is resized anyway it restores the
-     * minimal size.
+     * In case it is resized anyway, the listener restores the
+     * minimum size.
      *
      * @param frame Frame which size should be restricted.
      * @param minSize The minimum allowed size for the window.
@@ -411,10 +404,9 @@ final public class GuiUtils {
             }
         });
     }
-    
-    
+
     /**
-     * Ensures that specified window do not exceed screen size, including
+     * Ensures that specified window does not exceed screen size, including
      * possible task bar.
      * @param window The window to be placed exactly on screen.
      */
@@ -466,16 +458,16 @@ final public class GuiUtils {
     /**
      * Method for demo purposes.
      * Shows specified frame with 1/1.5 size
-     * of screen. When frame is closed the System.exit(0) is executed;
+     * of screen. When frame is closed, System.exit(0) is executed.
      * @param frame Frame to show
      */
     public static void showDemoFrame(JFrame frame) {
-        // Making good size and center the frame
+        // Make good size and center the frame
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize((int) (screenSize.width / 1.5), (int) (screenSize.height / 1.5));
         center(frame);
 
-        // Adding exit listener
+        // Add exit listener
         frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
@@ -487,7 +479,7 @@ final public class GuiUtils {
     /**
      * Method for demo purposes.
      * Shows specified panel in frame with 1/1.5 size
-     * of screen. When frame is closed the System.exit(0) is executed
+     * of screen. When frame is closed, System.exit(0) is executed.
      * @param panel Panel to show
      */
     public static void showDemoPanel(Component panel) {
@@ -507,7 +499,7 @@ final public class GuiUtils {
      * @throws IllegalArgumentException If invalid class specified.
      */
     public static Dialog createDialogInstance(Class<?> dialogClass, Component parent) throws IllegalArgumentException {
-        // get parent window...
+        // get parent window
         Window owner;
         if (parent instanceof Window) {
             owner = (Window) parent;
@@ -516,7 +508,7 @@ final public class GuiUtils {
         } else {
             owner = null;
         }
-        // create instance...
+        // create instance
         Dialog result = null;
         Constructor<?> ctor = null;
         try {
@@ -534,7 +526,6 @@ final public class GuiUtils {
                 result = (Dialog) ctor.newInstance(new Object[] {
                 });
             }
-
         } catch (Exception ex) {
             throw new IllegalArgumentException("Invalid dialog class. It must be public and have public constructor with Frame or Dialog parameter");
         }
@@ -567,10 +558,12 @@ final public class GuiUtils {
      *       // restore  expanded state
      *       GuiUtils.expandTreePaths(tree, expandPaths);
      * </pre>
-     * It is useful only when DefaultMutableTreeNode elements or their successors 
+     *
+     * It is useful only when DefaultMutableTreeNode elements or their subclasses
      * are used inside tree.
      * @param tree the tree to operate on
      * @param expandPaths the paths to expand in tree
+     * @throws ClassCastException if root of tree is not a DefaultMutableTreeNode
      */
     public static void expandTreePaths(JTree tree, Enumeration<TreePath> expandPaths) {
         if(expandPaths != null) {
@@ -601,7 +594,7 @@ final public class GuiUtils {
     
     /**
      * Utility method to notify tree about changes without
-     * loosing expansion state 
+     * losing expansion state
      * @param treProblems the tree to operate on
      */
     public static void notifyTreeChanged(JTree treProblems) {
@@ -627,8 +620,7 @@ final public class GuiUtils {
         }
         throw new IllegalArgumentException("No component found in the tabbed pane");
     }
-    
-    
+
     public static void paintGrid(Graphics g, int width, int height, Color darkColor, Color brightColor) {
         g.setColor(darkColor);
         g.fillRect(0, 0, width, height);
@@ -644,12 +636,12 @@ final public class GuiUtils {
     }
     
     /**
-     * Formats stack tarce element into HTML with link
+     * Formats stack trace element into HTML with link
      * @param elem element to format
      * @return String representing elem
      */
     public static String formatElementToHTML(StackTraceElement elem) {
-        // taking only class name before $ (in case of inner class)
+        // take only class name before $ (in case of inner class)
         String className = elem.getClassName(); 
         className = className.split("\\$")[0];
         String href = className + ":" + elem.getLineNumber();
@@ -661,8 +653,7 @@ final public class GuiUtils {
           "(<a href=\"" + href + "\">" + elem.getFileName() + ":" + elem.getLineNumber() + "</a>)" :              
           (elem.getFileName() != null ?  "("+elem.getFileName()+")" : "(Unknown Source)")));
     }
-    
-    
+
     /**
      * Finds component with specified name in the specified hierarchy.
      * @param parent hiererchy parent
@@ -670,7 +661,6 @@ final public class GuiUtils {
      * @return named component, or null if component not found
      */
     public static Component findComponentByName(Container parent, String beanName) {
-        
         if(beanName.equals(parent.getName())) {
             return parent;
         }

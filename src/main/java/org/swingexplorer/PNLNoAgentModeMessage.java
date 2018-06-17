@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class PNLNoAgentModeMessage extends javax.swing.JPanel {
     
-    /** Creates new form PNLMessage */
+    /** Creates new form PNLNoAgentModeMessage */
     public PNLNoAgentModeMessage() {
         initComponents();
         lblMessage.setText("<html> This functionality is available only when application<br>" +
