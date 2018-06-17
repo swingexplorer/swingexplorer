@@ -382,10 +382,10 @@ public class Player {
     }
     
     public void addPlayerListener(PlayerListener l) {
-         listenerList.add(PlayerListener.class, l);
-     }
+        listenerList.add(PlayerListener.class, l);
+    }
 
-     public void removePlayerListener(PlayerListener l) {
+    public void removePlayerListener(PlayerListener l) {
          listenerList.remove(PlayerListener.class, l);
      }
 

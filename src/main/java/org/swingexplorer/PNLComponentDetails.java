@@ -212,9 +212,9 @@ public class PNLComponentDetails extends javax.swing.JPanel {
              Component displComp = model.getDisplayedComponent();
              if(displComp != null) {
                  SwingUtilities.convertPoint(curComponent, loc, displComp);
-                txtLocation.setText("" + loc.x + "," + loc.y);
+                 txtLocation.setText("" + loc.x + "," + loc.y);
                 
-                //is showing
+                 //is showing
                  chbVisible.setSelected(displComp.isShowing());
              }
              
@@ -233,8 +233,8 @@ public class PNLComponentDetails extends javax.swing.JPanel {
                  
                  Insets ins = brd.getBorderInsets(curComponent);
                  if(ins != null) {
-                    String strInsets = "top="  + ins.top + ",left=" + ins.left + ",bottom=" + ins.bottom + ",right=" + ins.right + "";
-                    txtBorderInsets.setText(strInsets);
+                     String strInsets = "top="  + ins.top + ",left=" + ins.left + ",bottom=" + ins.bottom + ",right=" + ins.right + "";
+                     txtBorderInsets.setText(strInsets);
                  }
              } else {
                  txtBorder.setText("null");

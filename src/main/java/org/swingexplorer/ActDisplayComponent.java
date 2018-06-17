@@ -39,7 +39,7 @@ public class ActDisplayComponent extends RichAction {
         setIcon("display.png");
         
         model = modelP;
-                pnlComponentTree = pnlComponentTreeP;
+        pnlComponentTree = pnlComponentTreeP;
     }
     
     public void actionPerformed(ActionEvent e) {
