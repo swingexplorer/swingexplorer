@@ -75,7 +75,6 @@ public class TablePersonalizer extends AbstractOnResizePersonalizer<JTable> {
             Log.general.error("Error when saving state for \"" + propertyName + "\"", ex);
         }
     }
-
 }
 
 

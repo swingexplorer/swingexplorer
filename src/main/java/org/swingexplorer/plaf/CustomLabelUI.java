@@ -28,7 +28,6 @@ import javax.swing.plaf.metal.MetalLabelUI;
  * @author  Maxim Zakharenkov
  */
 public class CustomLabelUI extends MetalLabelUI {
-
     
     @Override
     protected void installDefaults(JLabel c) {

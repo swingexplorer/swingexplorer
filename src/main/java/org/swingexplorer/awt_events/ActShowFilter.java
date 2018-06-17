@@ -44,7 +44,6 @@ import org.swingexplorer.awt_events.filter.PNLEventFilter;
  */
 public class ActShowFilter extends RichAction {
 
-    
     PNLAwtEvents owner;
     JPopupMenu popup;
     boolean selected = false;
@@ -53,10 +52,7 @@ public class ActShowFilter extends RichAction {
     public ActShowFilter(PNLAwtEvents _owner) {
         owner =_owner;
         setName("Filter");
-
-        
     }
-    
     
     public void actionPerformed(ActionEvent e) {
         if(dlg == null) {
@@ -68,8 +64,7 @@ public class ActShowFilter extends RichAction {
             PNLEventFilter pnlFilter = new PNLEventFilter();
             pnlFilter.setBorder(UIManager.getBorder("PopupMenu.border"));// new LineBorder(Color.BLACK));
             dlg.add(pnlFilter);
-            
-            
+
             // add listener to hide dialog when it is deactivated
             dlg.addWindowListener(new WindowAdapter() {
                 @Override

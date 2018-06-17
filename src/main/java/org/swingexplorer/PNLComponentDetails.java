@@ -187,8 +187,7 @@ public class PNLComponentDetails extends javax.swing.JPanel {
             if (!"selectedComponents".equals(propName)) {
                 return;
             }
-            
-            
+
             txtSize.setText("N/A");
             txtLocation.setText("N/A");
             txtBorder.setText("N/A");
@@ -239,9 +238,7 @@ public class PNLComponentDetails extends javax.swing.JPanel {
              } else {
                  txtBorder.setText("null");
              }
-             
-             
-             
+
              // get layout class
              LayoutManager layout = jcomp.getLayout();
              if(layout != null) {

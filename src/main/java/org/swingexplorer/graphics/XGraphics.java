@@ -44,7 +44,6 @@ import org.swingexplorer.Log;
  * @author Maxim Zakharenkov
  */
 public class XGraphics extends Graphics2D {
-
     
     Graphics2D graphics;
     Callback callback;
@@ -131,7 +130,6 @@ public class XGraphics extends Graphics2D {
     }
     
     Object operation(String methodName, Object...args) {
-        
         //  obtain arguments and types
         Class<?>[] types = new Class[args.length/2];
         Object[] arguments = new Object[args.length/2];
@@ -183,8 +181,6 @@ public class XGraphics extends Graphics2D {
     }
     
     public void interpret(Graphics g, int toStep, Callback callback) {
-        
-        
         ArrayList<Graphics> openGraphics = new ArrayList<Graphics>();
         openGraphics.add(g);
         
@@ -207,7 +203,6 @@ public class XGraphics extends Graphics2D {
             }           
         }
     }
-    
     
     @Override
     public void transform(java.awt.geom.AffineTransform p0) {
@@ -417,8 +412,6 @@ public class XGraphics extends Graphics2D {
     public void translate(double p0, double p1) {
         operation("translate", double.class, p0, double.class, p1);
     }
-
-    
     
     @Override
     public boolean drawImage(java.awt.Image p0, int p1, int p2, int p3, int p4,
@@ -635,8 +628,5 @@ public class XGraphics extends Graphics2D {
     public void setXORMode(java.awt.Color p0) {
         operation("setXORMode", java.awt.Color.class, p0);
     }
-
-        
-    
 }
 

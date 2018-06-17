@@ -58,7 +58,6 @@ public class AnimatedIcon implements Icon {
     public void paintIcon(Component c, Graphics g, int x, int y) {
         currentIcon.paintIcon(c, g, x, y);
     }
-
     
     /**
      * Set icons to be animated.

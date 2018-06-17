@@ -43,6 +43,7 @@ public class NoWrapEditorKit extends HTMLEditorKit {
 }
 
 class WrapColumnFactory extends HTMLFactory {
+
     public View create(Element elem) {
         String kind = elem.getName();
         if (kind.equals("p")) {
@@ -53,6 +54,7 @@ class WrapColumnFactory extends HTMLFactory {
 }
 
 class NoWrapParagraphView extends ParagraphView {
+
     public NoWrapParagraphView(Element elem) {
         super(elem);
     }

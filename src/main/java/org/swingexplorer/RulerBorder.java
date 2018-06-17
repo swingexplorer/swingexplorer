@@ -35,7 +35,6 @@ public class RulerBorder implements Border{
     
     MdlSwingExplorer model;
     
-    
     public Insets getBorderInsets(Component c) {
         return new Insets(20, 20, 0, 0);
     }
@@ -65,14 +64,12 @@ public class RulerBorder implements Border{
             g.drawLine(0, p.y, 20, p.y);
         }
     }
-    
-    
+
     /**
      * @param args command line arguments
      */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-
     }
 
     public MdlSwingExplorer getModel() {

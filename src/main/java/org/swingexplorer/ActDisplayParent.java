@@ -55,5 +55,4 @@ public class ActDisplayParent extends RichAction {
             application.showMessageDialog(ex.getMessage());
         }
     }
-
 }

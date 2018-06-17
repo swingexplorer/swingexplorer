@@ -43,13 +43,11 @@ public class Log {
     private String lastParsedLogDef = null;
     private int currentLevel = LOG_ERROR;
     
-    
     public static Log ideSupport = new Log("ideSupport");
     public static Log general = new Log("general");
     public static Log instrumentation = new Log("instrumentation");
     
-    
-    
+
     private Log(String _category) {
         category = _category;
     }

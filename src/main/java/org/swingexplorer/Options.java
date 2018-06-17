@@ -73,8 +73,7 @@ public class Options {
     private int[] eventTableColumnSizes;
     private int[] eventDetailTableColumnSizes;
     private int[] propertyTableColumnSizes;
-    
-    
+
     
     public Options() {
         reset();

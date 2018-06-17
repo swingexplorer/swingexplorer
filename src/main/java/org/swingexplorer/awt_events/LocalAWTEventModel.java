@@ -95,8 +95,7 @@ public class LocalAWTEventModel implements AWTEventModel {
             changeSupport.firePropertyChange(propertyName, oldValue, newValue);
         }
     }
-    
-    
+
     public boolean isMonitoring() {
         return monitoring;
     }
@@ -123,7 +122,6 @@ public class LocalAWTEventModel implements AWTEventModel {
         
         return false;
     }
-    
     
     class Dispatcher implements AWTEventListener {
 

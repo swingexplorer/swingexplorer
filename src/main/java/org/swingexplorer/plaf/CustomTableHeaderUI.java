@@ -45,7 +45,6 @@ public class CustomTableHeaderUI extends BasicTableHeaderUI {
         c.setBorder(new MetalBorders.TableHeaderBorder());
     }
     
-    
     static class HeaderCellRenderer extends DefaultTableCellRenderer {
 
         Border normalBorder;

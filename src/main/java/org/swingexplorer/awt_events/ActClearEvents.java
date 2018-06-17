@@ -39,5 +39,4 @@ public class ActClearEvents extends RichAction {
     public void actionPerformed(ActionEvent e) {
         owner.clearEvents();
     }
-
 }

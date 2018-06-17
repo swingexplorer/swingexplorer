@@ -32,7 +32,6 @@ import java.text.MessageFormat;
  */
 public class Operation {
     
-    
     Method method;
     Object[] arguments;
     int graphicsIndex;

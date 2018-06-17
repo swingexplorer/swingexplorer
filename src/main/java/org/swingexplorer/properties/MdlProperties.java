@@ -52,8 +52,6 @@ public class MdlProperties extends AbstractTableModel {
                     "size", "opaque", "class", "constraints", "location", "locationOnScreen", "visible", "layout", "border", "borderInsets"            
                 }));
     
-    
-    
     @SuppressWarnings("rawtypes")
     public Map describe(Object bean) {
         if(bean == null) {

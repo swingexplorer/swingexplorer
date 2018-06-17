@@ -148,5 +148,4 @@ public class MdlEvents extends AbstractTableModel {
         }
         return events.get(row);
     }
-
 }

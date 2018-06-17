@@ -37,7 +37,6 @@ public abstract class SysUtils {
     public static final String KEY_MONITOR_EDT_EXCEPTIONS = "swex.emonitor";
     public static final String KEY_MANAGEMENT_PORT = "swex.mport";
 
-    
     /**
      * Show explorer window in the tree or not
      * @return whether to show explorer window

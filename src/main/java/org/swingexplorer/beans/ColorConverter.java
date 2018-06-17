@@ -36,10 +36,11 @@ public class ColorConverter implements Converter<Color> {
         String[] strRgb = strValue.split(",");
         
         if(strRgb.length < 3 || strRgb.length > 4) {
-            throw new ParseException("Wrong color string \"" + strRgb + "\" Number of color components must be either 3 of 4 (r,g,b,alpha)",0);
+            throw new ParseException("Wrong color string \"" + strRgb
+                    + "\" Number of color components must be either 3 of 4 (r,g,b,alpha)",0);
         }
+
         try {
-            
             strRgb[0] = strRgb[0].trim();
             strRgb[1] = strRgb[1].trim();
             strRgb[2] = strRgb[2].trim();
@@ -64,5 +65,4 @@ public class ColorConverter implements Converter<Color> {
         }
         return value.getRed() + "," + value.getGreen() + "," + value.getBlue() + "," + value.getAlpha();
     }
-
 }

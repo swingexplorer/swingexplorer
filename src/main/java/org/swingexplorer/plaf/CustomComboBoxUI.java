@@ -39,7 +39,6 @@ import sun.swing.DefaultLookup;
  */
 public class CustomComboBoxUI extends MetalComboBoxUI {
 
-    
     EtchedBorder border = new EtchedBorder();
     
     @Override
@@ -111,5 +110,4 @@ public class CustomComboBoxUI extends MetalComboBoxUI {
         currentValuePane.paintComponent(g,c,comboBox,bounds.x,bounds.y,
                                         bounds.width,bounds.height, shouldValidate);
     }
-
 }

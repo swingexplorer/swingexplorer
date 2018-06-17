@@ -50,5 +50,4 @@ public class CustomTreeUI extends MetalTreeUI {
     @Override
     protected void paintHorizontalLine(Graphics g, JComponent c, int y, int left, int right) {
     }
-    
 }

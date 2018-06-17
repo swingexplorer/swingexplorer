@@ -24,7 +24,6 @@ package org.swingexplorer;
  * @author Maxim Zakharenkov
  */
 public abstract class RichToggleAction extends RichAction {
-
     
     public void setSelected(boolean isSelected) {
         putValue("selected", new Boolean(isSelected));

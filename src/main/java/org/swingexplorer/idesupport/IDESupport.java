@@ -51,7 +51,6 @@ public class IDESupport extends NotificationBroadcasterSupport implements IDESup
     // this flag determines if plugin connected the MBean
     boolean connected;
     
-    
     private IDESupport() {
     }
     
@@ -120,12 +119,10 @@ public class IDESupport extends NotificationBroadcasterSupport implements IDESup
                     "from IDE using Swing Explorer plug-in.");
         }
     }
-    
 
     public void connect() {
         connected = true;
     }
-
 
     public void disconnect() {
         connected = false;

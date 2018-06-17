@@ -44,5 +44,4 @@ public class IntegerConverter implements Converter<Integer> {
         }
         return value.toString();
     }
-
 }

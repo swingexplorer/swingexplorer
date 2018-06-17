@@ -46,5 +46,4 @@ public class BooleanConverter implements Converter<Boolean> {
         }
         return value.toString();
     }
-
 }

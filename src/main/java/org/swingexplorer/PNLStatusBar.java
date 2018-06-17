@@ -76,8 +76,7 @@ public class PNLStatusBar extends javax.swing.JPanel {
                 .add(txtSection0, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField txtSection0;
     private javax.swing.JTextField txtSection1;
@@ -88,7 +87,6 @@ public class PNLStatusBar extends javax.swing.JPanel {
     ModelListener modelListener = new ModelListener();
     
     public void setModel(MdlSwingExplorer model) {
-
         if (model == this.model) {
             return;
         }
@@ -125,8 +123,6 @@ public class PNLStatusBar extends javax.swing.JPanel {
         }
     }
 
-    
-    
     public void setText(int section, String text) {
         switch(section) {
             case 0:

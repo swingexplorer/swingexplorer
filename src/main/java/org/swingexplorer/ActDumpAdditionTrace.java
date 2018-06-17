@@ -65,5 +65,4 @@ public class ActDumpAdditionTrace extends RichAction {
             JOptionPane.showMessageDialog(pnlComponentTree, ex.getMessage());
         }
     }
-
 }

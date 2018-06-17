@@ -27,7 +27,6 @@ import java.awt.event.KeyListener;
  * @author  Maxim Zakharenkov
  */
 public class ActKeyOnDisplay implements KeyListener {
-
     
     PNLGuiDisplay display;
     MdlSwingExplorer model;

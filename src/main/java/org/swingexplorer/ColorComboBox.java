@@ -66,8 +66,6 @@ public class ColorComboBox extends JComboBox<Color> {
         return (Color)getSelectedItem();
     }
     
-    
-    
     static class ColorCellRenderer extends DefaultListCellRenderer {
 
         Color color;

@@ -44,8 +44,7 @@ public class ActTrace extends RichAction {
            JOptionPane.showMessageDialog(owner, "There are no problems selected");
            return;
         }
-        
-        
+
         for(Problem curProblem: problems) {
             System.out.println();
             System.out.println(curProblem.getProblemDescription());

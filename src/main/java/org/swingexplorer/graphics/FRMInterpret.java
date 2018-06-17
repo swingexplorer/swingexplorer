@@ -85,12 +85,9 @@ public class FRMInterpret extends Frame {
         });
         
     }
-    
-    
-    StepCallbackImpl callback = new StepCallbackImpl();
-    
 
-    
+    StepCallbackImpl callback = new StepCallbackImpl();
+
     private void doStart() {
         Runnable runnable = new Runnable() {
             public void run() { 
@@ -166,6 +163,5 @@ public class FRMInterpret extends Frame {
     public static void main(String[] args) {
         open(null);
     }
-    
 }
 

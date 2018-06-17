@@ -36,7 +36,6 @@ public class ImageEvent extends EventObject {
         image = imageP;
         lastOperation = lastOperationP;
     }
-
     
     public BufferedImage getImage() {
         return image;
@@ -45,7 +44,6 @@ public class ImageEvent extends EventObject {
     public Player getPlayer() {
         return (Player)source;
     }
-
 
     public Operation getLastOperation() {
         return lastOperation;

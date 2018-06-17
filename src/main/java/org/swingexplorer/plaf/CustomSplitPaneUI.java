@@ -30,20 +30,20 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
  */
 public class CustomSplitPaneUI extends BasicSplitPaneUI {
 
-        public static ComponentUI createUI(JComponent x) {
-            return new CustomSplitPaneUI();
-        }
+    public static ComponentUI createUI(JComponent x) {
+        return new CustomSplitPaneUI();
+    }
 
-        protected void installDefaults() {
-            super.installDefaults();
-            getDivider().setDividerSize(3);
-            splitPane.setBorder(null);
-        }
-        
-        /**
-          * Creates the default divider.
-          */
-        public BasicSplitPaneDivider createDefaultDivider() {
+    protected void installDefaults() {
+        super.installDefaults();
+        getDivider().setDividerSize(3);
+        splitPane.setBorder(null);
+    }
+
+    /**
+      * Creates the default divider.
+      */
+    public BasicSplitPaneDivider createDefaultDivider() {
             return new CustomSplitPaneDivider(this);
         }
 }

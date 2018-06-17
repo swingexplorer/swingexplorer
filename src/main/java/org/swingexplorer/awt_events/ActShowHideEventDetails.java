@@ -32,8 +32,6 @@ public class ActShowHideEventDetails extends RichAction {
 
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-
     }
-
 }
 

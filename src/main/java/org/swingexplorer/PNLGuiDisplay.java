@@ -52,8 +52,7 @@ public class PNLGuiDisplay extends JComponent {
     private MdlSwingExplorer model;
 
     private ModelListener modelListener = new ModelListener();
-    
-    
+
     public PNLGuiDisplay() {
     }
 
@@ -158,7 +157,6 @@ public class PNLGuiDisplay extends JComponent {
     
 
     protected void paintMeasureLine(Graphics2D g, Point p1, Point p2) {
-
         if (p1 == null || p2 == null) {
             return;
         }
@@ -293,8 +291,6 @@ public class PNLGuiDisplay extends JComponent {
         return dist;
     }
     
-    
-    
     Point calcMinDelta(double x, double y, double rectX, double rectY, double rectWidth, double rectHeight, int minDist) {
         Point delta = new Point();
         
@@ -323,7 +319,6 @@ public class PNLGuiDisplay extends JComponent {
         }
         return delta;
     }
-    
 
     protected void paintMeasurePoint(Graphics2D g, Point p, int size) {
         int halfSize = size / 2;
@@ -358,7 +353,6 @@ public class PNLGuiDisplay extends JComponent {
     }
 
     public void setModel(MdlSwingExplorer model) {
-
         if (model == this.model) {
             return;
         }
@@ -375,7 +369,6 @@ public class PNLGuiDisplay extends JComponent {
 
 
     public Dimension getPreferredSize() {
-
         if(model == null) {
             return super.getPreferredSize();
         }
@@ -469,7 +462,5 @@ public class PNLGuiDisplay extends JComponent {
         }
         return null;
     }
-    
-    
 }
 

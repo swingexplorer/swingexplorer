@@ -60,8 +60,6 @@ public class PNLAbout extends javax.swing.JPanel {
     private JScrollPane scpAbout;
     private JTextPane txaAbout;
 
-    
-    
     /** Creates new form PNLAbout */
     public PNLAbout() {
         scpAbout = new JScrollPane();
@@ -192,6 +190,5 @@ public class PNLAbout extends javax.swing.JPanel {
             return new Dimension(13, 13);
         }
     }
-
 }
 

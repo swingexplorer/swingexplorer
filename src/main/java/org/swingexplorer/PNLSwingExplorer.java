@@ -243,7 +243,6 @@ public class PNLSwingExplorer extends javax.swing.JPanel {
     private javax.swing.JTextField txtPath;
     // End of variables declaration//GEN-END:variables
     
-    
     AnimatedIcon icoEventMonitoring;
     AnimatedIcon icoEDTMonitoring;
     
@@ -265,8 +264,7 @@ public class PNLSwingExplorer extends javax.swing.JPanel {
     ActKeyOnDisplay actKeyOnDisplay;
     ActDisplayTopContainer actDisplayTopContainer;
     ActDisplayParent actDisplayParent;
-    
-    
+
     void initActions() {
         actRefresh = new ActRefresh(pnlComponentTree, application.model);
         pnlComponentTree.addAction(actRefresh);

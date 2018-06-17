@@ -41,5 +41,4 @@ public class ActStopEventMonitoring extends RichAction {
     public void actionPerformed(ActionEvent e) {
         model.setMonitoring(false);
     }
-
 }

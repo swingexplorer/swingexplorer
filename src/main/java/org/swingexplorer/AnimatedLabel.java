@@ -39,14 +39,10 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class AnimatedLabel extends JLabel {
 
-
-    
-    
     private ArrayList<Icon> icons = new ArrayList<Icon>();
     private EmptyIcon emptyIcon = new EmptyIcon();
     private Dimension maxIconSize = new Dimension(0, 0);
-    
-    
+
     private Timer timer;
     private int iconNumber = 0;
     boolean inProgress = false;
@@ -213,6 +209,5 @@ public class AnimatedLabel extends JLabel {
         public void paintIcon(Component c, Graphics g, int x, int y) {
         }
     }
-
 }
 

@@ -61,5 +61,4 @@ public class ActOpenPlayer extends RichToggleAction {
         }
         application.dlgPlayerControls.setVisible(isSelected());     
     }
-
 }

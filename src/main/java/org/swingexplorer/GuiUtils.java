@@ -62,8 +62,6 @@ import javax.swing.tree.TreePath;
  */
 final public class GuiUtils {
     
-    /** Logger used by this class. */
-
     /**
      * Constant which may be used as background error color for any editor.
      * This constant define light red color.

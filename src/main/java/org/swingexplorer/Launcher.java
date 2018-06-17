@@ -54,7 +54,6 @@ public class Launcher implements Runnable {
     
     private PersonalizerRegistry personalizerRegistry;
     
-    
     public void run() {
         // register JMX bean for IDE support
         ideSupport = IDESupport.registerMBean();
@@ -172,6 +171,5 @@ public class Launcher implements Runnable {
             ex.printStackTrace(System.err);
         }
     }
-
 }
 

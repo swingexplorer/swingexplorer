@@ -278,7 +278,7 @@ public class FRMPerson extends javax.swing.JFrame {
 
     private void btnModalDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModalDialogActionPerformed
         JOptionPane.showMessageDialog(this, "Just simple modal dialog", "Sample dialog", JOptionPane.INFORMATION_MESSAGE);
-}//GEN-LAST:event_btnModalDialogActionPerformed
+    }//GEN-LAST:event_btnModalDialogActionPerformed
 
     private void btnOwnerlessModalDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOwnerlessModalDialogActionPerformed
         JOptionPane.showMessageDialog(null, "Just simple ownerless modal dialog", "Sample dialog", JOptionPane.INFORMATION_MESSAGE);
@@ -311,7 +311,7 @@ public class FRMPerson extends javax.swing.JFrame {
 //                rbnFemale.scrollRectToVisible(null);
             }
         }.start();
-}//GEN-LAST:event_btnThreadViolationActionPerformed
+    }//GEN-LAST:event_btnThreadViolationActionPerformed
 
     private void btnEdtHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdtHangActionPerformed
         try {
@@ -382,6 +382,5 @@ public class FRMPerson extends javax.swing.JFrame {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtSurname;
     // End of variables declaration//GEN-END:variables
-    
 }
 

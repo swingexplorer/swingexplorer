@@ -74,7 +74,6 @@ public class PNLAdditionTrace extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JScrollPane scpTrace;
     javax.swing.JEditorPane txtTrace;
@@ -124,7 +123,6 @@ public class PNLAdditionTrace extends javax.swing.JPanel {
         // here is scrolling finally
         txtTrace.scrollRectToVisible(new Rectangle(0, 0, 1, 1));
     }
-    
     
     class ModelListener implements PropertyChangeListener {
         public void propertyChange(PropertyChangeEvent evt) {

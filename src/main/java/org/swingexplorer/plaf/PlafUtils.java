@@ -44,7 +44,6 @@ public abstract class PlafUtils {
     
     
     public static final void applyCustomLookAndFeel(Container parent) {
-        
         for(int i =0; i < parent.getComponentCount(); i ++) {
             Component child = parent.getComponent(i);
             if(child instanceof JComponent) {

@@ -49,6 +49,5 @@ public class ActZoomOut extends RichAction {
         
         model.setDisplayScale(((double)normalScale)/100);
     }
-
 }
 

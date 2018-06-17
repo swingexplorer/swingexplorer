@@ -32,10 +32,7 @@ import java.lang.reflect.Modifier;
 public class Generator {
 
     public static void main(String[] args) {
-        
-        
         for(Method meth : Graphics2D.class.getMethods()) {
-            
             if((Modifier.ABSTRACT & meth.getModifiers()) == Modifier.ABSTRACT) {
                 dump(meth);
             }

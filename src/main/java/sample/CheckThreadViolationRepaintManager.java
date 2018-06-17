@@ -44,6 +44,7 @@ import javax.swing.SwingUtilities;
  * https://swinghelper.dev.java.net/
  */
 public class CheckThreadViolationRepaintManager extends RepaintManager {
+
     // it is recommended to pass the complete check  
     private boolean completeCheck = true;
     private WeakReference<JComponent> lastComponent;
@@ -159,6 +160,7 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
     }
 
     private static JButton test;
+
     static void repaintTest() {
         try {
             SwingUtilities.invokeAndWait(new Runnable() {

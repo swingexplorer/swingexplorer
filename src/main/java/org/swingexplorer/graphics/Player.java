@@ -48,15 +48,13 @@ public class Player {
     PState state;
     Timer playTimer;
     
-    
     BufferedImage workerImage;
     Graphics g;
     ArrayList<Graphics> openGraphics = new ArrayList<Graphics>();
     int currentOperationIndex = -1;
     
     Options options;
-    
-    
+
     public enum PState {
         NEW("New"),         // created without operations
         IDLE("Idle"),       // waiting for action
@@ -178,7 +176,6 @@ public class Player {
         return operations;
     }
     
-    
     private void resetImage(Dimension size) {
         workerImage = new BufferedImage(size.width, 
                 size.height, 
@@ -287,7 +284,6 @@ public class Player {
 //      System.err.println(text);
     }
 
-    
     public void playStep() {        
         pause();
         if(hasMoreOperations()) {
@@ -318,8 +314,6 @@ public class Player {
             setCurrentState(PState.IDLE);       
         }
     }
-
-
     
     protected void fireCurrentOperationChangedEvent(
         final Operation curOperationP, final Operation oldOperationP) {

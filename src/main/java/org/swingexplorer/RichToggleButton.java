@@ -32,8 +32,7 @@ import javax.swing.JToggleButton;
 public class RichToggleButton extends JToggleButton {
 
     SelectionStateListener selectionStateListener;
-    
-    
+
     public RichToggleButton() {
         selectionStateListener = new SelectionStateListener();
     }
@@ -42,8 +41,7 @@ public class RichToggleButton extends JToggleButton {
         this();
         setAction(a);
     }
-    
-    
+
     @Override
     public void setAction(Action a) {
         if(a instanceof RichToggleAction) {

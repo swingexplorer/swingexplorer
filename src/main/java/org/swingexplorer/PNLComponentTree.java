@@ -171,7 +171,6 @@ public class PNLComponentTree extends javax.swing.JPanel {
         }
     }
     
-    
     private DefaultTreeModel getTreeModel(JTree tree) {
         return (DefaultTreeModel)tree.getModel();
     }
@@ -276,8 +275,7 @@ public class PNLComponentTree extends javax.swing.JPanel {
             treDisplayed.scrollPathToVisible(paths[0]);
         }
     }
-    
-    
+
     private void disableSelectionNotification() {
         treAll.getSelectionModel().removeTreeSelectionListener(actTreeSelectionChanged);       
         treDisplayed.getSelectionModel().removeTreeSelectionListener(actTreeSelectionChanged);
@@ -399,8 +397,6 @@ public class PNLComponentTree extends javax.swing.JPanel {
         }
     }
 
-
-    
     void log(String msg) {
 //      System.out.println("[PNLComponentTree] " + msg);
     }

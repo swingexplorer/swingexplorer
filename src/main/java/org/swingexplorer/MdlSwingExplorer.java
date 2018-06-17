@@ -47,36 +47,22 @@ import org.swingexplorer.graphics.XGraphics;
 public class MdlSwingExplorer {
 
     private Options options;
-    
     private double displayScale = 1;
-    
     private Component displayedComponent;
-    
     private ImageIcon displayedComponentImage;
-    
     private Component currentComponent;
-
-    
     private ArrayList<Component> selectedComponents = new ArrayList<Component>();
-
     private Point measurePoint1;
-
     private Point measurePoint2;
-
     private EventListenerList listenerList = new EventListenerList();
-
     private String statustext;
-        
     private Point mouseLocation;
-        
     private XGraphics xgraphics;
-    
     
     private void log(String msg, String...params) {
 //      System.err.printf("[MdlSwingExplorer]" + msg, params);
     }
     
-
     public void addPropertyChangeListener(PropertyChangeListener l) {
         listenerList.add(PropertyChangeListener.class, l);
     }
@@ -84,7 +70,6 @@ public class MdlSwingExplorer {
     public void removePropertyChangeListener(PropertyChangeListener l) {
         listenerList.remove(PropertyChangeListener.class, l);
     }
-
 
     /**
      * Fires only when old and new value are not equal
@@ -102,6 +87,7 @@ public class MdlSwingExplorer {
         
         firePropertyChange(prop, oldVal, newVal);
     }
+
     protected void firePropertyChange(String prop, Object oldVal, Object newVal) {
         log("Property %1$s changed\n", prop);
         
@@ -425,6 +411,5 @@ public class MdlSwingExplorer {
         SwingUtilities.convertPointToScreen(loc, getDisplayedComponent());
         return loc;
     }
-        
 }
 

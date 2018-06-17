@@ -389,6 +389,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
             player.play();
         }        
     }
+
     class ActPlayStep extends RichAction {
         ActPlayStep() {
             setTooltip("Play Step");
@@ -399,6 +400,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
             player.playStep();
         }        
     }
+
     class ActPause extends RichAction {
         ActPause() {
             setTooltip("Pause");

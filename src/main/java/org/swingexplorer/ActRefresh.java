@@ -330,5 +330,4 @@ public class ActRefresh extends RichAction {
         }
         return null;
     }
-
 }
