@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -29,26 +29,26 @@ import java.text.ParseException;
  */
 public class StrokeConverter implements Converter<Stroke> {
 
-	public Stroke fromString(String strValue) throws ParseException {
-		if(strValue == null) {
-			return null;
-		}
-		try {
-			return new BasicStroke(Integer.parseInt(strValue));
-		} catch(NumberFormatException ex) {
-			throw new ParseException("Can not parse string \"" + strValue + "\" to Stroke", 0);
-		}
-	}
+    public Stroke fromString(String strValue) throws ParseException {
+        if(strValue == null) {
+            return null;
+        }
+        try {
+            return new BasicStroke(Integer.parseInt(strValue));
+        } catch(NumberFormatException ex) {
+            throw new ParseException("Can not parse string \"" + strValue + "\" to Stroke", 0);
+        }
+    }
 
-	public String toString(Stroke value) {
-		if(value == null) {
-			return null;
-		}
-		if(!(value instanceof BasicStroke)) {
-			throw new RuntimeException("Can not convert object of type \"" + value.getClass() + "\" to string");
-		}
-		BasicStroke basicStroke = (BasicStroke)value;
-		return "" + (int)basicStroke.getLineWidth() + "";
-	}
+    public String toString(Stroke value) {
+        if(value == null) {
+            return null;
+        }
+        if(!(value instanceof BasicStroke)) {
+            throw new RuntimeException("Can not convert object of type \"" + value.getClass() + "\" to string");
+        }
+        BasicStroke basicStroke = (BasicStroke)value;
+        return "" + (int)basicStroke.getLineWidth() + "";
+    }
 
 }

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -24,27 +24,27 @@ package org.swingexplorer.awt_events;
  * @author  Maxim Zakharenkov
  */
 public class Filter implements Cloneable {
-	
-	public boolean 
-		keyPressed = true,
-		keyReleased = true,
-		keyTyped = true,
-		mouseClicked = true,
-		mousePressed = true,
-		mouseReleased = true,
-		mouseMoved = false,
-		mouseEntered = false,
-		mouseExited = false,
-		mouseDragged = false,
-		mouseWeel = false;
-	
-	@Override
-	public Filter clone() {
-		try {
-			return (Filter)super.clone();
-		} catch (CloneNotSupportedException e) {
-			// should not occure
-			return null;
-		}
-	}
+    
+    public boolean 
+        keyPressed = true,
+        keyReleased = true,
+        keyTyped = true,
+        mouseClicked = true,
+        mousePressed = true,
+        mouseReleased = true,
+        mouseMoved = false,
+        mouseEntered = false,
+        mouseExited = false,
+        mouseDragged = false,
+        mouseWeel = false;
+    
+    @Override
+    public Filter clone() {
+        try {
+            return (Filter)super.clone();
+        } catch (CloneNotSupportedException e) {
+            // should not occure
+            return null;
+        }
+    }
 }

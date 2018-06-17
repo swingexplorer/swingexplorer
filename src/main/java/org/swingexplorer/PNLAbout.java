@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -57,15 +57,15 @@ import javax.swing.text.EditorKit;
  */
 @SuppressWarnings("serial")
 public class PNLAbout extends javax.swing.JPanel {
-	
+    
     private JScrollPane scpAbout;
     private JTextPane txaAbout;
 
-	
+    
     
     /** Creates new form PNLAbout */
     public PNLAbout() {
-    	scpAbout = new JScrollPane();
+        scpAbout = new JScrollPane();
         txaAbout = new JTextPane();
         txaAbout.setBorder(new EmptyBorder(10, 10, 10, 10));
         txaAbout.setEditable(false);
@@ -85,7 +85,7 @@ public class PNLAbout extends javax.swing.JPanel {
         AbstractDocument doc = (AbstractDocument) edKit.createDefaultDocument();//(HTMLDocument) txaAbout.getDocument(); //new HTMLDocument();
         doc.setAsynchronousLoadPriority(-1);
         try {
-        	int year = Calendar.getInstance().get(Calendar.YEAR);
+            int year = Calendar.getInstance().get(Calendar.YEAR);
             String text = "<html>" +
                     "<body>" +
                     "<big><span style=\"font-weight: bold;\">" +
@@ -106,14 +106,14 @@ public class PNLAbout extends javax.swing.JPanel {
         
         txaAbout.addHyperlinkListener(new HyperlinkListener() {
             public void hyperlinkUpdate(HyperlinkEvent e) {
-            	
+                
                 if(e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                	if("license".equals(e.getDescription())) {
-                		Dialog dlg = (Dialog)SwingUtilities.getWindowAncestor(PNLAbout.this);
-                		DLGLicense.open(dlg);
-                	} else if(!SysUtils.openBrowser(e.getURL().toString())) {
-                		JOptionPane.showMessageDialog(null, "Can not open browser!", "Error", JOptionPane.ERROR_MESSAGE);
-                	}
+                    if("license".equals(e.getDescription())) {
+                        Dialog dlg = (Dialog)SwingUtilities.getWindowAncestor(PNLAbout.this);
+                        DLGLicense.open(dlg);
+                    } else if(!SysUtils.openBrowser(e.getURL().toString())) {
+                        JOptionPane.showMessageDialog(null, "Can not open browser!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
@@ -121,78 +121,78 @@ public class PNLAbout extends javax.swing.JPanel {
     
     @Override
     protected void paintComponent(Graphics _g) {
-    	Graphics2D g = (Graphics2D)_g;
-    	GradientPaint paint = new GradientPaint(25, 25, Color.WHITE, getHeight(), getWidth(), new Color(0xc8ddf2));
-    	g.setPaint(paint);
-    	g.fillRect(0, 0, getWidth(), getHeight());
+        Graphics2D g = (Graphics2D)_g;
+        GradientPaint paint = new GradientPaint(25, 25, Color.WHITE, getHeight(), getWidth(), new Color(0xc8ddf2));
+        g.setPaint(paint);
+        g.fillRect(0, 0, getWidth(), getHeight());
     }
     
     
     public static void openModal(Frame owner) {
-	    final JDialog dlgAbout = new JDialog(owner, "About", true);
-		final JPanel glassPane = new JPanel(new BorderLayout());
-		JPanel northGlass = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		glassPane.add(northGlass);
-		glassPane.setOpaque(false);
-		northGlass.setOpaque(false);
-		
-		JButton btnClose = new CloseButton();
-		northGlass.add(btnClose);
-		
-		dlgAbout.setGlassPane(glassPane); 
-		
-		dlgAbout.addComponentListener(new ComponentAdapter() {
-			public void componentShown(ComponentEvent e) {
-				glassPane.setVisible(true);
-			}
-		});
-		
-		btnClose.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dlgAbout.dispose();
-			}
-		});
-		dlgAbout.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		
-		PNLAbout pnlAbout = new PNLAbout();
-		dlgAbout.setUndecorated(true);
-		dlgAbout.add(pnlAbout);
-		dlgAbout.pack();
-		GuiUtils.center(owner, dlgAbout);
-		dlgAbout.setVisible(true);
-		glassPane.setVisible(true);
+        final JDialog dlgAbout = new JDialog(owner, "About", true);
+        final JPanel glassPane = new JPanel(new BorderLayout());
+        JPanel northGlass = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        glassPane.add(northGlass);
+        glassPane.setOpaque(false);
+        northGlass.setOpaque(false);
+        
+        JButton btnClose = new CloseButton();
+        northGlass.add(btnClose);
+        
+        dlgAbout.setGlassPane(glassPane); 
+        
+        dlgAbout.addComponentListener(new ComponentAdapter() {
+            public void componentShown(ComponentEvent e) {
+                glassPane.setVisible(true);
+            }
+        });
+        
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                dlgAbout.dispose();
+            }
+        });
+        dlgAbout.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        
+        PNLAbout pnlAbout = new PNLAbout();
+        dlgAbout.setUndecorated(true);
+        dlgAbout.add(pnlAbout);
+        dlgAbout.pack();
+        GuiUtils.center(owner, dlgAbout);
+        dlgAbout.setVisible(true);
+        glassPane.setVisible(true);
     }
     
-	static class CloseButton extends JButton {
-		
-		public CloseButton() {
-			setBorderPainted(false);
-			setOpaque(false);
-		}
-		
-		@Override
-		protected void paintComponent(Graphics g) {
+    static class CloseButton extends JButton {
+        
+        public CloseButton() {
+            setBorderPainted(false);
+            setOpaque(false);
+        }
+        
+        @Override
+        protected void paintComponent(Graphics g) {
 
-			
-			ButtonModel model = getModel();
-			if(model.isPressed() ) {
-				g.setColor(Color.GRAY);
-				g.drawRect(1, 1, getWidth() - 2, getHeight() - 2);
-				g.drawLine(1, 1, getWidth() - 2, getHeight() - 2);
-				g.drawLine(getWidth() - 2, 2, 2, getHeight() - 2);
-			}  else  {
-				g.setColor(Color.GRAY);
-				g.drawRect(0, 0, getWidth() - 2, getHeight() - 2);
-				g.drawLine(0, 0, getWidth() - 2, getHeight() - 2);
-				g.drawLine(getWidth() - 2, 0, 0, getHeight() - 2);
+            
+            ButtonModel model = getModel();
+            if(model.isPressed() ) {
+                g.setColor(Color.GRAY);
+                g.drawRect(1, 1, getWidth() - 2, getHeight() - 2);
+                g.drawLine(1, 1, getWidth() - 2, getHeight() - 2);
+                g.drawLine(getWidth() - 2, 2, 2, getHeight() - 2);
+            }  else  {
+                g.setColor(Color.GRAY);
+                g.drawRect(0, 0, getWidth() - 2, getHeight() - 2);
+                g.drawLine(0, 0, getWidth() - 2, getHeight() - 2);
+                g.drawLine(getWidth() - 2, 0, 0, getHeight() - 2);
 
-			}
-		}
-		
-		public Dimension getPreferredSize() {
-			return new Dimension(13, 13);
-		}
-	}
+            }
+        }
+        
+        public Dimension getPreferredSize() {
+            return new Dimension(13, 13);
+        }
+    }
 
 }
 

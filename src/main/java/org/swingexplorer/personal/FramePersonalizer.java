@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -30,22 +30,22 @@ import org.swingexplorer.Options;
  * @author  Maxim Zakharenkov
  */
 public class FramePersonalizer implements Personalizer {
-	
-	Options options;
-	JFrame frame;
-	
-	public void install(Options _options, Component _component) {
-		options = _options;
-		frame = (JFrame)_component;
-		frame.setBounds(_options.getWindowX(), _options.getWindowY(), _options.getWindowWidth(), _options.getWindowHeight());
-	}
+    
+    Options options;
+    JFrame frame;
+    
+    public void install(Options _options, Component _component) {
+        options = _options;
+        frame = (JFrame)_component;
+        frame.setBounds(_options.getWindowX(), _options.getWindowY(), _options.getWindowWidth(), _options.getWindowHeight());
+    }
 
-	public void saveState() {
-		options.setWindowX(frame.getX());
-		options.setWindowY(frame.getY());
-		options.setWindowWidth(frame.getWidth());
-		options.setWindowHeight(frame.getHeight());
-	}
+    public void saveState() {
+        options.setWindowX(frame.getX());
+        options.setWindowY(frame.getY());
+        options.setWindowWidth(frame.getWidth());
+        options.setWindowHeight(frame.getHeight());
+    }
 }
 
 

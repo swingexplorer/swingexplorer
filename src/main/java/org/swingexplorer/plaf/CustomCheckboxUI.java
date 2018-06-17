@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -28,19 +28,19 @@ import javax.swing.plaf.metal.MetalCheckBoxUI;
  */
 public class CustomCheckboxUI extends MetalCheckBoxUI  /*BasicButtonUI*/ {
 
-	
-//	@Override
-//	protected void paintIcon(Graphics g, JComponent c, Rectangle iconRect) {
-//		
-//		g.setColor(Color.BLACK);
-//		AbstractButton b = (AbstractButton)c;
-//		if(!b.isSelected()) {
-//			g.drawRect(iconRect.x, iconRect.y, iconRect.width, iconRect.height);
-//		} else {
-//			g.fillRect(iconRect.x, iconRect.y, iconRect.width, iconRect.height);
-//		}
-//	}
-	
+    
+//  @Override
+//  protected void paintIcon(Graphics g, JComponent c, Rectangle iconRect) {
+//      
+//      g.setColor(Color.BLACK);
+//      AbstractButton b = (AbstractButton)c;
+//      if(!b.isSelected()) {
+//          g.drawRect(iconRect.x, iconRect.y, iconRect.width, iconRect.height);
+//      } else {
+//          g.fillRect(iconRect.x, iconRect.y, iconRect.width, iconRect.height);
+//      }
+//  }
+    
     @Override
     public void installDefaults(AbstractButton b) {
         super.installDefaults(b);
@@ -49,31 +49,31 @@ public class CustomCheckboxUI extends MetalCheckBoxUI  /*BasicButtonUI*/ {
     
 //    @Override
 //    public synchronized void paint(Graphics g, JComponent c) {
-//    	g.setColor(Color.BLACK);
-//    	
-//    	AbstractButton b = (AbstractButton) c;
-//    	if(b.isSelected()) {
-//    		g.fillRect(0, 0, c.getWidth() - 1, c.getHeight() - 1);
-//    	} else {
-//    		g.drawRect(0, 0, c.getWidth() - 1, c.getHeight() - 1);
-//    	}
+//      g.setColor(Color.BLACK);
+//      
+//      AbstractButton b = (AbstractButton) c;
+//      if(b.isSelected()) {
+//          g.fillRect(0, 0, c.getWidth() - 1, c.getHeight() - 1);
+//      } else {
+//          g.drawRect(0, 0, c.getWidth() - 1, c.getHeight() - 1);
+//      }
 //    }
 //    
 //    @Override
 //    public Dimension getPreferredSize(JComponent c) {
-//    	
-//    	AbstractButton b = (AbstractButton) c;
-//    	String text = b.getText();
+//      
+//      AbstractButton b = (AbstractButton) c;
+//      String text = b.getText();
 //        Font font = b.getFont();
 //        
 //        FontMetrics fm = b.getFontMetrics(font);
 //        int width = fm.stringWidth(text);
 //        int height = fm.getHeight();
-//    	
-//    	return new Dimension(width, height);
+//      
+//      return new Dimension(width, height);
 //    }
 //    
 //    public void installUI(JComponent c) {
-//    	c.addMouseListener(l)
+//      c.addMouseListener(l)
 //    }
 }

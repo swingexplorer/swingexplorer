@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -26,13 +26,13 @@ import java.util.EventListener;
  * @author Maxim Zakharenkov
  */
 public interface PlayerListener extends EventListener {
-	
-	public void imageRendered(ImageEvent evt);
-	
-	public void stateChanged(StateEvent evt);
-	
-	public void operationsReset(OperationResetEvent operations);
-	
-	public void currentOperationChanged(CurrentOperationChangeEvent evt);
+    
+    public void imageRendered(ImageEvent evt);
+    
+    public void stateChanged(StateEvent evt);
+    
+    public void operationsReset(OperationResetEvent operations);
+    
+    public void currentOperationChanged(CurrentOperationChangeEvent evt);
 }
 

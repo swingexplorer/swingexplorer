@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -167,22 +167,22 @@ public class PNLPlayerControls extends javax.swing.JPanel {
 
     private void lstOperationsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstOperationsValueChanged
         if(blockEventsFromControls) {
-    		return;
-    	}
+            return;
+        }
         int selIndex = lstOperations.getSelectedIndex();
         if(player.getCurrentOperationIndex() != selIndex) {
-    		player.seek(selIndex);
-    	}
+            player.seek(selIndex);
+        }
     }//GEN-LAST:event_lstOperationsValueChanged
 
     private void spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerStateChanged
         if(blockEventsFromControls) {
-    		return;
-    	}
+            return;
+        }
         int value = (int)(Integer)spinner.getValue();
-    	if(player.getCurrentOperationIndex() != value) {
-    		player.seek(value);
-    	}
+        if(player.getCurrentOperationIndex() != value) {
+            player.seek(value);
+        }
     }//GEN-LAST:event_spinnerStateChanged
 
     private void sliderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sliderMouseReleased
@@ -190,17 +190,17 @@ public class PNLPlayerControls extends javax.swing.JPanel {
     }//GEN-LAST:event_sliderMouseReleased
 
     private void sliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderStateChanged
-    	if(blockEventsFromControls) {
-    		return;
-    	}
-    	
-    	int value = slider.getValue();
-    	if(player.getCurrentOperationIndex() != value) {
-    		if(value < 0) { // in some cases slider value becomes -1 (may be it is slider's bug)
-    			value =0;
-    		}
-   			player.seek(value);
-    	}
+        if(blockEventsFromControls) {
+            return;
+        }
+        
+        int value = slider.getValue();
+        if(player.getCurrentOperationIndex() != value) {
+            if(value < 0) { // in some cases slider value becomes -1 (may be it is slider's bug)
+                value =0;
+            }
+            player.seek(value);
+        }
     }//GEN-LAST:event_sliderStateChanged
     
     
@@ -233,13 +233,13 @@ public class PNLPlayerControls extends javax.swing.JPanel {
     ActOpenSourceCode actOpenSourceCode;
     
     void initActions() {
-    	btnPlayPause.setAction(actPlay);    	
-    	btnToStart.setAction(actToStart);
-    	btnPlayStep.setAction(actPlayStep);
+        btnPlayPause.setAction(actPlay);        
+        btnToStart.setAction(actToStart);
+        btnPlayStep.setAction(actPlayStep);
         btnToEnd.setAction(actToEnd);
         btnPlayStepBack.setAction(actPlayStepBack);
         btnDumpStackTrace.setAction(actDumpStackTrace);
-    	lstOperations.setModel(mdlOperations);
+        lstOperations.setModel(mdlOperations);
         
         actOpenSourceCode = new ActOpenSourceCode(this);
         btnSrc.setAction(actOpenSourceCode);
@@ -259,7 +259,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
         }
         player = playerP;
         if(player != null) {
-        	updateOperationList();
+            updateOperationList();
             updateActionAvailabilityFromState(player.getCurrentState());
             updateCurrentOperationSelection(player.getCurrentOperation());
 
@@ -273,111 +273,111 @@ public class PNLPlayerControls extends javax.swing.JPanel {
     }
     
     private void updateActionAvailabilityFromState(Player.PState state) {
-    	switch (state) {
-		case IDLE:
-			actPlay.setEnabled(true);
-			actPlayStep.setEnabled(true);
-			actPlayStepBack.setEnabled(true);
-			actToStart.setEnabled(true);
-			actPause.setEnabled(false);
-			actToEnd.setEnabled(true);			
-			actDumpStackTrace.setEnabled(true);
-			actOpenSourceCode.setEnabled(true);
-			btnPlayPause.setAction(actPlay);
-			slider.setEnabled(true);
-			spinner.setEnabled(true);
-			break;
-		case PLAYING:
-			actPlay.setEnabled(false);
-			actPlayStep.setEnabled(true);
-			actPlayStepBack.setEnabled(true);
-			actToStart.setEnabled(true);
-			actToEnd.setEnabled(true);
-			actPause.setEnabled(true);
-			actDumpStackTrace.setEnabled(false);
-			actOpenSourceCode.setEnabled(false);
-			btnPlayPause.setAction(actPause);
-			slider.setEnabled(true);
-			spinner.setEnabled(true);
-			break;
-		case NEW:
-			actPlay.setEnabled(false);
-			actPlayStep.setEnabled(false);
-			actPlayStepBack.setEnabled(false);
-			actToStart.setEnabled(false);
-			actPause.setEnabled(false);
-			actToEnd.setEnabled(false);
-			slider.setEnabled(false);
-			spinner.setEnabled(false);
-			actDumpStackTrace.setEnabled(false);
-			actOpenSourceCode.setEnabled(false);
-			break;
-		}
+        switch (state) {
+        case IDLE:
+            actPlay.setEnabled(true);
+            actPlayStep.setEnabled(true);
+            actPlayStepBack.setEnabled(true);
+            actToStart.setEnabled(true);
+            actPause.setEnabled(false);
+            actToEnd.setEnabled(true);          
+            actDumpStackTrace.setEnabled(true);
+            actOpenSourceCode.setEnabled(true);
+            btnPlayPause.setAction(actPlay);
+            slider.setEnabled(true);
+            spinner.setEnabled(true);
+            break;
+        case PLAYING:
+            actPlay.setEnabled(false);
+            actPlayStep.setEnabled(true);
+            actPlayStepBack.setEnabled(true);
+            actToStart.setEnabled(true);
+            actToEnd.setEnabled(true);
+            actPause.setEnabled(true);
+            actDumpStackTrace.setEnabled(false);
+            actOpenSourceCode.setEnabled(false);
+            btnPlayPause.setAction(actPause);
+            slider.setEnabled(true);
+            spinner.setEnabled(true);
+            break;
+        case NEW:
+            actPlay.setEnabled(false);
+            actPlayStep.setEnabled(false);
+            actPlayStepBack.setEnabled(false);
+            actToStart.setEnabled(false);
+            actPause.setEnabled(false);
+            actToEnd.setEnabled(false);
+            slider.setEnabled(false);
+            spinner.setEnabled(false);
+            actDumpStackTrace.setEnabled(false);
+            actOpenSourceCode.setEnabled(false);
+            break;
+        }
     }
     
     private void updateCurrentOperationSelection(Operation op) {
-    	if(op == null) {
-    		lstOperations.getSelectionModel().clearSelection();
-    		return;
-    	}
-    	lstOperations.setSelectedIndex(op.getIndex());
-    	
-    	Rectangle rect = lstOperations.getCellBounds(op.getIndex(), op.getIndex());
-    	if(rect !=null) {
-    		lstOperations.scrollRectToVisible(rect);
-    	}
-    	slider.setValue(op.getIndex());
-    	spinner.setValue(op.getIndex());
+        if(op == null) {
+            lstOperations.getSelectionModel().clearSelection();
+            return;
+        }
+        lstOperations.setSelectedIndex(op.getIndex());
+        
+        Rectangle rect = lstOperations.getCellBounds(op.getIndex(), op.getIndex());
+        if(rect !=null) {
+            lstOperations.scrollRectToVisible(rect);
+        }
+        slider.setValue(op.getIndex());
+        spinner.setValue(op.getIndex());
     }
     
     class PlayerListenerImpl implements PlayerListener {
         public void imageRendered(ImageEvent evt) {
         }
 
-		public void operationsReset(OperationResetEvent evt) {
-			updateOperationList();
-		}
+        public void operationsReset(OperationResetEvent evt) {
+            updateOperationList();
+        }
 
-		public void stateChanged(StateEvent evt) {
-			updateActionAvailabilityFromState(evt.getNewState());
-		}
+        public void stateChanged(StateEvent evt) {
+            updateActionAvailabilityFromState(evt.getNewState());
+        }
 
-		public void currentOperationChanged(CurrentOperationChangeEvent evt) {
-			blockEventsFromControls = true;
-        	Operation op = evt.getCurrentOperation();
-        	updateCurrentOperationSelection(op);
-        	blockEventsFromControls = false;
-		}        
+        public void currentOperationChanged(CurrentOperationChangeEvent evt) {
+            blockEventsFromControls = true;
+            Operation op = evt.getCurrentOperation();
+            updateCurrentOperationSelection(op);
+            blockEventsFromControls = false;
+        }        
     }
     
     class OperationListModel extends AbstractListModel<Object> {
 
-    	Operation[] operations = new Operation[0];
+        Operation[] operations = new Operation[0];
 
-    	public void setOperations(Operation[] operationsP) {
-    		
-    		if(operationsP == null) {
-    			operationsP = new Operation[0];
-    		}
-    		
-    		Operation[] old = operations;
-    		operations = operationsP;
-    		
-    		if(old.length != 0) {
-    			super.fireIntervalRemoved(this, 0, old.length - 1);
-    		}
-    		if(operations.length != 0) {
-    		 super.fireIntervalAdded(this, 0, operations.length - 1);
-    		}
-    	}
-    	
-		public int getSize() {
-			return operations.length;
-		}
+        public void setOperations(Operation[] operationsP) {
+            
+            if(operationsP == null) {
+                operationsP = new Operation[0];
+            }
+            
+            Operation[] old = operations;
+            operations = operationsP;
+            
+            if(old.length != 0) {
+                super.fireIntervalRemoved(this, 0, old.length - 1);
+            }
+            if(operations.length != 0) {
+             super.fireIntervalAdded(this, 0, operations.length - 1);
+            }
+        }
+        
+        public int getSize() {
+            return operations.length;
+        }
 
-		public Object getElementAt(int index) {
-			return operations[index];
-		}    	
+        public Object getElementAt(int index) {
+            return operations[index];
+        }       
     }
     
     
@@ -391,7 +391,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
             player.play();
         }        
     }
-	class ActPlayStep extends RichAction {
+    class ActPlayStep extends RichAction {
         ActPlayStep() {
             setTooltip("Play Step");
             setIcon("play_step.png");
@@ -401,7 +401,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
             player.playStep();
         }        
     }
-	class ActPause extends RichAction {
+    class ActPause extends RichAction {
         ActPause() {
             setTooltip("Pause");
             setIcon("pause.png");
@@ -412,7 +412,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
         }        
     }
     
-	class ActToStart extends RichAction {
+    class ActToStart extends RichAction {
         ActToStart() {
             setTooltip("Go to start");
             setIcon("to_start.png");
@@ -423,7 +423,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
         }        
     }
     
-	class ActToEnd extends RichAction {
+    class ActToEnd extends RichAction {
         ActToEnd() {
             setTooltip("Go to end");
             setIcon("to_end.png");
@@ -434,8 +434,8 @@ public class PNLPlayerControls extends javax.swing.JPanel {
         }        
     }
     
-	class ActPlayStepBack extends RichAction {
-    	ActPlayStepBack() {
+    class ActPlayStepBack extends RichAction {
+        ActPlayStepBack() {
             setTooltip("Play step back");
             setIcon("play_step_back.png");
         }
@@ -445,8 +445,8 @@ public class PNLPlayerControls extends javax.swing.JPanel {
         }        
     }
 
-	class ActDumpStackTrace extends RichAction {
-    	ActDumpStackTrace() {
+    class ActDumpStackTrace extends RichAction {
+        ActDumpStackTrace() {
             setTooltip("Dump current operation's stack trace");
             setName("Trace");
         }
@@ -454,43 +454,43 @@ public class PNLPlayerControls extends javax.swing.JPanel {
             Player player = getPlayer();
             Operation op = player.getCurrentOperation();
             if(op == null) {
-            	System.out.println("Current operation is null");
-            	return;
+                System.out.println("Current operation is null");
+                return;
             }
             if(op.isEndOperation()) {
-            	System.out.println("No stack trace available for END operation");
-            	return;
+                System.out.println("No stack trace available for END operation");
+                return;
             }
             
             System.out.println(op.toString());
-            for(StackTraceElement elem : op.getStackTrace()) {            	
-            	System.out.println(elem.toString());
+            for(StackTraceElement elem : op.getStackTrace()) {              
+                System.out.println(elem.toString());
             }
         }        
     }
     
-	public ActPause getActPause() {
-		return actPause;
-	}
+    public ActPause getActPause() {
+        return actPause;
+    }
 
-	public ActPlay getActPlay() {
-		return actPlay;
-	}
+    public ActPlay getActPlay() {
+        return actPlay;
+    }
 
-	public ActToStart getActStop() {
-		return actToStart;
-	}
+    public ActToStart getActStop() {
+        return actToStart;
+    }
 
-	private void updateOperationList() {
-		blockEventsFromControls = true;
-		
-		mdlOperations.setOperations(player.getOperations());
-		slider.setMaximum(mdlOperations.getSize() - 1);
-		SpinnerNumberModel spinnerModel =  (SpinnerNumberModel)spinner.getModel();
-		spinnerModel.setMinimum(0);
-		spinnerModel.setMaximum(mdlOperations.getSize() - 1);
-		
-		blockEventsFromControls = false;
-	}
+    private void updateOperationList() {
+        blockEventsFromControls = true;
+        
+        mdlOperations.setOperations(player.getOperations());
+        slider.setMaximum(mdlOperations.getSize() - 1);
+        SpinnerNumberModel spinnerModel =  (SpinnerNumberModel)spinner.getModel();
+        spinnerModel.setMinimum(0);
+        spinnerModel.setMaximum(mdlOperations.getSize() - 1);
+        
+        blockEventsFromControls = false;
+    }
 }
 

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -32,44 +32,44 @@ import java.lang.reflect.Modifier;
  */
 public class Generator {
 
-	public static void main(String[] args) {
-		
-		
-		for(Method meth : Graphics2D.class.getMethods()) {
-			
-			if((Modifier.ABSTRACT & meth.getModifiers()) == Modifier.ABSTRACT) {
-				dump(meth);
-			}
-		}		
-	}
+    public static void main(String[] args) {
+        
+        
+        for(Method meth : Graphics2D.class.getMethods()) {
+            
+            if((Modifier.ABSTRACT & meth.getModifiers()) == Modifier.ABSTRACT) {
+                dump(meth);
+            }
+        }       
+    }
 
-	static void dump(Method meth) {
-		String template =
-				"@Override\n" +
-				"public %1$s %2$s(%3$s) { \n " +
-				"operation(\"%2$s\" %4$s); \n " +
-				"}";
-	 
-		String returnType = meth.getReturnType().getName();
-		String methodName = meth.getName();
-		
-		String paramDecl = "";
-		String args = "";
-		int i = 0;
-		for(Class<?> type: meth.getParameterTypes()) {
-			String comma = i > 0 ? ", " : ""; 
-			paramDecl = paramDecl + comma + type.getName() + " p" + i;
-			args = args + ", " + type.getName() + ".class, p" + i;
-			i ++;
-		}
-		
-		
-		out.printf(template, returnType, methodName, paramDecl, args);
-	}
-	
-//	@Override
-//	public void drawGlyphVector(GlyphVector g, float x, float y) {
-//		operation("drawGlyphVector", GlyphVector.class, g, float.class, x, float.class, y);
-//	}
+    static void dump(Method meth) {
+        String template =
+                "@Override\n" +
+                "public %1$s %2$s(%3$s) { \n " +
+                "operation(\"%2$s\" %4$s); \n " +
+                "}";
+     
+        String returnType = meth.getReturnType().getName();
+        String methodName = meth.getName();
+        
+        String paramDecl = "";
+        String args = "";
+        int i = 0;
+        for(Class<?> type: meth.getParameterTypes()) {
+            String comma = i > 0 ? ", " : ""; 
+            paramDecl = paramDecl + comma + type.getName() + " p" + i;
+            args = args + ", " + type.getName() + ".class, p" + i;
+            i ++;
+        }
+        
+        
+        out.printf(template, returnType, methodName, paramDecl, args);
+    }
+    
+//  @Override
+//  public void drawGlyphVector(GlyphVector g, float x, float y) {
+//      operation("drawGlyphVector", GlyphVector.class, g, float.class, x, float.class, y);
+//  }
 }
 

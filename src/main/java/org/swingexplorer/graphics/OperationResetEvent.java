@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -29,21 +29,21 @@ import java.util.EventObject;
  */
 public class OperationResetEvent extends EventObject {
 
-	Operation[] operations;
-	Dimension imageSize;
-	
-	public OperationResetEvent(Player source, Operation[] operationsP, Dimension imageSizeP) {
-		super(source);
-		operations = operationsP;
-		imageSize = imageSizeP;
-	}
-	
-	public Operation[] getOperations() {
-		return operations;
-	}
-	
-	public Dimension getImageSize() {
-		return imageSize;
-	}
+    Operation[] operations;
+    Dimension imageSize;
+    
+    public OperationResetEvent(Player source, Operation[] operationsP, Dimension imageSizeP) {
+        super(source);
+        operations = operationsP;
+        imageSize = imageSizeP;
+    }
+    
+    public Operation[] getOperations() {
+        return operations;
+    }
+    
+    public Dimension getImageSize() {
+        return imageSize;
+    }
 }
 

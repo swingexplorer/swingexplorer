@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -167,93 +167,93 @@ public class PNLComponentDetails extends javax.swing.JPanel {
     
     public void setModel(MdlSwingExplorer model) {
 
-		if (model == this.model) {
-			return;
-		}
+        if (model == this.model) {
+            return;
+        }
 
-		if (this.model != null) {
-			this.model.removePropertyChangeListener(modelListener);
-		}
-		if (model != null) {
-			model.addPropertyChangeListener(modelListener);
-		}
-		this.model = model;
-		repaint();
-	}
+        if (this.model != null) {
+            this.model.removePropertyChangeListener(modelListener);
+        }
+        if (model != null) {
+            model.addPropertyChangeListener(modelListener);
+        }
+        this.model = model;
+        repaint();
+    }
     
     class ModelListener implements PropertyChangeListener {
 
-		public void propertyChange(PropertyChangeEvent evt) {
-			String propName = evt.getPropertyName();
-			if (!"selectedComponents".equals(propName)) {
-				return;
-			}
-			
-			
-			txtSize.setText("N/A");
-			txtLocation.setText("N/A");
-			txtBorder.setText("N/A");
-			txtLayout.setText("N/A");
-			txtBorderInsets.setText("N/A");
-			chbOpaque.setSelected(false);
-			chbVisible.setSelected(false);
-			
-			Component[] selComps= model.getSelectedComponents();
-			if(selComps.length ==0) {
-				return;
-			}
-			
-			// show size
-			 Component curComponent = selComps[0];
-			 Dimension size = curComponent.getSize();
-			 txtSize.setText("" + size.width + "," + size.height);
-			 
-			 // show location
-			 Point loc = curComponent.getLocation();
-			 Component displComp = model.getDisplayedComponent();
-			 if(displComp != null) {
-				 SwingUtilities.convertPoint(curComponent, loc, displComp);
-			 	txtLocation.setText("" + loc.x + "," + loc.y);
-			 	
-			 	//is showing
-				 chbVisible.setSelected(displComp.isShowing());
-			 }
-			 
-			 // converting to JComponent if possible
-			 JComponent jcomp = null;
-			 if(curComponent instanceof JComponent) {
-				 jcomp = (JComponent) curComponent; 
-			 } else {
-				 return;
-			 }
-			 
-			 // get border class with insets
-			 Border brd = jcomp.getBorder();
-			 if(brd != null) {
-				 txtBorder.setText(brd.getClass().getName());
-				 
-				 Insets ins = brd.getBorderInsets(curComponent);
-				 if(ins != null) {
-					String strInsets = "top="  + ins.top + ",left=" + ins.left + ",bottom=" + ins.bottom + ",right=" + ins.right + "";
-				 	txtBorderInsets.setText(strInsets);
-				 }
-			 } else {
-				 txtBorder.setText("null");
-			 }
-			 
-			 
-			 
-			 // get layout class
-			 LayoutManager layout = jcomp.getLayout();
-			 if(layout != null) {
-				 txtLayout.setText(layout.getClass().getName());
-			 } else {
-				 txtLayout.setText("null");
-			 }
-			 
-			 // opacity
-			 chbOpaque.setSelected(jcomp.isOpaque());			 
-		}
-	}
+        public void propertyChange(PropertyChangeEvent evt) {
+            String propName = evt.getPropertyName();
+            if (!"selectedComponents".equals(propName)) {
+                return;
+            }
+            
+            
+            txtSize.setText("N/A");
+            txtLocation.setText("N/A");
+            txtBorder.setText("N/A");
+            txtLayout.setText("N/A");
+            txtBorderInsets.setText("N/A");
+            chbOpaque.setSelected(false);
+            chbVisible.setSelected(false);
+            
+            Component[] selComps= model.getSelectedComponents();
+            if(selComps.length ==0) {
+                return;
+            }
+            
+            // show size
+             Component curComponent = selComps[0];
+             Dimension size = curComponent.getSize();
+             txtSize.setText("" + size.width + "," + size.height);
+             
+             // show location
+             Point loc = curComponent.getLocation();
+             Component displComp = model.getDisplayedComponent();
+             if(displComp != null) {
+                 SwingUtilities.convertPoint(curComponent, loc, displComp);
+                txtLocation.setText("" + loc.x + "," + loc.y);
+                
+                //is showing
+                 chbVisible.setSelected(displComp.isShowing());
+             }
+             
+             // converting to JComponent if possible
+             JComponent jcomp = null;
+             if(curComponent instanceof JComponent) {
+                 jcomp = (JComponent) curComponent; 
+             } else {
+                 return;
+             }
+             
+             // get border class with insets
+             Border brd = jcomp.getBorder();
+             if(brd != null) {
+                 txtBorder.setText(brd.getClass().getName());
+                 
+                 Insets ins = brd.getBorderInsets(curComponent);
+                 if(ins != null) {
+                    String strInsets = "top="  + ins.top + ",left=" + ins.left + ",bottom=" + ins.bottom + ",right=" + ins.right + "";
+                    txtBorderInsets.setText(strInsets);
+                 }
+             } else {
+                 txtBorder.setText("null");
+             }
+             
+             
+             
+             // get layout class
+             LayoutManager layout = jcomp.getLayout();
+             if(layout != null) {
+                 txtLayout.setText(layout.getClass().getName());
+             } else {
+                 txtLayout.setText("null");
+             }
+             
+             // opacity
+             chbOpaque.setSelected(jcomp.isOpaque());            
+        }
+    }
 }
 

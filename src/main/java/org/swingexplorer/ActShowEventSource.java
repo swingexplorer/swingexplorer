@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -34,46 +34,46 @@ import org.swingexplorer.awt_events.PNLAwtEvents;
  * @author Maxim Zakharenkov
  */
 public class ActShowEventSource extends RichAction {
-	
-	MdlSwingExplorer mdlSwingExplorer;
-	PNLAwtEvents pnlAwtEvents;
+    
+    MdlSwingExplorer mdlSwingExplorer;
+    PNLAwtEvents pnlAwtEvents;
 
-	public ActShowEventSource(MdlSwingExplorer _mdlSwingExplorer, PNLAwtEvents _pnlAwtEvents) {
-		mdlSwingExplorer = _mdlSwingExplorer;
-		pnlAwtEvents = _pnlAwtEvents;
-		setName("Show event source");
-		setTooltip("Select component the event comes from");
-	}
+    public ActShowEventSource(MdlSwingExplorer _mdlSwingExplorer, PNLAwtEvents _pnlAwtEvents) {
+        mdlSwingExplorer = _mdlSwingExplorer;
+        pnlAwtEvents = _pnlAwtEvents;
+        setName("Show event source");
+        setTooltip("Select component the event comes from");
+    }
 
-	public void actionPerformed(ActionEvent e) {
-		AWTEvent evt = pnlAwtEvents.getSelectedEvent();
-		if(evt == null) {
-			JOptionPane.showMessageDialog(pnlAwtEvents, "There is no event selected");
-		} else {
-			// update displayed component to source's ancestor
-			Component evtSource = (Component)evt.getSource();
-			
-			// find topmost source's container and use it as displayed component
-			boolean visible = evtSource.isVisible();
-			Component sourceContainer = evtSource;
-			while(sourceContainer.getParent() != null) {
-				sourceContainer = sourceContainer.getParent();
-				visible = visible && sourceContainer.isVisible();
-			}
-			
-			
-			if(!visible) {
-				JOptionPane.showMessageDialog(pnlAwtEvents, "Source component of one of it's ancestors is invisible. It may cause some wrong appearance.");
-			}
-			
-			try {
+    public void actionPerformed(ActionEvent e) {
+        AWTEvent evt = pnlAwtEvents.getSelectedEvent();
+        if(evt == null) {
+            JOptionPane.showMessageDialog(pnlAwtEvents, "There is no event selected");
+        } else {
+            // update displayed component to source's ancestor
+            Component evtSource = (Component)evt.getSource();
+            
+            // find topmost source's container and use it as displayed component
+            boolean visible = evtSource.isVisible();
+            Component sourceContainer = evtSource;
+            while(sourceContainer.getParent() != null) {
+                sourceContainer = sourceContainer.getParent();
+                visible = visible && sourceContainer.isVisible();
+            }
+            
+            
+            if(!visible) {
+                JOptionPane.showMessageDialog(pnlAwtEvents, "Source component of one of it's ancestors is invisible. It may cause some wrong appearance.");
+            }
+            
+            try {
                 mdlSwingExplorer.setDisplayedComponent(sourceContainer);
             } catch (DisplayableException ex) {
                 JOptionPane.showMessageDialog(pnlAwtEvents, ex.getMessage());
             }
-			
-			// select event source component
-			mdlSwingExplorer.setSelection(evtSource);
-		}
-	}
+            
+            // select event source component
+            mdlSwingExplorer.setSelection(evtSource);
+        }
+    }
 }

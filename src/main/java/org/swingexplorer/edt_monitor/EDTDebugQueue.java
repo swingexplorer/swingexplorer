@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -266,7 +266,7 @@ public class EDTDebugQueue extends EventQueue {
         }
     
         @SuppressWarnings("unused")
-		private void debug(String which) {
+        private void debug(String which) {
             if (false) {
                 for (int i = dispatches.size(); i >= 0; --i) {
                     System.out.print(' ');

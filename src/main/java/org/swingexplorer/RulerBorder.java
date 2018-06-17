@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -32,54 +32,54 @@ import javax.swing.border.Border;
  * @author  Maxim Zakharenkov
  */
 public class RulerBorder implements Border{
-	
-	MdlSwingExplorer model;
-	
-	
-	public Insets getBorderInsets(Component c) {
-		return new Insets(20, 20, 0, 0);
-	}
+    
+    MdlSwingExplorer model;
+    
+    
+    public Insets getBorderInsets(Component c) {
+        return new Insets(20, 20, 0, 0);
+    }
 
-	public boolean isBorderOpaque() {
-		return true;
-	}
+    public boolean isBorderOpaque() {
+        return true;
+    }
 
-	public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-		g.setColor(c.getBackground());
-		g.fillRect(0, 0, 20, 20);
-		g.setColor(c.getBackground().darker());
-		g.fillRect(0, 20, 20, width);
-		g.fillRect(20, 0, width, 20);
-		
-		g.setColor(Color.BLACK);
-		for(int i = 20; i < width; i += 10) {
-			g.drawLine(i, 0, i, 10);
-		}
-		for(int i = 20; i < height; i += 10) {
-			g.drawLine(0, i, 10, i);
-		}
-		
-		Point p =  model.getMouseLocation();
-		if(p != null) {
-			g.drawLine(p.x, 0, p.x, 20);
-			g.drawLine(0, p.y, 20, p.y);
-		}
-	}
-	
-	
-	/**
-	 * @param args command line arguments
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+        g.setColor(c.getBackground());
+        g.fillRect(0, 0, 20, 20);
+        g.setColor(c.getBackground().darker());
+        g.fillRect(0, 20, 20, width);
+        g.fillRect(20, 0, width, 20);
+        
+        g.setColor(Color.BLACK);
+        for(int i = 20; i < width; i += 10) {
+            g.drawLine(i, 0, i, 10);
+        }
+        for(int i = 20; i < height; i += 10) {
+            g.drawLine(0, i, 10, i);
+        }
+        
+        Point p =  model.getMouseLocation();
+        if(p != null) {
+            g.drawLine(p.x, 0, p.x, 20);
+            g.drawLine(0, p.y, 20, p.y);
+        }
+    }
+    
+    
+    /**
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	public MdlSwingExplorer getModel() {
-		return model;
-	}
+    public MdlSwingExplorer getModel() {
+        return model;
+    }
 
-	public void setModel(MdlSwingExplorer model) {
-		this.model = model;
-	}
+    public void setModel(MdlSwingExplorer model) {
+        this.model = model;
+    }
 }

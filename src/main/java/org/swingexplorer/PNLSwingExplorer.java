@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -50,7 +50,7 @@ public class PNLSwingExplorer extends javax.swing.JPanel {
     
     /** Creates new form PNLSwingExplorer */
     public PNLSwingExplorer() {
-    	initComponents();
+        initComponents();
         sppMain.setName("sppMain");
         sppRight.setName("sppRight");
         tbpBottom.setName("tbpBottom");
@@ -271,7 +271,7 @@ public class PNLSwingExplorer extends javax.swing.JPanel {
     
     
     void initActions() {
-    	actRefresh = new ActRefresh(pnlComponentTree, application.model);
+        actRefresh = new ActRefresh(pnlComponentTree, application.model);
         pnlComponentTree.addAction(actRefresh);
         
         actDisplayComponent = new ActDisplayComponent(application.model, pnlComponentTree);
@@ -350,104 +350,104 @@ public class PNLSwingExplorer extends javax.swing.JPanel {
     // when splitter locations are changing or components are resized
     // we memorize new positions in the options
 //    class ResizeListener extends ComponentAdapter{
-//    	int count = 0;
-//    	public void componentResized(ComponentEvent e) {
-//    		if(count < 3) {
-//    			// first time we read value from options
-//    			// because it happens when UI is layed-out for the first time
-//	    		Options options = application.model.getOptions();
-//	    		sppMain.setDividerLocation(options.getVerticalDividerLocation());
-//	    		sppRight.setDividerLocation(options.getHorizontalDividerLocation());
-//	    		count ++;
-//    		} else {
-//    			// next time we save divider value to options
-//				Options options = application.model.getOptions();
-//				options.setVerticalDividerLocation(sppMain.getDividerLocation());
-//				options.setHorizontalDividerLocation(sppRight.getDividerLocation());
-//    		}
-//		}
+//      int count = 0;
+//      public void componentResized(ComponentEvent e) {
+//          if(count < 3) {
+//              // first time we read value from options
+//              // because it happens when UI is layed-out for the first time
+//              Options options = application.model.getOptions();
+//              sppMain.setDividerLocation(options.getVerticalDividerLocation());
+//              sppRight.setDividerLocation(options.getHorizontalDividerLocation());
+//              count ++;
+//          } else {
+//              // next time we save divider value to options
+//              Options options = application.model.getOptions();
+//              options.setVerticalDividerLocation(sppMain.getDividerLocation());
+//              options.setHorizontalDividerLocation(sppRight.getDividerLocation());
+//          }
+//      }
 //    }
 //    
     class ComboScaleListener implements ItemListener, PopupMenuListener {
-    	void changeScale() {
-    		String item = (String)cmbScale.getSelectedItem();
-    		
-    		int percentIndex = item.lastIndexOf("%");
-    		if(percentIndex != -1) {
-    			item = item.substring(0, percentIndex);
-    		}
-    		application.model.setDisplayScale(Double.parseDouble(item.toString())/100);	
-    	}
-		public void itemStateChanged(ItemEvent e) {
-			if(ItemEvent.SELECTED == e.getStateChange()) {
-				if(!cmbScale.isPopupVisible()) {
-					changeScale();		
-				}
-			}			
-		}
-		public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
-			changeScale();		
-		}
-		public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
-		}
-		public void popupMenuCanceled(PopupMenuEvent e) {
-		}
+        void changeScale() {
+            String item = (String)cmbScale.getSelectedItem();
+            
+            int percentIndex = item.lastIndexOf("%");
+            if(percentIndex != -1) {
+                item = item.substring(0, percentIndex);
+            }
+            application.model.setDisplayScale(Double.parseDouble(item.toString())/100); 
+        }
+        public void itemStateChanged(ItemEvent e) {
+            if(ItemEvent.SELECTED == e.getStateChange()) {
+                if(!cmbScale.isPopupVisible()) {
+                    changeScale();      
+                }
+            }           
+        }
+        public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+            changeScale();      
+        }
+        public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
+        }
+        public void popupMenuCanceled(PopupMenuEvent e) {
+        }
     }
     
     public void addAction(RichAction act) {
-    	tlbMain.addActionEx(act);
-    	act.setApplication(application);
+        tlbMain.addActionEx(act);
+        act.setApplication(application);
     }
 
     
     class ModelListener implements PropertyChangeListener {
 
-		public void propertyChange(PropertyChangeEvent evt) {
-			String propName = evt.getPropertyName();
-			if ("displayedComponent".equals(propName)) {
+        public void propertyChange(PropertyChangeEvent evt) {
+            String propName = evt.getPropertyName();
+            if ("displayedComponent".equals(propName)) {
                 actRefresh.refreshTreeModel();
-				txtPath.setText(application.model.getComponentPath(application.model.getDisplayedComponent(), true));
-			} else if ("displayScale".equals(propName)) {
-				cmbScale.getEditor().setItem("" + (int)(application.model.getDisplayScale()*100) + "%");
-			} else if("displayedComponentImage".equals(propName)) {
+                txtPath.setText(application.model.getComponentPath(application.model.getDisplayedComponent(), true));
+            } else if ("displayScale".equals(propName)) {
+                cmbScale.getEditor().setItem("" + (int)(application.model.getDisplayScale()*100) + "%");
+            } else if("displayedComponentImage".equals(propName)) {
                 application.player.setOperations(application.model.getDisplayedComponent());
             }
-		}
-	}
+        }
+    }
     
     class PlayerListenerImpl implements PlayerListener {
-    	
-		public void imageRendered(ImageEvent evt) {
+        
+        public void imageRendered(ImageEvent evt) {
             // listener should be removed and restored after
             // setDisplayedComponentImage to avoid redundant reaction on
-		    // change of "displayedComponentImage" property inside ModelListener
+            // change of "displayedComponentImage" property inside ModelListener
             // without this slider in the player works very slowely
             // because all operations are recalculated after slider is moved a bit
             application.model.removePropertyChangeListener(listener);
-			
+            
             application.model.setDisplayedComponentImage(new ImageIcon(evt.getImage()));
             
             application.model.addPropertyChangeListener(listener);
-		}
+        }
 
-		public void stateChanged(StateEvent evt) {
-		}
+        public void stateChanged(StateEvent evt) {
+        }
 
-		public void operationsReset(OperationResetEvent operations) {
-		}
+        public void operationsReset(OperationResetEvent operations) {
+        }
 
-		public void currentOperationChanged(CurrentOperationChangeEvent evt) {
-			
-		}
+        public void currentOperationChanged(CurrentOperationChangeEvent evt) {
+            
+        }
     }
 
-	public void setApplication(Launcher app) {
-		application = app;
-		initActions();
-	}
+    public void setApplication(Launcher app) {
+        application = app;
+        initActions();
+    }
 
-	public Launcher getApplication() {
-		return application;
-	}
+    public Launcher getApplication() {
+        return application;
+    }
 }
 

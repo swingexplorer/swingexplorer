@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -35,7 +35,7 @@ public class CustomLabelUI extends MetalLabelUI {
         super.installDefaults(c);
         
         if(c.getFont() instanceof UIResource) {
-        	c.setFont(PlafUtils.CUSTOM_FONT);
+            c.setFont(PlafUtils.CUSTOM_FONT);
         }
     }
 }

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -27,19 +27,19 @@ import java.text.ParseException;
  */
 public interface Converter<T> {
 
-	/**
-	 * Converts text to object
-	 * @param strValue String containing text to convert
-	 * @return converted object value
-	 * @throws ParseException if strValue could not be parsed into an object
-	 */
-	public T fromString(String strValue) throws ParseException;
-	
-	
-	/**
-	 * Converts object to string
-	 * @param value object value to convert
-	 * @return converted string
-	 */
-	public String toString(T value);
+    /**
+     * Converts text to object
+     * @param strValue String containing text to convert
+     * @return converted object value
+     * @throws ParseException if strValue could not be parsed into an object
+     */
+    public T fromString(String strValue) throws ParseException;
+    
+    
+    /**
+     * Converts object to string
+     * @param value object value to convert
+     * @return converted string
+     */
+    public String toString(T value);
 }

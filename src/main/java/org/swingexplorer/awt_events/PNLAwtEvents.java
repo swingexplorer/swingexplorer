@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -44,7 +44,7 @@ import org.swingexplorer.plaf.CustomTableHeaderUI;
  */
 public class PNLAwtEvents extends javax.swing.JPanel {
 
-	/** Creates new form PNLEvents */
+    /** Creates new form PNLEvents */
     public PNLAwtEvents() {
         initComponents();
         tblEvents.setName("tblEvents");
@@ -64,46 +64,46 @@ public class PNLAwtEvents extends javax.swing.JPanel {
     }
     
     void initActions() {
-    	actStartEventMonitoring = new ActStartEventMonitoring(eventModel);
-    	actStopEventMonitoring = new ActStopEventMonitoring(eventModel);
-    	
-    	InputMap map = tblEvents.getInputMap(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-    	map.put(KeyStroke.getKeyStroke("ENTER"), "show-source");
+        actStartEventMonitoring = new ActStartEventMonitoring(eventModel);
+        actStopEventMonitoring = new ActStopEventMonitoring(eventModel);
+        
+        InputMap map = tblEvents.getInputMap(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        map.put(KeyStroke.getKeyStroke("ENTER"), "show-source");
 
-    	tblEvents.addMouseListener(new MouseAdapter() {
-    		@Override
-    		public void mouseClicked(MouseEvent e) {
-    			if(e.getClickCount() == 2) {
-    				actShowEventSource.actionPerformed(null);
-    			}
-    		}
-    	});
-    	
-    	actClearEvents = new ActClearEvents(this);
-    	btnClear.setAction(actClearEvents);
-    	btnStart.setAction(actStartEventMonitoring);
-    	tblEvents.getSelectionModel().addListSelectionListener(new ActEventSelected(this));
-    	
-    	actShowFilter = new ActShowFilter(this);
-    	btnShowFilter.setAction(actShowFilter);
+        tblEvents.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(e.getClickCount() == 2) {
+                    actShowEventSource.actionPerformed(null);
+                }
+            }
+        });
+        
+        actClearEvents = new ActClearEvents(this);
+        btnClear.setAction(actClearEvents);
+        btnStart.setAction(actStartEventMonitoring);
+        tblEvents.getSelectionModel().addListSelectionListener(new ActEventSelected(this));
+        
+        actShowFilter = new ActShowFilter(this);
+        btnShowFilter.setAction(actShowFilter);
     }
     
     public void setShowEventSourceAction(RichAction act) {
-    	btnShowSource.setAction(act);
-    	ActionMap actMap = tblEvents.getActionMap();
-    	actMap.put("show-source", act);
-    	actShowEventSource = act;
+        btnShowSource.setAction(act);
+        ActionMap actMap = tblEvents.getActionMap();
+        actMap.put("show-source", act);
+        actShowEventSource = act;
     }
     
     public AWTEvent getSelectedEvent() {
-    	int selRow = tblEvents.getSelectedRow();
-		return mdlTblEvents.getEvent(selRow);
+        int selRow = tblEvents.getSelectedRow();
+        return mdlTblEvents.getEvent(selRow);
     }
     
-    public void addEvent(AWTEvent evt) {    	
-    	mdlTblEvents.addEvent(evt);
-    	int rowNo = mdlTblEvents.getRowCount() - 1;
-    	mdlTblEvents.fireTableRowsInserted(rowNo, rowNo);
+    public void addEvent(AWTEvent evt) {        
+        mdlTblEvents.addEvent(evt);
+        int rowNo = mdlTblEvents.getRowCount() - 1;
+        mdlTblEvents.fireTableRowsInserted(rowNo, rowNo);
         tblEvents.scrollRectToVisible(tblEvents.getCellRect(rowNo, 1, true));
     }
     
@@ -116,35 +116,35 @@ public class PNLAwtEvents extends javax.swing.JPanel {
     }
     
     public void setEventModel(AWTEventModel modelP) {
-    	if(eventModel != null) {
-    		eventModel.removeEventListener(modelListener);
-    	}
-    	
-    	eventModel = modelP;
-    	eventModel.addEventListener(modelListener);
+        if(eventModel != null) {
+            eventModel.removeEventListener(modelListener);
+        }
+        
+        eventModel = modelP;
+        eventModel.addEventListener(modelListener);
     }
     
     public AWTEventModel getEventModel() {
-    	return eventModel;
+        return eventModel;
     }
     
     class ModelListener implements AWTEventListener {
-		public void eventDispatched(AWTEvent event) {
-			addEvent(event);			
-		}    	
+        public void eventDispatched(AWTEvent event) {
+            addEvent(event);            
+        }       
     }
 
     public class ModelPropertyChangeListener implements PropertyChangeListener {
-		public void propertyChange(PropertyChangeEvent evt) {
-			if("monitoring".equals(evt.getPropertyName())) {
-				if((Boolean)evt.getNewValue()) {
-					btnStart.setAction(actStopEventMonitoring);
-				} else {
-					btnStart.setAction(actStartEventMonitoring);
-				}
-			}
-		}
-	}
+        public void propertyChange(PropertyChangeEvent evt) {
+            if("monitoring".equals(evt.getPropertyName())) {
+                if((Boolean)evt.getNewValue()) {
+                    btnStart.setAction(actStopEventMonitoring);
+                } else {
+                    btnStart.setAction(actStartEventMonitoring);
+                }
+            }
+        }
+    }
     
     /** This method is called from within the constructor to
      * initialize the form.

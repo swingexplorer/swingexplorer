@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -50,7 +50,7 @@ import org.swingexplorer.PNLComponentTree.TreeNodeObject;
  */
 public class ActRefresh extends RichAction {
 
-	PNLComponentTree pnlComponentTree;
+    PNLComponentTree pnlComponentTree;
     
     // the fields used for detecting
     // changes in the component hierarchy
@@ -59,10 +59,10 @@ public class ActRefresh extends RichAction {
     Component lastAncestor;
     MdlSwingExplorer mdlSwingExplorer;
     
-	public ActRefresh(PNLComponentTree _pnlComponentTree, MdlSwingExplorer _mdlSwingExplorer) {
-		setName("Refresh");
-		setTooltip("<html>Refresh tree and<br> displayed component</html>");
-		setIcon("refresh.png");
+    public ActRefresh(PNLComponentTree _pnlComponentTree, MdlSwingExplorer _mdlSwingExplorer) {
+        setName("Refresh");
+        setTooltip("<html>Refresh tree and<br> displayed component</html>");
+        setIcon("refresh.png");
         pnlComponentTree = _pnlComponentTree;
         mdlSwingExplorer = _mdlSwingExplorer;
         
@@ -98,12 +98,12 @@ public class ActRefresh extends RichAction {
 //                }
 //            }
 //        }, 0xFFFFFFFFFFFFFFFL);
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		
-		Log.general.debug("Refresh component tree");
-		
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        
+        Log.general.debug("Refresh component tree");
+        
         refreshTreeModel();
         
         //  refresh displayed component
@@ -114,9 +114,9 @@ public class ActRefresh extends RichAction {
         // refresh a bit later
         DefaultMutableTreeNode root = pnlComponentTree.getRoot();
         if(root.getChildCount() <= 0) {
-        	timer.start();
+            timer.start();
         }
-	}
+    }
     
     
     public void refreshTreeModel() {
@@ -134,7 +134,7 @@ public class ActRefresh extends RichAction {
             pnlComponentTree.setRoot(root);
         }
     }
-	
+    
     private static boolean areTreesEqual(DefaultMutableTreeNode root1, DefaultMutableTreeNode root2) {
         Enumeration<?> enum1 = root1.breadthFirstEnumeration();
         Enumeration<?> enum2 = root2.breadthFirstEnumeration();
@@ -156,104 +156,104 @@ public class ActRefresh extends RichAction {
     }
     
     
-	private void fillTreeModel(DefaultMutableTreeNode root) {
-		root.removeAllChildren();
-		
-		// perform GC to remove closed disposed 
-		// unreferenced windows/dialogs
-		System.gc();
-		
-		Window[] allWindows;
-		
-		boolean forJDK15; 
-		try {
-			//	Try JRE 1.6 first through reflection
-			Method meth = Window.class.getMethod("getWindows", new Class[0]);
-			allWindows = (Window[])meth.invoke(Window.class, new Object[0]);
-			forJDK15 = false;
-		} catch (Exception e) {
-			forJDK15 = true;
-			// We got exception try for JRE 1.5
-			Window[] frames = Frame.getFrames();
-			
-			// obtain list of ownerless dialogs
-			Frame sharedOwner = getSharedOwnerFrame();
-			Window[] ownerlessDialogs = sharedOwner == null ? new Window[0] : sharedOwner.getOwnedWindows();
-			allWindows = new Window[frames.length + ownerlessDialogs.length];
-			
-			// merge dialogs and windows
-			System.arraycopy(frames, 0, allWindows, 0, frames.length);
-			System.arraycopy(ownerlessDialogs, 0, allWindows, frames.length, ownerlessDialogs.length);
-			
-			if(sharedOwner == null) {
-				Log.general.warn("Dialog list is not in this Java configuration. Try to run it with JRE 1.6 or higher or with full security privilegies.");
-			}
-			// End JDK 1.5
-		}
-		
-		// search for SwingExplorer's frame and exclude it
-		// from resulting list. Also exclude windows to those
-		// Swing Explorer is owner
-		Window winExplorer = SwingUtilities.getWindowAncestor(pnlComponentTree);
-		ArrayList<Window> list = new ArrayList<Window>();
-		for(Window curWindow: allWindows) {
-			if(!SysUtils.isShowExplorerWindow() && 
-					(curWindow == winExplorer || curWindow.getOwner() == winExplorer)) {
-				continue;
-			}
-			list.add(curWindow);
-		}
-		
-		addChildren(root, list.toArray(new Window[list.size()]), forJDK15);		
-	}
-	
-	String getWindowTitle(Window wnd) {
-		String title = wnd.getClass().getSimpleName();
-		if(wnd instanceof Frame) {
-			title = title + "(" + ((Frame)wnd).getTitle() + ")";
-		} else if(wnd instanceof Dialog) {
-			title = title + "(" + ((Dialog)wnd).getTitle() + ")";
-		}
-		return title;
-	}
-	
-	void addChildren(DefaultMutableTreeNode root, Window[] windows, boolean forJRE15) {
-		for (int i = 0; i < windows.length; i++) {
-			TreeNodeObject object = new TreeNodeObject(windows[i], getWindowTitle(windows[i]));
-			DefaultMutableTreeNode child = new DefaultMutableTreeNode(object);
-			root.add(child);
-			addChildren(child, windows[i]);
-			
-			if(forJRE15) {
-				// for JRE 1.5 we need to get also owned dialogs since they are not
-				// available from Frame.getFrames()
-				Window[] ownedWnds = windows[i].getOwnedWindows();
-				addChildren(root, ownedWnds, forJRE15);
-			}
-		}
-		
-	}
-	
-	void addChildren(DefaultMutableTreeNode node, Container cont) {
-		for(int i = 0; i<cont.getComponentCount(); i++) {
-			Component comp = cont.getComponent(i);
-			
-			// first try to get bean's name
-			String name = comp.getName();
-			if(name != null) {
-				name = comp.getClass().getSimpleName() + "(" + name + ")";
-			} else {
-				// Next try to obtain description as "getText" if available
-	            try {
-	                Method meth = comp.getClass().getMethod("getText", new Class[0]);
-	                String result = (String)meth.invoke(comp, new Object[0]);
-	                name = comp.getClass().getSimpleName() + "(" + result + ")";
-	            } catch (Exception e) {
-	                name = comp.getClass().getSimpleName();
-	            }
-			}
-			
-			 // this is for the case of inner classes (they have empty simple name)
+    private void fillTreeModel(DefaultMutableTreeNode root) {
+        root.removeAllChildren();
+        
+        // perform GC to remove closed disposed 
+        // unreferenced windows/dialogs
+        System.gc();
+        
+        Window[] allWindows;
+        
+        boolean forJDK15; 
+        try {
+            //  Try JRE 1.6 first through reflection
+            Method meth = Window.class.getMethod("getWindows", new Class[0]);
+            allWindows = (Window[])meth.invoke(Window.class, new Object[0]);
+            forJDK15 = false;
+        } catch (Exception e) {
+            forJDK15 = true;
+            // We got exception try for JRE 1.5
+            Window[] frames = Frame.getFrames();
+            
+            // obtain list of ownerless dialogs
+            Frame sharedOwner = getSharedOwnerFrame();
+            Window[] ownerlessDialogs = sharedOwner == null ? new Window[0] : sharedOwner.getOwnedWindows();
+            allWindows = new Window[frames.length + ownerlessDialogs.length];
+            
+            // merge dialogs and windows
+            System.arraycopy(frames, 0, allWindows, 0, frames.length);
+            System.arraycopy(ownerlessDialogs, 0, allWindows, frames.length, ownerlessDialogs.length);
+            
+            if(sharedOwner == null) {
+                Log.general.warn("Dialog list is not in this Java configuration. Try to run it with JRE 1.6 or higher or with full security privilegies.");
+            }
+            // End JDK 1.5
+        }
+        
+        // search for SwingExplorer's frame and exclude it
+        // from resulting list. Also exclude windows to those
+        // Swing Explorer is owner
+        Window winExplorer = SwingUtilities.getWindowAncestor(pnlComponentTree);
+        ArrayList<Window> list = new ArrayList<Window>();
+        for(Window curWindow: allWindows) {
+            if(!SysUtils.isShowExplorerWindow() && 
+                    (curWindow == winExplorer || curWindow.getOwner() == winExplorer)) {
+                continue;
+            }
+            list.add(curWindow);
+        }
+        
+        addChildren(root, list.toArray(new Window[list.size()]), forJDK15);     
+    }
+    
+    String getWindowTitle(Window wnd) {
+        String title = wnd.getClass().getSimpleName();
+        if(wnd instanceof Frame) {
+            title = title + "(" + ((Frame)wnd).getTitle() + ")";
+        } else if(wnd instanceof Dialog) {
+            title = title + "(" + ((Dialog)wnd).getTitle() + ")";
+        }
+        return title;
+    }
+    
+    void addChildren(DefaultMutableTreeNode root, Window[] windows, boolean forJRE15) {
+        for (int i = 0; i < windows.length; i++) {
+            TreeNodeObject object = new TreeNodeObject(windows[i], getWindowTitle(windows[i]));
+            DefaultMutableTreeNode child = new DefaultMutableTreeNode(object);
+            root.add(child);
+            addChildren(child, windows[i]);
+            
+            if(forJRE15) {
+                // for JRE 1.5 we need to get also owned dialogs since they are not
+                // available from Frame.getFrames()
+                Window[] ownedWnds = windows[i].getOwnedWindows();
+                addChildren(root, ownedWnds, forJRE15);
+            }
+        }
+        
+    }
+    
+    void addChildren(DefaultMutableTreeNode node, Container cont) {
+        for(int i = 0; i<cont.getComponentCount(); i++) {
+            Component comp = cont.getComponent(i);
+            
+            // first try to get bean's name
+            String name = comp.getName();
+            if(name != null) {
+                name = comp.getClass().getSimpleName() + "(" + name + ")";
+            } else {
+                // Next try to obtain description as "getText" if available
+                try {
+                    Method meth = comp.getClass().getMethod("getText", new Class[0]);
+                    String result = (String)meth.invoke(comp, new Object[0]);
+                    name = comp.getClass().getSimpleName() + "(" + result + ")";
+                } catch (Exception e) {
+                    name = comp.getClass().getSimpleName();
+                }
+            }
+            
+             // this is for the case of inner classes (they have empty simple name)
             if("".equals(name)) {
                 name = comp.getClass().getName();
                 
@@ -277,13 +277,13 @@ public class ActRefresh extends RichAction {
                 }
             }
             
-			TreeNodeObject object = new TreeNodeObject(comp, name);
-			DefaultMutableTreeNode child = new DefaultMutableTreeNode(object);
-			node.add(child);
-			
-			if(comp instanceof Container) {
-				addChildren(child, (Container)comp);
-			}
+            TreeNodeObject object = new TreeNodeObject(comp, name);
+            DefaultMutableTreeNode child = new DefaultMutableTreeNode(object);
+            node.add(child);
+            
+            if(comp instanceof Container) {
+                addChildren(child, (Container)comp);
+            }
             
             // obtain combo popup if it is available
             if(comp instanceof JComboBox) {
@@ -319,18 +319,18 @@ public class ActRefresh extends RichAction {
                     child.add(tooltipNode);
                 }
             }
-		}
-	}
+        }
+    }
     
-	static Frame getSharedOwnerFrame() {
-		try {
-			Method meth = SwingUtilities.class.getDeclaredMethod("getSharedOwnerFrame", new Class[]{});
-			meth.setAccessible(true);
-			return (Frame)meth.invoke(null, new Object[]{});
-		} catch (Exception e) {
-			// null should be hadled upper
-		}
-		return null;
-	}
+    static Frame getSharedOwnerFrame() {
+        try {
+            Method meth = SwingUtilities.class.getDeclaredMethod("getSharedOwnerFrame", new Class[]{});
+            meth.setAccessible(true);
+            return (Frame)meth.invoke(null, new Object[]{});
+        } catch (Exception e) {
+            // null should be hadled upper
+        }
+        return null;
+    }
 
 }

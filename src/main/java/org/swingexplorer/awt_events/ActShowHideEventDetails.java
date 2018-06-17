@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -31,10 +31,10 @@ import org.swingexplorer.RichAction;
  */
 public class ActShowHideEventDetails extends RichAction {
 
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
 }
 

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -43,10 +43,10 @@ import org.swingexplorer.Log;
  */
 public class MdlProperties extends AbstractTableModel {
 
-	Object bean;	
-	String[][] properties = new String[0][0];
-	String[] colNames = new String[] {"name", "value"};
-	
+    Object bean;    
+    String[][] properties = new String[0][0];
+    String[] colNames = new String[] {"name", "value"};
+    
     // properties shown first of all at the beginning
     HashSet<String> firstKeys = new HashSet<String>(Arrays.asList(new String[] {
                     "size", "opaque", "class", "constraints", "location", "locationOnScreen", "visible", "layout", "border", "borderInsets"            
@@ -54,27 +54,27 @@ public class MdlProperties extends AbstractTableModel {
     
     
     
-	@SuppressWarnings("rawtypes")
-	public Map describe(Object bean) {
-		if(bean == null) {
-			return new HashMap();
-		}
-		
-		Method[] methods = bean.getClass().getMethods();
-		HashMap<String, String> map = new HashMap<String, String>();
-		
-		for(Method m : methods) {
-			if(m.getParameterTypes().length > 0) {
-				continue;
-			}
-			
-			// construct property name
-			String propName = null;
-			if(m.getName().startsWith("get")) {
-				propName = m.getName().substring(3); 
-			} else if(m.getName().startsWith("is")) {
-				propName = m.getName().substring(2); 
-			}
+    @SuppressWarnings("rawtypes")
+    public Map describe(Object bean) {
+        if(bean == null) {
+            return new HashMap();
+        }
+        
+        Method[] methods = bean.getClass().getMethods();
+        HashMap<String, String> map = new HashMap<String, String>();
+        
+        for(Method m : methods) {
+            if(m.getParameterTypes().length > 0) {
+                continue;
+            }
+            
+            // construct property name
+            String propName = null;
+            if(m.getName().startsWith("get")) {
+                propName = m.getName().substring(3); 
+            } else if(m.getName().startsWith("is")) {
+                propName = m.getName().substring(2); 
+            }
             
             if(propName == null || propName.length() == 0) {
                 continue;
@@ -87,16 +87,16 @@ public class MdlProperties extends AbstractTableModel {
                 propName = propName.substring(0, 1).toLowerCase() + propName.substring(1);
             }
 
-			// obtain property value
-			if(propName != null) {
-				Object result;
-				try {
-					result = m.invoke(bean, new Object[0]);
-					String strRes = valueToString(result);
-					map.put(propName, strRes);
-				} catch (Exception e) {} 
-			}
-		}
+            // obtain property value
+            if(propName != null) {
+                Object result;
+                try {
+                    result = m.invoke(bean, new Object[0]);
+                    String strRes = valueToString(result);
+                    map.put(propName, strRes);
+                } catch (Exception e) {} 
+            }
+        }
         
         if(bean instanceof JComponent) {
             Border border =((JComponent)bean).getBorder();
@@ -106,41 +106,41 @@ public class MdlProperties extends AbstractTableModel {
             }
             
             try {
-	            map.put("constraints", constraintsAsString((JComponent)bean));
+                map.put("constraints", constraintsAsString((JComponent)bean));
             } catch(Exception ex) {
-            	// if exception accures we do not show this property
-            	Log.general.debug(ex.getMessage(), ex);
+                // if exception accures we do not show this property
+                Log.general.debug(ex.getMessage(), ex);
             }
         }
-		return map;
-	}
-	
-	private String constraintsAsString(JComponent bean) throws Exception {
-		Container parent = bean.getParent();
+        return map;
+    }
+    
+    private String constraintsAsString(JComponent bean) throws Exception {
+        Container parent = bean.getParent();
         LayoutManager layout = parent.getLayout();
         Method methGetConstraints = layout.getClass().getMethod("getConstraints", new Class[]{Component.class});
         Object result = methGetConstraints.invoke(layout, new Object[]{bean});
         
         if(result instanceof GridBagConstraints) {
-        	GridBagConstraints gbc = (GridBagConstraints)result;
-        	
-        	String strValue =
-        	"gridx: " + gbc.gridx + ", "
-        	+ "gridy:" + gbc.gridy + ", "
-        	+ "gridwidth:" + gbc.gridwidth + ", "
-        	+ "gridheight:" + gbc.gridheight + ", "
-        	+ "weightx:" + gbc.weightx + ", "
-        	+ "weighty:" + gbc.weighty + ", "
-        	+ "anchor:" + gbc.anchor + ", "
-        	+ "fill:" + gbc.fill + ", "
-        	+ "insets:" + gbc.insets + ", "
-        	+ "ipadx:" + gbc.ipadx + ", "
-        	+ "ipady:" + gbc.ipady + "";
-        	return strValue;
+            GridBagConstraints gbc = (GridBagConstraints)result;
+            
+            String strValue =
+            "gridx: " + gbc.gridx + ", "
+            + "gridy:" + gbc.gridy + ", "
+            + "gridwidth:" + gbc.gridwidth + ", "
+            + "gridheight:" + gbc.gridheight + ", "
+            + "weightx:" + gbc.weightx + ", "
+            + "weighty:" + gbc.weighty + ", "
+            + "anchor:" + gbc.anchor + ", "
+            + "fill:" + gbc.fill + ", "
+            + "insets:" + gbc.insets + ", "
+            + "ipadx:" + gbc.ipadx + ", "
+            + "ipady:" + gbc.ipady + "";
+            return strValue;
         }
         return "" + result;
-	}
-	
+    }
+    
     private String valueToString(Object value) {
         if(value == null) {
             return "null";
@@ -184,20 +184,20 @@ public class MdlProperties extends AbstractTableModel {
         return value.toString();
     }
 
-	public void setBean(Object _bean) {
-		bean = _bean;
-		
-		try {
-			Map props = describe(bean);
+    public void setBean(Object _bean) {
+        bean = _bean;
+        
+        try {
+            Map props = describe(bean);
             
             
-			properties = new String[props.size()][2];
-			int i = 0;
-			for(Object key : props.keySet()) {
-				properties[i][0] = (String)key;
-				properties[i][1] = (String)props.get(key);
-				i++;
-			}
+            properties = new String[props.size()][2];
+            int i = 0;
+            for(Object key : props.keySet()) {
+                properties[i][0] = (String)key;
+                properties[i][1] = (String)props.get(key);
+                i++;
+            }
             
             Arrays.sort(properties, new Comparator<String[]>() {
                 public int compare(String[] o1, String[] o2) {
@@ -213,34 +213,34 @@ public class MdlProperties extends AbstractTableModel {
                     return key1.compareTo(key2);
                 }
             });
-		} catch (Exception e) {
-			properties = new String[0][0];
-			e.printStackTrace();
-			return;
-		} finally {
-			fireTableDataChanged();
-		}
-	}
+        } catch (Exception e) {
+            properties = new String[0][0];
+            e.printStackTrace();
+            return;
+        } finally {
+            fireTableDataChanged();
+        }
+    }
     
-	
-	@Override
-	public String getColumnName(int column) {
-		return colNames[column];
-	}
-	
-	public Object getBean() {
-		return bean;
-	}
-	
-	public int getColumnCount() {
-		return 2;
-	}
+    
+    @Override
+    public String getColumnName(int column) {
+        return colNames[column];
+    }
+    
+    public Object getBean() {
+        return bean;
+    }
+    
+    public int getColumnCount() {
+        return 2;
+    }
 
-	public int getRowCount() {
-		return properties.length;
-	}
+    public int getRowCount() {
+        return properties.length;
+    }
 
-	public Object getValueAt(int rowIndex, int columnIndex) {
-		return properties[rowIndex][columnIndex];
-	}
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        return properties[rowIndex][columnIndex];
+    }
 }

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -29,27 +29,27 @@ import java.util.EventObject;
  */
 public class ImageEvent extends EventObject {
 
-	private BufferedImage image;
-	private Operation lastOperation;
-	
-	public ImageEvent(Player source, BufferedImage imageP, Operation lastOperationP) {
-		super(source);
-		image = imageP;
-		lastOperation = lastOperationP;
-	}
+    private BufferedImage image;
+    private Operation lastOperation;
+    
+    public ImageEvent(Player source, BufferedImage imageP, Operation lastOperationP) {
+        super(source);
+        image = imageP;
+        lastOperation = lastOperationP;
+    }
 
-	
-	public BufferedImage getImage() {
-		return image;
-	}
-	
-	public Player getPlayer() {
-		return (Player)source;
-	}
+    
+    public BufferedImage getImage() {
+        return image;
+    }
+    
+    public Player getPlayer() {
+        return (Player)source;
+    }
 
 
-	public Operation getLastOperation() {
-		return lastOperation;
-	}
+    public Operation getLastOperation() {
+        return lastOperation;
+    }
 }
 

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -27,23 +27,23 @@ import java.awt.event.ActionEvent;
  */
 public class ActZoomIn extends RichAction {
 
-	MdlSwingExplorer model;
-	
-	public ActZoomIn(MdlSwingExplorer modelP) {
-		setName("Zoom In");
-		setTooltip("Zoom In");
+    MdlSwingExplorer model;
+    
+    public ActZoomIn(MdlSwingExplorer modelP) {
+        setName("Zoom In");
+        setTooltip("Zoom In");
         setIcon("zoom_in.png");
         model = modelP;
-	}
-	public void actionPerformed(ActionEvent e) {
-		// 
-		double curScale = model.getDisplayScale();
-		
-		// calculate scale closest to 25*N
-		int normalScale = ((int)(curScale*100))/25;
-		normalScale = normalScale * 25  + 25;
-		
-		model.setDisplayScale(((double)normalScale)/100);
-	}
+    }
+    public void actionPerformed(ActionEvent e) {
+        // 
+        double curScale = model.getDisplayScale();
+        
+        // calculate scale closest to 25*N
+        int normalScale = ((int)(curScale*100))/25;
+        normalScale = normalScale * 25  + 25;
+        
+        model.setDisplayScale(((double)normalScale)/100);
+    }
 }
 

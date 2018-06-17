@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -28,42 +28,42 @@ import java.util.StringTokenizer;
  */
 public class IntArrayConverter implements Converter<int[]>{
 
-	public int[] fromString(String strValue) throws ParseException {
+    public int[] fromString(String strValue) throws ParseException {
 
-		StringTokenizer tokens = new StringTokenizer(strValue, ",");
-		int count = tokens.countTokens();
-		
-		int[] result = new int[count];
-		int i = 0;;
-		try {
-			while(tokens.hasMoreElements()) {
-				String strNumber = tokens.nextToken();
-				
-				result[i] = Integer.parseInt(strNumber);
-				i ++;
-			}
-		
-			return result;
-		} catch(NumberFormatException ex) {
-			throw new ParseException("Error parsing \"" + strValue + "\" to array or ints", 0);
-		}
-	}
+        StringTokenizer tokens = new StringTokenizer(strValue, ",");
+        int count = tokens.countTokens();
+        
+        int[] result = new int[count];
+        int i = 0;;
+        try {
+            while(tokens.hasMoreElements()) {
+                String strNumber = tokens.nextToken();
+                
+                result[i] = Integer.parseInt(strNumber);
+                i ++;
+            }
+        
+            return result;
+        } catch(NumberFormatException ex) {
+            throw new ParseException("Error parsing \"" + strValue + "\" to array or ints", 0);
+        }
+    }
 
-	public String toString(int[] value) {
-		if(value.length == 0) {
-			return "";
-		}
-		
-		StringBuilder buf = new StringBuilder();
-		for(int v : value) {
-			buf.append(v + ",");
-		}
-		
-		// remove last ,
-		buf.delete(buf.length() - 1, buf.length());
-		
-		return buf.toString();
-	}
+    public String toString(int[] value) {
+        if(value.length == 0) {
+            return "";
+        }
+        
+        StringBuilder buf = new StringBuilder();
+        for(int v : value) {
+            buf.append(v + ",");
+        }
+        
+        // remove last ,
+        buf.delete(buf.length() - 1, buf.length());
+        
+        return buf.toString();
+    }
 
 }
 
