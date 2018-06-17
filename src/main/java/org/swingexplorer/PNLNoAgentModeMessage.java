@@ -98,6 +98,7 @@ public class PNLNoAgentModeMessage extends javax.swing.JPanel {
     
     /**
      * Open dialog
+     * @param parent component to be the parent of the displayed dialog
      */
     public static void openDialog(Component parent) {
     	JOptionPane.showMessageDialog(parent, new PNLNoAgentModeMessage());

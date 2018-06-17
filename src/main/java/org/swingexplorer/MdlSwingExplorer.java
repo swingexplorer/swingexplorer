@@ -92,9 +92,9 @@ public class MdlSwingExplorer {
 
 	/**
 	 * Fires only when old and new value are not equal
-	 * @param prop
-	 * @param oldVal
-	 * @param newVal
+	 * @param prop name of property
+	 * @param oldVal old property value
+	 * @param newVal new property value
 	 */
 	protected void fireCheckedPropertyChange(String prop, Object oldVal, Object newVal) {
 		if(oldVal != null && newVal != null && oldVal.equals(newVal)) {
@@ -263,7 +263,8 @@ public class MdlSwingExplorer {
 	/**
 	 * Makes sues that component image is updated even if
 	 * same component is passed as parameter
-	 * @param newDisplayedComponent
+	 * @param newDisplayedComponent new component to be displayed
+	 * @throws DisplayableException if there is a display problem
 	 */
 	public void setDisplayedComponentAndUpdateImage(Component newDisplayedComponent) throws DisplayableException {
 		if(displayedComponent == newDisplayedComponent) {

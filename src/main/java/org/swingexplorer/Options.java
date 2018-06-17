@@ -139,7 +139,6 @@ public class Options {
 		this.selectedTreeTabIndex = selectedTreeTabIndex;
 	}
 
-	/** selected component */
 	@Property(defaultValue="0,0,255,50")
 	public Color getSelectedColor() {
 		return selectedColor;
@@ -160,7 +159,9 @@ public class Options {
 		return currentStroke;
 	}
 
-	/** diameter of measure point */
+	/** diameter of measure point
+	 * @return diameter of measure point
+	 */
 	@Property(defaultValue="6")
 	public int getMeasurePointSize() {
 		return measurePointSize;
@@ -204,20 +205,24 @@ public class Options {
 	 * Determines if border with preferred size is displayed in the display
 	 * area when mouse is over a component.
 	 * 
-	 * @return
+	 * @return whether the preferred-size border is displayed
 	 */
 	@Property(defaultValue="false")
 	public boolean isDisplayPreferredSize() {
 		return displayPreferredSize;
 	}
 	
-	/** Location of vertical divider between ree and work area */
+	/** Location of vertical divider between ree and work area
+	 * @return current divider location
+	 */
 	@Property(defaultValue="200")
 	public int getVerticalDividerLocation() {
 		return verticalDividerLocation;
 	}
 	
-	/** Divider location between bottom tabbed pane and display area*/
+	/** Divider location between bottom tabbed pane and display area
+	 * @return current divider location
+	 */
 	@Property(defaultValue="314")
 	public int getHorizontalDividerLocation() {
 		return horizontalDividerLocation;
@@ -362,8 +367,8 @@ public class Options {
 	
 	/**
 	 * Returns property value by name
-	 * @param propertyName
-	 * @return
+	 * @param propertyName name of property to get
+	 * @return current value of named property
 	 */
 	public Object getValue(String propertyName) {
 		return saver.getValue(this, propertyName);
@@ -371,8 +376,8 @@ public class Options {
 	
 	/**
 	 * Set property value by property name
-	 * @param propertyName
-	 * @param value
+	 * @param propertyName name of property to set
+	 * @param value new value for named property
 	 */
 	public void setValue(String propertyName, Object value) {
 		saver.setValue(this, propertyName, value);

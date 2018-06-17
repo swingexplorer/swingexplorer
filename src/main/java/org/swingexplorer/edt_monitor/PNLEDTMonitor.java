@@ -354,7 +354,10 @@ public class PNLEDTMonitor extends javax.swing.JPanel {
         GuiUtils.notifyTreeChanged(treProblems);
     }
 
-    /** Returns array of problems selected */
+    /**
+     * Gets the selected problems.
+     * @return array of problems selected
+     */
     public Problem[] getSelectedProblems() {
         TreePath[] paths = treProblems.getSelectionPaths();
         if(paths == null) {

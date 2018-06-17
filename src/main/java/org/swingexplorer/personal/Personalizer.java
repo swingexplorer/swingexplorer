@@ -39,8 +39,8 @@ public interface Personalizer {
 	 * on event because it is often only possible to
 	 * set component's sizes after a specific event occures 
 	 * (e.g. component becomes visible or resized first) 
-	 * @param options
-	 * @param component
+	 * @param options options that govern personalizer behavior
+	 * @param component component to install personalizer on
 	 */
 	public void install(Options options, Component component);
 	

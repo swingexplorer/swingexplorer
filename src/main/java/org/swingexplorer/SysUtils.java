@@ -41,7 +41,7 @@ public abstract class SysUtils {
 	
 	/**
 	 * Show explorer window in the tree or not
-	 * @return
+	 * @return whether to show explorer window
 	 */
 	public static boolean isShowExplorerWindow() {
 		return getBoolean(KEY_SHOW_EXPLORER_WINDOW);
@@ -50,6 +50,7 @@ public abstract class SysUtils {
     /** 
      * Checks if EDT violations should be monitored immediately
      * after program is started and resets the flag fo false.
+	 * @return whether EDT violations should be monitored
      */ 
     public static boolean isMonitorEDTViolationsAndReset() {
         boolean res = getBoolean(KEY_MONITOR_EDT_VIOLATIONS);
@@ -64,6 +65,7 @@ public abstract class SysUtils {
     /** 
      * Checks if EDT hangs should be monitored immediately
      * after program is started and resets the flag fo false.
+	 * @return whether EDT hangs should be monitored
      */
     public static boolean isMonitorEDTHangsAndReset() {
         boolean res = getBoolean(KEY_MONITOR_EDT_HANGS);
@@ -84,8 +86,7 @@ public abstract class SysUtils {
     /**
      * JMX port Swing Explorer should listen to be
      * managed from outside.
-     * @return port number or -1 if management should be 
-     * disabled 
+     * @return port number or -1 if management should be disabled
      */
     public static int getManagementPort() {
         return getInt(KEY_MANAGEMENT_PORT);
@@ -117,7 +118,7 @@ public abstract class SysUtils {
 
 	/**
 	 * Opens given URI in the browser
-	 * @param strUri
+	 * @param strUri URI to open
 	 * @return true if operation succeded and false if not
 	 */
 	public static boolean openBrowser(String strUri) {
@@ -185,7 +186,7 @@ public abstract class SysUtils {
 	
 	/**
 	 * Determines if logging options (levels, categories).
-	 * @return
+	 * @return true if logging options
 	 */
 	public static String getLogOptions() {
 		return System.getProperty(KEY_LOG_OPTIONS);
@@ -193,7 +194,7 @@ public abstract class SysUtils {
 	
 	/**
 	 * Determines if logging to console should be done instead of file.
-	 * @return
+	 * @return true if logging should be done to console
 	 */
 	public static boolean isLogToConsole() {
 		return Boolean.getBoolean(KEY_LOG_CONSOLE);

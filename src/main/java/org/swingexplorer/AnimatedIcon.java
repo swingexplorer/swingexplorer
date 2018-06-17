@@ -62,7 +62,7 @@ public class AnimatedIcon implements Icon {
     
     /**
      * Set icons to be animated.
-     * @param _icons
+     * @param _icons the list of icons to use
      */
     public void setIcons(Icon[] _icons) {
         
@@ -81,7 +81,7 @@ public class AnimatedIcon implements Icon {
     
     /**
      * Current icons for animation
-     * @return
+     * @return the current list of icons
      */
     public Icon[] getIcons() {
         return icons.toArray(new Icon[icons.size()]);
@@ -127,7 +127,7 @@ public class AnimatedIcon implements Icon {
     
     /**
      * Specifies time to show one icon.
-     * @param interval
+     * @param interval the display time in milliseconds
      */
     public void setAnimationInterval(int interval) {
         timer.setDelay(interval);
@@ -135,7 +135,7 @@ public class AnimatedIcon implements Icon {
     
     /**
      * Returns current time a single icon is shown
-     * @return
+     * @return the display time in milliseconds
      */
     public int getAnimationInterval() {
         return timer.getDelay();
@@ -143,7 +143,7 @@ public class AnimatedIcon implements Icon {
     
     /**
      * Makes progress indicator running.
-     * @param _inProgress
+     * @param _inProgress the new inProgress value
      */
     public void setInProgress(boolean _inProgress){
         if(inProgress == _inProgress) {

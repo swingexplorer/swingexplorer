@@ -55,7 +55,7 @@ public class AnimatedLabel extends JLabel {
 
     /**
      * Set icons to be animated.
-     * @param _icons
+     * @param _icons the list of icons to use
      */
     public void setIcons(Icon[] _icons) {
         
@@ -74,7 +74,7 @@ public class AnimatedLabel extends JLabel {
     
     /**
      * Current icons for animation
-     * @return
+     * @return the current list of icons
      */
     public Icon[] getIcons() {
         return icons.toArray(new Icon[icons.size()]);
@@ -123,7 +123,7 @@ public class AnimatedLabel extends JLabel {
     
     /**
      * Specifies time to show one icon.
-     * @param interval
+     * @param interval display time in milliseconds
      */
     public void setAnimationInterval(int interval) {
         timer.setDelay(interval);
@@ -131,7 +131,7 @@ public class AnimatedLabel extends JLabel {
     
     /**
      * Returns current time a single icon is shown
-     * @return
+     * @return the current display time in milliseconds
      */
     public int getAnimationInterval() {
         return timer.getDelay();
@@ -139,7 +139,7 @@ public class AnimatedLabel extends JLabel {
     
     /**
      * Makes progress indicator running.
-     * @param _inProgress
+     * @param _inProgress new value for inProgress
      */
     public void setInProgress(boolean _inProgress){
         

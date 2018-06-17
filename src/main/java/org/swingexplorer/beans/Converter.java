@@ -27,10 +27,19 @@ import java.text.ParseException;
  */
 public interface Converter<T> {
 
-	/** Converts text to object */ 
+	/**
+	 * Converts text to object
+	 * @param strValue String containing text to convert
+	 * @return converted object value
+	 * @throws ParseException if strValue could not be parsed into an object
+	 */
 	public T fromString(String strValue) throws ParseException;
 	
 	
-	/** Converts object to string */ 
+	/**
+	 * Converts object to string
+	 * @param value object value to convert
+	 * @return converted string
+	 */
 	public String toString(T value);
 }

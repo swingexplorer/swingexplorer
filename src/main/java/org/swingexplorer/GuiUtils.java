@@ -547,8 +547,8 @@ final public class GuiUtils {
 
     /**
      * Method to be used in conjunction with {@link #expandTreePaths(JTree, Enumeration)}
-     * @param tree
-     * @return
+     * @param tree the tree to examine for paths
+     * @return all the expanded descendants of tree's root
      */
     public static Enumeration<TreePath> getExpatnedTreePaths(JTree tree) {
         TreePath pathToRoot = new TreePath(tree.getModel().getRoot());
@@ -573,8 +573,8 @@ final public class GuiUtils {
      * </pre>
      * It is useful only when DefaultMutableTreeNode elements or their successors 
      * are used inside tree.
-     * @param tree
-     * @param expandPaths
+     * @param tree the tree to operate on
+     * @param expandPaths the paths to expand in tree
      */
     public static void expandTreePaths(JTree tree, Enumeration<TreePath> expandPaths) {
         if(expandPaths != null) {
@@ -606,7 +606,7 @@ final public class GuiUtils {
     /**
      * Utility method to notify tree about changes without
      * loosing expansion state 
-     * @param treProblems
+     * @param treProblems the tree to operate on
      */
     public static void notifyTreeChanged(JTree treProblems) {
         Enumeration<TreePath> expandedState = GuiUtils.getExpatnedTreePaths(treProblems);
@@ -618,10 +618,9 @@ final public class GuiUtils {
     /**
      * Returns index of a tab's component inside tabbed pane
      * @param tbp tabbed pane
-     * @param component component to find
+     * @param component component to find within tbp
      * @return component's index
-     * @throws IllegalArgumentException if component does not belong to
-     * this tabbed pane
+     * @throws IllegalArgumentException if component does not belong to tbp
      */
     public static int getTabComponentIndex(JTabbedPane tbp, Component component) throws IllegalArgumentException {
         int count = tbp.getTabCount();
@@ -650,8 +649,8 @@ final public class GuiUtils {
     
     /**
      * Formats stack tarce element into HTML with link
-     * @param elem
-     * @return
+     * @param elem element to format
+     * @return String representing elem
      */
     public static String formatElementToHTML(StackTraceElement elem) {
 		// taking only class name before $ (in case of inner class)
@@ -670,9 +669,9 @@ final public class GuiUtils {
     
     /**
      * Finds component with specified name in the specified hierarchy.
-     * @param parent - hiererchy parent
-     * @param beanName
-     * @return null if component not found
+     * @param parent hiererchy parent
+     * @param beanName name of component to locate
+     * @return named component, or null if component not found
      */
     public static Component findComponentByName(Container parent, String beanName) {
 		

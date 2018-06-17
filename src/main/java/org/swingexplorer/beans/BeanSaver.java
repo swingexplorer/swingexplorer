@@ -114,8 +114,8 @@ public class BeanSaver {
 
 	/**
 	 * Reset bean's property to default value
-	 * @param bean
-	 * @param property
+	 * @param bean the bean to change property on
+	 * @param property name of the property to change
 	 */
 	public void resetToDefault(Object bean, String property) {
 		Object defaultValue = getDefaultValue(bean.getClass(), property);
@@ -129,9 +129,9 @@ public class BeanSaver {
 	
 	/**
 	 * Returns property value by its name
-	 * @param bean
-	 * @param property
-	 * @return
+	 * @param bean the bean to get property value from
+	 * @param property name of property to get
+	 * @return current value of the named property on bean
 	 */
 	public Object getValue(Object bean, String property) {
 		Method method = findGetter(bean.getClass(), property);
@@ -147,9 +147,9 @@ public class BeanSaver {
 	
 	/**
 	 * Sets porperty value by property name
-	 * @param bean
-	 * @param property
-	 * @param value
+	 * @param bean bean to set property on
+	 * @param property name of property to change
+	 * @param value new value for named property
 	 */
 	public void setValue(Object bean, String property, Object value) {
 		Method method = findSetter(bean.getClass(), property);
@@ -165,9 +165,9 @@ public class BeanSaver {
 	
 	/**
 	 * Returns default value of bean's property which is declared in the annotation.
-	 * @param bean
-	 * @param property
-	 * @return
+	 * @param bean bean to get value from
+	 * @param property name of property to get value for
+	 * @return default value of named property
 	 */
 	public Object getDefaultValue(Object bean, String property) {
 		return getDefaultValueByClass(bean.getClass(), property);
@@ -175,9 +175,9 @@ public class BeanSaver {
 	
 	/**
 	 * Returns default value of bean's class property which is declared in the annotation.
-	 * @param beanClass
-	 * @param property
-	 * @return
+	 * @param beanClass bean class to locate property on
+	 * @param property name of property
+	 * @return default value of named property
 	 */
 	public Object getDefaultValueByClass(Class<?> beanClass, String property) {
 		Method method = findGetter(beanClass, property);

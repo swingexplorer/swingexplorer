@@ -61,7 +61,7 @@ public class Operation {
 	/**
 	 * Performs operation on given graphics instance.
 	 * Just calls metod through reflection.
-	 * @param graphics
+	 * @param graphics the graphics instance to operate on
 	 * @return operation execurion result
 	 */
 	public Object run(Graphics2D graphics) {

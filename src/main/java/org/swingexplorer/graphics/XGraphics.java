@@ -75,6 +75,7 @@ public class XGraphics extends Graphics2D {
 	 * Detaches all operations collected by this graphics instance
 	 * and resets internal operation list to empty.
 	 * Detached operation list contains END operation at the end.
+	 * @return list of the detached operations
 	 */
 	public ArrayList<Operation> detachOperations() {
 		ArrayList<Operation> detachOps = operations;
