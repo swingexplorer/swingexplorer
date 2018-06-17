@@ -38,7 +38,7 @@ public class ActOpenSourceCode extends RichAction {
     
     public ActOpenSourceCode(PNLPlayerControls _owner) {
         setName("src");
-        setTooltip("Open sourcecode in IDE");
+        setTooltip("Open source code in IDE");
         owner = _owner;
     }
     
