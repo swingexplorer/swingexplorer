@@ -19,6 +19,8 @@
  */
 package org.swingexplorer;
 
+import javafx.scene.control.ListCell;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -36,11 +38,12 @@ import javax.swing.UIManager;
  *
  * @author  Maxim Zakharenkov
  */
-public class ColorComboBox extends JComboBox {
+public class ColorComboBox extends JComboBox<Color> {
 
-	
+	//TODO: Fix remaining unchecked warnings here
+	@SuppressWarnings("unchecked")
 	public ColorComboBox() {
-		DefaultComboBoxModel model = new DefaultComboBoxModel();
+		DefaultComboBoxModel<Color> model = new DefaultComboBoxModel<>();
 		model.addElement(Color.BLACK);
 		model.addElement(Color.DARK_GRAY);
 		model.addElement(Color.GRAY);

@@ -58,7 +58,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
     private void initComponents() {
 
         scpOperations = new javax.swing.JScrollPane();
-        lstOperations = new javax.swing.JList();
+        lstOperations = new javax.swing.JList<>();
         slider = new javax.swing.JSlider();
         spinner = new javax.swing.JSpinner();
         btnPlayPause = new javax.swing.JButton();
@@ -69,7 +69,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
         btnDumpStackTrace = new javax.swing.JButton();
         btnSrc = new javax.swing.JButton();
 
-        lstOperations.setModel(new javax.swing.AbstractListModel() {
+        lstOperations.setModel(new javax.swing.AbstractListModel<Object>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
@@ -212,7 +212,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
     private javax.swing.JButton btnSrc;
     private javax.swing.JButton btnToEnd;
     private javax.swing.JButton btnToStart;
-    private javax.swing.JList lstOperations;
+    private javax.swing.JList<Object> lstOperations;
     private javax.swing.JScrollPane scpOperations;
     private javax.swing.JSlider slider;
     private javax.swing.JSpinner spinner;
@@ -350,7 +350,7 @@ public class PNLPlayerControls extends javax.swing.JPanel {
 		}        
     }
     
-    class OperationListModel extends AbstractListModel {
+    class OperationListModel extends AbstractListModel<Object> {
 
     	Operation[] operations = new Operation[0];
 
