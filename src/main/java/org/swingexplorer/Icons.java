@@ -24,6 +24,7 @@ import static org.swingexplorer.GuiUtils.getImageIcon;
 import java.awt.Image;
 
 import javax.swing.Icon;
+
 /**
  *
  * @author  Maxim Zakharenkov

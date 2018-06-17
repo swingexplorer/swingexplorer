@@ -31,7 +31,6 @@ import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
-
 /**
  *
  * @author  Maxim Zakharenkov

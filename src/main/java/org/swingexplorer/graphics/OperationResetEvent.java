@@ -19,7 +19,6 @@
  */
 package org.swingexplorer.graphics;
 
-
 import java.awt.Dimension;
 import java.util.EventObject;
 

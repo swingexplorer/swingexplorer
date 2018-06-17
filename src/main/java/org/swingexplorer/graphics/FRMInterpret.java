@@ -19,7 +19,6 @@
  */
 package org.swingexplorer.graphics;
 
-
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -35,7 +34,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 
 /**
  * 

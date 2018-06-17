@@ -56,8 +56,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
-
-
 /**
  * Helper GUI utility methods
  * @author Maxim Zakharenkov

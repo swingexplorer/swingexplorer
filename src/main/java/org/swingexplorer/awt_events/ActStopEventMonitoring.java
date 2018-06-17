@@ -23,7 +23,6 @@ import java.awt.event.ActionEvent;
 
 import org.swingexplorer.RichAction;
 
-
 /**
  * 
  * @author Maxim Zakharenkov

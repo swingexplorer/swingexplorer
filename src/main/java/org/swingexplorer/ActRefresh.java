@@ -19,7 +19,6 @@
  */
 package org.swingexplorer;
 
-
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dialog;
@@ -42,7 +41,6 @@ import javax.swing.Timer;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.swingexplorer.PNLComponentTree.TreeNodeObject;
-
 
 /**
  * 

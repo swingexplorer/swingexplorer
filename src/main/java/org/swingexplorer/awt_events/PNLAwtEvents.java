@@ -19,7 +19,6 @@
  */
 package org.swingexplorer.awt_events;
 
-
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
 import java.awt.event.MouseAdapter;
@@ -35,8 +34,6 @@ import javax.swing.table.JTableHeader;
 
 import org.swingexplorer.RichAction;
 import org.swingexplorer.plaf.CustomTableHeaderUI;
-
-
 
 /**
  *

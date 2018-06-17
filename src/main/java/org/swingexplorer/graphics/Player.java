@@ -19,7 +19,6 @@
  */
 package org.swingexplorer.graphics;
 
-
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -35,8 +34,6 @@ import javax.swing.event.EventListenerList;
 
 import org.swingexplorer.GuiUtils;
 import org.swingexplorer.Options;
-
-
 
 /**
  *

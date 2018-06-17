@@ -19,7 +19,6 @@
  */
 package sample;
 
-
 import java.lang.ref.WeakReference;
 
 import javax.swing.JButton;

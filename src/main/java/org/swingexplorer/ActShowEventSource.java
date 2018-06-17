@@ -27,8 +27,6 @@ import javax.swing.JOptionPane;
 
 import org.swingexplorer.awt_events.PNLAwtEvents;
 
-
-
 /**
  * 
  * @author Maxim Zakharenkov

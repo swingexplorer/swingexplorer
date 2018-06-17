@@ -3,7 +3,6 @@
  *
  * Created on February 6, 2008, 12:11 PM
  */
-
 package org.swingexplorer.awt_events;
 
 import java.awt.AWTEvent;

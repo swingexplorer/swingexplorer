@@ -19,7 +19,6 @@
  */
 package org.swingexplorer;
 
-
 /**
  * 
  * @author Maxim Zakharenkov

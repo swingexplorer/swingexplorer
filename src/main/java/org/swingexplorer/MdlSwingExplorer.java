@@ -19,7 +19,6 @@
  */
 package org.swingexplorer;
 
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -40,9 +39,6 @@ import javax.swing.plaf.basic.BasicComboPopup;
 
 import org.swingexplorer.edt_monitor.EDTDebugQueue;
 import org.swingexplorer.graphics.XGraphics;
-
-
-
 
 /**
  * 

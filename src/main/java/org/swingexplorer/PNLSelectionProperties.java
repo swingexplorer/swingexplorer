@@ -3,7 +3,6 @@
  *
  * Created on March 9, 2008, 8:39 PM
  */
-
 package org.swingexplorer;
 
 import java.awt.BorderLayout;

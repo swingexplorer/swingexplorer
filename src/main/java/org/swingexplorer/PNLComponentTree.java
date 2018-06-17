@@ -19,9 +19,6 @@
  */
 package org.swingexplorer;
 
-
-
-
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -45,7 +42,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
-
 
 /**
  *

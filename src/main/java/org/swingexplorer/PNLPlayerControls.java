@@ -19,7 +19,6 @@
  */
 package org.swingexplorer;
 
-
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 
@@ -34,7 +33,6 @@ import org.swingexplorer.graphics.Player;
 import org.swingexplorer.graphics.PlayerListener;
 import org.swingexplorer.graphics.StateEvent;
 import org.swingexplorer.idesupport.IDESupport;
-
 
 /**
  *

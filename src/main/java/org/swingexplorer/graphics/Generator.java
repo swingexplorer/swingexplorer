@@ -25,7 +25,6 @@ import java.awt.Graphics2D;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-
 /**
  * 
  * @author Maxim Zakharenkov

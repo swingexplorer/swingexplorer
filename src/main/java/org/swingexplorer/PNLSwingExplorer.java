@@ -19,7 +19,6 @@
  */
 package org.swingexplorer;
 
-
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -39,8 +38,6 @@ import org.swingexplorer.graphics.ImageEvent;
 import org.swingexplorer.graphics.OperationResetEvent;
 import org.swingexplorer.graphics.PlayerListener;
 import org.swingexplorer.graphics.StateEvent;
-
-
 
 /**
  *

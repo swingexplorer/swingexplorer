@@ -33,7 +33,6 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 
-
 /**
  *
  * @author  Maxim Zakharenkov

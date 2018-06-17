@@ -19,7 +19,6 @@
  */
 package org.swingexplorer;
 
-
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.lang.reflect.Method;
@@ -38,7 +37,6 @@ import org.swingexplorer.personal.SplitPanePersonalizer;
 import org.swingexplorer.personal.TabbedPanePersonalizer;
 import org.swingexplorer.personal.TablePersonalizer;
 import org.swingexplorer.plaf.PlafUtils;
-
 
 /**
  * 

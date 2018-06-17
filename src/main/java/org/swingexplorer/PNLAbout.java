@@ -50,7 +50,6 @@ import javax.swing.event.HyperlinkListener;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.EditorKit;
 
-
 /**
  * 
  * @author Maxim Zakharenkov

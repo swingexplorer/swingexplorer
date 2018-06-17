@@ -22,7 +22,6 @@ package org.swingexplorer;
 import java.io.File;
 import java.net.URI;
 
-
 /**
  * Helper class to deal with system properties
  * and logging

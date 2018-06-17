@@ -19,11 +19,9 @@
  */
 package org.swingexplorer.graphics;
 
-
 import java.util.EventObject;
 
 import org.swingexplorer.graphics.Player.PState;
-
 
 /**
  * 
