@@ -1,5 +1,5 @@
-target
+*/target
 
 # JetBrains IntelliJ
-.idea
-swingexplorer-core.iml
+*/.idea
+*/swingexplorer-core.iml
