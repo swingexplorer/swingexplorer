@@ -49,6 +49,7 @@ class Person {
 ### Prefixes for component types
 
 SwingExplorer mostly uses class names with abbreviated prefixes like "`ActDisplayParent`" instead of suffixes like "`DisplayParentAction`".
+The main idea behind the prefix notation is to facilitate class searching in IDE using prefix and Ctrl+Space.
 
 | Prefix | Meaning |
 | ------ | ------- |
