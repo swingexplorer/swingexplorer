@@ -21,34 +21,31 @@ package org.swingexplorer;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dialog;
+import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Frame;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.io.StringReader;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Calendar;
 
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-import javax.swing.SwingUtilities;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.EditorKit;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 
 /**
@@ -58,109 +55,82 @@ import javax.swing.text.EditorKit;
 @SuppressWarnings("serial")
 public class PNLAbout extends javax.swing.JPanel {
 	
-    private JScrollPane scpAbout;
-    private JTextPane txaAbout;
-
 	
     
     /** Creates new form PNLAbout */
     public PNLAbout() {
-    	scpAbout = new JScrollPane();
-        txaAbout = new JTextPane();
-        txaAbout.setBorder(new EmptyBorder(10, 10, 10, 10));
-        txaAbout.setEditable(false);
-        txaAbout.setOpaque(false);
-        scpAbout.setOpaque(false);
-        scpAbout.setViewportView(txaAbout);
-        scpAbout.getViewport().setOpaque(false);
+        
+    	Font titleFont = UIManager.getFont("Label.font").deriveFont(20f);
+    	Font copyrightFont = UIManager.getFont("Label.font").deriveFont(Font.PLAIN);
+    	
+    	JLabel lblLogo = new JLabel();
+    	lblLogo.setIcon(Icons.appLogo());
+    	
+    	JLabel lblTitle = new JLabel();
+    	lblTitle.setVerticalTextPosition(SwingConstants.TOP);
+    	lblTitle.setHorizontalTextPosition(SwingConstants.LEFT);
+    	lblTitle.setText("Swing Explorer");
+		lblTitle.setFont(titleFont);
+    	
+    	JLabel lblVersion = new JLabel();
+    	lblVersion.setText("Version: " + SysUtils.getApplicationVersion());
+    	
+    	String webLink = "http://swingexplorer.github.io";
+    	
+    	JLabel lblWeblink = new JLabel();
+    	lblWeblink.setText("<HTML><FONT color=\"#000099\"><U>" + webLink + "</U></FONT></HTML>");
+    	lblWeblink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    	lblWeblink.addMouseListener(new MouseAdapter() {
+    		@Override
+    		public void mousePressed(MouseEvent e) {
+    			lblWeblink.setText("<HTML><FONT color=\"#009999\"><U>" + webLink + "</U></FONT></HTML>");
+    		}
+    		@Override
+    		public void mouseReleased(MouseEvent e) {
+    			lblWeblink.setText("<HTML><FONT color=\"#000099\"><U>" + webLink + "</U></FONT></HTML>");
+    		}
+    		@Override
+    		public void mouseClicked(MouseEvent e) {
+    			if(!SysUtils.openBrowser(webLink)) {
+    				
+    				int res = JOptionPane.showOptionDialog(PNLAbout.this, "Sorry, we cannot open browser on your platform!\nWould you like to copy the link to clipboard?.", "Error", 
+            				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+    				if(res == JOptionPane.YES_OPTION) {
+	            		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+	            		clipboard.setContents(new StringSelection(webLink), null);
+    				}
+            	}
+    		}
+		});
+    	
+    	JLabel lblCopyright = new JLabel();
+    	lblCopyright.setFont(copyrightFont);
+    	int year = Calendar.getInstance().get(Calendar.YEAR);
+    	lblCopyright.setText("\u00a9 Swing Explorer team 2007-" + year);
+    	
+    	
+    	JPanel pnlGrid = new JPanel();
+    	pnlGrid.setLayout(new GridBagLayout());
+    	pnlGrid.add(lblTitle, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
+    	pnlGrid.add(lblLogo, new GridBagConstraints(1, 0, 1, 2, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
+    	pnlGrid.add(lblVersion, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 5, 0, 5), 0, 0));
+    	pnlGrid.add(lblWeblink, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 5, 20, 5), 0, 0));
+    	
         setLayout(new BorderLayout());
-        add(scpAbout, BorderLayout.CENTER);
-        setPreferredSize(new java.awt.Dimension(250, 170));        
-        
-        // it is not easy to scroll document to top in Swing
-        // we need to set setAsynchronousLoadPriority for document and
-        // read through editor kit
-        txaAbout.setContentType("text/html");
-        EditorKit edKit = txaAbout.getEditorKit();
-        AbstractDocument doc = (AbstractDocument) edKit.createDefaultDocument();//(HTMLDocument) txaAbout.getDocument(); //new HTMLDocument();
-        doc.setAsynchronousLoadPriority(-1);
-        try {
-        	int year = Calendar.getInstance().get(Calendar.YEAR);
-            String text = "<html>" +
-                    "<body>" +
-                    "<big><span style=\"font-weight: bold;\">" +
-                    "<a name=\"begin\"></a>Swing Explorer</span></big><br>" +
-                    "&nbsp;&nbsp;&nbsp;Version: " + SysUtils.getApplicationVersion() +
-                    "<br>&nbsp;&nbsp;&nbsp;(c) Maxim Zakharenkov 2007-" + year + "<br><br>" +
-                    "&nbsp;&nbsp;&nbsp;<a href=\"http://www.swingexplorer.com/\">https://www.swingexplorer.com/</a><br><br>" +
-                    "&nbsp;&nbsp;&nbsp;License: <a href=\"license\">LGPL</a>" +
-                    "</body></html>";
-            edKit.read(new StringReader(text), doc, 0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-        txaAbout.setDocument(doc);
-        
-        // here is scrolling finally
-        txaAbout.scrollRectToVisible(new Rectangle(0, 0, 1, 1));
-        
-        txaAbout.addHyperlinkListener(new HyperlinkListener() {
-            public void hyperlinkUpdate(HyperlinkEvent e) {
-            	
-                if(e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                	if("license".equals(e.getDescription())) {
-                		Dialog dlg = (Dialog)SwingUtilities.getWindowAncestor(PNLAbout.this);
-                		DLGLicense.open(dlg);
-                	} else if(!SysUtils.openBrowser(e.getURL().toString())) {
-                		JOptionPane.showMessageDialog(null, "Can not open browser!", "Error", JOptionPane.ERROR_MESSAGE);
-                	}
-                }
-            }
-        });
+        add(pnlGrid, BorderLayout.NORTH);
+        add(lblCopyright, BorderLayout.SOUTH);
     }
-    
-    @Override
-    protected void paintComponent(Graphics _g) {
-    	Graphics2D g = (Graphics2D)_g;
-    	GradientPaint paint = new GradientPaint(25, 25, Color.WHITE, getHeight(), getWidth(), new Color(0xc8ddf2));
-    	g.setPaint(paint);
-    	g.fillRect(0, 0, getWidth(), getHeight());
-    }
-    
     
     public static void openModal(Frame owner) {
 	    final JDialog dlgAbout = new JDialog(owner, "About", true);
-		final JPanel glassPane = new JPanel(new BorderLayout());
-		JPanel northGlass = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		glassPane.add(northGlass);
-		glassPane.setOpaque(false);
-		northGlass.setOpaque(false);
 		
-		JButton btnClose = new CloseButton();
-		northGlass.add(btnClose);
-		
-		dlgAbout.setGlassPane(glassPane); 
-		
-		dlgAbout.addComponentListener(new ComponentAdapter() {
-			public void componentShown(ComponentEvent e) {
-				glassPane.setVisible(true);
-			}
-		});
-		
-		btnClose.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dlgAbout.dispose();
-			}
-		});
 		dlgAbout.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
 		PNLAbout pnlAbout = new PNLAbout();
-		dlgAbout.setUndecorated(true);
 		dlgAbout.add(pnlAbout);
 		dlgAbout.pack();
 		GuiUtils.center(owner, dlgAbout);
 		dlgAbout.setVisible(true);
-		glassPane.setVisible(true);
     }
     
 	static class CloseButton extends JButton {
@@ -194,5 +164,12 @@ public class PNLAbout extends javax.swing.JPanel {
 		}
 	}
 
+	public static void main(String[] args) {
+		JFrame frm = new JFrame();
+		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frm.setBounds(100,  100, 400, 300);
+		frm.setVisible(true);
+		openModal(frm);
+	}
 }
 

@@ -59,4 +59,8 @@ public abstract class Icons {
      public static Image appSmallImage() {
     	 return GuiUtils.getImage(BASE_PATH + "swex18x18.png");
      }
+     
+     public static Icon appLogo() {
+    	 return getImageIcon(BASE_PATH + "logo40x40.png");
+     }
 }

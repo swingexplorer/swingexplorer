@@ -19,8 +19,10 @@
  */
 package org.swingexplorer;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.net.URI;
+import java.net.URL;
 
 
 /**
@@ -111,36 +113,19 @@ public abstract class SysUtils {
 		return System.getProperty("java.specification.version");
 	}
 	
-	public static boolean isJava6() {
-		return getJavaVersion().startsWith("1.6");
-	}
-
 	/**
 	 * Opens given URI in the browser
 	 * @param strUri
 	 * @return true if operation succeded and false if not
 	 */
 	public static boolean openBrowser(String strUri) {
-		if(!SysUtils.isJava6()) {
-			return false;
-		}
-        	
-        if( !java.awt.Desktop.isDesktopSupported() ) {
-            return false;
-        }
-
-        java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
-        if( !desktop.isSupported( java.awt.Desktop.Action.BROWSE ) ) {
-        	return false;
-        }
-
+        
 		try {
-			URI uri = new URI( strUri);
-			desktop.browse( uri );
-			return true;
-		} catch (Exception e1) {
-			return false;
-		}
+	        Desktop.getDesktop().browse(new URL(strUri).toURI());
+	        return true;
+	    } catch (Exception e) {
+	        return false;
+	    }
 	}
 
     /**
