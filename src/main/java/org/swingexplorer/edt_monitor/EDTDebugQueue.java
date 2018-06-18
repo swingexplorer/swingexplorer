@@ -33,7 +33,7 @@ import org.swingexplorer.instrument.ProblemListener;
 
 /**
  *
- * @author Elliott Hughes <enh@jessies.org>
+ * @author Elliott Hughes enh@jessies.org
  * 
  * Advice, bug fixes, and test cases from
  * Alexander Potochkin and Oleg Sukhodolsky.
