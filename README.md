@@ -1,12 +1,10 @@
-swingexplorer-core
+Swing Explorer
 ======================
 
-Core files of the Swing Explorer tool.
+A GUI tool for inspecting Java Swing GUIs.
 
 ##  Building from source
 
-You must first have the swingexplorer-agent library built and installed in your local Maven repo with `mvn install` done in that repo. swingexplorer-agent is available [on GitHub](https://github.com/swingexplorer/swingexplorer-agent).
+For each of `swingexplorer-core` and `swingexplorer-agent`, cd in to them and run `mvn clean package` to build them.
 
-Do `mvn package` to build and package swingexplorer-core.
-
-To test whether the build worked, you can run `dev-tools/launch_sample.sh` to run the sample application.
+To test whether the build worked, you can cd in to `swingexplorer-core` and run `dev-tools/launch_sample.sh` to run the sample application.

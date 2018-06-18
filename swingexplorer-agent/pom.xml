@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.swingexplorer</groupId>
+    <artifactId>swingexplorer-agent</artifactId>
+    <version>1.7.0</version>
+
+    <name>swingexplorer-agent</name>
+    <description>An agent which instruments Swing application to gather necessary information to Swing Explorer</description>
+    <url>https://github.com/swingexplorer/swingexplorer-agent</url>
+
+    <licenses>
+        <license>
+            <name>LGPL v3.0</name>
+            <url>https://www.gnu.org/licenses/lgpl-3.0.en.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+    	<developer>
+    		<name>Maxim Zakharenkov</name>
+            <organization>SwingExplorer</organization>
+            <organizationUrl>https://github.com/swingexplorer</organizationUrl>    		
+    	</developer>
+        <developer>
+            <name>Andrew Janke</name>
+            <email>andrew@apjanke.net</email>
+            <organization>Independent Consultant</organization>
+            <organizationUrl>https://apjanke.net</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/swingexplorer/swingexplorer-agent.git</connection>
+        <developerConnection>scm:git:ssh://github.com:swingexplorer/swingexplorer-agent.git</developerConnection>
+        <url>https://github.com/swingexplorer/swingexplorer-agent</url>
+    </scm>
+
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+		<!-- https://mvnrepository.com/artifact/javassist/javassist -->
+		<dependency>
+		    <groupId>javassist</groupId>
+		    <artifactId>javassist</artifactId>
+		    <version>3.12.1.GA</version>
+		</dependency>
+	</dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-jar-plugin</artifactId>
+            	<version>2.4</version>
+            	<configuration>
+            		<archive>
+            			<manifest>
+            				<addClasspath>true</addClasspath>
+            				<classpathPrefix>lib/</classpathPrefix>
+            				<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            				<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+            			</manifest>
+            			<manifestEntries>
+            				<Premain-Class>org.swingexplorer.instrument.Agent</Premain-Class>
+            				<Can-Redefine-Classes>true</Can-Redefine-Classes>
+            			</manifestEntries>
+            		</archive>
+            	</configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
