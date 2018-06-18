@@ -559,7 +559,7 @@ final public class GuiUtils {
     /**
      * Used to restore expansion state of the tree like:
      * <pre>
-     *      Enumeration<TreePath> expandPaths = tree.getExpandedDescendants(pathToRoot);
+     *      Enumeration&lt;TreePath&lt; expandPaths = tree.getExpandedDescendants(pathToRoot);
      *       
      *       // do some changes in the tree model
      *       ...
