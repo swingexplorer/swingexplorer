@@ -40,7 +40,7 @@ public class ColorComboBox extends JComboBox {
 
 	
 	public ColorComboBox() {
-		DefaultComboBoxModel model = new DefaultComboBoxModel();
+		DefaultComboBoxModel<Color> model = new DefaultComboBoxModel<>();
 		model.addElement(Color.BLACK);
 		model.addElement(Color.DARK_GRAY);
 		model.addElement(Color.GRAY);

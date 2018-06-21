@@ -3,3 +3,4 @@
 # JetBrains IntelliJ
 */.idea
 */swingexplorer-core.iml
+/target/

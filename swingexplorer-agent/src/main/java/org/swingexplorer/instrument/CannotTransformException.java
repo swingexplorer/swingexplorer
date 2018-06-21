@@ -25,6 +25,8 @@ package org.swingexplorer.instrument;
  */
 public class CannotTransformException extends Exception {
 
+    private static final long serialVersionUID = -5148891651932809767L;
+
     CannotTransformException() {
     }
 
