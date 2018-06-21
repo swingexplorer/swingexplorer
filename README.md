@@ -3,6 +3,9 @@ Swing Explorer
 
 A GUI tool for inspecting Java Swing GUIs.
 
+![Swing Explorer](docs/swing_explorer_swing_set.jpg)
+
+
 ##  Building from source
 
 For each of `swingexplorer-core` and `swingexplorer-agent`, cd in to them and run `mvn clean package` to build them.
