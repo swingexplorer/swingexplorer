@@ -1,159 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.swingexplorer</groupId>
-    <artifactId>swingexplorer-core</artifactId>
-    <version>1.7.0</version>
+    <parent>
+        <groupId>org.swingexplorer</groupId>
+        <artifactId>swingexplorer</artifactId>
+        <version>1.7.0-SNAPSHOT</version>
+    </parent>
 
+    <artifactId>swingexplorer-core</artifactId>
+    <packaging>jar</packaging>
     <name>swingexplorer-core</name>
     <description>Core code of Swing Explorer, a tool for inspecting Swing GUI structure</description>
-    <url>https://github.com/swingexplorer/swingexplorer-core</url>
-
-    <licenses>
-        <license>
-            <name>LGPL v3.0</name>
-            <url>https://www.gnu.org/licenses/lgpl-3.0.en.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <developers>
-    	<developer>
-    		<name>Maxim Zakharenkov</name>
-            <organization>SwingExplorer</organization>
-            <organizationUrl>https://github.com/swingexplorer</organizationUrl>    		
-    	</developer>
-        <developer>
-            <name>Andrew Janke</name>
-            <email>andrew@apjanke.net</email>
-            <organization>Independent Consultant</organization>
-            <organizationUrl>https://apjanke.net</organizationUrl>
-        </developer>
-    </developers>
-
-    <scm>
-        <connection>scm:git:git://github.com/swingexplorer/swingexplorer-core.git</connection>
-        <developerConnection>scm:git:ssh://github.com:swingexplorer/swingexplorer-core.git</developerConnection>
-        <url>https://github.com/swingexplorer/swingexplorer-core</url>
-    </scm>
-
-    <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
-    <repositories>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <id>UJI</id>
-            <name>UJI Repository</name>
-            <url>http://devel.uji.es/nexus/content/repositories/releases/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.swingexplorer</groupId>
             <artifactId>swingexplorer-agent</artifactId>
-            <version>1.6.1</version>
-        </dependency>            
-        <!-- https://mvnrepository.com/artifact/org.jdesktop/swing-layout -->
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.jdesktop</groupId>
             <artifactId>swing-layout</artifactId>
             <version>1.0.3</version>
         </dependency>
-	</dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <compilerArgument>-Xlint:all</compilerArgument>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-            	<groupId>org.apache.maven.plugins</groupId>
-            	<artifactId>maven-jar-plugin</artifactId>
-            	<version>2.4</version>
-            	<configuration>
-            		<archive>
-            			<manifest>
-                            <mainClass>org.swingexplorer.Launcher</mainClass>
-                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-            			</manifest>
-            		</archive>
-            	</configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
+    </dependencies>
 </project>
