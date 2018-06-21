@@ -1,6 +1,10 @@
-*/target
+**/target
 
 # JetBrains IntelliJ
-*/.idea
-*/swingexplorer-core.iml
-/target/
+**/.idea/
+**/*.iml
+
+# Eclipse
+**/.settings
+**/.project
+**/.classpath
