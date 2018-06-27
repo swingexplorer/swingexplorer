@@ -1,0 +1,104 @@
+#!/bin/bash
+#
+# swexpl - launch a program with Swing Explorer attached
+#
+#   swexpl [--classpath <path>] [--agent] <main_class>
+#
+# This tool launches a user Java program with Swing Explorer attached. The
+# user program is specified using the classpath and main class name.
+#
+#   * --classpath <path>, -cp <path>
+#
+#      Defines the classpath for user classes. This is where you specify the
+#      paths to your program's Java libraries (JARs). This does not have to
+#      include the Swing Explorer JARs; they will be added automatically by
+#      swexpl.
+#
+#      As an alternative, you may specify your class path in the CLASSPATH
+#      environment variable.
+#
+#      The --classpath option takes precedence over the CLASSPATH environment
+#      variable.
+#
+#   * --agent
+#
+#      Launches your program with the Swing Explorer agent enabled. This is necessary
+#      for some of its EDT diagnostic features.
+#
+#   * <main_class>
+#
+#      The fully-qualified name of the main Java class in your program. This is the
+#      class that defines the main() method that you want to run.
+
+
+swexpl_version=@SWINGEXPLORER_VERSION@
+
+this_program=$(basename "$0")
+this_dir=$(dirname "$0")
+this_dir=$(realpath "$this_dir")
+dist_dir=$(dirname "$this_dir")
+lib_dir="$dist_dir/lib"
+
+# Handle command line arguments
+
+declare -a ARGS
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -cp|--classpath)
+        if [[ $# -gt 1 ]]; then
+          user_classpath="$2"
+          shift 2
+        else
+          echo "Error: $1 requires an argument" >&2
+          exit 1
+        fi
+        ;;
+    --agent)
+        use_agent=1
+        shift
+        ;;
+    *)
+        ARGS+=("$1")
+        shift
+        ;;
+  esac
+done
+
+if [[ ${#ARGS[@]} -gt 1 ]]; then
+  echo "Error: Too many arguments" >&2
+  exit 1
+fi
+if [[ ${#ARGS[@]} == 0 ]]; then
+  echo "Error: You must specify a main class to run" >&2
+  exit 1
+fi
+
+user_mainclass="${ARGS[0]}"
+
+# Set up Java and run the program with Swing Explorer
+
+if [[ -z "$user_classpath" ]]; then
+  if [[ -n "$CLASSPATH" ]]; then
+    user_classpath="$CLASSPATH"
+  fi
+fi
+
+if [[ -n "$JAVA_HOME" ]]; then
+  java="$JAVA_HOME/bin/java"
+else
+  java="java"
+fi
+
+swexpl_classpath="$dist_dir/swingexplorer-core-${swexpl_version}.jar:$lib_dir/swing-layout-1.0.3.jar"
+agent_jar_file="$dist_dir/swingexplorer-agent-${swexpl_version}.jar"
+agent_classpath="$agent_jar_file:$lib_dir/javassist-3.12.1.GA.jar"
+classpath="$swexpl_classpath"
+if [[ -n "$user_classpath" ]]; then
+  classpath="$classpath:$user_classpath"
+fi
+
+if [[ "$use_agent" == 1 ]]; then
+  "$java" -javaagent:"${agent_jar_file}" -Xbootclasspath/a:"${agent_classpath}" -cp "$classpath" org.swingexplorer.Launcher "$user_mainclass"
+else
+  "$java" -cp "$classpath:$agent_classpath" org.swingexplorer.Launcher "$user_mainclass"
+fi

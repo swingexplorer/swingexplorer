@@ -19,7 +19,18 @@ More detailed information about Swing Explorer can be found in the User Manual (
 ## Running Swing Explorer with your application
 
 ### Using standalone mode
-**TBD**
+
+Use the `swexpl` command, found in `bin/`, to launch your application.
+
+```
+swexpl -cp <classpath> <mainclass>
+```
+
+Where `<classpath>` is your program's classpath, and `<mainclass>` is the fully-qualified name of your program's main class.
+
+You can also manually pull in the Swing Explorer libraries and use `org.swingexplorer.Launcher.main()` to run your program with Swing Explorer active.
+
+See the [User Guide](docs/User-Guide.md) for more details.
 
 ### Using IDE plug-in
 **TBD**
@@ -28,4 +39,4 @@ More detailed information about Swing Explorer can be found in the User Manual (
 ##  Building from source
 
 Using maven it is necessary to run `mvn clean package` command from the root folder of cloned project's repository.
-(**TBD** currently not working -->) To test whether the build worked, you can cd in to `swingexplorer-core` and run `dev-tools/launch_sample.sh` to run the sample application.
+To test whether the build worked, you can cd in to `swingexplorer-core` and run `dev-tools/launch_sample.sh` to run the sample application.
