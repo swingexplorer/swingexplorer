@@ -34,7 +34,7 @@ public class IntArrayConverter implements Converter<int[]>{
 		int count = tokens.countTokens();
 		
 		int[] result = new int[count];
-		int i = 0;;
+		int i = 0;
 		try {
 			while(tokens.hasMoreElements()) {
 				String strNumber = tokens.nextToken();
