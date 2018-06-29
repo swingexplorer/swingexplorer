@@ -28,9 +28,9 @@ import java.text.ParseException;
 public interface Converter<T> {
 
 	/** Converts text to object */ 
-	public T fromString(String strValue) throws ParseException;
+	T fromString(String strValue) throws ParseException;
 	
 	
 	/** Converts object to string */ 
-	public String toString(T value);
+	String toString(T value);
 }

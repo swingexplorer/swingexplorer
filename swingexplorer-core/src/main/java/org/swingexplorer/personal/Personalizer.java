@@ -42,7 +42,7 @@ public interface Personalizer {
 	 * @param options
 	 * @param component
 	 */
-	public void install(Options options, Component component);
+	void install(Options options, Component component);
 	
 	/**
 	 * The method is called by application before it closes
@@ -50,5 +50,5 @@ public interface Personalizer {
 	 * the Options object provided to personalizer in the install(Options, JComponent)
 	 * method.
 	 */
-	public void saveState();
+	void saveState();
 }
