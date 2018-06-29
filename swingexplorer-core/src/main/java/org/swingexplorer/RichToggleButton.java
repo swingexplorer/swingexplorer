@@ -63,8 +63,9 @@ public class RichToggleButton extends JToggleButton {
 			if(curAction != null) {
 				curAction.removePropertyChangeListener(selectionStateListener);
 			}
-		}
-		newAction.addPropertyChangeListener(selectionStateListener);		
+		} else {
+            newAction.addPropertyChangeListener(selectionStateListener);
+        }
 		super.setAction(newAction);
 	}
 	
