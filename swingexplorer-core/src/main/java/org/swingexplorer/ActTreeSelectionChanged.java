@@ -44,7 +44,7 @@ public class ActTreeSelectionChanged implements TreeSelectionListener {
 	    TreePath[] paths = e.getPaths();
 		for (TreePath curPath : paths) {
 
-			Component component = pnlComponentTree.getComponent(curPath);
+			Component component = PNLComponentTree.getComponent(curPath);
 
 			if (e.isAddedPath(curPath)) {
 				model.addSelection(component);

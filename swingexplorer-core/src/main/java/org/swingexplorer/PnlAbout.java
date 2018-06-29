@@ -36,16 +36,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Calendar;
 
-import javax.swing.ButtonModel;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
+import javax.swing.*;
 
 
 /**
@@ -166,7 +157,7 @@ public class PnlAbout extends javax.swing.JPanel {
 
 	public static void main(String[] args) {
 		JFrame frm = new JFrame();
-		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frm.setBounds(100,  100, 400, 300);
 		frm.setVisible(true);
 		openModal(frm);

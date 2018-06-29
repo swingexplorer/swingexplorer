@@ -38,7 +38,7 @@ public class RichToolbar extends JToolBar {
 	public AbstractButton addActionEx(Action a) {
 		String text = a != null ? (String) a.getValue(Action.NAME) : null;
 		Icon icon = a != null ? (Icon) a.getValue(Action.SMALL_ICON) : null;
-		boolean enabled = a != null ? a.isEnabled() : true;
+		boolean enabled = a == null || a.isEnabled();
 		String tooltip = a != null ? (String) a
 				.getValue(Action.SHORT_DESCRIPTION) : null;
 

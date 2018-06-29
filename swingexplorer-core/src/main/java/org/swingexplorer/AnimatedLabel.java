@@ -63,11 +63,10 @@ public class AnimatedLabel extends JLabel {
         
         // calculate maximal icon size and set icons to list
         maxIconSize = new Dimension(0, 0);
-        for(int i = 0; i < _icons.length; i++) {
-            Icon curIcon = _icons[i] == null ? EMPTY_ICON : _icons[i];
+        for (Icon _icon : _icons) {
+            Icon curIcon = _icon == null ? EMPTY_ICON : _icon;
             maxIconSize.height = Math.max(curIcon.getIconHeight(), maxIconSize.height);
             maxIconSize.width = Math.max(curIcon.getIconWidth(), maxIconSize.width);
-            
             icons.add(curIcon);
         }
     }
@@ -77,7 +76,7 @@ public class AnimatedLabel extends JLabel {
      * @return
      */
     public Icon[] getIcons() {
-        return icons.toArray(new Icon[icons.size()]);
+        return icons.toArray(new Icon[0]);
     }
     
     public AnimatedLabel() {

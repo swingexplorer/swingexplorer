@@ -56,7 +56,7 @@ public class IntArrayConverter implements Converter<int[]>{
 		
 		StringBuilder buf = new StringBuilder();
 		for(int v : value) {
-			buf.append(v + ",");
+			buf.append(v).append(",");
 		}
 		
 		// remove last ,
