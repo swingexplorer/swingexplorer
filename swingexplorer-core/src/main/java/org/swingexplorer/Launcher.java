@@ -127,7 +127,7 @@ public class Launcher implements Runnable {
             "\n" +
             "Agent mode (slower, but has a bit more functionality):\n" +
             "  java -javaagent:swingexplorer-agent-<version>.jar -Xbootclasspath/a:swingexplorer-agent-<version>.jar -cp swingexplorer-core-<version>.jar;[<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n";
-
+	
     /**
      * Launch the Swing Explorer GUI.
      *
@@ -182,16 +182,20 @@ public class Launcher implements Runnable {
 		for (int i = 0; i < newArgs.length; i++) {
 			newArgs[i] = args[i + 1];
 		}
-		
+
+        String userProgramClassName = args[0];
+        customizeProgramAppearance(userProgramClassName);
+
         try {
-            mainClass = Class.forName(args[0]);
+            mainClass = Class.forName(userProgramClassName);
 			mainMethod = mainClass.getMethod("main", new Class[]{String[].class});
         } catch(ClassNotFoundException ex) {
-            String msg = MessageFormat.format("ERROR: can not find class {0} specified as argument. Please check classpath and class name.", args[0]);
+            String msg = MessageFormat.format("ERROR: can not find class {0} specified as argument. Please check classpath and class name.",
+                userProgramClassName);
             System.err.println(msg);
             return;
         } catch(NoSuchMethodException ex) {
-            String msg = MessageFormat.format("ERROR: can not find main method in the class {0}.", args[0]);
+            String msg = MessageFormat.format("ERROR: can not find main method in the class {0}.", userProgramClassName);
             System.err.println(msg);
             return;
         }
@@ -203,11 +207,21 @@ public class Launcher implements Runnable {
         try {
             mainMethod.invoke(mainClass, new Object[]{newArgs});
         } catch(Exception ex) {
-            String msg = MessageFormat.format("ERROR: cannot invoke main method in the class {0}.", args[0]);
+            String msg = MessageFormat.format("ERROR: cannot invoke main method in the class {0}.", userProgramClassName);
             System.err.println(msg);
             ex.printStackTrace(System.err);
         }
 	}
 
+    private static void customizeProgramAppearance(String userProgramClassName) {
+        int ixLastDot = userProgramClassName.lastIndexOf('.');
+        String userProgramClassSimpleName = (ixLastDot >= 0) ? userProgramClassName.substring(ixLastDot + 1)
+            : userProgramClassName;
+        String appDisplayName = "Swing Explorer - " + userProgramClassSimpleName;
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.contains("mac")) {
+            System.setProperty("apple.awt.application.name", appDisplayName);
+        }
+    }
 }
 
