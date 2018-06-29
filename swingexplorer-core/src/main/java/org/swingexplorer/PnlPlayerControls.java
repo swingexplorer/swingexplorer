@@ -58,7 +58,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
     private void initComponents() {
 
         scpOperations = new javax.swing.JScrollPane();
-        lstOperations = new javax.swing.JList();
+        lstOperations = new javax.swing.JList<>();
         slider = new javax.swing.JSlider();
         spinner = new javax.swing.JSpinner();
         btnPlayPause = new javax.swing.JButton();
@@ -69,11 +69,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
         btnDumpStackTrace = new javax.swing.JButton();
         btnSrc = new javax.swing.JButton();
 
-        lstOperations.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        lstOperations.setModel(new OperationListModel());
         lstOperations.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstOperations.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -212,7 +208,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
     private javax.swing.JButton btnSrc;
     private javax.swing.JButton btnToEnd;
     private javax.swing.JButton btnToStart;
-    private javax.swing.JList lstOperations;
+    private javax.swing.JList<Operation> lstOperations;
     private javax.swing.JScrollPane scpOperations;
     private javax.swing.JSlider slider;
     private javax.swing.JSpinner spinner;
@@ -350,7 +346,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
 		}        
     }
     
-    class OperationListModel extends AbstractListModel {
+    class OperationListModel extends AbstractListModel<Operation> {
 
     	Operation[] operations = new Operation[0];
 
@@ -375,7 +371,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
 			return operations.length;
 		}
 
-		public Object getElementAt(int index) {
+		public Operation getElementAt(int index) {
 			return operations[index];
 		}    	
     }

@@ -54,7 +54,7 @@ public class FrmPerson extends javax.swing.JFrame {
         rbnMale = new javax.swing.JRadioButton();
         rbnFemale = new javax.swing.JRadioButton();
         lblCountry = new javax.swing.JLabel();
-        cmbCountry = new javax.swing.JComboBox();
+        cmbCountry = new javax.swing.JComboBox<String>();
         lblDescription = new javax.swing.JLabel();
         btnModalDialog = new javax.swing.JButton();
         btnOwnerlessModalDialog = new javax.swing.JButton();
@@ -122,7 +122,7 @@ public class FrmPerson extends javax.swing.JFrame {
 
         lblCountry.setText("Country:");
 
-        cmbCountry.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "England", "Belgium", "France", "Spain", "Italy", "Germany" }));
+        cmbCountry.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "England", "Belgium", "France", "Spain", "Italy", "Germany" }));
 
         lblDescription.setFont(new java.awt.Font("Tahoma", 1, 12));
         lblDescription.setText("This is sample Swing application to demonstrate Swing Explorer");
@@ -370,7 +370,7 @@ public class FrmPerson extends javax.swing.JFrame {
     private javax.swing.JButton btnThreadViolation;
     private javax.swing.JButton btnThreadViolation2;
     private javax.swing.JButton btnThreadViolation3;
-    private javax.swing.JComboBox cmbCountry;
+    private javax.swing.JComboBox<String> cmbCountry;
     private javax.swing.ButtonGroup grpGender;
     private javax.swing.JLabel lblCountry;
     private javax.swing.JLabel lblDescription;
