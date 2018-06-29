@@ -255,7 +255,7 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
     ModelListener listener = new ModelListener();
     PlayerListener playerListener = new PlayerListenerImpl();
     
-    JComboBox  cmbScale = new JComboBox();
+    JComboBox<String> cmbScale = new JComboBox<>();
     
     ActRefresh actRefresh;
     ActDisplayComponent actDisplayComponent;
@@ -304,7 +304,7 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
         cmbScale.setEditable(true);
         //cmbScale.setPreferredSize(new Dimension(20,16));
         cmbScale.setMaximumSize(new Dimension(60, 20));
-        cmbScale.setModel(new DefaultComboBoxModel(new String[]{"25%", "50%", "75%", "100%", "125%", "150%", "175%", "200%"}));
+        cmbScale.setModel(new DefaultComboBoxModel<String>(new String[]{"25%", "50%", "75%", "100%", "125%", "150%", "175%", "200%"}));
         tlbMain.add(cmbScale);
         cmbScale.setSelectedItem("" + (int)(application.model.getDisplayScale()*100) + "%");
         

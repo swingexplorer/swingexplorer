@@ -61,7 +61,8 @@ public class CustomComboBoxUI extends MetalComboBoxUI {
             paintCurrentValue(g,r,hasFocus);
         }
     }
-    
+
+    @SuppressWarnings("unchecked")
     public void paintCurrentValue(Graphics g,Rectangle bounds,boolean hasFocus) {
         ListCellRenderer renderer = comboBox.getRenderer();
         Component c;

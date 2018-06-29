@@ -36,7 +36,7 @@ import javax.swing.UIManager;
  *
  * @author  Maxim Zakharenkov
  */
-public class ColorComboBox extends JComboBox {
+public class ColorComboBox extends JComboBox<Color> {
 
 	
 	public ColorComboBox() {
@@ -63,8 +63,12 @@ public class ColorComboBox extends JComboBox {
 	public Color getSelectedColor() {
 		return (Color)getSelectedItem();
 	}
-	
-	
+
+	@SuppressWarnings("unchecked")
+	public void setRenderer(ListCellRenderer aRenderer) {
+        super.setRenderer(aRenderer);
+    }
+
 	
 	static class ColorCellRenderer extends DefaultListCellRenderer {
 
