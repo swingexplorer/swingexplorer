@@ -127,7 +127,46 @@ public class Launcher implements Runnable {
             "\n" +
             "Agent mode (slower, but has a bit more functionality):\n" +
             "  java -javaagent:swingexplorer-agent-<version>.jar -Xbootclasspath/a:swingexplorer-agent-<version>.jar -cp swingexplorer-core-<version>.jar;[<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n";
-    
+
+    /**
+     * Launch the Swing Explorer GUI.
+     *
+     * This launches the Swing Explorer GUI in the current process. It does not
+     * do anything about calling the user program's main method. This method
+     * is useful for programs that wish to use Swing Explorer as a library and
+     * launch it on their own initiative after the application has started.
+     *
+     * Does not throw exceptions. If an error occurs during launching, the stack
+     * trace is printed to standard error.
+     */
+	public static void launch() {
+        try {
+            final Launcher app = new Launcher();
+            SwingUtilities.invokeAndWait(app);
+        } catch (Exception e) {
+            System.err.println("An error occurred while starting Swing Explorer: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Run a user-specified program with Swing Explorer running in it.
+     *
+     * This main method will set up Swing Explorer in the current Java process
+     * and then pass control to the main() method of the specified class.
+     *
+     * If an error occurs (in locating or loading the user program class, running
+     * Swing Explorer, or running main() in the user program class), an error
+     * message is printed to System.err, and execution continues. This will typically
+     * result in the program exiting, with a zero exit status.
+     *
+     * The first argument to main() is the fully-qualified name of the user program class.
+     * The remaining arguments are passed as arguments to the user program class's
+     * main() method.
+     *
+     * @param args the user program class, and any additional arguments to pass to
+     *             its main() method
+     */
 	public static void main(String[] args) {
         
         Method mainMethod = null;
@@ -158,13 +197,8 @@ public class Launcher implements Runnable {
         }
 
         // launching Swing explorer
-        final Launcher app = new Launcher();
-        try {
-			SwingUtilities.invokeAndWait(app);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        
+        launch();
+
         // launching application
         try {
             mainMethod.invoke(mainClass, new Object[]{newArgs});
