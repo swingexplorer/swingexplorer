@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -30,13 +30,13 @@ import org.swingexplorer.awt_events.filter.PNLEventFilter;
  */
 public class ActEventFilterChanged implements ItemListener {
 
-	PNLEventFilter owner;
-	
-	public ActEventFilterChanged(PNLEventFilter _owner) {
-		owner = _owner;
-	}
-	
-	public void itemStateChanged(ItemEvent e) {
-		Filter filter = owner.commit();
-	}
+    PNLEventFilter owner;
+    
+    public ActEventFilterChanged(PNLEventFilter _owner) {
+        owner = _owner;
+    }
+    
+    public void itemStateChanged(ItemEvent e) {
+        Filter filter = owner.commit();
+    }
 }

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -31,15 +31,15 @@ import org.swingexplorer.RichAction;
  */
 public class ActStartEventMonitoring extends RichAction {
 
-	AWTEventModel model;
-	
-	ActStartEventMonitoring(AWTEventModel modelP) {
-		setTooltip("Start event monitoring");
-		setIcon("play.png");
-		model = modelP;
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		model.setMonitoring(true);
-	}
+    AWTEventModel model;
+    
+    ActStartEventMonitoring(AWTEventModel modelP) {
+        setTooltip("Start event monitoring");
+        setIcon("play.png");
+        model = modelP;
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        model.setMonitoring(true);
+    }
 }

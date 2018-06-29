@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -44,21 +44,21 @@ import org.swingexplorer.awt_events.filter.PNLEventFilter;
  */
 public class ActShowFilter extends RichAction {
 
-	
-	PNLAwtEvents owner;
-	JPopupMenu popup;
-	boolean selected = false;
+    
+    PNLAwtEvents owner;
+    JPopupMenu popup;
+    boolean selected = false;
     JDialog dlg;
 
-	public ActShowFilter(PNLAwtEvents _owner) {
-		owner =_owner;
-		setName("Filter");
+    public ActShowFilter(PNLAwtEvents _owner) {
+        owner =_owner;
+        setName("Filter");
 
         
-	}
-	
-	
-	public void actionPerformed(ActionEvent e) {
+    }
+    
+    
+    public void actionPerformed(ActionEvent e) {
         if(dlg == null) {
             //  create undecorated dialog
             Window wndAncestor = SwingUtilities.getWindowAncestor(owner);
@@ -99,10 +99,10 @@ public class ActShowFilter extends RichAction {
             dlg.pack();
         }
         
-		// set dialog's location near btnShowFilter button
-		Point location = owner.btnShowFilter.getLocationOnScreen();
-		location.x += owner.btnShowFilter.getWidth();
-		dlg.setLocation(location);
-		dlg.setVisible(!dlg.isVisible());
-	}
+        // set dialog's location near btnShowFilter button
+        Point location = owner.btnShowFilter.getLocationOnScreen();
+        location.x += owner.btnShowFilter.getWidth();
+        dlg.setLocation(location);
+        dlg.setVisible(!dlg.isVisible());
+    }
 }

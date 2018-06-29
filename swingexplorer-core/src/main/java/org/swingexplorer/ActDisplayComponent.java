@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -30,20 +30,20 @@ import javax.swing.JOptionPane;
  */
 public class ActDisplayComponent extends RichAction {
 
-	MdlSwingExplorer model;
+    MdlSwingExplorer model;
     PNLComponentTree pnlComponentTree;
-	
-	ActDisplayComponent(MdlSwingExplorer modelP, PNLComponentTree pnlComponentTreeP) {
-		setName("Display");
-		setTooltip("Display selected component");
-		setIcon("display.png");
-		
-		model = modelP;
+    
+    ActDisplayComponent(MdlSwingExplorer modelP, PNLComponentTree pnlComponentTreeP) {
+        setName("Display");
+        setTooltip("Display selected component");
+        setIcon("display.png");
+        
+        model = modelP;
                 pnlComponentTree = pnlComponentTreeP;
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		Component selected = pnlComponentTree.getSelectedComponent();
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        Component selected = pnlComponentTree.getSelectedComponent();
         try {
             if(selected == null) {
                 throw new DisplayableException("There is no component selected");
@@ -52,6 +52,6 @@ public class ActDisplayComponent extends RichAction {
         } catch (DisplayableException ex) {
             JOptionPane.showMessageDialog(pnlComponentTree, ex.getMessage());
         }
-	}
+    }
 
 }

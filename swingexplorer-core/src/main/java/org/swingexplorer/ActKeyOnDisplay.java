@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -28,24 +28,24 @@ import java.awt.event.KeyListener;
  */
 public class ActKeyOnDisplay implements KeyListener {
 
-	
-	PNLGuiDisplay display;
-	MdlSwingExplorer model;
-	
-	ActKeyOnDisplay(PNLGuiDisplay displayP, MdlSwingExplorer modelP) {
-		display = displayP;
-		model = modelP;
-	}
-	
-	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			model.setMeasurePoint1(null);
-		}
-	}
+    
+    PNLGuiDisplay display;
+    MdlSwingExplorer model;
+    
+    ActKeyOnDisplay(PNLGuiDisplay displayP, MdlSwingExplorer modelP) {
+        display = displayP;
+        model = modelP;
+    }
+    
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            model.setMeasurePoint1(null);
+        }
+    }
 
-	public void keyReleased(KeyEvent e) {
-	}
+    public void keyReleased(KeyEvent e) {
+    }
 
-	public void keyTyped(KeyEvent e) {
-	}
+    public void keyTyped(KeyEvent e) {
+    }
 }

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -49,151 +49,151 @@ import javax.swing.border.Border;
  */
 public class PNLGuiDisplay extends JComponent {
 
-	private MdlSwingExplorer model;
+    private MdlSwingExplorer model;
 
-	private ModelListener modelListener = new ModelListener();
-	
-	
-	public PNLGuiDisplay() {
-	}
+    private ModelListener modelListener = new ModelListener();
+    
+    
+    public PNLGuiDisplay() {
+    }
 
-	@Override
-	protected void paintComponent(Graphics g_old) {
+    @Override
+    protected void paintComponent(Graphics g_old) {
 
-		Graphics2D g = (Graphics2D) g_old.create();
+        Graphics2D g = (Graphics2D) g_old.create();
 
-		if (model == null) {
-			g.drawString("No model set", 0, 20);
-			return;
-		}
-		
-		ImageIcon displayedComponentImage = model.getDisplayedComponentImage();
-		if (displayedComponentImage == null) {
-			g.drawString("Displayable component is not selected", 0, 20);
-			return;
-		}
-
-		Graphics2D gScaled =  (Graphics2D)g.create();
-        gScaled.scale(model.getDisplayScale(), model.getDisplayScale());
-		displayedComponentImage.paintIcon(this, gScaled, 0, 0);
-
-		// paint all selected components
-		for (Component comp : model.getSelectedComponents()) {
-			
-			if(!SwingUtilities.isDescendingFrom(comp, model.getDisplayedComponent())) {
-				continue;
-			}
-			
-			Rectangle selRect = translateComponentBoundsToDisplay(comp);
-			if (selRect != null) {
-				paintSelection((Graphics2D)g_old, selRect, getBorderInsets(comp));
-			}
-		}
-
-		// paint current component		
-		Component comp = model.getCurrentComponent();		
-		if (comp != null) {
-			Rectangle compRect = translateComponentBoundsToDisplay(comp);
-			Rectangle prefSizeRect = translateComponentPreferredSizeToDisplay(comp);
-            Insets translatedInsets = translateBorderInsetsToDisplay(getBorderInsets(comp));
-			paintCurrent((Graphics2D)g_old, compRect, prefSizeRect, translatedInsets);			
-			
-		}
-		
-		// measure line
-		paintMeasureLine((Graphics2D)g_old, model.getMeasurePoint1(), model.getMouseLocation());
-
-		g.dispose();
-	}
-
-	private Insets getBorderInsets(Component comp) {
-		if(comp instanceof JComponent) {
-			JComponent casted = (JComponent)comp;
-			Border border = casted.getBorder();
-			if(border != null) {
-				return border.getBorderInsets(casted);
-			}
-		}
-		return null;
-	}
-	
-	private void paintCurrent(Graphics2D g, Rectangle compRect, Rectangle prefSizeRect, Insets borderInsets) {
-		g = (Graphics2D) g.create();
-
-		Options settings = model.getOptions();
-		g.setColor(settings.getComponentIncludingBorderColor());
-		g.setStroke(settings.getCurrentStroke());
-		g.drawRect(compRect.x, compRect.y, compRect.width, compRect.height);
-		
-		if(model.getOptions().isDisplayPreferredSize()) {
-			g.setColor(settings.getPreferredSizeColor());
-			g.setStroke(settings.getPreferredSizeStroke());
-			g.drawRect(prefSizeRect.x, prefSizeRect.y, prefSizeRect.width, prefSizeRect.height);
-//			g.drawLine(prefSizeRect.x, prefSizeRect.y + prefSizeRect.height, prefSizeRect.x + prefSizeRect.width, prefSizeRect.y + prefSizeRect.height);
-//			g.drawLine(prefSizeRect.x + prefSizeRect.width, prefSizeRect.y + prefSizeRect.height, prefSizeRect.x + prefSizeRect.width, prefSizeRect.y);
-		}
-		
-		if(borderInsets != null) {
-
-			Paint paint = new TexturePaint(settings.getComponentWithoutBorderTexture(), new Rectangle(0, 0, 4, 4));
-			g.setPaint(paint);
-			g.drawRect(compRect.x + borderInsets.left, compRect.y + borderInsets.top, 
-					compRect.width - borderInsets.left - borderInsets.right, 
-					compRect.height  - borderInsets.top - borderInsets.bottom);
-		}
-
-		g.dispose();
-	}
-
-	protected void paintSelection(Graphics2D g, Rectangle selRect, Insets borderInsets) {
-		g = (Graphics2D) g.create();
-
-		Options settings = model.getOptions();
-		g.setColor(settings.getSelectedColor());
-		g.setStroke(settings.getSelectedStroke());
-		g.fillRect(selRect.x, selRect.y, selRect.width, selRect.height);
-
-		g.dispose();
-	}
-	
-
-	protected void paintMeasureLine(Graphics2D g, Point p1, Point p2) {
-
-		if (p1 == null || p2 == null) {
-			return;
-		}
+        if (model == null) {
+            g.drawString("No model set", 0, 20);
+            return;
+        }
         
-		g = (Graphics2D) g.create();
-		
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		
-		Options settings = model.getOptions();
-		int size = settings.getMeasurePointSize();
+        ImageIcon displayedComponentImage = model.getDisplayedComponentImage();
+        if (displayedComponentImage == null) {
+            g.drawString("Displayable component is not selected", 0, 20);
+            return;
+        }
 
-		g.setColor(settings.getMeasureLineColor());
+        Graphics2D gScaled =  (Graphics2D)g.create();
+        gScaled.scale(model.getDisplayScale(), model.getDisplayScale());
+        displayedComponentImage.paintIcon(this, gScaled, 0, 0);
 
-		if (p1 != null) {
-			paintMeasurePoint(g, p1, size);
-		}
-		if (p2 != null) {
-			paintMeasurePoint(g, p2, size);
-		}
+        // paint all selected components
+        for (Component comp : model.getSelectedComponents()) {
+            
+            if(!SwingUtilities.isDescendingFrom(comp, model.getDisplayedComponent())) {
+                continue;
+            }
+            
+            Rectangle selRect = translateComponentBoundsToDisplay(comp);
+            if (selRect != null) {
+                paintSelection((Graphics2D)g_old, selRect, getBorderInsets(comp));
+            }
+        }
 
-		if (p1 != null && p2 != null && !p1.equals(p2)) {
-			g.setStroke(settings.getMeasureLineStroke());
-			g.drawLine(p1.x, p1.y, p2.x, p2.y);
-			
-			int distance = (int)(p1.distance(p2)/model.getDisplayScale());
-			String txt = "" + distance + " px";
-			
-			
-			Font font = g.getFont().deriveFont(Font.BOLD);
-			g.setFont(font);
-			Rectangle2D fontBounds = font.getStringBounds(txt, g.getFontRenderContext());
-			fontBounds.setFrame(fontBounds.getX() - 1, fontBounds.getY() - 1 , fontBounds.getWidth() + 2, fontBounds.getHeight() + 2);
-			
-			int xAvg = (p1.x + p2.x)/2;
-			int yAvg = (p1.y + p2.y)/2;
+        // paint current component      
+        Component comp = model.getCurrentComponent();       
+        if (comp != null) {
+            Rectangle compRect = translateComponentBoundsToDisplay(comp);
+            Rectangle prefSizeRect = translateComponentPreferredSizeToDisplay(comp);
+            Insets translatedInsets = translateBorderInsetsToDisplay(getBorderInsets(comp));
+            paintCurrent((Graphics2D)g_old, compRect, prefSizeRect, translatedInsets);          
+            
+        }
+        
+        // measure line
+        paintMeasureLine((Graphics2D)g_old, model.getMeasurePoint1(), model.getMouseLocation());
+
+        g.dispose();
+    }
+
+    private Insets getBorderInsets(Component comp) {
+        if(comp instanceof JComponent) {
+            JComponent casted = (JComponent)comp;
+            Border border = casted.getBorder();
+            if(border != null) {
+                return border.getBorderInsets(casted);
+            }
+        }
+        return null;
+    }
+    
+    private void paintCurrent(Graphics2D g, Rectangle compRect, Rectangle prefSizeRect, Insets borderInsets) {
+        g = (Graphics2D) g.create();
+
+        Options settings = model.getOptions();
+        g.setColor(settings.getComponentIncludingBorderColor());
+        g.setStroke(settings.getCurrentStroke());
+        g.drawRect(compRect.x, compRect.y, compRect.width, compRect.height);
+        
+        if(model.getOptions().isDisplayPreferredSize()) {
+            g.setColor(settings.getPreferredSizeColor());
+            g.setStroke(settings.getPreferredSizeStroke());
+            g.drawRect(prefSizeRect.x, prefSizeRect.y, prefSizeRect.width, prefSizeRect.height);
+//          g.drawLine(prefSizeRect.x, prefSizeRect.y + prefSizeRect.height, prefSizeRect.x + prefSizeRect.width, prefSizeRect.y + prefSizeRect.height);
+//          g.drawLine(prefSizeRect.x + prefSizeRect.width, prefSizeRect.y + prefSizeRect.height, prefSizeRect.x + prefSizeRect.width, prefSizeRect.y);
+        }
+        
+        if(borderInsets != null) {
+
+            Paint paint = new TexturePaint(settings.getComponentWithoutBorderTexture(), new Rectangle(0, 0, 4, 4));
+            g.setPaint(paint);
+            g.drawRect(compRect.x + borderInsets.left, compRect.y + borderInsets.top, 
+                    compRect.width - borderInsets.left - borderInsets.right, 
+                    compRect.height  - borderInsets.top - borderInsets.bottom);
+        }
+
+        g.dispose();
+    }
+
+    protected void paintSelection(Graphics2D g, Rectangle selRect, Insets borderInsets) {
+        g = (Graphics2D) g.create();
+
+        Options settings = model.getOptions();
+        g.setColor(settings.getSelectedColor());
+        g.setStroke(settings.getSelectedStroke());
+        g.fillRect(selRect.x, selRect.y, selRect.width, selRect.height);
+
+        g.dispose();
+    }
+    
+
+    protected void paintMeasureLine(Graphics2D g, Point p1, Point p2) {
+
+        if (p1 == null || p2 == null) {
+            return;
+        }
+        
+        g = (Graphics2D) g.create();
+        
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        Options settings = model.getOptions();
+        int size = settings.getMeasurePointSize();
+
+        g.setColor(settings.getMeasureLineColor());
+
+        if (p1 != null) {
+            paintMeasurePoint(g, p1, size);
+        }
+        if (p2 != null) {
+            paintMeasurePoint(g, p2, size);
+        }
+
+        if (p1 != null && p2 != null && !p1.equals(p2)) {
+            g.setStroke(settings.getMeasureLineStroke());
+            g.drawLine(p1.x, p1.y, p2.x, p2.y);
+            
+            int distance = (int)(p1.distance(p2)/model.getDisplayScale());
+            String txt = "" + distance + " px";
+            
+            
+            Font font = g.getFont().deriveFont(Font.BOLD);
+            g.setFont(font);
+            Rectangle2D fontBounds = font.getStringBounds(txt, g.getFontRenderContext());
+            fontBounds.setFrame(fontBounds.getX() - 1, fontBounds.getY() - 1 , fontBounds.getWidth() + 2, fontBounds.getHeight() + 2);
+            
+            int xAvg = (p1.x + p2.x)/2;
+            int yAvg = (p1.y + p2.y)/2;
             
             double dX = p1.x - p2.x ;
             double dY = p1.y - p2.y;
@@ -233,16 +233,16 @@ public class PNLGuiDisplay extends JComponent {
             
             x = fontRect.x;
             y = fontRect.y;
-			g.setStroke(new BasicStroke(1));
-			g.setColor(settings.getHintBackground());
-			g.fill(fontRect);
-			g.setColor(settings.getHintForeground());
-			g.draw(fontRect);
-			g.drawString(txt, fontRect.x - (int)fontBounds.getX(), fontRect.y - (int)fontBounds.getY());
-		}
+            g.setStroke(new BasicStroke(1));
+            g.setColor(settings.getHintBackground());
+            g.fill(fontRect);
+            g.setColor(settings.getHintForeground());
+            g.draw(fontRect);
+            g.drawString(txt, fontRect.x - (int)fontBounds.getX(), fontRect.y - (int)fontBounds.getY());
+        }
 
-		g.dispose();
-	}
+        g.dispose();
+    }
     
     
     Rectangle adjustFontRect(Point p1, Point p2, Rectangle rect, int minDist) {
@@ -325,99 +325,99 @@ public class PNLGuiDisplay extends JComponent {
     }
     
 
-	protected void paintMeasurePoint(Graphics2D g, Point p, int size) {
-		int halfSize = size / 2;
-		g.drawLine(p.x, p.y, p.x, p.y + halfSize);
-		g.drawLine(p.x, p.y, p.x + halfSize, p.y);
-		g.drawLine(p.x, p.y, p.x - halfSize, p.y );
-		g.drawLine(p.x, p.y, p.x, p.y - halfSize);
-	}
+    protected void paintMeasurePoint(Graphics2D g, Point p, int size) {
+        int halfSize = size / 2;
+        g.drawLine(p.x, p.y, p.x, p.y + halfSize);
+        g.drawLine(p.x, p.y, p.x + halfSize, p.y);
+        g.drawLine(p.x, p.y, p.x - halfSize, p.y );
+        g.drawLine(p.x, p.y, p.x, p.y - halfSize);
+    }
 
-	class ModelListener implements PropertyChangeListener {
+    class ModelListener implements PropertyChangeListener {
 
-		public void propertyChange(PropertyChangeEvent evt) {
-			String propName = evt.getPropertyName();
-			if ("displayedComponentImage".equals(propName)) {
-				revalidate();
-				repaint();
-			} else if ("currentComponent".equals(propName)) {
-				repaint();
-			} else if ("selectedComponents".equals(propName)) {
-				repaint();
-			} else if ("measurePoint1".equals(propName)) {
-				repaint();
-			} else if ("measurePoint2".equals(propName)) {
-				repaint();
-			} else if ("displayScale".equals(propName)) {
-				revalidate();
-				repaint();
-			} else if ("mouseLocation".equals(propName)) {
-				repaint();
-			}
-		}
-	}
+        public void propertyChange(PropertyChangeEvent evt) {
+            String propName = evt.getPropertyName();
+            if ("displayedComponentImage".equals(propName)) {
+                revalidate();
+                repaint();
+            } else if ("currentComponent".equals(propName)) {
+                repaint();
+            } else if ("selectedComponents".equals(propName)) {
+                repaint();
+            } else if ("measurePoint1".equals(propName)) {
+                repaint();
+            } else if ("measurePoint2".equals(propName)) {
+                repaint();
+            } else if ("displayScale".equals(propName)) {
+                revalidate();
+                repaint();
+            } else if ("mouseLocation".equals(propName)) {
+                repaint();
+            }
+        }
+    }
 
-	public void setModel(MdlSwingExplorer model) {
+    public void setModel(MdlSwingExplorer model) {
 
-		if (model == this.model) {
-			return;
-		}
+        if (model == this.model) {
+            return;
+        }
 
-		if (this.model != null) {
-			this.model.removePropertyChangeListener(modelListener);
-		}
-		if (model != null) {
-			model.addPropertyChangeListener(modelListener);
-		}
-		this.model = model;
-		repaint();
-	}
+        if (this.model != null) {
+            this.model.removePropertyChangeListener(modelListener);
+        }
+        if (model != null) {
+            model.addPropertyChangeListener(modelListener);
+        }
+        this.model = model;
+        repaint();
+    }
 
 
-	public Dimension getPreferredSize() {
+    public Dimension getPreferredSize() {
 
-		if(model == null) {
-			return super.getPreferredSize();
-		}
-		
-		ImageIcon displayedComponentImage = model.getDisplayedComponentImage();
-		if (displayedComponentImage == null) {
-			return new Dimension(0, 0);
-		}
+        if(model == null) {
+            return super.getPreferredSize();
+        }
+        
+        ImageIcon displayedComponentImage = model.getDisplayedComponentImage();
+        if (displayedComponentImage == null) {
+            return new Dimension(0, 0);
+        }
 
-		double scale = model.getDisplayScale();
-		return new Dimension((int) Math.round(scale
-				* displayedComponentImage.getIconWidth()), (int) Math
-				.round(scale * displayedComponentImage.getIconHeight()));
-	}
+        double scale = model.getDisplayScale();
+        return new Dimension((int) Math.round(scale
+                * displayedComponentImage.getIconWidth()), (int) Math
+                .round(scale * displayedComponentImage.getIconHeight()));
+    }
 
-	// calculate rectangle corresponding to given component
-	private Rectangle translateComponentBoundsToDisplay(Component comp) {
-		if(comp == null) {
-			return null;
-		}
-	
-		Point translated = calculateLocation(comp);
+    // calculate rectangle corresponding to given component
+    private Rectangle translateComponentBoundsToDisplay(Component comp) {
+        if(comp == null) {
+            return null;
+        }
+    
+        Point translated = calculateLocation(comp);
 
-		return new Rectangle((int)(translated.x*model.getDisplayScale()), 
+        return new Rectangle((int)(translated.x*model.getDisplayScale()), 
                             (int)(translated.y*model.getDisplayScale()), 
                             (int)(comp.getWidth()*model.getDisplayScale()), 
                             (int)(comp.getHeight()*model.getDisplayScale()));
-	}
-	
-	private Rectangle translateComponentPreferredSizeToDisplay(Component comp) {
-		if(comp == null) {
-			return null;
-		}
-		
-		Point translated = calculateLocation(comp);
+    }
+    
+    private Rectangle translateComponentPreferredSizeToDisplay(Component comp) {
+        if(comp == null) {
+            return null;
+        }
+        
+        Point translated = calculateLocation(comp);
 
-		Dimension prefSize = comp.getPreferredSize();
-		return new Rectangle((int)(translated.x*model.getDisplayScale()), 
+        Dimension prefSize = comp.getPreferredSize();
+        return new Rectangle((int)(translated.x*model.getDisplayScale()), 
                             (int)(translated.y*model.getDisplayScale()), 
                             (int)(prefSize.getWidth()*model.getDisplayScale()), 
                             (int)(prefSize.getHeight()*model.getDisplayScale()));
-	}
+    }
     
     private Insets translateBorderInsetsToDisplay(Insets insets) {
         if(insets == null) {
@@ -429,47 +429,47 @@ public class PNLGuiDisplay extends JComponent {
         insets.right = (int)(insets.right*model.getDisplayScale());
         return insets;
     }
-	
-	Point calculateLocation(Component comp) {
-		
-		int x = 0;
-		int y = 0;
-		
-		Component displayedComponent = model.getDisplayedComponent();
-		
-		while( comp != null && !(comp instanceof Window) && comp != displayedComponent) {
-			x = comp.getX() + x;
-			y = comp.getY() + y;
-			comp = comp.getParent();
-		}
-		return new Point(x, y);
-	}
-	
-	public Component getDisplayedComponentAt(Point location) {
-		Component comp = model.getDisplayedComponent();
-		if(comp != null) {
-			Component over = SwingUtilities.getDeepestComponentAt(comp, 
-					(int)(location.getX()/model.getDisplayScale()), 
-					(int)(location.getY()/model.getDisplayScale()));
-			
-			
-			// this is hack to select layered panel instead of glass panel
-			// in the JInternalFrame because SwingUtilities.getDeepestComponentAt
-			// selects glass pane by default
-			if(over != null && over.getParent() instanceof JRootPane) {
-				JRootPane rootPane = (JRootPane)over.getParent();
-				if(rootPane.getParent() instanceof JInternalFrame) {
-					// if we detected that it is inside internal frame then return
-					// layered pane
-					return rootPane.getLayeredPane();
-				}
-			}
-			
-			return over;
-		}
-		return null;
-	}
-	
-	
+    
+    Point calculateLocation(Component comp) {
+        
+        int x = 0;
+        int y = 0;
+        
+        Component displayedComponent = model.getDisplayedComponent();
+        
+        while( comp != null && !(comp instanceof Window) && comp != displayedComponent) {
+            x = comp.getX() + x;
+            y = comp.getY() + y;
+            comp = comp.getParent();
+        }
+        return new Point(x, y);
+    }
+    
+    public Component getDisplayedComponentAt(Point location) {
+        Component comp = model.getDisplayedComponent();
+        if(comp != null) {
+            Component over = SwingUtilities.getDeepestComponentAt(comp, 
+                    (int)(location.getX()/model.getDisplayScale()), 
+                    (int)(location.getY()/model.getDisplayScale()));
+            
+            
+            // this is hack to select layered panel instead of glass panel
+            // in the JInternalFrame because SwingUtilities.getDeepestComponentAt
+            // selects glass pane by default
+            if(over != null && over.getParent() instanceof JRootPane) {
+                JRootPane rootPane = (JRootPane)over.getParent();
+                if(rootPane.getParent() instanceof JInternalFrame) {
+                    // if we detected that it is inside internal frame then return
+                    // layered pane
+                    return rootPane.getLayeredPane();
+                }
+            }
+            
+            return over;
+        }
+        return null;
+    }
+    
+    
 }
 

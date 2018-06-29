@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -94,38 +94,38 @@ public class PNLEDTMonitor extends javax.swing.JPanel {
         initActions();
         
         treProblems.addMouseMotionListener(new MouseMotionListener() {
-			public void mouseDragged(MouseEvent e) {
-			}
-			public void mouseMoved(MouseEvent e) {
-		        if(getLink(e.getPoint()) != null) {
-		        	treProblems.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				} else {
-					treProblems.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		        }
-			}
+            public void mouseDragged(MouseEvent e) {
+            }
+            public void mouseMoved(MouseEvent e) {
+                if(getLink(e.getPoint()) != null) {
+                    treProblems.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                } else {
+                    treProblems.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                }
+            }
         });
         
         treProblems.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				String link = getLink(e.getPoint());
-				if (link != null) {
-					actOpenSourceCode.openSourceCode(link);
-				}
-			}
-		});
+            @Override
+            public void mousePressed(MouseEvent e) {
+                String link = getLink(e.getPoint());
+                if (link != null) {
+                    actOpenSourceCode.openSourceCode(link);
+                }
+            }
+        });
     }
     
     
     String getLink(Point p) {
-    	int row = treProblems.getRowForLocation(p.x, p.y);
+        int row = treProblems.getRowForLocation(p.x, p.y);
         if(row == -1) {
-        	return null;
+            return null;
         }
         TreePath path =  treProblems.getPathForRow(row);
         DefaultMutableTreeNode node = (DefaultMutableTreeNode)path.getLastPathComponent();
         if(!(node.getUserObject() instanceof String)) {
-        	return null;
+            return null;
         }
         String component = (String)node.getUserObject();
         
@@ -135,17 +135,17 @@ public class PNLEDTMonitor extends javax.swing.JPanel {
         HTMLDocument doc = new HTMLDocument();
         String text = null;
         try {
-			new HTMLEditorKit().read(reader, doc, 0);
-			text = doc.getText(0, doc.getLength());
-		} catch (Exception e1) {
-		} 
-		
-		
-		int idx1 = text.indexOf("(");
+            new HTMLEditorKit().read(reader, doc, 0);
+            text = doc.getText(0, doc.getLength());
+        } catch (Exception e1) {
+        } 
+        
+        
+        int idx1 = text.indexOf("(");
         int idx2 = text.indexOf(")", idx1);
         String strBefore = text.substring(0, idx1);
         String strIn = text.substring(idx1 - 1, idx2);
-		
+        
         
         FontMetrics metrics = getGraphics().getFontMetrics();
         int dx = metrics.stringWidth(strBefore);
@@ -156,20 +156,20 @@ public class PNLEDTMonitor extends javax.swing.JPanel {
         
         int labelStart = 0;
         Icon currentI = renderer.getIcon();
-		if(currentI != null && renderer.getText() != null) {
-			labelStart = currentI.getIconWidth() + Math.max(0, renderer.getIconTextGap() - 1);
-		}
+        if(currentI != null && renderer.getText() != null) {
+            labelStart = currentI.getIconWidth() + Math.max(0, renderer.getIconTextGap() - 1);
+        }
 
-		bounds.x += (dx + labelStart);
+        bounds.x += (dx + labelStart);
         bounds.width = width;
         
         if(bounds.contains(p)) {
-    		// obtain href value
-    		Iterator iter = (Iterator) doc.getIterator(HTML.getTag("a"));
-    		AttributeSet set = iter.getAttributes();
-    		if(set != null) {
-    			return (String)set.getAttribute(HTML.Attribute.HREF);
-    		}
+            // obtain href value
+            Iterator iter = (Iterator) doc.getIterator(HTML.getTag("a"));
+            AttributeSet set = iter.getAttributes();
+            if(set != null) {
+                return (String)set.getAttribute(HTML.Attribute.HREF);
+            }
         } 
         return null;
     }
@@ -276,7 +276,7 @@ public class PNLEDTMonitor extends javax.swing.JPanel {
     
     private void chbEDTViolationsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbEDTViolationsItemStateChanged
         if(!mdlMonitor.isViolationMonitoringAvailable() && evt.getStateChange() == ItemEvent.SELECTED) {
-        	PNLNoAgentModeMessage.openDialog(this);
+            PNLNoAgentModeMessage.openDialog(this);
             chbEDTViolations.setSelected(false);
             return;
         }
@@ -337,9 +337,9 @@ public class PNLEDTMonitor extends javax.swing.JPanel {
         // adding stack trace elements
         if(problem.getProblemTrace() != null) {
             for(StackTraceElement elem : problem.getProblemTrace()) {
-            	
-            	
-            	String strElement  = "<html>" + GuiUtils.formatElementToHTML(elem) + "</html>";
+                
+                
+                String strElement  = "<html>" + GuiUtils.formatElementToHTML(elem) + "</html>";
                 DefaultMutableTreeNode traceNode = new DefaultMutableTreeNode(strElement);
                 problemNode.add(traceNode);
             }
@@ -399,7 +399,7 @@ public class PNLEDTMonitor extends javax.swing.JPanel {
         }
     }
 
-	public void setIDESupport(IDESupport _ideSupport) {
-		actOpenSourceCode.ideSupport = _ideSupport;
-	}
+    public void setIDESupport(IDESupport _ideSupport) {
+        actOpenSourceCode.ideSupport = _ideSupport;
+    }
 }

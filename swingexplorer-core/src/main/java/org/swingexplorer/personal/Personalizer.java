@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -32,23 +32,23 @@ import org.swingexplorer.Options;
  */
 public interface Personalizer {
 
-	/**
-	 * Installs personalizer for a component.
-	 * Personalizer may add some listeners to
-	 * the component which perform necessary configuration
-	 * on event because it is often only possible to
-	 * set component's sizes after a specific event occures 
-	 * (e.g. component becomes visible or resized first) 
-	 * @param options
-	 * @param component
-	 */
-	public void install(Options options, Component component);
-	
-	/**
-	 * The method is called by application before it closes
-	 * down. This method saves state of a personalized component into
-	 * the Options object provided to personalizer in the install(Options, JComponent)
-	 * method.
-	 */
-	public void saveState();
+    /**
+     * Installs personalizer for a component.
+     * Personalizer may add some listeners to
+     * the component which perform necessary configuration
+     * on event because it is often only possible to
+     * set component's sizes after a specific event occures 
+     * (e.g. component becomes visible or resized first) 
+     * @param options
+     * @param component
+     */
+    public void install(Options options, Component component);
+    
+    /**
+     * The method is called by application before it closes
+     * down. This method saves state of a personalized component into
+     * the Options object provided to personalizer in the install(Options, JComponent)
+     * method.
+     */
+    public void saveState();
 }

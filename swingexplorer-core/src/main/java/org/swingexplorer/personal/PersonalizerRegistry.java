@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -33,32 +33,32 @@ import org.swingexplorer.Options;
  */
 public class PersonalizerRegistry {
 
-	Container parentContainer;
-	Options options;
-	
-	LinkedList<Personalizer> personalizers = new LinkedList<Personalizer>(); 
-	
-	public PersonalizerRegistry(Container _parentContainer, Options _options) {
-		parentContainer = _parentContainer;
-		options = _options;
-	}
-	
-	public void addPersonalizer(String beanName, Personalizer personalizer) {
-		Component component = GuiUtils.findComponentByName(parentContainer, beanName);
-		if(component == null) {
-			Log.general.error("Can not find bean with name \""+ beanName + "\" to install personalizer");
-			return;
-		}
-		personalizer.install(options, component);
-		personalizers.add(personalizer);
-		Log.general.debug("Personalizer installed for bean \"" + beanName + "\"");
-	}
-	
-	public void saveState() {
-		for(Personalizer curPersonalizer: personalizers) {
-			curPersonalizer.saveState();
-		}
-	}
+    Container parentContainer;
+    Options options;
+    
+    LinkedList<Personalizer> personalizers = new LinkedList<Personalizer>(); 
+    
+    public PersonalizerRegistry(Container _parentContainer, Options _options) {
+        parentContainer = _parentContainer;
+        options = _options;
+    }
+    
+    public void addPersonalizer(String beanName, Personalizer personalizer) {
+        Component component = GuiUtils.findComponentByName(parentContainer, beanName);
+        if(component == null) {
+            Log.general.error("Can not find bean with name \""+ beanName + "\" to install personalizer");
+            return;
+        }
+        personalizer.install(options, component);
+        personalizers.add(personalizer);
+        Log.general.debug("Personalizer installed for bean \"" + beanName + "\"");
+    }
+    
+    public void saveState() {
+        for(Personalizer curPersonalizer: personalizers) {
+            curPersonalizer.saveState();
+        }
+    }
 }
 
 

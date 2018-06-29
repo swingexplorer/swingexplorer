@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -29,19 +29,19 @@ import org.swingexplorer.idesupport.IDESupport;
  * @author  Maxim Zakharenkov
  */
 public class ActOpenSourceCode implements HyperlinkListener {
-	
-	IDESupport ideSupport;
-	private PNLAdditionTrace owner;
-	
-	ActOpenSourceCode(PNLAdditionTrace _owner) {
-		owner = _owner;
-	}
-	
-	public void hyperlinkUpdate(HyperlinkEvent e) {
-		if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-			
-			String[] params = e.getDescription().split(":");
-			ideSupport.requestCheckedOpenSourceCode(params[0], Integer.parseInt(params[1]), owner);
-		}
-	}
+    
+    IDESupport ideSupport;
+    private PNLAdditionTrace owner;
+    
+    ActOpenSourceCode(PNLAdditionTrace _owner) {
+        owner = _owner;
+    }
+    
+    public void hyperlinkUpdate(HyperlinkEvent e) {
+        if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+            
+            String[] params = e.getDescription().split(":");
+            ideSupport.requestCheckedOpenSourceCode(params[0], Integer.parseInt(params[1]), owner);
+        }
+    }
 }

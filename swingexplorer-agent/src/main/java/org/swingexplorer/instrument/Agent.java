@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -62,12 +62,12 @@ public class Agent {
     static boolean monitorEDTViolations;
 
     public static boolean isMonitorEDTViolations() {
-		return monitorEDTViolations;
-	}
+        return monitorEDTViolations;
+    }
 
-	public static void setMonitorEDTViolations(boolean monitorEDTViolations) {
-		Agent.monitorEDTViolations = monitorEDTViolations;
-	}
+    public static void setMonitorEDTViolations(boolean monitorEDTViolations) {
+        Agent.monitorEDTViolations = monitorEDTViolations;
+    }
     
     public static void premain(String agentArguments, Instrumentation instrumentation) {
         instrumentation.addTransformer(new Transformer());
@@ -174,17 +174,17 @@ public class Agent {
     }
     
     public static void processContainer_addImpl(Component component) {
-    	StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-    	
-    	// remove 2 last elements from stack trace
-    	StackTraceElement[] newStackTrace = new StackTraceElement[stackTrace.length - 2];
-    	System.arraycopy(stackTrace, 2, newStackTrace, 0, newStackTrace.length); 
-    	
-    	componentAddImplStackTraces.put(component, newStackTrace);
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        
+        // remove 2 last elements from stack trace
+        StackTraceElement[] newStackTrace = new StackTraceElement[stackTrace.length - 2];
+        System.arraycopy(stackTrace, 2, newStackTrace, 0, newStackTrace.length); 
+        
+        componentAddImplStackTraces.put(component, newStackTrace);
     }
     
     public static StackTraceElement[] getAddImplStackTrace(Component component) {
-    	return componentAddImplStackTraces.get(component);
+        return componentAddImplStackTraces.get(component);
     }
     
     static class Transformer implements ClassFileTransformer {
@@ -200,16 +200,16 @@ public class Agent {
             
             // instrumenting java.awt.Container.addImpl
             try {
-            	if(className.equals("java.awt.Container")) {
-            		CtClass ctClass = pool.get(className);
-            		CtMethod m = ctClass.getDeclaredMethod("addImpl");
-            		m.insertBefore("{org.swingexplorer.instrument.Agent.processContainer_addImpl($1);}");
-            		return ctClass.toBytecode();
-            	}
+                if(className.equals("java.awt.Container")) {
+                    CtClass ctClass = pool.get(className);
+                    CtMethod m = ctClass.getDeclaredMethod("addImpl");
+                    m.insertBefore("{org.swingexplorer.instrument.Agent.processContainer_addImpl($1);}");
+                    return ctClass.toBytecode();
+                }
             } catch(Exception ex) {
-            	error("Error instrumenting class: " + className);
+                error("Error instrumenting class: " + className);
                 if(first) {
-                	error(ex);
+                    error(ex);
                     first = false;
                 }
             }
@@ -233,7 +233,7 @@ public class Agent {
                             constr.insertBefore("{org.swingexplorer.instrument.Agent.checkEDT();}");
                         } catch(Exception ex) {
                             if(first) {
-                            	error(ex);
+                                error(ex);
                                 first = false;
                             }
                             error("Error instrumenting constructor: " + ctClass.getName() + " " + constr.getName() + constr.getSignature());
@@ -251,9 +251,9 @@ public class Agent {
                             }
                             m.insertAfter("{org.swingexplorer.instrument.Agent.finalizeCheckEDT();}", true);
                         } catch(Exception ex) {
-                        	error("Error instrumenting method: " + ctClass.getName() + " " + m.getName() + m.getSignature());
+                            error("Error instrumenting method: " + ctClass.getName() + " " + m.getName() + m.getSignature());
                             if(first) {
-                            	error(ex);
+                                error(ex);
                                 first = false;
                             }
                         }
@@ -261,12 +261,12 @@ public class Agent {
                     debug("Instrumented: " + ctClass.getName());
                     return ctClass.toBytecode();
                 } else {
-                	debug("NOT instrumented: " + ctClass.getName());
+                    debug("NOT instrumented: " + ctClass.getName());
                 }
             } catch (Exception e) {
-            	error("Error instrumenting class: " + className);
+                error("Error instrumenting class: " + className);
                 if(first) {
-                	error(e);
+                    error(e);
                     first = false;
                 }
             }
@@ -307,17 +307,17 @@ public class Agent {
             name.startsWith("remove") && name.endsWith("Listener");
     }
     
-	static void debug(String string) {
-//		System.out.println("[instrumentation][debug] " + string);
-	}
+    static void debug(String string) {
+//      System.out.println("[instrumentation][debug] " + string);
+    }
 
-	static void error(String string) {
-//		System.out.println("[instrumentation][error] " + string);
-	}
+    static void error(String string) {
+//      System.out.println("[instrumentation][error] " + string);
+    }
 
-	static void error(Exception ex) {
-//		System.out.print("[instrumentation][error] ");
-//		ex.printStackTrace(System.out);
-	}
+    static void error(Exception ex) {
+//      System.out.print("[instrumentation][error] ");
+//      ex.printStackTrace(System.out);
+    }
 }
 

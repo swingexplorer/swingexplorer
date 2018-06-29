@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -27,24 +27,24 @@ import java.text.ParseException;
  */
 public class BooleanConverter implements Converter<Boolean> {
 
-	public Boolean fromString(String strValue) throws ParseException {
-		if(strValue == null) {
-			return null;
-		}
-		if("true".equals(strValue)) {
-			return Boolean.TRUE;
-		}
-		if("false".equals(strValue)) {
-			return Boolean.FALSE;
-		}
-		throw new ParseException("Can not convert \"" + strValue + "\" to boolean", 0);
-	}
+    public Boolean fromString(String strValue) throws ParseException {
+        if(strValue == null) {
+            return null;
+        }
+        if("true".equals(strValue)) {
+            return Boolean.TRUE;
+        }
+        if("false".equals(strValue)) {
+            return Boolean.FALSE;
+        }
+        throw new ParseException("Can not convert \"" + strValue + "\" to boolean", 0);
+    }
 
-	public String toString(Boolean value) {
-		if(value == null) {
-			return null;
-		}
-		return value.toString();
-	}
+    public String toString(Boolean value) {
+        if(value == null) {
+            return null;
+        }
+        return value.toString();
+    }
 
 }

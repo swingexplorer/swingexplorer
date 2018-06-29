@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -30,21 +30,21 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
  */
 public class CustomSplitPaneUI extends BasicSplitPaneUI {
 
-	    public static ComponentUI createUI(JComponent x) {
-	    	return new CustomSplitPaneUI();
-	    }
+        public static ComponentUI createUI(JComponent x) {
+            return new CustomSplitPaneUI();
+        }
 
-	    protected void installDefaults() {
-	    	super.installDefaults();
-	    	getDivider().setDividerSize(3);
-	        splitPane.setBorder(null);
-	    }
-	    
-	    /**
-	      * Creates the default divider.
-	      */
-	    public BasicSplitPaneDivider createDefaultDivider() {
-	    	return new CustomSplitPaneDivider(this);
-	    }
+        protected void installDefaults() {
+            super.installDefaults();
+            getDivider().setDividerSize(3);
+            splitPane.setBorder(null);
+        }
+        
+        /**
+          * Creates the default divider.
+          */
+        public BasicSplitPaneDivider createDefaultDivider() {
+            return new CustomSplitPaneDivider(this);
+        }
 }
 

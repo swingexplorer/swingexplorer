@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -28,13 +28,13 @@ import javax.swing.event.ListSelectionListener;
  */
 public class ActEventSelected implements ListSelectionListener {
 
-	PNLAwtEvents owner;
-	
-	public ActEventSelected(PNLAwtEvents _owner) {
-		owner = _owner;
-	}
-	
-	public void valueChanged(ListSelectionEvent e) {
-		owner.pnlEventDetails.setEvent(owner.getSelectedEvent());
-	}
+    PNLAwtEvents owner;
+    
+    public ActEventSelected(PNLAwtEvents _owner) {
+        owner = _owner;
+    }
+    
+    public void valueChanged(ListSelectionEvent e) {
+        owner.pnlEventDetails.setEvent(owner.getSelectedEvent());
+    }
 }

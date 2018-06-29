@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -25,17 +25,17 @@ package org.swingexplorer.idesupport;
  */
 public interface IDESupportMBean {
 
-	/**
-	 * IDE plugin should call this method to notify
-	 * MBean that it connected it. It is useful
-	 * for showing right message to the user
-	 * when IDE integration is not available.
-	 */
-	public void connect();
-	
-	/**
-	 * IDE plugin should call this method when
-	 * IDE is closed and connection becomes unavailable.
-	 */
-	public void disconnect();
+    /**
+     * IDE plugin should call this method to notify
+     * MBean that it connected it. It is useful
+     * for showing right message to the user
+     * when IDE integration is not available.
+     */
+    public void connect();
+    
+    /**
+     * IDE plugin should call this method when
+     * IDE is closed and connection becomes unavailable.
+     */
+    public void disconnect();
 }

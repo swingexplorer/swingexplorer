@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -27,15 +27,15 @@ import org.swingexplorer.idesupport.IDESupport;
  */
 public class ActOpenSourceCode {
 
-	IDESupport ideSupport;
-	private PNLEDTMonitor owner;
-	
-	ActOpenSourceCode(PNLEDTMonitor _owner) {
-		owner = _owner;
-	}
-	
-	public void openSourceCode(String link) {
-		String[] params = link.split(":");
-		ideSupport.requestCheckedOpenSourceCode(params[0], Integer.parseInt(params[1]), owner);
-	}
+    IDESupport ideSupport;
+    private PNLEDTMonitor owner;
+    
+    ActOpenSourceCode(PNLEDTMonitor _owner) {
+        owner = _owner;
+    }
+    
+    public void openSourceCode(String link) {
+        String[] params = link.split(":");
+        ideSupport.requestCheckedOpenSourceCode(params[0], Integer.parseInt(params[1]), owner);
+    }
 }

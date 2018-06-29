@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -57,10 +57,10 @@ public abstract class Icons {
     }
      
      public static Image appSmallImage() {
-    	 return GuiUtils.getImage(BASE_PATH + "swex18x18.png");
+         return GuiUtils.getImage(BASE_PATH + "swex18x18.png");
      }
      
      public static Icon appLogo() {
-    	 return getImageIcon(BASE_PATH + "logo40x40.png");
+         return getImageIcon(BASE_PATH + "logo40x40.png");
      }
 }

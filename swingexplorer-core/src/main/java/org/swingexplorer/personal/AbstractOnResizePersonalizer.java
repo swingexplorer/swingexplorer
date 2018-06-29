@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -33,33 +33,33 @@ import org.swingexplorer.Options;
  */
 public abstract class AbstractOnResizePersonalizer<T extends Component> implements Personalizer {
 
-	protected Options options;
-	protected T component;
-	
-	public void install(Options _options, Component _component) {
-		component = (T)_component;
-		options = _options;
-		component.addComponentListener(new ResizeListener());
-	}
-	
-	class ResizeListener extends ComponentAdapter{
-    	int count = 0;
-    	public void componentResized(ComponentEvent e) {
-    		applyState();
-    		component.removeComponentListener(this);
-		}
+    protected Options options;
+    protected T component;
+    
+    public void install(Options _options, Component _component) {
+        component = (T)_component;
+        options = _options;
+        component.addComponentListener(new ResizeListener());
     }
-	
-	/**
-	 * Applies state from positions to component.
-	 * The method is called when component is first resized
-	 */
-	public abstract void applyState();
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public abstract void saveState();
+    
+    class ResizeListener extends ComponentAdapter{
+        int count = 0;
+        public void componentResized(ComponentEvent e) {
+            applyState();
+            component.removeComponentListener(this);
+        }
+    }
+    
+    /**
+     * Applies state from positions to component.
+     * The method is called when component is first resized
+     */
+    public abstract void applyState();
+    
+    /**
+     * {@inheritDoc}
+     */
+    public abstract void saveState();
 }
 
 

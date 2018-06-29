@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -34,15 +34,15 @@ import javax.swing.JOptionPane;
  * @author Maxim Zakharenkov
  */
 public class ActMouseClickOnDisplay extends MouseAdapter {
-	
-	PNLGuiDisplay display;
-	MdlSwingExplorer model;
-	
-	ActMouseClickOnDisplay(PNLGuiDisplay displayP, MdlSwingExplorer modelP) {
-		display = displayP;
-		model = modelP;
-	}
-	
+    
+    PNLGuiDisplay display;
+    MdlSwingExplorer model;
+    
+    ActMouseClickOnDisplay(PNLGuiDisplay displayP, MdlSwingExplorer modelP) {
+        display = displayP;
+        model = modelP;
+    }
+    
     @Override
     public void mousePressed(MouseEvent e) {
         Component comp = display.getDisplayedComponentAt(e.getPoint());
@@ -65,43 +65,43 @@ public class ActMouseClickOnDisplay extends MouseAdapter {
         }
     }
     
-	void handlePressed(MouseEvent e, Component comp) {
-		if(e.getButton() == BUTTON1) {
-			
-			int onmask = CTRL_DOWN_MASK;
-		 	if ((e.getModifiersEx() & onmask) == onmask) {
-		 		// add selection if control is pressed
-		 		if(model.isSelected(comp)) {
-		 			model.removeSelection(comp);
-		 		} else {
-		 			model.addSelection(comp);
-		 		}
-		 	} else {
-		 		// select only one component (remove other selections)
-		 		if(model.isSelected(comp)) {
-		 			model.setSelection(null);
-		 		} else {
-		 			model.setSelection(comp);
-		 		}
-		 	}
+    void handlePressed(MouseEvent e, Component comp) {
+        if(e.getButton() == BUTTON1) {
+            
+            int onmask = CTRL_DOWN_MASK;
+            if ((e.getModifiersEx() & onmask) == onmask) {
+                // add selection if control is pressed
+                if(model.isSelected(comp)) {
+                    model.removeSelection(comp);
+                } else {
+                    model.addSelection(comp);
+                }
+            } else {
+                // select only one component (remove other selections)
+                if(model.isSelected(comp)) {
+                    model.setSelection(null);
+                } else {
+                    model.setSelection(comp);
+                }
+            }
             model.setMeasurePoint1(null);
-		} else if(e.getButton() == BUTTON3) {
-			model.setMeasurePoint1(e.getPoint());
-		}
-		
-		// we need focus for diplay to receive key events over it
-		if(!display.hasFocus()) {
-			display.requestFocusInWindow();
-		}
-	}
-	
-	void doubleClick(MouseEvent e, Component comp) {
-		if(e.getButton() == BUTTON1) {
-			try {
+        } else if(e.getButton() == BUTTON3) {
+            model.setMeasurePoint1(e.getPoint());
+        }
+        
+        // we need focus for diplay to receive key events over it
+        if(!display.hasFocus()) {
+            display.requestFocusInWindow();
+        }
+    }
+    
+    void doubleClick(MouseEvent e, Component comp) {
+        if(e.getButton() == BUTTON1) {
+            try {
                 model.setDisplayedComponent(comp);
             } catch (DisplayableException ex) {
                 JOptionPane.showMessageDialog(display, ex.getMessage());
             }
-		}
-	}
+        }
+    }
 }

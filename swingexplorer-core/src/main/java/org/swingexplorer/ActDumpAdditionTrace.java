@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -32,23 +32,23 @@ import org.swingexplorer.instrument.Agent;
  */
 public class ActDumpAdditionTrace extends RichAction {
 
-	PNLComponentTree pnlComponentTree;
-	MdlSwingExplorer mdlSwingExplorer;
-	
-	ActDumpAdditionTrace(MdlSwingExplorer _mdlSwingExplorer, PNLComponentTree _pnlComponentTree) {
-		setName("Dump addition trace");
-		setTooltip("<html>Dumps a stack trace<br> where the component was<br> added into container</html>");
+    PNLComponentTree pnlComponentTree;
+    MdlSwingExplorer mdlSwingExplorer;
+    
+    ActDumpAdditionTrace(MdlSwingExplorer _mdlSwingExplorer, PNLComponentTree _pnlComponentTree) {
+        setName("Dump addition trace");
+        setTooltip("<html>Dumps a stack trace<br> where the component was<br> added into container</html>");
         pnlComponentTree = _pnlComponentTree;
         mdlSwingExplorer = _mdlSwingExplorer;
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		if(!Agent.isInstrumented()) {
-			PNLNoAgentModeMessage.openDialog(pnlComponentTree);
-			return;
-		}
-		
-		Component selected = pnlComponentTree.getSelectedComponent();
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        if(!Agent.isInstrumented()) {
+            PNLNoAgentModeMessage.openDialog(pnlComponentTree);
+            return;
+        }
+        
+        Component selected = pnlComponentTree.getSelectedComponent();
         try {
             if(selected == null) {
                 throw new DisplayableException("There is no component selected");
@@ -58,12 +58,12 @@ public class ActDumpAdditionTrace extends RichAction {
             System.out.println("Addition trace for component: " + componentPath);
             
             StackTraceElement[] stackTrace = Agent.getAddImplStackTrace(selected);
-            for(StackTraceElement elem : stackTrace) {            	
-            	System.out.println(elem.toString());
+            for(StackTraceElement elem : stackTrace) {              
+                System.out.println(elem.toString());
             }
         } catch (DisplayableException ex) {
             JOptionPane.showMessageDialog(pnlComponentTree, ex.getMessage());
         }
-	}
+    }
 
 }

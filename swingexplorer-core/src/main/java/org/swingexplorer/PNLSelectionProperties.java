@@ -18,16 +18,16 @@ import org.swingexplorer.properties.PNLPropertySheet;
  * @author  Maxim Zakharenkov
  */
 public class PNLSelectionProperties extends javax.swing.JPanel {
-	
-	PNLPropertySheet pnlPropertySheet;
+    
+    PNLPropertySheet pnlPropertySheet;
     MdlSwingExplorer model;
     ModelListener modelListener = new ModelListener();
-	
+    
     /** Creates new form PNLSelectionProperties */
     public PNLSelectionProperties() {
-    	pnlPropertySheet = new PNLPropertySheet();
-    	setLayout(new BorderLayout());
-    	add(pnlPropertySheet, BorderLayout.CENTER);
+        pnlPropertySheet = new PNLPropertySheet();
+        setLayout(new BorderLayout());
+        add(pnlPropertySheet, BorderLayout.CENTER);
         pnlPropertySheet.setColumnSize(0, 130);
         pnlPropertySheet.setColumnSize(1, 435);
         pnlPropertySheet.setName("pnlPropertySheet");

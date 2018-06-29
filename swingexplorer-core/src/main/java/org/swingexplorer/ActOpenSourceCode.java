@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -46,23 +46,23 @@ public class ActOpenSourceCode extends RichAction {
         
         Operation op = owner.player.getCurrentOperation();
         if(op == null) {
-        	return;
+            return;
         }
         StackTraceElement[] elems = op.getStackTrace();
         
         if(elems == null) {
-        	JOptionPane.showMessageDialog(owner, "Current operation has no source code");
-        	return;
+            JOptionPane.showMessageDialog(owner, "Current operation has no source code");
+            return;
         }
         
         try {
-        	ideSupport.requestOpenSourceCode(elems[0].getClassName(), elems[0].getLineNumber());
-    	} catch(IDENotConnectedException ex) {
-    		JOptionPane.showMessageDialog(owner, 
-    				"Can not open source code. IDE connection is not available.\n" +
-    				"The connection is available only when application is launched\n" +
-    				"from IDE using Swing Explorer plug-in.");
-    		return;
-    	}
+            ideSupport.requestOpenSourceCode(elems[0].getClassName(), elems[0].getLineNumber());
+        } catch(IDENotConnectedException ex) {
+            JOptionPane.showMessageDialog(owner, 
+                    "Can not open source code. IDE connection is not available.\n" +
+                    "The connection is available only when application is launched\n" +
+                    "from IDE using Swing Explorer plug-in.");
+            return;
+        }
     }
 }

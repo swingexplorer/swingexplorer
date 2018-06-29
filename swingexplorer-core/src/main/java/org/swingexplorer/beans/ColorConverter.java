@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -28,41 +28,41 @@ import java.text.ParseException;
  */
 public class ColorConverter implements Converter<Color> {
 
-	public Color fromString(String strValue) throws ParseException {
-		if(strValue == null) {
-			return null;
-		}
-		
-		String[] strRgb = strValue.split(",");
-		
-		if(strRgb.length < 3 || strRgb.length > 4) {
-			throw new ParseException("Wrong color string \"" + strRgb + "\" Number of color components must be either 3 of 4 (r,g,b,alpha)",0);
-		}
-		try {
-			
-			strRgb[0] = strRgb[0].trim();
-			strRgb[1] = strRgb[1].trim();
-			strRgb[2] = strRgb[2].trim();
-			
-			int r = Integer.parseInt(strRgb[0]);
-			int g = Integer.parseInt(strRgb[1]);
-			int b = Integer.parseInt(strRgb[2]);
-			
-			int aplha = 255;
-			if(strRgb.length == 4) {
-				aplha = Integer.parseInt(strRgb[3]);
-			}
-			return new Color(r, g, b, aplha);
-		} catch(NumberFormatException ex) {
-			throw new ParseException("Invalid string format to convert \"" + strValue + "\" to Color", 0);
-		}
-	}
+    public Color fromString(String strValue) throws ParseException {
+        if(strValue == null) {
+            return null;
+        }
+        
+        String[] strRgb = strValue.split(",");
+        
+        if(strRgb.length < 3 || strRgb.length > 4) {
+            throw new ParseException("Wrong color string \"" + strRgb + "\" Number of color components must be either 3 of 4 (r,g,b,alpha)",0);
+        }
+        try {
+            
+            strRgb[0] = strRgb[0].trim();
+            strRgb[1] = strRgb[1].trim();
+            strRgb[2] = strRgb[2].trim();
+            
+            int r = Integer.parseInt(strRgb[0]);
+            int g = Integer.parseInt(strRgb[1]);
+            int b = Integer.parseInt(strRgb[2]);
+            
+            int aplha = 255;
+            if(strRgb.length == 4) {
+                aplha = Integer.parseInt(strRgb[3]);
+            }
+            return new Color(r, g, b, aplha);
+        } catch(NumberFormatException ex) {
+            throw new ParseException("Invalid string format to convert \"" + strValue + "\" to Color", 0);
+        }
+    }
 
-	public String toString(Color value) {
-		if(value == null) {
-			return null;
-		}
-		return value.getRed() + "," + value.getGreen() + "," + value.getBlue() + "," + value.getAlpha();
-	}
+    public String toString(Color value) {
+        if(value == null) {
+            return null;
+        }
+        return value.getRed() + "," + value.getGreen() + "," + value.getBlue() + "," + value.getAlpha();
+    }
 
 }

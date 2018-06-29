@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -33,38 +33,38 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
  */
 public class CustomSplitPaneDivider extends BasicSplitPaneDivider {
 
-	public CustomSplitPaneDivider(BasicSplitPaneUI ui) {
-		super(ui);		
-	}
-	
-	public void setDividerSize(int newSize) {
+    public CustomSplitPaneDivider(BasicSplitPaneUI ui) {
+        super(ui);      
+    }
+    
+    public void setDividerSize(int newSize) {
         dividerSize = newSize;
     }
-	
-	@Override
-	public void paint(Graphics g) {
-		
-		Dimension size = getSize();
-		if(JSplitPane.HORIZONTAL_SPLIT == splitPane.getOrientation()) {
-			int starty = size.height / 2 - 10;
-			g.setColor(Color.DARK_GRAY);
-			
-			for(int y = starty; y < starty + 20; y +=3) {
-				g.drawLine(0, y, dividerSize, y + dividerSize);
-			}
-			g.setColor(super.getBackground());
-			g.drawLine(dividerSize/2, starty, dividerSize/2, starty + 20);
-			
-		} else {
-			int startx = size.width / 2 - 10;
-			g.setColor(Color.DARK_GRAY);
-			
-			for(int x = startx; x < startx + 20; x +=3) {
-				g.drawLine(x, 0, x + dividerSize, dividerSize);
-			}
-			g.setColor(super.getBackground());
-			g.drawLine(startx, dividerSize/2, startx + 20, dividerSize/2);
-		}
-	}
+    
+    @Override
+    public void paint(Graphics g) {
+        
+        Dimension size = getSize();
+        if(JSplitPane.HORIZONTAL_SPLIT == splitPane.getOrientation()) {
+            int starty = size.height / 2 - 10;
+            g.setColor(Color.DARK_GRAY);
+            
+            for(int y = starty; y < starty + 20; y +=3) {
+                g.drawLine(0, y, dividerSize, y + dividerSize);
+            }
+            g.setColor(super.getBackground());
+            g.drawLine(dividerSize/2, starty, dividerSize/2, starty + 20);
+            
+        } else {
+            int startx = size.width / 2 - 10;
+            g.setColor(Color.DARK_GRAY);
+            
+            for(int x = startx; x < startx + 20; x +=3) {
+                g.drawLine(x, 0, x + dividerSize, dividerSize);
+            }
+            g.setColor(super.getBackground());
+            g.drawLine(startx, dividerSize/2, startx + 20, dividerSize/2);
+        }
+    }
 }
 
