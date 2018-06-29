@@ -68,8 +68,12 @@ public class BeanSaver {
 
 	private void setStringValue(Object bean, String property, String strValue, boolean ignoreError) {
 		Method setter = findSetter(bean.getClass(), property);
-		if(setter == null && ignoreError) {
-			return;
+		if(setter == null) {
+		    if (ignoreError) {
+                return;
+            } else {
+		        throw new RuntimeException("Can not find setter for property " + property + " on class " + bean.getClass().getName());
+            }
 		}
 		
 		// invoke setter
@@ -103,8 +107,8 @@ public class BeanSaver {
 				Method getter = getters.get(property);
 				Object defaultValue = getDefaultValueByGetter(getter);
 				
-				Method setter = findSetter(bean.getClass(), property);
-				
+				Method setter = findSetterSafe(bean.getClass(), property);
+
 				setter.invoke(bean, new Object[]{defaultValue});
 			}
 		}catch(Exception ex) {
@@ -119,8 +123,8 @@ public class BeanSaver {
 	 */
 	public void resetToDefault(Object bean, String property) {
 		Object defaultValue = getDefaultValue(bean.getClass(), property);
+        Method setter = findSetterSafe(bean.getClass(), property);
 		try {
-			Method setter = findSetter(bean.getClass(), property);
 			setter.invoke(bean, defaultValue);
 		} catch (Exception e) {
 			throw new RuntimeException("Error invoking setter of the property \"" + property + "\"", e);
@@ -134,10 +138,7 @@ public class BeanSaver {
 	 * @return
 	 */
 	public Object getValue(Object bean, String property) {
-		Method method = findGetter(bean.getClass(), property);
-		if(method == null) {
-			throw new RuntimeException("Getter for \"" + property + "\" not found ");
-		}
+		Method method = findGetterSafe(bean.getClass(), property);
 		try {
 			return method.invoke(bean, new Object[0]);
 		} catch (Exception e) {
@@ -152,10 +153,7 @@ public class BeanSaver {
 	 * @param value
 	 */
 	public void setValue(Object bean, String property, Object value) {
-		Method method = findSetter(bean.getClass(), property);
-		if(method == null) {
-			throw new RuntimeException("Setter for \"" + property + "\" not found ");
-		}
+		Method method = findSetterSafe(bean.getClass(), property);
 		try {
 			method.invoke(bean, new Object[] {value});
 		} catch (Exception e) {
@@ -180,10 +178,7 @@ public class BeanSaver {
 	 * @return
 	 */
 	public Object getDefaultValueByClass(Class<?> beanClass, String property) {
-		Method method = findGetter(beanClass, property);
-		if(method == null) {
-			throw new RuntimeException("Canb not find getter for the property \"" + property +"\"");
-		}
+		Method method = findGetterSafe(beanClass, property);
 		return getDefaultValueByGetter(method);
 	}
 	
@@ -231,7 +226,6 @@ public class BeanSaver {
 		return list;
 	}
 	
-	
 	private String getPropertyByGetter(Method getter) {
 		String methName = getter.getName();
 		if(methName.startsWith("is")) {
@@ -242,7 +236,15 @@ public class BeanSaver {
 		}
 		throw new IllegalArgumentException("Invalid getter method " + getter);
 	}
-	
+
+	private Method findSetterSafe(Class<?> beanClass, String property) {
+	    Method out = findSetter(beanClass, property);
+	    if (out == null) {
+	        throw new RuntimeException("Can not find setter for property " + property + " on class " + beanClass.getName());
+        }
+        return out;
+    }
+
 	private Method findSetter(Class<?> beanClass, String property) {
 		Method getter = findGetter(beanClass, property);
 		if(getter == null) {
@@ -262,8 +264,16 @@ public class BeanSaver {
 			return null;
 		}
 	}
-	
-	private Method findGetter(Class<?> beanClass, String property) {
+
+    private Method findGetterSafe(Class<?> beanClass, String property) {
+        Method out = findGetter(beanClass, property);
+        if (out == null) {
+            throw new RuntimeException("Can not find getter for property " + property + " on class " + beanClass.getName());
+        }
+        return out;
+    }
+
+    private Method findGetter(Class<?> beanClass, String property) {
 		// determine property type by getter or is method
 		String first = property.substring(0, 1);
 		String rest = property.substring(1);
