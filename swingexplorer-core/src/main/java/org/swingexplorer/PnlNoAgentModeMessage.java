@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class PnlNoAgentModeMessage extends javax.swing.JPanel {
     
     /** Creates new form PnlNoAgentModeMessage */
-    public PnlNoAgentModeMessage() {
+    private PnlNoAgentModeMessage() {
         initComponents();
         lblMessage.setText("<html> This functionality is available only when application<br>" +
         						   "is executed with instrumentation agent!<br> " +
@@ -90,9 +90,9 @@ public class PnlNoAgentModeMessage extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    javax.swing.JButton btnCopy;
-    javax.swing.JLabel lblMessage;
-    javax.swing.JTextArea txaCommand;
+    private javax.swing.JButton btnCopy;
+    private javax.swing.JLabel lblMessage;
+    private javax.swing.JTextArea txaCommand;
     // End of variables declaration//GEN-END:variables
     
     

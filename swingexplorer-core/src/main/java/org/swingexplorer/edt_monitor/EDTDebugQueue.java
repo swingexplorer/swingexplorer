@@ -62,9 +62,9 @@ public class EDTDebugQueue extends EventQueue {
         private final LinkedList<DispatchInfo> dispatches = new LinkedList<DispatchInfo>();
   
         
-        static long minimalMonitoredHangTime = 1000;
-        static EDTDebugQueue instance = new EDTDebugQueue();
-        static ProblemListener problemListener;
+        private static long minimalMonitoredHangTime = 1000;
+        private static EDTDebugQueue instance = new EDTDebugQueue();
+        private static ProblemListener problemListener;
         
         // this flag is used for temporary switching off
         // events about hangs. It is useful fow SwingExplorer
@@ -75,10 +75,10 @@ public class EDTDebugQueue extends EventQueue {
         public static boolean disableHangEvents = false;
         
         
-        public static boolean monitorHangs = false;
-        public static boolean monitorExceptions = false;
+        static boolean monitorHangs = false;
+        static boolean monitorExceptions = false;
         
-        public static void setProblemListener(ProblemListener _problemListener) {
+        static void setProblemListener(ProblemListener _problemListener) {
             problemListener = _problemListener;
         }
         
@@ -91,11 +91,11 @@ public class EDTDebugQueue extends EventQueue {
             Toolkit.getDefaultToolkit().getSystemEventQueue().push(instance);
         }
 
-        public static long getMinimalMonitoredHangTime() {
+        static long getMinimalMonitoredHangTime() {
             return minimalMonitoredHangTime;
         }
 
-        public static void setMinimalMonitoredHangTime(long _minimalMonitoredHangTime) {
+        static void setMinimalMonitoredHangTime(long _minimalMonitoredHangTime) {
             minimalMonitoredHangTime = _minimalMonitoredHangTime;
         }
         
@@ -117,11 +117,11 @@ public class EDTDebugQueue extends EventQueue {
             // The last time in milliseconds at which we saw a dispatch on the above thread.
             private long lastDispatchTimeMillis = System.currentTimeMillis();
     
-            public DispatchInfo() {
+            DispatchInfo() {
                 // All initialization is done by the field initializers.
             }
     
-            public void checkForHang() {
+            void checkForHang() {
                 if (timeSoFar() > getMinimalMonitoredHangTime()) {
                     examineHang();
                 }

@@ -44,20 +44,20 @@ import org.swingexplorer.Options;
  */
 public class Player {
     
-	Operation[] operations;
+	private Operation[] operations;
 	int stepTime = 100;
-	EventListenerList listenerList = new EventListenerList();
+	private EventListenerList listenerList = new EventListenerList();
 	
-	PState state;
-	Timer playTimer;
+	private PState state;
+	private Timer playTimer;
 	
 	
-	BufferedImage workerImage;
-	Graphics g;
-	ArrayList<Graphics> openGraphics = new ArrayList<Graphics>();
-	int currentOperationIndex = -1;
+	private BufferedImage workerImage;
+	private Graphics g;
+	private ArrayList<Graphics> openGraphics = new ArrayList<Graphics>();
+	private int currentOperationIndex = -1;
 	
-	Options options;
+	private Options options;
 	
 	
 	public enum PState {
@@ -170,7 +170,7 @@ public class Player {
 		setCurrentOperationIndex(this.operations.length - 1);
 	}
 	
-	public void setOperations(Operation[] operationsP, Dimension imageSize) {				
+	private void setOperations(Operation[] operationsP, Dimension imageSize) {
 		resetImage(imageSize);
 		operations = operationsP;		
 		setCurrentState(PState.IDLE);
@@ -286,7 +286,7 @@ public class Player {
 		}
 	}
     
-	void log(String text) {
+	private void log(String text) {
 //		System.err.println(text);
 	}
 

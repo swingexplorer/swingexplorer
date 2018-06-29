@@ -36,9 +36,9 @@ public class Operation {
 	Method method;
 	Object[] arguments;
 	int graphicsIndex;
-	int opIndex;
-	boolean endOperation;
-	StackTraceElement[] stackTrace;
+	private int opIndex;
+	private boolean endOperation;
+	private StackTraceElement[] stackTrace;
 	
 	// constructor for a special purpose of creating END operation
 	private Operation(int index) {
@@ -106,7 +106,7 @@ public class Operation {
 	}
 
 	// helper for toString
-	String getTypeName(Class<?> type) {
+    private String getTypeName(Class<?> type) {
 		if (type.isArray()) {
 			try {
 				Class<?> cl = type;
@@ -131,7 +131,7 @@ public class Operation {
 		return opIndex;
 	}
 
-	public static Operation createEndOperation(int index) {
+	static Operation createEndOperation(int index) {
 		return new Operation(index);
 	}
 

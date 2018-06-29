@@ -218,21 +218,21 @@ public class PnlPlayerControls extends javax.swing.JPanel {
     private javax.swing.JSpinner spinner;
     // End of variables declaration//GEN-END:variables
     
-    boolean blockEventsFromControls = true;
+    private boolean blockEventsFromControls = true;
     Player player;
-    PlayerListener listener = new PlayerListenerImpl();
-    OperationListModel mdlOperations = new OperationListModel();
+    private PlayerListener listener = new PlayerListenerImpl();
+    private OperationListModel mdlOperations = new OperationListModel();
     
-    ActPlay actPlay = new ActPlay();
-    ActToStart actToStart = new ActToStart();
-    ActToEnd actToEnd = new ActToEnd();
-    ActPause actPause = new ActPause();
-    ActPlayStep actPlayStep = new ActPlayStep();
-    ActPlayStepBack actPlayStepBack = new ActPlayStepBack();
-    ActDumpStackTrace actDumpStackTrace = new ActDumpStackTrace();
-    ActOpenSourceCode actOpenSourceCode;
+    private ActPlay actPlay = new ActPlay();
+    private ActToStart actToStart = new ActToStart();
+    private ActToEnd actToEnd = new ActToEnd();
+    private ActPause actPause = new ActPause();
+    private ActPlayStep actPlayStep = new ActPlayStep();
+    private ActPlayStepBack actPlayStepBack = new ActPlayStepBack();
+    private ActDumpStackTrace actDumpStackTrace = new ActDumpStackTrace();
+    private ActOpenSourceCode actOpenSourceCode;
     
-    void initActions() {
+    private void initActions() {
     	btnPlayPause.setAction(actPlay);    	
     	btnToStart.setAction(actToStart);
     	btnPlayStep.setAction(actPlayStep);
@@ -245,7 +245,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
         btnSrc.setAction(actOpenSourceCode);
     }
     
-    public void setIDESupport(IDESupport _ideSupport) {
+    void setIDESupport(IDESupport _ideSupport) {
         actOpenSourceCode.ideSupport = _ideSupport;
     }
     
@@ -354,7 +354,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
 
     	Operation[] operations = new Operation[0];
 
-    	public void setOperations(Operation[] operationsP) {
+    	void setOperations(Operation[] operationsP) {
     		
     		if(operationsP == null) {
     			operationsP = new Operation[0];

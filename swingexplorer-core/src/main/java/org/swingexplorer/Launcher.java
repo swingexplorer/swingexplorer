@@ -48,9 +48,9 @@ public class Launcher implements Runnable {
     
     public IDESupport ideSupport;
     
-	public FrmSwingExplorer frmMain;
+	FrmSwingExplorer frmMain;
 	public PnlPlayerControls pnlPlayerControls;
-	public JDialog dlgPlayerControls;	
+	JDialog dlgPlayerControls;
 	public MdlSwingExplorer model = new MdlSwingExplorer();
     public Player player = new Player();
     

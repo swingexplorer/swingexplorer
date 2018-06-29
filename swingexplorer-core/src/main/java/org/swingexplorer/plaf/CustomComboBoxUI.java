@@ -38,7 +38,7 @@ import javax.swing.plaf.metal.MetalComboBoxUI;
 public class CustomComboBoxUI extends MetalComboBoxUI {
 
     
-	EtchedBorder border = new EtchedBorder();
+	private EtchedBorder border = new EtchedBorder();
 	
     @Override
     protected void installDefaults() {

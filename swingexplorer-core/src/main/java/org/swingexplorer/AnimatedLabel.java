@@ -39,9 +39,6 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class AnimatedLabel extends JLabel {
 
-
-    
-    
     private ArrayList<Icon> icons = new ArrayList<Icon>();
     private EmptyIcon emptyIcon = new EmptyIcon();
     private Dimension maxIconSize = new Dimension(0, 0);
@@ -49,9 +46,9 @@ public class AnimatedLabel extends JLabel {
     
     private Timer timer;
     private int iconNumber = 0;
-    boolean inProgress = false;
+    private boolean inProgress = false;
     
-    public final Icon EMPTY_ICON = new EmptyIcon();
+    private final Icon EMPTY_ICON = new EmptyIcon();
 
     /**
      * Set icons to be animated.

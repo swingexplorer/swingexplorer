@@ -36,7 +36,7 @@ import javax.swing.text.html.HTMLEditorKit.HTMLFactory;
  */
 public class NoWrapEditorKit extends HTMLEditorKit {
 
-    ViewFactory defaultFactory=new WrapColumnFactory();
+    private ViewFactory defaultFactory=new WrapColumnFactory();
     public ViewFactory getViewFactory() {
         return defaultFactory;
     }
@@ -53,7 +53,7 @@ class WrapColumnFactory extends HTMLFactory {
 }
 
 class NoWrapParagraphView extends ParagraphView {
-    public NoWrapParagraphView(Element elem) {
+    NoWrapParagraphView(Element elem) {
         super(elem);
     }
 

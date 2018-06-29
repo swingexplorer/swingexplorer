@@ -29,7 +29,7 @@ public class ActZoomOut extends RichAction {
 
 	MdlSwingExplorer model; 
 	
-	public ActZoomOut(MdlSwingExplorer model) {
+	ActZoomOut(MdlSwingExplorer model) {
 		setName("Zoom Out");
 		setTooltip("Zoom Out");
         setIcon("zoom_out.png");

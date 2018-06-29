@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
  */
 public class ActHelp extends RichAction {
 	
-	public ActHelp() {
+	ActHelp() {
 		setName("User documentation");
 		setTooltip("User documentation");
 	}

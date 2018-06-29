@@ -33,7 +33,7 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
  */
 public class CustomSplitPaneDivider extends BasicSplitPaneDivider {
 
-	public CustomSplitPaneDivider(BasicSplitPaneUI ui) {
+	CustomSplitPaneDivider(BasicSplitPaneUI ui) {
 		super(ui);		
 	}
 	

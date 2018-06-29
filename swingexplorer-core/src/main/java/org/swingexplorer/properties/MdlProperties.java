@@ -43,9 +43,9 @@ import org.swingexplorer.Log;
  */
 public class MdlProperties extends AbstractTableModel {
 
-	Object bean;	
-	String[][] properties = new String[0][0];
-	String[] colNames = new String[] {"name", "value"};
+	private Object bean;
+	private String[][] properties = new String[0][0];
+	private String[] colNames = new String[] {"name", "value"};
 	
     // properties shown first of all at the beginning
     HashSet<String> firstKeys = new HashSet<String>(Arrays.asList(new String[] {
@@ -55,7 +55,7 @@ public class MdlProperties extends AbstractTableModel {
     
     
 	@SuppressWarnings("rawtypes")
-	public Map describe(Object bean) {
+    private Map describe(Object bean) {
 		if(bean == null) {
 			return new HashMap();
 		}

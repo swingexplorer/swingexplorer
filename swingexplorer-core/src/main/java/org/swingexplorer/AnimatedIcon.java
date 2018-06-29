@@ -38,14 +38,14 @@ import javax.swing.Timer;
  */
 public class AnimatedIcon implements Icon {
     
-    public final Icon EMPTY_ICON = new EmptyIcon();
-    JComponent ownerComponent; 
-    Icon currentIcon = EMPTY_ICON;
+    private final Icon EMPTY_ICON = new EmptyIcon();
+    private JComponent ownerComponent;
+    private Icon currentIcon = EMPTY_ICON;
     private ArrayList<Icon> icons = new ArrayList<Icon>();
     private Dimension maxIconSize = new Dimension(0, 0);
     private Timer timer;
     private int iconNumber = 0;
-    boolean inProgress = false;
+    private boolean inProgress = false;
     
     public int getIconHeight() {
         return currentIcon.getIconHeight();
@@ -64,7 +64,7 @@ public class AnimatedIcon implements Icon {
      * Set icons to be animated.
      * @param _icons
      */
-    public void setIcons(Icon[] _icons) {
+    void setIcons(Icon[] _icons) {
         
         icons.clear();
         
@@ -87,7 +87,7 @@ public class AnimatedIcon implements Icon {
         return icons.toArray(new Icon[icons.size()]);
     }
     
-    public AnimatedIcon(JComponent _ownerComponent) {
+    AnimatedIcon(JComponent _ownerComponent) {
         ownerComponent = _ownerComponent;
         try {
             initActions();
@@ -145,7 +145,7 @@ public class AnimatedIcon implements Icon {
      * Makes progress indicator running.
      * @param _inProgress
      */
-    public void setInProgress(boolean _inProgress){
+    void setInProgress(boolean _inProgress){
         if(inProgress == _inProgress) {
             return;
         }

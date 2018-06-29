@@ -96,7 +96,7 @@ public class MdlSwingExplorer {
 	 * @param oldVal
 	 * @param newVal
 	 */
-	protected void fireCheckedPropertyChange(String prop, Object oldVal, Object newVal) {
+    private void fireCheckedPropertyChange(String prop, Object oldVal, Object newVal) {
 		if(oldVal != null && newVal != null && oldVal.equals(newVal)) {
 			return;
 		}
@@ -106,7 +106,7 @@ public class MdlSwingExplorer {
 		
 		firePropertyChange(prop, oldVal, newVal);
 	}
-	protected void firePropertyChange(String prop, Object oldVal, Object newVal) {
+	private void firePropertyChange(String prop, Object oldVal, Object newVal) {
 		log("Property %1$s changed\n", prop);
 		
 		// Guaranteed to return a non-null array
@@ -125,21 +125,21 @@ public class MdlSwingExplorer {
 		}
 	}
 
-	public Component getCurrentComponent() {
+	Component getCurrentComponent() {
 		return currentComponent;
 	}
 
-	public void setCurrentComponent(Component currentComponent) {
+	void setCurrentComponent(Component currentComponent) {
 		Object old = this.currentComponent;
 		this.currentComponent = currentComponent;
 		fireCheckedPropertyChange("currentComponent", old, currentComponent);
 	}
 
-	public Point getMeasurePoint1() {
+	Point getMeasurePoint1() {
 		return measurePoint1;
 	}
 
-	public void setMeasurePoint1(Point _measurePoint1) {
+	void setMeasurePoint1(Point _measurePoint1) {
 		Object old = this.measurePoint1;
 		if(_measurePoint1 != null) {
 			this.measurePoint1 = (Point)_measurePoint1.clone();
@@ -153,7 +153,7 @@ public class MdlSwingExplorer {
 		return measurePoint2;
 	}
 
-	public void setMeasurePoint2(Point _measurePoint2) {		
+	private void setMeasurePoint2(Point _measurePoint2) {
 		Object old = this.measurePoint2;
 		if(_measurePoint2 != null) {
 			this.measurePoint2 = (Point)_measurePoint2.clone();
@@ -180,7 +180,7 @@ public class MdlSwingExplorer {
 		return selectedComponents.toArray(new Component[selectedComponents.size()]);
 	}
 
-	public void addSelection(Component selection) {
+	void addSelection(Component selection) {
 		if(selectedComponents.contains(selection)) {
 			return;
 		}
@@ -196,8 +196,7 @@ public class MdlSwingExplorer {
 	 * but fires only one change event.
 	 * @param comp component to select
 	 */
-	public void setSelection(Component comp) {
-
+    void setSelection(Component comp) {
 		if(selectedComponents.size() == 1 && selectedComponents.get(0) == comp) {
 			// this one component is already selected
 			return;
@@ -211,24 +210,24 @@ public class MdlSwingExplorer {
 		firePropertyChange("selectedComponents", old, this.selectedComponents);
 	}
 	
-	public void removeSelection(Component selection) {
+	void removeSelection(Component selection) {
 		Object old = this.selectedComponents.clone();
 		this.selectedComponents.remove(selection);
 		firePropertyChange("selectedComponents", old, this.selectedComponents);
 	}
 	
-	public void clearSelection() {
+	private void clearSelection() {
 		Object old = this.selectedComponents.clone();
 		this.selectedComponents.clear();
 		firePropertyChange("selectedComponents", old, this.selectedComponents);
 	}
 
-	public Component getDisplayedComponent() {
+	Component getDisplayedComponent() {
 		return displayedComponent;
 	}
 
 	
-	public void setDisplayedComponent(Component displayedComponent) throws DisplayableException {
+	void setDisplayedComponent(Component displayedComponent) throws DisplayableException {
 
         // switching off EDT hanging events because  
 	    // component's rendering operations takes quite long time in the EDT
@@ -265,7 +264,7 @@ public class MdlSwingExplorer {
 	 * same component is passed as parameter
 	 * @param newDisplayedComponent
 	 */
-	public void setDisplayedComponentAndUpdateImage(Component newDisplayedComponent) throws DisplayableException {
+    void setDisplayedComponentAndUpdateImage(Component newDisplayedComponent) throws DisplayableException {
 		if(displayedComponent == newDisplayedComponent) {
 			updateDisplayedComponentImage();
 		} else {
@@ -273,11 +272,11 @@ public class MdlSwingExplorer {
 		}
 	}
 
-	public double getDisplayScale() {
+	double getDisplayScale() {
 		return displayScale;
 	}
 
-	public void setDisplayScale(double displayScale) {
+	void setDisplayScale(double displayScale) {
 		double old = this.displayScale;
 		this.displayScale = displayScale;
 		fireCheckedPropertyChange("displayScale", old, displayScale);
@@ -293,17 +292,17 @@ public class MdlSwingExplorer {
 		fireCheckedPropertyChange("options", old, options);
 	}
 	
-	public ImageIcon getDisplayedComponentImage() {
+	ImageIcon getDisplayedComponentImage() {
 		return displayedComponentImage;
 	}
 	
-	public void setDisplayedComponentImage(ImageIcon img) {
+	void setDisplayedComponentImage(ImageIcon img) {
 		ImageIcon oldvalue = displayedComponentImage;
 		displayedComponentImage = img;
 		fireCheckedPropertyChange("displayedComponentImage", oldvalue, displayedComponentImage);
 	}
 	
-	public void updateDisplayedComponentImage() {
+	void updateDisplayedComponentImage() {
 
 		
 		if(displayedComponent != null) {
@@ -341,7 +340,7 @@ public class MdlSwingExplorer {
 		}
 	}
 
-	public String getComponentPath(Component displayedComponent, boolean showIndex) {
+	String getComponentPath(Component displayedComponent, boolean showIndex) {
 		
 		StringBuilder buf = new StringBuilder();
 		Component comp = displayedComponent;
@@ -389,21 +388,21 @@ public class MdlSwingExplorer {
 		return -1;
 	}
 
-	public String getStatustext() {
+	String getStatustext() {
 		return statustext;
 	}
 
-	public void setStatustext(String statustext) {
+	void setStatustext(String statustext) {
 		String old = this.statustext;
 		this.statustext = statustext;
 		fireCheckedPropertyChange("statusText", old, this.statustext);
 	}
 
-	public boolean isSelected(Component comp) {
+	boolean isSelected(Component comp) {
 		return selectedComponents.contains(comp);
 	}
         
-    public void setMouseLocation(Point p) {
+    void setMouseLocation(Point p) {
 		Point old = this.mouseLocation;
 		if(p != null) {
 			this.mouseLocation = (Point)p.clone();
@@ -413,7 +412,7 @@ public class MdlSwingExplorer {
 		fireCheckedPropertyChange("mouseLocation", old, this.statustext);
 	}
   
-    public Point getMouseLocation() {
+    Point getMouseLocation() {
     	if(mouseLocation != null) {
     		return (Point)mouseLocation.clone();
     	} else {
@@ -421,7 +420,7 @@ public class MdlSwingExplorer {
     	}
     }
     
-    public Point getMouseLocationAbsolute() {
+    Point getMouseLocationAbsolute() {
     	Point loc = getMouseLocation();
     	if(loc == null) {
     		return null;

@@ -36,17 +36,16 @@ import javax.swing.SwingUtilities;
  */
 public class FrmSwingExplorer extends JFrame {
 
-	PnlSwingExplorer pnlSwingExplorer;
-	JMenuBar menuBar;
-	JMenu mnuHelp;
-	
-    ActHelpAbout actHelpAbout;
-    ActHelp actHelp;
+	private PnlSwingExplorer pnlSwingExplorer;
+	private JMenuBar menuBar;
+	private JMenu mnuHelp;
+
+    private ActHelpAbout actHelpAbout;
+    private ActHelp actHelp;
 	
 	Launcher application;
 	
-		
-	public FrmSwingExplorer() {
+	FrmSwingExplorer() {
 		initComponents();
 		initActions();
 	}
@@ -84,7 +83,7 @@ public class FrmSwingExplorer extends JFrame {
 		}
 	}
 	
-	void initActions() {
+	private void initActions() {
 		actHelpAbout = new ActHelpAbout(this);
         actHelp = new ActHelp();
                

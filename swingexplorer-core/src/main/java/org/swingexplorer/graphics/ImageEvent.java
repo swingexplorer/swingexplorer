@@ -32,7 +32,7 @@ public class ImageEvent extends EventObject {
 	private BufferedImage image;
 	private Operation lastOperation;
 	
-	public ImageEvent(Player source, BufferedImage imageP, Operation lastOperationP) {
+	ImageEvent(Player source, BufferedImage imageP, Operation lastOperationP) {
 		super(source);
 		image = imageP;
 		lastOperation = lastOperationP;

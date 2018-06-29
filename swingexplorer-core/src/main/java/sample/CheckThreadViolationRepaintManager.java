@@ -49,11 +49,11 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
     private boolean completeCheck = true;
     private WeakReference<JComponent> lastComponent;
 
-    public CheckThreadViolationRepaintManager(boolean completeCheck) {
+    private CheckThreadViolationRepaintManager(boolean completeCheck) {
         this.completeCheck = completeCheck;
     }
 
-    public CheckThreadViolationRepaintManager() {
+    private CheckThreadViolationRepaintManager() {
         this(true);
     }
 

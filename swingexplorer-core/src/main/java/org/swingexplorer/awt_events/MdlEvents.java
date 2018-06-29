@@ -32,8 +32,8 @@ import javax.swing.table.AbstractTableModel;
  */
 public class MdlEvents extends AbstractTableModel {
 
-	ArrayList<AWTEvent> events = new ArrayList<AWTEvent>(); 
-	Column[] columns = new Column[] {
+	private ArrayList<AWTEvent> events = new ArrayList<AWTEvent>();
+	private Column[] columns = new Column[] {
             new ColParamString(),
             new ColEventSource()
 	};
@@ -114,7 +114,7 @@ public class MdlEvents extends AbstractTableModel {
 		}
 	}
 	
-	public void addEvent(AWTEvent evt) {
+	void addEvent(AWTEvent evt) {
 		events.add(evt);
 		int insRow = events.size() - 1;
 		fireTableRowsInserted(insRow, insRow);
@@ -142,7 +142,7 @@ public class MdlEvents extends AbstractTableModel {
 		return columns[columnIndex].getValue(rowIndex);
 	}
 
-	public AWTEvent getEvent(int row) {
+	AWTEvent getEvent(int row) {
 		if(events.size() <= row || row < 0) {
 			return null;
 		}

@@ -34,9 +34,9 @@ import org.swingexplorer.plaf.CustomTableHeaderUI;
  */
 public class PnlPropertySheet extends JPanel {
 
-	MdlProperties mdlProperties;
-	JTable tblProperties;
-	JScrollPane scpTable;
+	private MdlProperties mdlProperties;
+	private JTable tblProperties;
+	private JScrollPane scpTable;
 	
 	public PnlPropertySheet() {
 		

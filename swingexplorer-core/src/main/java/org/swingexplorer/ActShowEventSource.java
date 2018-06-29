@@ -35,10 +35,10 @@ import org.swingexplorer.awt_events.PnlAwtEvents;
  */
 public class ActShowEventSource extends RichAction {
 	
-	MdlSwingExplorer mdlSwingExplorer;
-	PnlAwtEvents pnlAwtEvents;
+	private MdlSwingExplorer mdlSwingExplorer;
+	private PnlAwtEvents pnlAwtEvents;
 
-	public ActShowEventSource(MdlSwingExplorer _mdlSwingExplorer, PnlAwtEvents _pnlAwtEvents) {
+	ActShowEventSource(MdlSwingExplorer _mdlSwingExplorer, PnlAwtEvents _pnlAwtEvents) {
 		mdlSwingExplorer = _mdlSwingExplorer;
 		pnlAwtEvents = _pnlAwtEvents;
 		setName("Show event source");

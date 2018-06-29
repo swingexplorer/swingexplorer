@@ -58,7 +58,7 @@ public class BeanSaver {
 		load(bean, props, false);
 	}
 	
-	public void load(Object bean, Map<String, String> props, boolean ignoreError) {
+	private void load(Object bean, Map<String, String> props, boolean ignoreError) {
 		resetToDefaults(bean);
 		for(Object property : props.keySet()) {
 			String strProperty = (String)property;

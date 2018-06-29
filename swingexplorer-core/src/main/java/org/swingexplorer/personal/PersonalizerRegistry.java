@@ -33,10 +33,10 @@ import org.swingexplorer.Options;
  */
 public class PersonalizerRegistry {
 
-	Container parentContainer;
-	Options options;
+	private Container parentContainer;
+	private Options options;
 	
-	LinkedList<Personalizer> personalizers = new LinkedList<Personalizer>(); 
+	private LinkedList<Personalizer> personalizers = new LinkedList<Personalizer>();
 	
 	public PersonalizerRegistry(Container _parentContainer, Options _options) {
 		parentContainer = _parentContainer;

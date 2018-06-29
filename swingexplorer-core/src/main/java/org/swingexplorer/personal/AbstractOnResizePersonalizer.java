@@ -33,8 +33,8 @@ import org.swingexplorer.Options;
  */
 public abstract class AbstractOnResizePersonalizer<T extends Component> implements Personalizer {
 
-	protected Options options;
-	protected T component;
+	Options options;
+	T component;
 	
 	public void install(Options _options, Component _component) {
 		component = (T)_component;
@@ -54,7 +54,7 @@ public abstract class AbstractOnResizePersonalizer<T extends Component> implemen
 	 * Applies state from positions to component.
 	 * The method is called when component is first resized
 	 */
-	public abstract void applyState();
+	protected abstract void applyState();
 	
 	/**
 	 * {@inheritDoc}

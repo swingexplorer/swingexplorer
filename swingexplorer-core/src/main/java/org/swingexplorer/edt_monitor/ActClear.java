@@ -27,11 +27,11 @@ import org.swingexplorer.RichAction;
  *
  * @author  Maxim Zakharenkov
  */
-public class ActClear extends RichAction {
+class ActClear extends RichAction {
 
-    PnlEDTMonitor owner;
+    private PnlEDTMonitor owner;
     
-    public ActClear(PnlEDTMonitor _owner) {
+    ActClear(PnlEDTMonitor _owner) {
         owner = _owner;
     }
     

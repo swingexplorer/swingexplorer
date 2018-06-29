@@ -35,7 +35,7 @@ import javax.swing.JOptionPane;
  */
 public class ActMouseClickOnDisplay extends MouseAdapter {
 	
-	PnlGuiDisplay display;
+	private PnlGuiDisplay display;
 	MdlSwingExplorer model;
 	
 	ActMouseClickOnDisplay(PnlGuiDisplay displayP, MdlSwingExplorer modelP) {
@@ -65,7 +65,7 @@ public class ActMouseClickOnDisplay extends MouseAdapter {
         }
     }
     
-	void handlePressed(MouseEvent e, Component comp) {
+	private void handlePressed(MouseEvent e, Component comp) {
 		if(e.getButton() == BUTTON1) {
 			
 			int onmask = CTRL_DOWN_MASK;
@@ -95,7 +95,7 @@ public class ActMouseClickOnDisplay extends MouseAdapter {
 		}
 	}
 	
-	void doubleClick(MouseEvent e, Component comp) {
+	private void doubleClick(MouseEvent e, Component comp) {
 		if(e.getButton() == BUTTON1) {
 			try {
                 model.setDisplayedComponent(comp);

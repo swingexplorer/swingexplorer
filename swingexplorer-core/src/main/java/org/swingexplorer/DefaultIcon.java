@@ -31,7 +31,7 @@ import javax.swing.Icon;
  */
 public class DefaultIcon implements Icon {
     
-    public static Icon INSTANCE = new DefaultIcon();
+    static Icon INSTANCE = new DefaultIcon();
     
     /** Creates a new instance of DefaultIcon */
     private DefaultIcon() {

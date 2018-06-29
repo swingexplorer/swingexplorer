@@ -30,8 +30,8 @@ import org.swingexplorer.awt_events.filter.PnlEventFilter;
  */
 public class ActEventFilterChanged implements ItemListener {
 
-	PnlEventFilter owner;
-	
+	private PnlEventFilter owner;
+
 	public ActEventFilterChanged(PnlEventFilter _owner) {
 		owner = _owner;
 	}

@@ -31,8 +31,8 @@ import org.swingexplorer.Options;
  */
 public class FramePersonalizer implements Personalizer {
 	
-	Options options;
-	JFrame frame;
+	private Options options;
+	private JFrame frame;
 	
 	public void install(Options _options, Component _component) {
 		options = _options;

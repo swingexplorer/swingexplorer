@@ -42,14 +42,14 @@ import org.swingexplorer.SysUtils;
  */
 public class IDESupport extends NotificationBroadcasterSupport implements IDESupportMBean {
 
-    int notificationNumber = 0;
+    private int notificationNumber = 0;
     
     // if bound is false then IDESupport is switched off
     // and IDESupport is not bound to RMI registry at all
-    boolean bound;
+    private boolean bound;
     
     // this flag determines if plugin connected the MBean
-    boolean connected;
+    private boolean connected;
     
     
     private IDESupport() {

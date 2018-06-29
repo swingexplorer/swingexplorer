@@ -31,12 +31,12 @@ import javax.swing.plaf.metal.MetalTabbedPaneUI;
  */
 public class CustomTabbedPaneUI extends MetalTabbedPaneUI {
 
-	boolean tabsOverlapBorder = false;
+	private boolean tabsOverlapBorder = false;
 	private boolean contentOpaque = true;
 	private Color selectedColor = new Color(200, 221, 242);
 	private Color unselectedColor = new Color(0xdadada);
 
-	public CustomTabbedPaneUI() {
+	CustomTabbedPaneUI() {
 	}
 
 	@Override

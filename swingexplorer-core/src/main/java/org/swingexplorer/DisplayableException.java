@@ -23,9 +23,9 @@ package org.swingexplorer;
  * The exception is used to pass displayable messages through call stack
  * @author  Maxim Zakharenkov
  */
-public class DisplayableException extends Exception {
+class DisplayableException extends Exception {
 
-    public DisplayableException(String message) {
+    DisplayableException(String message) {
         super(message);
     }
 }

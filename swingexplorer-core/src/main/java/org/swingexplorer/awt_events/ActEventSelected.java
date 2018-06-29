@@ -28,9 +28,9 @@ import javax.swing.event.ListSelectionListener;
  */
 public class ActEventSelected implements ListSelectionListener {
 
-	PnlAwtEvents owner;
+	private PnlAwtEvents owner;
 	
-	public ActEventSelected(PnlAwtEvents _owner) {
+	ActEventSelected(PnlAwtEvents _owner) {
 		owner = _owner;
 	}
 	

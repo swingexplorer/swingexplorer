@@ -60,7 +60,7 @@ public class ColorComboBox extends JComboBox {
 		setEditable(false);
 	}
 	
-	public Color getSelectedColor() {
+	Color getSelectedColor() {
 		return (Color)getSelectedItem();
 	}
 	

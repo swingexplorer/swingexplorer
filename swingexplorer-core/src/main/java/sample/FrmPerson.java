@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
 public class FrmPerson extends javax.swing.JFrame {
     
     /** Creates new form FrmPerson */
-    public FrmPerson() {
+    private FrmPerson() {
         initComponents();
     }
     
