@@ -38,7 +38,7 @@ Example:
 
 ```java
 class Person {
-    private name;
+    private String name;
 
     public void setName(String _name) {
         name = _name;
