@@ -1,5 +1,5 @@
 /*
- * PNLEventDetails.java
+ * PnlEventDetails.java
  *
  * Created on February 6, 2008, 12:11 PM
  */
@@ -9,20 +9,20 @@ package org.swingexplorer.awt_events;
 import java.awt.AWTEvent;
 import java.awt.BorderLayout;
 
-import org.swingexplorer.properties.PNLPropertySheet;
+import org.swingexplorer.properties.PnlPropertySheet;
 
 /**
  *
  * @author  Maxim Zakharenkov
  */
-public class PNLEventDetails extends javax.swing.JPanel {
+public class PnlEventDetails extends javax.swing.JPanel {
 
-	 private org.swingexplorer.properties.PNLPropertySheet pnlEventProperties;
+	 private org.swingexplorer.properties.PnlPropertySheet pnlEventProperties;
 	 
-    /** Creates new form PNLEventDetails */
-    public PNLEventDetails() {
+    /** Creates new form PnlEventDetails */
+    public PnlEventDetails() {
     	setLayout(new BorderLayout());
-    	pnlEventProperties = new PNLPropertySheet();
+    	pnlEventProperties = new PnlPropertySheet();
     	add(pnlEventProperties, BorderLayout.CENTER);
     	pnlEventProperties.setName("pnlEventProperties");
     }

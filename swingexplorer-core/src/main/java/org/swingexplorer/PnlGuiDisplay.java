@@ -47,14 +47,14 @@ import javax.swing.border.Border;
  * 
  * @author Maxim Zakharenkov
  */
-public class PNLGuiDisplay extends JComponent {
+public class PnlGuiDisplay extends JComponent {
 
 	private MdlSwingExplorer model;
 
 	private ModelListener modelListener = new ModelListener();
 	
 	
-	public PNLGuiDisplay() {
+	public PnlGuiDisplay() {
 	}
 
 	@Override

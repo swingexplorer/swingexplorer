@@ -43,13 +43,13 @@ import javax.swing.JTextArea;
  * @author  Maxim Zakharenkov
  */
 @SuppressWarnings("serial")
-public class DLGLicense extends JDialog {
+public class DlgLicense extends JDialog {
 
 	private JTextArea txaLicense;
 	private JButton btnClose;
 	private JScrollPane scp;
 
-	public DLGLicense(Dialog owner) {
+	public DlgLicense(Dialog owner) {
 		super(owner, true);
 		ByteArrayOutputStream strBuf = getLicenseText();
 		
@@ -68,7 +68,7 @@ public class DLGLicense extends JDialog {
 		
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DLGLicense.this.dispose();
+				DlgLicense.this.dispose();
 			}
 		});
 		
@@ -97,7 +97,7 @@ public class DLGLicense extends JDialog {
 	}
 	
 	public static final void open(Dialog owner) {
-		DLGLicense dlg = new DLGLicense(owner);
+		DlgLicense dlg = new DlgLicense(owner);
 		dlg.setModal(true);
 		dlg.setSize(500, 300);
 		GuiUtils.center(owner, dlg);

@@ -41,10 +41,10 @@ import org.swingexplorer.idesupport.IDESupport;
  * @author  Maxim Zakharenkov
  */
 @SuppressWarnings("serial")
-public class PNLPlayerControls extends javax.swing.JPanel {
+public class PnlPlayerControls extends javax.swing.JPanel {
     
-    /** Creates new form PNLPlayerControls */
-    public PNLPlayerControls() {
+    /** Creates new form PnlPlayerControls */
+    public PnlPlayerControls() {
         initComponents();
         initActions();
     }

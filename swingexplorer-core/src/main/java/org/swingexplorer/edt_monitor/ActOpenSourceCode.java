@@ -28,9 +28,9 @@ import org.swingexplorer.idesupport.IDESupport;
 public class ActOpenSourceCode {
 
 	IDESupport ideSupport;
-	private PNLEDTMonitor owner;
+	private PnlEDTMonitor owner;
 	
-	ActOpenSourceCode(PNLEDTMonitor _owner) {
+	ActOpenSourceCode(PnlEDTMonitor _owner) {
 		owner = _owner;
 	}
 	

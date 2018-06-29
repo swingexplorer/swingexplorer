@@ -35,10 +35,10 @@ import javax.swing.JOptionPane;
  */
 public class ActMouseClickOnDisplay extends MouseAdapter {
 	
-	PNLGuiDisplay display;
+	PnlGuiDisplay display;
 	MdlSwingExplorer model;
 	
-	ActMouseClickOnDisplay(PNLGuiDisplay displayP, MdlSwingExplorer modelP) {
+	ActMouseClickOnDisplay(PnlGuiDisplay displayP, MdlSwingExplorer modelP) {
 		display = displayP;
 		model = modelP;
 	}

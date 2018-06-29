@@ -54,7 +54,7 @@ The main idea behind the prefix notation is to facilitate class searching in IDE
 | Prefix | Meaning |
 | ------ | ------- |
 | Act    | Action  |
-| DLG    | Dialog  |
-| FRM    | Form    |
+| Dlg    | Dialog  |
+| Frm    | Form    |
 | Mdl    | Model   |
-| PNL    | Panel   |
+| Pnl    | Panel   |

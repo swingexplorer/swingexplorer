@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
-import org.swingexplorer.awt_events.PNLAwtEvents;
+import org.swingexplorer.awt_events.PnlAwtEvents;
 
 
 
@@ -36,9 +36,9 @@ import org.swingexplorer.awt_events.PNLAwtEvents;
 public class ActShowEventSource extends RichAction {
 	
 	MdlSwingExplorer mdlSwingExplorer;
-	PNLAwtEvents pnlAwtEvents;
+	PnlAwtEvents pnlAwtEvents;
 
-	public ActShowEventSource(MdlSwingExplorer _mdlSwingExplorer, PNLAwtEvents _pnlAwtEvents) {
+	public ActShowEventSource(MdlSwingExplorer _mdlSwingExplorer, PnlAwtEvents _pnlAwtEvents) {
 		mdlSwingExplorer = _mdlSwingExplorer;
 		pnlAwtEvents = _pnlAwtEvents;
 		setName("Show event source");

@@ -22,7 +22,7 @@ package org.swingexplorer.awt_events;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import org.swingexplorer.awt_events.filter.PNLEventFilter;
+import org.swingexplorer.awt_events.filter.PnlEventFilter;
 
 /**
  *
@@ -30,9 +30,9 @@ import org.swingexplorer.awt_events.filter.PNLEventFilter;
  */
 public class ActEventFilterChanged implements ItemListener {
 
-	PNLEventFilter owner;
+	PnlEventFilter owner;
 	
-	public ActEventFilterChanged(PNLEventFilter _owner) {
+	public ActEventFilterChanged(PnlEventFilter _owner) {
 		owner = _owner;
 	}
 	

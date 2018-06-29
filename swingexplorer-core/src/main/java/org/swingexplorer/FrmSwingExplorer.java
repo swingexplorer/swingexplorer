@@ -34,9 +34,9 @@ import javax.swing.SwingUtilities;
  *
  * @author  Maxim Zakharenkov
  */
-public class FRMSwingExplorer extends JFrame {
+public class FrmSwingExplorer extends JFrame {
 
-	PNLSwingExplorer pnlSwingExplorer;
+	PnlSwingExplorer pnlSwingExplorer;
 	JMenuBar menuBar;
 	JMenu mnuHelp;
 	
@@ -46,7 +46,7 @@ public class FRMSwingExplorer extends JFrame {
 	Launcher application;
 	
 		
-	public FRMSwingExplorer() {
+	public FrmSwingExplorer() {
 		initComponents();
 		initActions();
 	}
@@ -57,7 +57,7 @@ public class FRMSwingExplorer extends JFrame {
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         
         // initialize main panel
-        pnlSwingExplorer = new PNLSwingExplorer();
+        pnlSwingExplorer = new PnlSwingExplorer();
 		this.add(pnlSwingExplorer);
 		
         Image appImage = Icons.appSmallImage();

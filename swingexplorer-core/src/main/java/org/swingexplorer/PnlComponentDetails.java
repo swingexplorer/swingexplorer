@@ -36,10 +36,10 @@ import javax.swing.border.Border;
  *
  * @author  Maxim Zakharenkov
  */
-public class PNLComponentDetails extends javax.swing.JPanel {
+public class PnlComponentDetails extends javax.swing.JPanel {
     
     /** Creates new form ComponentDetails */
-    public PNLComponentDetails() {
+    public PnlComponentDetails() {
         initComponents();
     }
     

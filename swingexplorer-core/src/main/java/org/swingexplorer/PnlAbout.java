@@ -53,12 +53,12 @@ import javax.swing.UIManager;
  * @author Maxim Zakharenkov
  */
 @SuppressWarnings("serial")
-public class PNLAbout extends javax.swing.JPanel {
+public class PnlAbout extends javax.swing.JPanel {
 	
 	
     
-    /** Creates new form PNLAbout */
-    public PNLAbout() {
+    /** Creates new form PnlAbout */
+    public PnlAbout() {
         
     	Font titleFont = UIManager.getFont("Label.font").deriveFont(20f);
     	Font copyrightFont = UIManager.getFont("Label.font").deriveFont(Font.PLAIN);
@@ -93,7 +93,7 @@ public class PNLAbout extends javax.swing.JPanel {
     		public void mouseClicked(MouseEvent e) {
     			if(!SysUtils.openBrowser(webLink)) {
     				
-    				int res = JOptionPane.showOptionDialog(PNLAbout.this, "Sorry, we cannot open browser on your platform!\nWould you like to copy the link to clipboard?.", "Error", 
+    				int res = JOptionPane.showOptionDialog(PnlAbout.this, "Sorry, we cannot open browser on your platform!\nWould you like to copy the link to clipboard?.", "Error", 
             				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
     				if(res == JOptionPane.YES_OPTION) {
 	            		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -126,7 +126,7 @@ public class PNLAbout extends javax.swing.JPanel {
 		
 		dlgAbout.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
-		PNLAbout pnlAbout = new PNLAbout();
+		PnlAbout pnlAbout = new PnlAbout();
 		dlgAbout.add(pnlAbout);
 		dlgAbout.pack();
 		GuiUtils.center(owner, dlgAbout);

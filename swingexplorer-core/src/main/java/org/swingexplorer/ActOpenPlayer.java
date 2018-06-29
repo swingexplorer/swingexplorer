@@ -47,7 +47,7 @@ public class ActOpenPlayer extends RichToggleAction {
 		if (application.dlgPlayerControls == null) {
 			application.dlgPlayerControls = new JDialog(application.frmMain,
 					"Player");
-			PNLPlayerControls pnlPlayerControls = new PNLPlayerControls();
+			PnlPlayerControls pnlPlayerControls = new PnlPlayerControls();
 			application.dlgPlayerControls.add(pnlPlayerControls);
 			pnlPlayerControls.setPlayer(application.player);
 			application.dlgPlayerControls.setBounds(380, 450, 590, 280);

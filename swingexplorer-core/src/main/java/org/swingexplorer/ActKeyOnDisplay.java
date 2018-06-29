@@ -29,10 +29,10 @@ import java.awt.event.KeyListener;
 public class ActKeyOnDisplay implements KeyListener {
 
 	
-	PNLGuiDisplay display;
+	PnlGuiDisplay display;
 	MdlSwingExplorer model;
 	
-	ActKeyOnDisplay(PNLGuiDisplay displayP, MdlSwingExplorer modelP) {
+	ActKeyOnDisplay(PnlGuiDisplay displayP, MdlSwingExplorer modelP) {
 		display = displayP;
 		model = modelP;
 	}

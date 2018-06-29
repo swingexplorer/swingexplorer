@@ -48,8 +48,8 @@ public class Launcher implements Runnable {
     
     public IDESupport ideSupport;
     
-	public FRMSwingExplorer frmMain;
-	public PNLPlayerControls pnlPlayerControls;
+	public FrmSwingExplorer frmMain;
+	public PnlPlayerControls pnlPlayerControls;
 	public JDialog dlgPlayerControls;	
 	public MdlSwingExplorer model = new MdlSwingExplorer();
     public Player player = new Player();
@@ -63,7 +63,7 @@ public class Launcher implements Runnable {
         EDTDebugQueue.initMonitoring();
 		
         // create frame
-        frmMain = new FRMSwingExplorer();
+        frmMain = new FrmSwingExplorer();
         frmMain.setName("frmMain");
         frmMain.addWindowListener(new WindowAdapter() {
         	public void windowClosing(WindowEvent evt) {

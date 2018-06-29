@@ -29,10 +29,10 @@ import javax.swing.JOptionPane;
  *
  * @author  Maxim Zakharenkov
  */
-public class FRMPerson extends javax.swing.JFrame {
+public class FrmPerson extends javax.swing.JFrame {
     
-    /** Creates new form FRMPerson */
-    public FRMPerson() {
+    /** Creates new form FrmPerson */
+    public FrmPerson() {
         initComponents();
     }
     
@@ -353,7 +353,7 @@ public class FRMPerson extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FRMPerson frmPerson = new FRMPerson();
+                FrmPerson frmPerson = new FrmPerson();
                 frmPerson.setVisible(true);
             }
         });

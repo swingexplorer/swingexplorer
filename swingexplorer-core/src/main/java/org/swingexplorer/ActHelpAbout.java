@@ -38,6 +38,6 @@ public class ActHelpAbout extends RichAction {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		PNLAbout.openModal(owner);
+		PnlAbout.openModal(owner);
 	}
 }

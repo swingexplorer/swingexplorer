@@ -34,9 +34,9 @@ import org.swingexplorer.idesupport.IDESupport;
 public class ActOpenSourceCode extends RichAction {
 
     IDESupport ideSupport;
-    PNLPlayerControls owner;
+    PnlPlayerControls owner;
     
-    public ActOpenSourceCode(PNLPlayerControls _owner) {
+    public ActOpenSourceCode(PnlPlayerControls _owner) {
         setName("src");
         setTooltip("Open sourcecode in IDE");
         owner = _owner;
