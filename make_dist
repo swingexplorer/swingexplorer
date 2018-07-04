@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# make_dist
+
+VERSION="$(grep '<version>' pom.xml | head -1 | sed -E -e 's/.*<version>//; s|</version>.*||')"
+M2_REPO=$HOME/.m2/repository
+
+mkdir -p dist
+rm -rf dist/*
+distname="SwingExplorer-$VERSION"
+dist="dist/$distname"
+mkdir -p "$dist"
+mkdir -p "$dist"/lib
+
+
+# Assemble files
+cp $M2_REPO/org/jdesktop/swing-layout/1.0.3/swing-layout-1.0.3.jar "$dist"/lib
+cp $M2_REPO/javassist/javassist/3.12.1.GA/javassist-3.12.1.GA.jar "$dist"/lib
+cp swingexplorer-core/target/swingexplorer-core-$VERSION.jar "$dist"
+cp swingexplorer-agent/target/swingexplorer-agent-$VERSION.jar "$dist"
+cp -pR src/dist-files/* "$dist"
+cp -pR README.md docs "$dist"
+
+cd dist
+
+# Munge files
+perl -spi -e "s/\@SWINGEXPLORER_VERSION\@/$VERSION/g" $distname/bin/*
+
+# Create archives
+tar czf "$distname.tgz" "$distname"
+zip "$distname.zip" "$distname"
