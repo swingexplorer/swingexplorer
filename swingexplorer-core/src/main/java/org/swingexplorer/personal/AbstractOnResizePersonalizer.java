@@ -55,7 +55,7 @@ public abstract class AbstractOnResizePersonalizer<T extends Component> implemen
 	 * Applies state from positions to component.
 	 * The method is called when component is first resized
 	 */
-	public abstract void applyState();
+	protected abstract void applyState();
 	
 	/**
 	 * {@inheritDoc}

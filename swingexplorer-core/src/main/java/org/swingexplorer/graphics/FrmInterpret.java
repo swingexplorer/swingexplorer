@@ -43,12 +43,12 @@ import java.util.concurrent.Executors;
  */
 public class FrmInterpret extends Frame {
 
-	Button btnStep = new Button("Step");
-	Button btnRun = new Button("Run");
-	Component drawing = new Component() {};
-	XGraphics xgraphics;
+	private Button btnStep = new Button("Step");
+	private Button btnRun = new Button("Run");
+	private Component drawing = new Component() {};
+	private XGraphics xgraphics;
 	
-	ExecutorService execService;
+	private ExecutorService execService;
 	
 	private FrmInterpret(XGraphics xg) {
 		setLayout(new BorderLayout());
@@ -87,12 +87,9 @@ public class FrmInterpret extends Frame {
 		});
 		
 	}
-	
-	
-	StepCallbackImpl callback = new StepCallbackImpl();
-	
 
-	
+	private StepCallbackImpl callback = new StepCallbackImpl();
+
 	private void doStart() {
 		Runnable runnable = new Runnable() {
 			public void run() {	
@@ -106,7 +103,7 @@ public class FrmInterpret extends Frame {
 		execService.submit(runnable);
 	}
 	
-	void doStep() {
+	private void doStep() {
 		synchronized(callback) {
 			callback.notify();
 		}
@@ -156,9 +153,8 @@ public class FrmInterpret extends Frame {
 			}
 		}		
 	}
-	
-	
-	public static void open(XGraphics xg) {
+
+	private static void open(XGraphics xg) {
 		FrmInterpret frm = new FrmInterpret(xg);
 		frm.setBounds(400, 400, 500, 500);
 		frm.setVisible(true);

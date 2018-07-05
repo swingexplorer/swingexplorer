@@ -30,9 +30,9 @@ import java.util.ArrayList;
  */
 public class ListenerSupport<L> {
 
-    ArrayList<L> listeners;
-    Class<?> listenerInterface;
-    L proxy;
+    private ArrayList<L> listeners;
+    private Class<?> listenerInterface;
+    private L proxy;
     
     public ListenerSupport(Class<?> _listenerInterface) {
         listenerInterface = _listenerInterface;

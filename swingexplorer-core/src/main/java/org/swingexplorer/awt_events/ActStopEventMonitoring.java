@@ -31,7 +31,7 @@ import org.swingexplorer.RichAction;
  */
 public class ActStopEventMonitoring extends RichAction {
 
-	AWTEventModel model;
+	private AWTEventModel model;
 	
 	ActStopEventMonitoring(AWTEventModel modelP) {
 		setTooltip("Stop event monitoring");

@@ -29,9 +29,9 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class ActHelpAbout extends RichAction {
 	
-	Frame owner;
+	private Frame owner;
 	
-	public ActHelpAbout(Frame ownerP) {
+	ActHelpAbout(Frame ownerP) {
 		setName("About");
 		setTooltip("About Swing Explorer");
 		owner = ownerP;

@@ -32,20 +32,20 @@ import java.net.URL;
  */
 public abstract class SysUtils {
 	
-	public static final String KEY_SHOW_EXPLORER_WINDOW = "swex.showwin";
-    public static final String KEY_LOG_OPTIONS = "swex.log";
-    public static final String KEY_LOG_CONSOLE = "swex.log.console";
-    public static final String KEY_MONITOR_EDT_VIOLATIONS = "swex.vmonitor";
-    public static final String KEY_MONITOR_EDT_HANGS = "swex.hmonitor";
-    public static final String KEY_MONITOR_EDT_EXCEPTIONS = "swex.emonitor";
-    public static final String KEY_MANAGEMENT_PORT = "swex.mport";
+	private static final String KEY_SHOW_EXPLORER_WINDOW = "swex.showwin";
+    private static final String KEY_LOG_OPTIONS = "swex.log";
+    private static final String KEY_LOG_CONSOLE = "swex.log.console";
+    private static final String KEY_MONITOR_EDT_VIOLATIONS = "swex.vmonitor";
+    private static final String KEY_MONITOR_EDT_HANGS = "swex.hmonitor";
+    private static final String KEY_MONITOR_EDT_EXCEPTIONS = "swex.emonitor";
+    private static final String KEY_MANAGEMENT_PORT = "swex.mport";
 
 	
 	/**
 	 * Show explorer window in the tree or not
 	 * @return
 	 */
-	public static boolean isShowExplorerWindow() {
+	static boolean isShowExplorerWindow() {
 		return getBoolean(KEY_SHOW_EXPLORER_WINDOW);
 	}
     
@@ -53,7 +53,7 @@ public abstract class SysUtils {
      * Checks if EDT violations should be monitored immediately
      * after program is started and resets the flag fo false.
      */ 
-    public static boolean isMonitorEDTViolationsAndReset() {
+    static boolean isMonitorEDTViolationsAndReset() {
         boolean res = getBoolean(KEY_MONITOR_EDT_VIOLATIONS);
         System.getProperties().remove(KEY_MONITOR_EDT_VIOLATIONS);
         return res;
@@ -67,19 +67,19 @@ public abstract class SysUtils {
      * Checks if EDT hangs should be monitored immediately
      * after program is started and resets the flag fo false.
      */
-    public static boolean isMonitorEDTHangsAndReset() {
+    static boolean isMonitorEDTHangsAndReset() {
         boolean res = getBoolean(KEY_MONITOR_EDT_HANGS);
         System.getProperties().remove(KEY_MONITOR_EDT_HANGS);
         return res;
     }
 
-    public static boolean isMonitorEDTExceptionsAndReset() {
+    static boolean isMonitorEDTExceptionsAndReset() {
         boolean res = getBoolean(KEY_MONITOR_EDT_EXCEPTIONS);
         System.getProperties().remove(KEY_MONITOR_EDT_EXCEPTIONS);
         return res;
     }
     
-    public static String getApplicationVersion() {
+    static String getApplicationVersion() {
         return SysUtils.class.getPackage().getImplementationVersion();
     }
     
@@ -118,7 +118,7 @@ public abstract class SysUtils {
 	 * @param strUri
 	 * @return true if operation succeded and false if not
 	 */
-	public static boolean openBrowser(String strUri) {
+	static boolean openBrowser(String strUri) {
         
 		try {
 	        Desktop.getDesktop().browse(new URL(strUri).toURI());
@@ -135,7 +135,7 @@ public abstract class SysUtils {
      * not exist
 	 * @return full path
 	 */
-	public static String getHomeDirectory(boolean autoCreate) {
+	static String getHomeDirectory(boolean autoCreate) {
 
 		// the exactly same implementation of this method is
 		// also presented in the both in the SysUtils class 
@@ -162,7 +162,7 @@ public abstract class SysUtils {
 		return strDir;
 	}
 	
-	public static String getOptionFilePath(boolean autoCreateDirectory) {
+	static String getOptionFilePath(boolean autoCreateDirectory) {
 		String dir = getHomeDirectory(autoCreateDirectory);
 		return dir + "/options.properties";
 	}
@@ -172,7 +172,7 @@ public abstract class SysUtils {
 	 * Determines if logging options (levels, categories).
 	 * @return
 	 */
-	public static String getLogOptions() {
+	static String getLogOptions() {
 		return System.getProperty(KEY_LOG_OPTIONS);
 	}
 	
@@ -180,7 +180,7 @@ public abstract class SysUtils {
 	 * Determines if logging to console should be done instead of file.
 	 * @return
 	 */
-	public static boolean isLogToConsole() {
+	static boolean isLogToConsole() {
 		return Boolean.getBoolean(KEY_LOG_CONSOLE);
 	}
 }

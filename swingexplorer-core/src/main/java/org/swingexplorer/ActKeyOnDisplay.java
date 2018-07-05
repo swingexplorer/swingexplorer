@@ -28,8 +28,7 @@ import java.awt.event.KeyListener;
  */
 public class ActKeyOnDisplay implements KeyListener {
 
-	
-	PnlGuiDisplay display;
+	private PnlGuiDisplay display;
 	MdlSwingExplorer model;
 	
 	ActKeyOnDisplay(PnlGuiDisplay displayP, MdlSwingExplorer modelP) {

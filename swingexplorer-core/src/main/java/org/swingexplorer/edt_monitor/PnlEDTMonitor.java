@@ -117,7 +117,7 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
     }
     
     
-    String getLink(Point p) {
+    private String getLink(Point p) {
     	int row = treProblems.getRowForLocation(p.x, p.y);
         if(row == -1) {
         	return null;
@@ -293,23 +293,23 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    javax.swing.JButton btnClear;
-    javax.swing.JButton btnTrace;
-    javax.swing.JCheckBox chbEDTExceptions;
-    javax.swing.JCheckBox chbEDTViolations;
-    javax.swing.JCheckBox chbHangs;
-    javax.swing.JScrollPane scpProblems;
-    javax.swing.JSpinner spnDelay;
-    javax.swing.JTree treProblems;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnTrace;
+    private javax.swing.JCheckBox chbEDTExceptions;
+    private javax.swing.JCheckBox chbEDTViolations;
+    private javax.swing.JCheckBox chbHangs;
+    private javax.swing.JScrollPane scpProblems;
+    private javax.swing.JSpinner spnDelay;
+    private javax.swing.JTree treProblems;
     // End of variables declaration//GEN-END:variables
     
-    ActClear actClear;
-    ActTrace actTrace;
-    ActOpenSourceCode actOpenSourceCode;
-    MdlEDTMonitor mdlMonitor;
-    DefaultTreeCellRenderer renderer;
-    ModelPropertyChangeListener modelPropChangeListener = new ModelPropertyChangeListener();
-    ProblemListenerImpl problemListener = new ProblemListenerImpl();
+    private ActClear actClear;
+    private ActTrace actTrace;
+    private ActOpenSourceCode actOpenSourceCode;
+    private MdlEDTMonitor mdlMonitor;
+    private DefaultTreeCellRenderer renderer;
+    private ModelPropertyChangeListener modelPropChangeListener = new ModelPropertyChangeListener();
+    private ProblemListenerImpl problemListener = new ProblemListenerImpl();
     
     
     public void setModel(MdlEDTMonitor _model) {
@@ -328,7 +328,7 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
     }
     
     
-    public void addProblem(Problem problem){
+    void addProblem(Problem problem){
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) treProblems.getModel().getRoot();
         
         // adding problem
@@ -348,14 +348,14 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
         GuiUtils.notifyTreeChanged(treProblems);
     }
     
-    public void clearProblems() {
+    void clearProblems() {
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) treProblems.getModel().getRoot();
         root.removeAllChildren();
         GuiUtils.notifyTreeChanged(treProblems);
     }
 
     /** Returns array of problems selected */
-    public Problem[] getSelectedProblems() {
+    Problem[] getSelectedProblems() {
         TreePath[] paths = treProblems.getSelectionPaths();
         if(paths == null) {
             return null;

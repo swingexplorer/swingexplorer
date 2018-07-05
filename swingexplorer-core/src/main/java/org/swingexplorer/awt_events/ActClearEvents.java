@@ -27,11 +27,11 @@ import org.swingexplorer.RichAction;
 /**
  * @author Maxim Zakharenkov
  */
-public class ActClearEvents extends RichAction {
+class ActClearEvents extends RichAction {
 
-    PnlAwtEvents owner;
+    private PnlAwtEvents owner;
 	
-	public ActClearEvents(PnlAwtEvents _owner) {
+	ActClearEvents(PnlAwtEvents _owner) {
         owner = _owner;
 		setName("Clear");
 		setTooltip("Clear events");

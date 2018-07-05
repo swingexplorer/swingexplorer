@@ -43,7 +43,7 @@ public class Generator {
 		}		
 	}
 
-	static void dump(Method meth) {
+	private static void dump(Method meth) {
 		String template =
 				"@Override\n" +
 				"public %1$s %2$s(%3$s) { \n " +

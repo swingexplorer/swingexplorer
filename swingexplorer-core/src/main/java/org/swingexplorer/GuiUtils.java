@@ -91,7 +91,7 @@ final public class GuiUtils {
      * @return Instance of <i>Image</i> object or <code>null</code> if
      * resource is not found.
      */
-    public static Image getImage(String resourceName) {
+    static Image getImage(String resourceName) {
         return getImage(null, resourceName);
     }
 
@@ -105,7 +105,7 @@ final public class GuiUtils {
      * @return Instance of <i>Image</i> object or <code>null</code> if
      * resource is not found.
      */
-    public static Image getImage(Class<?> _class, String resourceName) {
+    private static Image getImage(Class<?> _class, String resourceName) {
         URL resource;
         if (_class != null) {
             // Strange things happens here:
@@ -134,7 +134,7 @@ final public class GuiUtils {
      * @return Instance of <i>ImageIcon</i> object or <code>null</code> if
      * resource is not found.
      */
-    public static ImageIcon getImageIcon(String resourceName) {
+    static ImageIcon getImageIcon(String resourceName) {
         return getImageIcon(null, resourceName);
     }
 
@@ -148,7 +148,7 @@ final public class GuiUtils {
      * @return Instance of <i>Image</i> object or <code>null</code> if
      * resource is not found.
      */
-    public static ImageIcon getImageIcon(Class<?> _class, String resourceName) {
+    static ImageIcon getImageIcon(Class<?> _class, String resourceName) {
         Image image = getImage(_class, resourceName);
         if (image != null) {
             return new ImageIcon(image);
@@ -202,7 +202,7 @@ final public class GuiUtils {
      * then child is centered relatively to the whole screen.
      * @param child The component to be centered.
      */
-    public static void center(Component parent, Component child) {
+    static void center(Component parent, Component child) {
         if (parent == null) {
             center(child);
         } else {
@@ -214,7 +214,7 @@ final public class GuiUtils {
      * Centers specified component on a screen.
      * @param component The component to be centered.
      */
-    public static void center(Component component) {
+    private static void center(Component component) {
         // size will be restricted against screen size anyway
         // that's why boolean argument is false.
         // anyway this argument should not be removed - it is simply reserved
@@ -279,7 +279,7 @@ final public class GuiUtils {
     /**
      * Character <code>&amp;</code> used as prefix for a mnemonic symbol.
      */
-    public static final char AMP = '&' /**/;
+    private static final char AMP = '&' /**/;
 
     private static final char NO_MNEMONIC = (char) 0;
 
@@ -289,7 +289,7 @@ final public class GuiUtils {
      * @param text Text from where the symbols has to be extracted.
      * @return String where the symbols are extracted.
      */
-    public static String getTextWithoutMnemonic(String text) {
+    private static String getTextWithoutMnemonic(String text) {
         if (text == null) {
             return null;
         }
@@ -473,7 +473,7 @@ final public class GuiUtils {
      * of screen. When frame is closed the System.exit(0) is executed;
      * @param frame Frame to show
      */
-    public static void showDemoFrame(JFrame frame) {
+    private static void showDemoFrame(JFrame frame) {
         // Making good size and center the frame
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize((int) (screenSize.width / 1.5), (int) (screenSize.height / 1.5));
@@ -549,7 +549,7 @@ final public class GuiUtils {
      * @param tree
      * @return
      */
-    public static Enumeration<TreePath> getExpatnedTreePaths(JTree tree) {
+    private static Enumeration<TreePath> getExpatnedTreePaths(JTree tree) {
         TreePath pathToRoot = new TreePath(tree.getModel().getRoot());
         return tree.getExpandedDescendants(pathToRoot);
     }
@@ -574,7 +574,7 @@ final public class GuiUtils {
      * @param tree
      * @param expandPaths
      */
-    public static void expandTreePaths(JTree tree, Enumeration<TreePath> expandPaths) {
+    static void expandTreePaths(JTree tree, Enumeration<TreePath> expandPaths) {
         if(expandPaths != null) {
             
             DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
@@ -621,7 +621,7 @@ final public class GuiUtils {
      * @throws IllegalArgumentException if component does not belong to
      * this tabbed pane
      */
-    public static int getTabComponentIndex(JTabbedPane tbp, Component component) throws IllegalArgumentException {
+    static int getTabComponentIndex(JTabbedPane tbp, Component component) throws IllegalArgumentException {
         int count = tbp.getTabCount();
         for(int i = 0; i < count; i ++) {
             if(component == tbp.getComponentAt(i)) {

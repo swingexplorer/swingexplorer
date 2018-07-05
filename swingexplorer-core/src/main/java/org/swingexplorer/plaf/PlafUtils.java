@@ -40,7 +40,7 @@ import javax.swing.JTree;
  */
 public abstract class PlafUtils {
 
-    public static final Font CUSTOM_FONT = new Font("Dialog", Font.PLAIN, 12);
+    static final Font CUSTOM_FONT = new Font("Dialog", Font.PLAIN, 12);
     
     
     public static final void applyCustomLookAndFeel(Container parent) {
@@ -78,5 +78,5 @@ public abstract class PlafUtils {
         }
     }
     
-    static CustomButtonUI sharedButtonUI = new CustomButtonUI();
+    private static CustomButtonUI sharedButtonUI = new CustomButtonUI();
 }

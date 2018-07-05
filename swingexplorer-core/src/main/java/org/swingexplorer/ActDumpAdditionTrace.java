@@ -32,9 +32,9 @@ import org.swingexplorer.instrument.Agent;
  */
 public class ActDumpAdditionTrace extends RichAction {
 
-	PnlComponentTree pnlComponentTree;
-	MdlSwingExplorer mdlSwingExplorer;
-	
+	private PnlComponentTree pnlComponentTree;
+	private MdlSwingExplorer mdlSwingExplorer;
+
 	ActDumpAdditionTrace(MdlSwingExplorer _mdlSwingExplorer, PnlComponentTree _pnlComponentTree) {
 		setName("Dump addition trace");
 		setTooltip("<html>Dumps a stack trace<br> where the component was<br> added into container</html>");

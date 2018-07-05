@@ -63,7 +63,7 @@ public class PnlAwtEvents extends javax.swing.JPanel {
         header.setUI(new CustomTableHeaderUI());
     }
     
-    void initActions() {
+    private void initActions() {
     	actStartEventMonitoring = new ActStartEventMonitoring(eventModel);
     	actStopEventMonitoring = new ActStopEventMonitoring(eventModel);
     	
@@ -100,14 +100,14 @@ public class PnlAwtEvents extends javax.swing.JPanel {
 		return mdlTblEvents.getEvent(selRow);
     }
     
-    public void addEvent(AWTEvent evt) {    	
+    private void addEvent(AWTEvent evt) {
     	mdlTblEvents.addEvent(evt);
     	int rowNo = mdlTblEvents.getRowCount() - 1;
     	mdlTblEvents.fireTableRowsInserted(rowNo, rowNo);
         tblEvents.scrollRectToVisible(tblEvents.getCellRect(rowNo, 1, true));
     }
     
-    public void clearEvents() {
+    void clearEvents() {
         mdlTblEvents.clear();
     }
     
@@ -115,7 +115,7 @@ public class PnlAwtEvents extends javax.swing.JPanel {
         
     }
     
-    public void setEventModel(AWTEventModel modelP) {
+    private void setEventModel(AWTEventModel modelP) {
     	if(eventModel != null) {
     		eventModel.removeEventListener(modelListener);
     	}
@@ -246,13 +246,13 @@ public class PnlAwtEvents extends javax.swing.JPanel {
     private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables
     
-    MdlEvents mdlTblEvents = new MdlEvents();
-    AWTEventModel eventModel;
-    AWTEventListener modelListener = new ModelListener();
-    ActStartEventMonitoring actStartEventMonitoring;
-    ActStopEventMonitoring actStopEventMonitoring;
-    ActClearEvents actClearEvents;
-    RichAction actShowEventSource;
-    ActShowFilter actShowFilter;
+    private MdlEvents mdlTblEvents = new MdlEvents();
+    private AWTEventModel eventModel;
+    private AWTEventListener modelListener = new ModelListener();
+    private ActStartEventMonitoring actStartEventMonitoring;
+    private ActStopEventMonitoring actStopEventMonitoring;
+    private ActClearEvents actClearEvents;
+    private RichAction actShowEventSource;
+    private ActShowFilter actShowFilter;
 }
 

@@ -35,18 +35,18 @@ import org.swingexplorer.util.ListenerSupport;
  */
 public class MdlEDTMonitor {
 
-    boolean monitorViolations;
+    private boolean monitorViolations;
     
-    PropertyChangeSupport propChangeSupport = new PropertyChangeSupport(this);
-    ProblemListenerRedispatcher problemListenerRedispatcher = new ProblemListenerRedispatcher();
-    ListenerSupport<ProblemListener> listenerSupport = new ListenerSupport<ProblemListener>(ProblemListener.class);
+    private PropertyChangeSupport propChangeSupport = new PropertyChangeSupport(this);
+    private ProblemListenerRedispatcher problemListenerRedispatcher = new ProblemListenerRedispatcher();
+    private ListenerSupport<ProblemListener> listenerSupport = new ListenerSupport<ProblemListener>(ProblemListener.class);
     
     
-    public MdlEDTMonitor() {
+    MdlEDTMonitor() {
         EDTDebugQueue.setProblemListener(problemListenerRedispatcher);
     }
     
-    public boolean isViolationMonitoringAvailable() {
+    boolean isViolationMonitoringAvailable() {
         return Agent.isInstrumented();
     }
         
@@ -62,11 +62,11 @@ public class MdlEDTMonitor {
         propChangeSupport.firePropertyChange("monitorViolations", old, monitorViolations);
     }
 
-    public int getMinimalMonitoredHangTime() {
+    int getMinimalMonitoredHangTime() {
         return (int)EDTDebugQueue.getMinimalMonitoredHangTime();
     }
 
-    public void setMinimalMonitoredHangTime(int _minimalMonitoredHangTime) {
+    void setMinimalMonitoredHangTime(int _minimalMonitoredHangTime) {
         long old = EDTDebugQueue.getMinimalMonitoredHangTime();
         EDTDebugQueue.setMinimalMonitoredHangTime(_minimalMonitoredHangTime);
         propChangeSupport.firePropertyChange("minimalMonitoredHangTime", old, _minimalMonitoredHangTime);

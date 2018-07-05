@@ -45,18 +45,17 @@ import org.swingexplorer.awt_events.filter.PnlEventFilter;
 public class ActShowFilter extends RichAction {
 
 	
-	PnlAwtEvents owner;
+	private PnlAwtEvents owner;
 	JPopupMenu popup;
 	boolean selected = false;
-    JDialog dlg;
+    private JDialog dlg;
 
-	public ActShowFilter(PnlAwtEvents _owner) {
+	ActShowFilter(PnlAwtEvents _owner) {
 		owner =_owner;
 		setName("Filter");
 
         
 	}
-	
 	
 	public void actionPerformed(ActionEvent e) {
         if(dlg == null) {

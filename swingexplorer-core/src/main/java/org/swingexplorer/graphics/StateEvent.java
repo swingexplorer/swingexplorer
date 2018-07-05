@@ -34,7 +34,7 @@ public class StateEvent extends EventObject {
 	private PState newState;
 	private PState oldState;
 	
-	public StateEvent(Player source, PState oldStateP, PState newStateP) {
+	StateEvent(Player source, PState oldStateP, PState newStateP) {
 		super(source);
 		newState = newStateP;
 		oldState = oldStateP;

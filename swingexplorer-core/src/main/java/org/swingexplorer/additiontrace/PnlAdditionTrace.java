@@ -76,8 +76,8 @@ public class PnlAdditionTrace extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    javax.swing.JScrollPane scpTrace;
-    javax.swing.JEditorPane txtTrace;
+    private javax.swing.JScrollPane scpTrace;
+    private javax.swing.JEditorPane txtTrace;
     // End of variables declaration//GEN-END:variables
 
     private void initActions() {
@@ -86,9 +86,9 @@ public class PnlAdditionTrace extends javax.swing.JPanel {
 	}
 
     
-    MdlSwingExplorer model;
-    ModelListener modelListener = new ModelListener();
-    ActOpenSourceCode actOpenSourceCode;
+    private MdlSwingExplorer model;
+    private ModelListener modelListener = new ModelListener();
+    private ActOpenSourceCode actOpenSourceCode;
     
 	public void setModel(MdlSwingExplorer _model) {
 		model = _model;

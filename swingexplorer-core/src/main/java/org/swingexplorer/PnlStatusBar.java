@@ -85,7 +85,7 @@ public class PnlStatusBar extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
     MdlSwingExplorer model;
-    ModelListener modelListener = new ModelListener();
+    private ModelListener modelListener = new ModelListener();
     
     public void setModel(MdlSwingExplorer model) {
 

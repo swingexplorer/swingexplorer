@@ -121,11 +121,11 @@ public class PnlComponentTree extends javax.swing.JPanel {
     JPopupMenu popupMenu = new JPopupMenu();
     TreeSelectionListener actTreeSelectionChanged;
     
-    public void addAction(Action act) {
+    void addAction(Action act) {
         popupMenu.add(act);
     }
     
-    public void setRoot(DefaultMutableTreeNode root) {
+    void setRoot(DefaultMutableTreeNode root) {
     	// memorize expansions
     	TreePath pathToRoot = new TreePath(treAll.getModel().getRoot());
     	Enumeration<TreePath> expandPaths = treAll.getExpandedDescendants(pathToRoot);
@@ -149,7 +149,7 @@ public class PnlComponentTree extends javax.swing.JPanel {
         enableSelectionNotification();
     }
     
-    public DefaultMutableTreeNode getRoot() {
+    DefaultMutableTreeNode getRoot() {
         return (DefaultMutableTreeNode)treAll.getModel().getRoot();
     }
    
@@ -180,7 +180,7 @@ public class PnlComponentTree extends javax.swing.JPanel {
     	return (DefaultTreeModel)tree.getModel();
     }
     
-    public Component getSelectedComponent() {
+    Component getSelectedComponent() {
     	if(tbpTrees.getSelectedComponent() == scpTreeAll) {    	
     		return getComponent(treAll.getSelectionPath());
     	} else {
@@ -204,7 +204,7 @@ public class PnlComponentTree extends javax.swing.JPanel {
 		repaint();
 	}
     
-    public static Component getComponent(TreePath path) {
+    static Component getComponent(TreePath path) {
 		if(path == null) {
 			return null;
 		}
@@ -253,7 +253,7 @@ public class PnlComponentTree extends javax.swing.JPanel {
 		return paths.toArray(new TreePath[paths.size()]);
     }
     
-    public void setSelectComponents(Component[] components) {
+    private void setSelectComponents(Component[] components) {
     	log("setSelectComponents");
     	
     	// select components in All tree
@@ -292,12 +292,12 @@ public class PnlComponentTree extends javax.swing.JPanel {
         treDisplayed.getSelectionModel().addTreeSelectionListener(actTreeSelectionChanged);
     }
     
-	public void setTreeSelectionAction(TreeSelectionListener _actTreeSelectionChanged) {
+	void setTreeSelectionAction(TreeSelectionListener _actTreeSelectionChanged) {
         actTreeSelectionChanged =_actTreeSelectionChanged;
 		enableSelectionNotification();
 	}
 	
-	public void setDefaultTreeAction(final Action act) {
+	void setDefaultTreeAction(final Action act) {
 		MouseListener mouseListener = new MouseListener(act);
 		treAll.addMouseListener(mouseListener);
 		treDisplayed.addMouseListener(mouseListener);
@@ -403,9 +403,7 @@ public class PnlComponentTree extends javax.swing.JPanel {
 		}
 	}
 
-
-	
-	void log(String msg) {
+	private void log(String msg) {
 //		System.out.println("[PnlComponentTree] " + msg);
 	}
 }

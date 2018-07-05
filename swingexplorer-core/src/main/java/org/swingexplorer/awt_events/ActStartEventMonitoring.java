@@ -31,7 +31,7 @@ import org.swingexplorer.RichAction;
  */
 public class ActStartEventMonitoring extends RichAction {
 
-	AWTEventModel model;
+	private AWTEventModel model;
 	
 	ActStartEventMonitoring(AWTEventModel modelP) {
 		setTooltip("Start event monitoring");

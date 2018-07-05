@@ -39,15 +39,15 @@ import javax.swing.SwingUtilities;
  */
 public class LocalAWTEventModel implements AWTEventModel {
 
-	ArrayList<AWTEventListener> listeners = new ArrayList<AWTEventListener>();
-	Dispatcher dispatcher = new Dispatcher();
-	Component owner;
-	Window rootContainer;
-	boolean monitoring;
-	PropertyChangeSupport changeSupport;
-	Filter filter;
+	private ArrayList<AWTEventListener> listeners = new ArrayList<AWTEventListener>();
+	private Dispatcher dispatcher = new Dispatcher();
+	private Component owner;
+	private Window rootContainer;
+	private boolean monitoring;
+	private PropertyChangeSupport changeSupport;
+	private Filter filter;
 	
-	public LocalAWTEventModel(Component _owner) {
+	LocalAWTEventModel(Component _owner) {
 		owner = _owner;
 		filter = new Filter();
 	}
@@ -90,7 +90,7 @@ public class LocalAWTEventModel implements AWTEventModel {
         }
     }
 	
-	protected void firePropertyChanged(String propertyName, Object oldValue, Object newValue) {
+	private void firePropertyChanged(String propertyName, Object oldValue, Object newValue) {
 		if(changeSupport != null) {
 			changeSupport.firePropertyChange(propertyName, oldValue, newValue);
 		}

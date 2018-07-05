@@ -40,7 +40,7 @@ import org.swingexplorer.beans.Property;
  */
 public class Options {
 
-	BeanSaver saver = new BeanSaver();
+	private BeanSaver saver = new BeanSaver();
 	
 	private BufferedImage componentWithoutBorderTexture = null;
 	
@@ -382,7 +382,7 @@ public class Options {
 	 * Loads options from file
 	 * file is determined by SysUtils.getOptionFilePath method
 	 */
-	public void load() {
+    void load() {
 		// load options if they exist from previous executions
         String optionFile = SysUtils.getOptionFilePath(false);
         try {
@@ -408,7 +408,7 @@ public class Options {
 	 * Saves options to file
 	 * file is determined by SysUtils.getOptionFilePath method
 	 */
-	public void save() {
+    void save() {
 		// save options
 		String optionFile = SysUtils.getOptionFilePath(true);
 		

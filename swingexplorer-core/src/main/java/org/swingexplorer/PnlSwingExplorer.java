@@ -49,7 +49,7 @@ import org.swingexplorer.graphics.StateEvent;
 public class PnlSwingExplorer extends javax.swing.JPanel {
     
     /** Creates new form PnlSwingExplorer */
-    public PnlSwingExplorer() {
+    PnlSwingExplorer() {
     	initComponents();
         sppMain.setName("sppMain");
         sppRight.setName("sppRight");
@@ -247,30 +247,29 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
     
-    AnimatedIcon icoEventMonitoring;
-    AnimatedIcon icoEDTMonitoring;
+    private AnimatedIcon icoEventMonitoring;
+    private AnimatedIcon icoEDTMonitoring;
     
     Launcher application;
     
-    ModelListener listener = new ModelListener();
-    PlayerListener playerListener = new PlayerListenerImpl();
+    private ModelListener listener = new ModelListener();
+    private PlayerListener playerListener = new PlayerListenerImpl();
     
-    JComboBox<String> cmbScale = new JComboBox<>();
+    private JComboBox<String> cmbScale = new JComboBox<>();
     
     ActRefresh actRefresh;
-    ActDisplayComponent actDisplayComponent;
-    ActDumpAdditionTrace actTraceComponentAddition;
-    ActTreeSelectionChanged actTreeSelectionChanged;
-    ActZoomIn actZoomIn;
-    ActZoomOut actZoomOut;
-    ActMoveOverDisplay actMoveOverDisplay;
-    ActMouseClickOnDisplay actClickOnDisplay;
-    ActKeyOnDisplay actKeyOnDisplay;
-    ActDisplayTopContainer actDisplayTopContainer;
-    ActDisplayParent actDisplayParent;
-    
-    
-    void initActions() {
+    private ActDisplayComponent actDisplayComponent;
+    private ActDumpAdditionTrace actTraceComponentAddition;
+    private ActTreeSelectionChanged actTreeSelectionChanged;
+    private ActZoomIn actZoomIn;
+    private ActZoomOut actZoomOut;
+    private ActMoveOverDisplay actMoveOverDisplay;
+    private ActMouseClickOnDisplay actClickOnDisplay;
+    private ActKeyOnDisplay actKeyOnDisplay;
+    private ActDisplayTopContainer actDisplayTopContainer;
+    private ActDisplayParent actDisplayParent;
+
+    private void initActions() {
     	actRefresh = new ActRefresh(pnlComponentTree, application.model);
         pnlComponentTree.addAction(actRefresh);
         
@@ -394,7 +393,7 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
 		}
     }
     
-    public void addAction(RichAction act) {
+    private void addAction(RichAction act) {
     	tlbMain.addActionEx(act);
     	act.setApplication(application);
     }

@@ -47,16 +47,16 @@ public class XGraphics extends Graphics2D {
 
 	
 	Graphics2D graphics;
-	Callback callback;
-	ArrayList<Operation> operations;
-	ArrayList<Graphics> openGraphics;
+	private Callback callback;
+	private ArrayList<Operation> operations;
+	private ArrayList<Graphics> openGraphics;
 	
 	
-	public XGraphics(Graphics2D graphics) {
+	XGraphics(Graphics2D graphics) {
 		this(graphics, null);
 	}
 	
-	public XGraphics(Graphics2D graphics, Callback callbackP) {
+	private XGraphics(Graphics2D graphics, Callback callbackP) {
 		this.graphics = graphics;
 		operations = new ArrayList<Operation>();
 		openGraphics = new ArrayList<Graphics>();
@@ -76,7 +76,7 @@ public class XGraphics extends Graphics2D {
 	 * and resets internal operation list to empty.
 	 * Detached operation list contains END operation at the end.
 	 */
-	public ArrayList<Operation> detachOperations() {
+    ArrayList<Operation> detachOperations() {
 		ArrayList<Operation> detachOps = operations;
 		
 		//	add END marker operation to operation list, 
@@ -129,7 +129,7 @@ public class XGraphics extends Graphics2D {
 		out.println("OpCount: " + operations.size());
 	}
 	
-	Object operation(String methodName, Object...args) {
+	private Object operation(String methodName, Object... args) {
 		
 		//	obtain arguments and types
 		Class<?>[] types = new Class[args.length/2];
@@ -177,11 +177,11 @@ public class XGraphics extends Graphics2D {
 		return res;
 	}
 	
-	public int getOperationCount() {
+	int getOperationCount() {
 		return operations.size();
 	}
 	
-	public void interpret(Graphics g, int toStep, Callback callback) {
+	void interpret(Graphics g, int toStep, Callback callback) {
 		
 		
 		ArrayList<Graphics> openGraphics = new ArrayList<Graphics>();
@@ -592,7 +592,7 @@ public class XGraphics extends Graphics2D {
 	// method clones object through relection
 	// in some cases memorized argument values
 	// should be cloned to avoud their modification later
-	Object forceClone(Object toClone) {
+    private Object forceClone(Object toClone) {
 		if(toClone == null) {
 			return null;
 		}

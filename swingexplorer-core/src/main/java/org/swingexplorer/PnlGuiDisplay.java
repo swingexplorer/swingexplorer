@@ -145,7 +145,7 @@ public class PnlGuiDisplay extends JComponent {
 		g.dispose();
 	}
 
-	protected void paintSelection(Graphics2D g, Rectangle selRect, Insets borderInsets) {
+	private void paintSelection(Graphics2D g, Rectangle selRect, Insets borderInsets) {
 		g = (Graphics2D) g.create();
 
 		Options settings = model.getOptions();
@@ -157,7 +157,7 @@ public class PnlGuiDisplay extends JComponent {
 	}
 	
 
-	protected void paintMeasureLine(Graphics2D g, Point p1, Point p2) {
+	private void paintMeasureLine(Graphics2D g, Point p1, Point p2) {
 
 		if (p1 == null || p2 == null) {
 			return;
@@ -321,7 +321,7 @@ public class PnlGuiDisplay extends JComponent {
     }
     
 
-	protected void paintMeasurePoint(Graphics2D g, Point p, int size) {
+	private void paintMeasurePoint(Graphics2D g, Point p, int size) {
 		int halfSize = size / 2;
 		g.drawLine(p.x, p.y, p.x, p.y + halfSize);
 		g.drawLine(p.x, p.y, p.x + halfSize, p.y);
@@ -426,7 +426,7 @@ public class PnlGuiDisplay extends JComponent {
         return insets;
     }
 	
-	Point calculateLocation(Component comp) {
+	private Point calculateLocation(Component comp) {
 		
 		int x = 0;
 		int y = 0;
@@ -441,7 +441,7 @@ public class PnlGuiDisplay extends JComponent {
 		return new Point(x, y);
 	}
 	
-	public Component getDisplayedComponentAt(Point location) {
+	Component getDisplayedComponentAt(Point location) {
 		Component comp = model.getDisplayedComponent();
 		if(comp != null) {
 			Component over = SwingUtilities.getDeepestComponentAt(comp, 

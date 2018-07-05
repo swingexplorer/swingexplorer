@@ -146,19 +146,19 @@ public class PnlOptions extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    javax.swing.JButton btnReset;
-    javax.swing.JCheckBox chbDisplayPreferredSize;
-    org.swingexplorer.ColorComboBox cmbComponentIncludingBorderColor;
-    org.swingexplorer.ColorComboBox cmbComponentWithoutBorderColor;
-    org.swingexplorer.ColorComboBox cmbPreferredSizeColor;
-    javax.swing.JLabel lblBoundaryColors;
-    javax.swing.JLabel lblComponentWithBorder;
-    javax.swing.JLabel lblComponentWithoutBorder;
-    javax.swing.JLabel lblPreferredSize;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JCheckBox chbDisplayPreferredSize;
+    private org.swingexplorer.ColorComboBox cmbComponentIncludingBorderColor;
+    private org.swingexplorer.ColorComboBox cmbComponentWithoutBorderColor;
+    private org.swingexplorer.ColorComboBox cmbPreferredSizeColor;
+    private javax.swing.JLabel lblBoundaryColors;
+    private javax.swing.JLabel lblComponentWithBorder;
+    private javax.swing.JLabel lblComponentWithoutBorder;
+    private javax.swing.JLabel lblPreferredSize;
     // End of variables declaration//GEN-END:variables
     
-    Options options;
-    ItemListenerImpl itemListener = new ItemListenerImpl();
+    private Options options;
+    private ItemListenerImpl itemListener = new ItemListenerImpl();
     
     
     public void setOptions(Options _options) {

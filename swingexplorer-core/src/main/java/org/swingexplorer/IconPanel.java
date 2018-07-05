@@ -34,9 +34,9 @@ import javax.swing.JComponent;
  */
 public class IconPanel extends JComponent {
 
-	Icon icon;
-	double scale = 1;
-	Rectangle selection;
+	private Icon icon;
+	private double scale = 1;
+	private Rectangle selection;
 	
 	public IconPanel(Icon ico) {
 		icon = ico;

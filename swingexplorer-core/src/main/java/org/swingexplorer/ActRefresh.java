@@ -50,16 +50,16 @@ import org.swingexplorer.PnlComponentTree.TreeNodeObject;
  */
 public class ActRefresh extends RichAction {
 
-	PnlComponentTree pnlComponentTree;
-    
+	private PnlComponentTree pnlComponentTree;
+
     // the fields used for detecting
     // changes in the component hierarchy
-    Timer timer;
-    HierarchyEvent lastEvent;
-    Component lastAncestor;
-    MdlSwingExplorer mdlSwingExplorer;
+    private Timer timer;
+    private HierarchyEvent lastEvent;
+    private Component lastAncestor;
+    private MdlSwingExplorer mdlSwingExplorer;
     
-	public ActRefresh(PnlComponentTree _pnlComponentTree, MdlSwingExplorer _mdlSwingExplorer) {
+	ActRefresh(PnlComponentTree _pnlComponentTree, MdlSwingExplorer _mdlSwingExplorer) {
 		setName("Refresh");
 		setTooltip("<html>Refresh tree and<br> displayed component</html>");
 		setIcon("refresh.png");
@@ -119,7 +119,7 @@ public class ActRefresh extends RichAction {
 	}
     
     
-    public void refreshTreeModel() {
+    void refreshTreeModel() {
         // reset last event and ancestor t mark
         // that refresh was performed
         lastEvent = null;
@@ -204,7 +204,7 @@ public class ActRefresh extends RichAction {
 		addChildren(root, list.toArray(new Window[0]), forJDK15);
 	}
 	
-	String getWindowTitle(Window wnd) {
+	private String getWindowTitle(Window wnd) {
 		String title = wnd.getClass().getSimpleName();
 		if(wnd instanceof Frame) {
 			title = title + "(" + ((Frame)wnd).getTitle() + ")";
@@ -214,24 +214,23 @@ public class ActRefresh extends RichAction {
 		return title;
 	}
 	
-	void addChildren(DefaultMutableTreeNode root, Window[] windows, boolean forJRE15) {
-        for (Window window : windows) {
-            TreeNodeObject object = new TreeNodeObject(window, getWindowTitle(window));
-            DefaultMutableTreeNode child = new DefaultMutableTreeNode(object);
-            root.add(child);
-            addChildren(child, window);
-
-            if (forJRE15) {
-                // for JRE 1.5 we need to get also owned dialogs since they are not
-                // available from Frame.getFrames()
-                Window[] ownedWnds = window.getOwnedWindows();
-                addChildren(root, ownedWnds, forJRE15);
-            }
-        }
-		
+  private void addChildren(DefaultMutableTreeNode root, Window[] windows, boolean forJRE15) {
+		for (int i = 0; i < windows.length; i++) {
+			TreeNodeObject object = new TreeNodeObject(windows[i], getWindowTitle(windows[i]));
+			DefaultMutableTreeNode child = new DefaultMutableTreeNode(object);
+			root.add(child);
+			addChildren(child, windows[i]);
+			
+			if(forJRE15) {
+				// for JRE 1.5 we need to get also owned dialogs since they are not
+				// available from Frame.getFrames()
+				Window[] ownedWnds = windows[i].getOwnedWindows();
+				addChildren(root, ownedWnds, forJRE15);
+			}
+		}	
 	}
 	
-	void addChildren(DefaultMutableTreeNode node, Container cont) {
+	private void addChildren(DefaultMutableTreeNode node, Container cont) {
 		for(int i = 0; i<cont.getComponentCount(); i++) {
 			Component comp = cont.getComponent(i);
 			
@@ -319,7 +318,7 @@ public class ActRefresh extends RichAction {
 		}
 	}
     
-	static Frame getSharedOwnerFrame() {
+	private static Frame getSharedOwnerFrame() {
 		try {
 			Method meth = SwingUtilities.class.getDeclaredMethod("getSharedOwnerFrame");
 			meth.setAccessible(true);

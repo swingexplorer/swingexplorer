@@ -29,10 +29,10 @@ import java.util.EventObject;
  */
 public class OperationResetEvent extends EventObject {
 
-	Operation[] operations;
-	Dimension imageSize;
+	private Operation[] operations;
+	private Dimension imageSize;
 	
-	public OperationResetEvent(Player source, Operation[] operationsP, Dimension imageSizeP) {
+	OperationResetEvent(Player source, Operation[] operationsP, Dimension imageSizeP) {
 		super(source);
 		operations = operationsP;
 		imageSize = imageSizeP;

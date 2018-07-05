@@ -32,11 +32,11 @@ public class Log {
 	
 	private String category;
 	
-    public static final int LOG_NOTHING = 0;
-    public static final int LOG_ERROR = 1;
-    public static final int LOG_WARNING = 2;
-    public static final int LOG_INFO = 3;
-    public static final int LOG_DEBUG = 4;
+    private static final int LOG_NOTHING = 0;
+    private static final int LOG_ERROR = 1;
+    private static final int LOG_WARNING = 2;
+    private static final int LOG_INFO = 3;
+    private static final int LOG_DEBUG = 4;
     
     private static PrintStream logStream;
     
@@ -167,7 +167,7 @@ public class Log {
 		}
 	}
 	
-	public PrintStream getLogStream(boolean autoCreateDirectory) {
+	private PrintStream getLogStream(boolean autoCreateDirectory) {
 		if(logStream == null) {
 			
 			if(SysUtils.isLogToConsole()) {

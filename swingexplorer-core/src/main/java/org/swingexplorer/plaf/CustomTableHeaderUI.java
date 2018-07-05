@@ -50,7 +50,7 @@ public class CustomTableHeaderUI extends BasicTableHeaderUI {
 
         Border normalBorder;
 
-        public HeaderCellRenderer() {
+        HeaderCellRenderer() {
             super();
             
             Border bevel = BorderFactory.createEtchedBorder();// .createBevelBorder(BevelBorder.RAISED,Color.white,Color.white,new Color(115, 114, 105),new Color(165, 163, 151));

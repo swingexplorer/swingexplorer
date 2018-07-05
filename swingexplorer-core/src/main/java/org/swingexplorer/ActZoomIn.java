@@ -29,12 +29,13 @@ public class ActZoomIn extends RichAction {
 
 	MdlSwingExplorer model;
 	
-	public ActZoomIn(MdlSwingExplorer modelP) {
+	ActZoomIn(MdlSwingExplorer modelP) {
 		setName("Zoom In");
 		setTooltip("Zoom In");
         setIcon("zoom_in.png");
         model = modelP;
 	}
+
 	public void actionPerformed(ActionEvent e) {
 		// 
 		double curScale = model.getDisplayScale();

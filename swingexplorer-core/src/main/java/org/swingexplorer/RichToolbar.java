@@ -35,7 +35,7 @@ import org.swingexplorer.plaf.CustomButtonUI;
  */
 public class RichToolbar extends JToolBar {
 
-	public AbstractButton addActionEx(Action a) {
+	AbstractButton addActionEx(Action a) {
 		String text = a != null ? (String) a.getValue(Action.NAME) : null;
 		Icon icon = a != null ? (Icon) a.getValue(Action.SMALL_ICON) : null;
 		boolean enabled = a == null || a.isEnabled();

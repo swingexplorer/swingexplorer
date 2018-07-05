@@ -30,7 +30,7 @@ import java.awt.event.MouseMotionListener;
  */
 public class ActMoveOverDisplay extends MouseAdapter implements MouseMotionListener  {
 	
-	PnlGuiDisplay display;
+	private PnlGuiDisplay display;
 	MdlSwingExplorer model;
 	
 	ActMoveOverDisplay(PnlGuiDisplay displayP, MdlSwingExplorer modelP) {

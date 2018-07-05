@@ -31,8 +31,8 @@ import javax.swing.JOptionPane;
 public class ActDisplayComponent extends RichAction {
 
 	MdlSwingExplorer model;
-    PnlComponentTree pnlComponentTree;
-	
+    private PnlComponentTree pnlComponentTree;
+
 	ActDisplayComponent(MdlSwingExplorer modelP, PnlComponentTree pnlComponentTreeP) {
 		setName("Display");
 		setTooltip("Display selected component");

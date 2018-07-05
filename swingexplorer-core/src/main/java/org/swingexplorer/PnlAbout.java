@@ -46,11 +46,8 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class PnlAbout extends javax.swing.JPanel {
 	
-	
-    
     /** Creates new form PnlAbout */
-    public PnlAbout() {
-        
+    private PnlAbout() {
     	Font titleFont = UIManager.getFont("Label.font").deriveFont(20f);
     	Font copyrightFont = UIManager.getFont("Label.font").deriveFont(Font.PLAIN);
     	
@@ -112,7 +109,7 @@ public class PnlAbout extends javax.swing.JPanel {
         add(lblCopyright, BorderLayout.SOUTH);
     }
     
-    public static void openModal(Frame owner) {
+    static void openModal(Frame owner) {
 	    final JDialog dlgAbout = new JDialog(owner, "About", true);
 		
 		dlgAbout.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

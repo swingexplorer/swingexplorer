@@ -27,10 +27,10 @@ import java.util.EventObject;
  */
 public class CurrentOperationChangeEvent extends EventObject {
 
-	Operation currentOperation;
-	Operation oldOperation;
+	private Operation currentOperation;
+	private Operation oldOperation;
 	
-	public CurrentOperationChangeEvent(Player source, Operation currentOp, Operation oldOp) {
+	CurrentOperationChangeEvent(Player source, Operation currentOp, Operation oldOp) {
 		super(source);
 		currentOperation = currentOp;
 		oldOperation = oldOp;

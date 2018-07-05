@@ -49,7 +49,7 @@ public class DlgLicense extends JDialog {
 	private JButton btnClose;
 	private JScrollPane scp;
 
-	public DlgLicense(Dialog owner) {
+	private DlgLicense(Dialog owner) {
 		super(owner, true);
 		ByteArrayOutputStream strBuf = getLicenseText();
 		

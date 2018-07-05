@@ -19,9 +19,9 @@ import org.swingexplorer.properties.PnlPropertySheet;
  */
 public class PnlSelectionProperties extends javax.swing.JPanel {
 	
-	PnlPropertySheet pnlPropertySheet;
+	private PnlPropertySheet pnlPropertySheet;
     MdlSwingExplorer model;
-    ModelListener modelListener = new ModelListener();
+    private ModelListener modelListener = new ModelListener();
 	
     /** Creates new form PnlSelectionProperties */
     public PnlSelectionProperties() {

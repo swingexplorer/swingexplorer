@@ -25,7 +25,7 @@ import org.swingexplorer.idesupport.IDESupport;
  *
  * @author  Maxim Zakharenkov
  */
-public class ActOpenSourceCode {
+class ActOpenSourceCode {
 
 	IDESupport ideSupport;
 	private PnlEDTMonitor owner;
@@ -34,7 +34,7 @@ public class ActOpenSourceCode {
 		owner = _owner;
 	}
 	
-	public void openSourceCode(String link) {
+	void openSourceCode(String link) {
 		String[] params = link.split(":");
 		ideSupport.requestCheckedOpenSourceCode(params[0], Integer.parseInt(params[1]), owner);
 	}
