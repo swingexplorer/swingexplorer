@@ -31,8 +31,6 @@ import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.metal.MetalComboBoxUI;
 
-import sun.swing.DefaultLookup;
-
 /**
  *
  * @author  Maxim Zakharenkov
@@ -94,10 +92,8 @@ public class CustomComboBoxUI extends MetalComboBoxUI {
                 c.setBackground(comboBox.getBackground());
             }
             else {
-                c.setForeground(DefaultLookup.getColor(
-                         comboBox, this, "ComboBox.disabledForeground", null));
-                c.setBackground(DefaultLookup.getColor(
-                         comboBox, this, "ComboBox.disabledBackground", null));
+                c.setForeground(UIManager.getColor("ComboBox.disabledForeground"));
+                c.setBackground(UIManager.getColor("ComboBox.disabledBackground"));
             }
         }
 
