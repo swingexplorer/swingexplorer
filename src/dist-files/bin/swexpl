@@ -2,7 +2,7 @@
 #
 # swexpl - launch a program with Swing Explorer attached
 #
-#   swexpl [--classpath <path>] [--agent] <main_class>
+#   swexpl [--classpath <path>] [--no-agent] <main_class>
 #
 # This tool launches a user Java program with Swing Explorer attached. The
 # user program is specified using the classpath and main class name.
@@ -20,10 +20,11 @@
 #      The --classpath option takes precedence over the CLASSPATH environment
 #      variable.
 #
-#   * --agent
+#   * --no-agent
 #
-#      Launches your program with the Swing Explorer agent enabled. This is necessary
-#      for some of its EDT diagnostic features.
+#      Launches your program without the Swing Explorer agent enabled. This disables
+#      some of its EDT diagnostic features. Launching with the agent enabled is the
+#      default.
 #
 #   * <main_class>
 #
@@ -41,6 +42,8 @@ lib_dir="$dist_dir/lib"
 
 # Handle command line arguments
 
+use_agent=1
+
 declare -a ARGS
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -53,8 +56,8 @@ while [[ $# -gt 0 ]]; do
           exit 1
         fi
         ;;
-    --agent)
-        use_agent=1
+    --no-agent)
+        use_agent=0
         shift
         ;;
     *)
