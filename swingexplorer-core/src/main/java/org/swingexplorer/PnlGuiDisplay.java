@@ -172,14 +172,10 @@ public class PnlGuiDisplay extends JComponent {
 
 		g.setColor(settings.getMeasureLineColor());
 
-		if (p1 != null) {
-			paintMeasurePoint(g, p1, size);
-		}
-		if (p2 != null) {
-			paintMeasurePoint(g, p2, size);
-		}
+        paintMeasurePoint(g, p1, size);
+        paintMeasurePoint(g, p2, size);
 
-		if (p1 != null && p2 != null && !p1.equals(p2)) {
+        if (!p1.equals(p2)) {
 			g.setStroke(settings.getMeasureLineStroke());
 			g.drawLine(p1.x, p1.y, p2.x, p2.y);
 			

@@ -598,8 +598,8 @@ public class XGraphics extends Graphics2D {
 		}
 		Object cloned = null;
 		try {
-			Method cloneMeth = toClone.getClass().getMethod("clone", new Class[0]);
-			cloned = cloneMeth.invoke(toClone, new Object[0]);
+			Method cloneMeth = toClone.getClass().getMethod("clone");
+			cloned = cloneMeth.invoke(toClone);
 		} catch(Exception ex) {
 			// can not clone object, 
 			// this potentially may rise problems when playback

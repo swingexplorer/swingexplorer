@@ -76,7 +76,7 @@ public class FrmSwingExplorer extends JFrame {
 			Field field = exclusionType.getField("APPLICATION_EXCLUDE");
 			Object value = field.get(exclusionType);
 			
-			Method meth = JFrame.class.getMethod("setModalExclusionType", new Class[]{exclusionType});
+			Method meth = JFrame.class.getMethod("setModalExclusionType", exclusionType);
 			meth.invoke(this, value);
 		} catch (Exception e) {
 			Log.general.warn("Application exclusive modality is not available on this Java platform. It is recommended to use java 1.6 or later.");

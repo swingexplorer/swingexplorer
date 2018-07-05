@@ -42,8 +42,8 @@ public class RichToggleButton extends JToggleButton {
 		this();
 		setAction(a);
 	}
-	
-	
+
+
 	@Override
 	public void setAction(Action a) {
 		if(a instanceof RichToggleAction) {

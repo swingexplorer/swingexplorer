@@ -164,7 +164,7 @@ public class Player {
 		currentGraphics.dispose();
 		
 		// set operations to player
-		setOperations(newOperations.toArray(new Operation[newOperations.size()]), component.getSize());
+		setOperations(newOperations.toArray(new Operation[0]), component.getSize());
 		
 		// current operation is END now
 		setCurrentOperationIndex(this.operations.length - 1);
@@ -266,10 +266,8 @@ public class Player {
 		
 		// set current position and fire event about position change
 		setCurrentOperationIndex(seekPosition);
-		
-		if (op != null) {
-			fireImageRenderedEvent(workerImage, op);
-		}
+
+        fireImageRenderedEvent(workerImage, op);
     }
     
     private void doOperation(Operation op) {

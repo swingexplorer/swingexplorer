@@ -90,8 +90,8 @@ public class Operation {
 			return "END.";
 		}
 		
-		StringBuffer sb = new StringBuffer();
-		sb.append(method.getName() + "(");
+		StringBuilder sb = new StringBuilder();
+		sb.append(method.getName()).append("(");
 		Class<?>[] params = method.getParameterTypes();
 		for (int j = 0; j < params.length; j++) {
 			sb.append(getTypeName(params[j]));

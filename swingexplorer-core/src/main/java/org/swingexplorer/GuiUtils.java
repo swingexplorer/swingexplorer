@@ -191,7 +191,7 @@ final public class GuiUtils {
             result = SwingUtilities.getWindowAncestor(component);
         } else {
             throw new NullPointerException(
-                MessageFormat.format("Cannot find parent window for component \"{0}\"", new Object[] { component }));
+                MessageFormat.format("Cannot find parent window for component \"{0}\"", component));
         }
         return result;
     }
@@ -293,7 +293,7 @@ final public class GuiUtils {
         if (text == null) {
             return null;
         }
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         int idx = 0;
         while (idx < text.length()) {
             char c = text.charAt(idx++);
@@ -352,10 +352,10 @@ final public class GuiUtils {
      */
     public static JPopupMenu createPopupMenu(Action[] actions) {
         JPopupMenu result = new JPopupMenu();
-        for (int i = 0; i < actions.length; i++) {
-            if (actions[i] != null) {
+        for (Action action : actions) {
+            if (action != null) {
 
-                JMenuItem item = new JMenuItem(actions[i]) {
+                JMenuItem item = new JMenuItem(action) {
                     public void setText(String text) {
                         super.setText(GuiUtils.getTextWithoutMnemonic(text));
                     }
@@ -525,16 +525,15 @@ final public class GuiUtils {
         Constructor<?> ctor = null;
         try {
             if (owner instanceof Dialog) {
-                ctor = dialogClass.getConstructor(new Class[] { Dialog.class });
+                ctor = dialogClass.getConstructor(Dialog.class);
                 result = (Dialog) ctor.newInstance(new Object[] { owner });
 
             } else if (owner instanceof Frame) {
-                ctor = dialogClass.getConstructor(new Class[] { Frame.class });
+                ctor = dialogClass.getConstructor(Frame.class);
                 result = (Dialog) ctor.newInstance(new Object[] { owner });
 
             } else {
-                ctor = dialogClass.getConstructor(new Class[] {
-                });
+                ctor = dialogClass.getConstructor();
                 result = (Dialog) ctor.newInstance(new Object[] {
                 });
             }
@@ -552,8 +551,7 @@ final public class GuiUtils {
      */
     private static Enumeration<TreePath> getExpatnedTreePaths(JTree tree) {
         TreePath pathToRoot = new TreePath(tree.getModel().getRoot());
-        Enumeration<TreePath> expandPaths = tree.getExpandedDescendants(pathToRoot);
-        return expandPaths;
+        return tree.getExpandedDescendants(pathToRoot);
     }
     
     /**

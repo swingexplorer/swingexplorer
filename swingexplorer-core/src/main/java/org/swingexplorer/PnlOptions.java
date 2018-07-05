@@ -198,7 +198,7 @@ public class PnlOptions extends javax.swing.JPanel {
 			if(disabled) {
 				return;
 			}
-			if(evt.getSource() == chbDisplayPreferredSize || evt.getStateChange() == evt.SELECTED) {
+			if(evt.getSource() == chbDisplayPreferredSize || evt.getStateChange() == ItemEvent.SELECTED) {
 				updateOptions();
 			}
 		}

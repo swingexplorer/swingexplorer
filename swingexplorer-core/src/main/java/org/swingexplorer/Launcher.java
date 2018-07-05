@@ -179,16 +179,14 @@ public class Launcher implements Runnable {
             return;
         }
     	newArgs = new String[args.length - 1];
-		for (int i = 0; i < newArgs.length; i++) {
-			newArgs[i] = args[i + 1];
-		}
+        System.arraycopy(args, 1, newArgs, 0, newArgs.length);
 
         String userProgramClassName = args[0];
         customizeProgramAppearance(userProgramClassName);
 
         try {
             mainClass = Class.forName(userProgramClassName);
-			mainMethod = mainClass.getMethod("main", new Class[]{String[].class});
+            mainMethod = mainClass.getMethod("main", String[].class);
         } catch(ClassNotFoundException ex) {
             String msg = MessageFormat.format("ERROR: can not find class {0} specified as argument. Please check classpath and class name.",
                 userProgramClassName);

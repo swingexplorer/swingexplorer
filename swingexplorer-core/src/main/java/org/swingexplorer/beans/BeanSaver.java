@@ -109,7 +109,7 @@ public class BeanSaver {
 				
 				Method setter = findSetterSafe(bean.getClass(), property);
 
-				setter.invoke(bean, new Object[]{defaultValue});
+				setter.invoke(bean, defaultValue);
 			}
 		}catch(Exception ex) {
 			throw new RuntimeException(ex);
@@ -140,7 +140,7 @@ public class BeanSaver {
 	public Object getValue(Object bean, String property) {
 		Method method = findGetterSafe(bean.getClass(), property);
 		try {
-			return method.invoke(bean, new Object[0]);
+			return method.invoke(bean);
 		} catch (Exception e) {
 			throw new RuntimeException("Error invoking getter for \"" + bean.getClass() + " bean's  property \"" + property + "\"");
 		}
@@ -155,7 +155,7 @@ public class BeanSaver {
 	public void setValue(Object bean, String property, Object value) {
 		Method method = findSetterSafe(bean.getClass(), property);
 		try {
-			method.invoke(bean, new Object[] {value});
+			method.invoke(bean, value);
 		} catch (Exception e) {
 			throw new RuntimeException("Error invoking setter for \"" + bean.getClass() + " bean's  property \"" + property + "\"");
 		}
@@ -258,7 +258,7 @@ public class BeanSaver {
 		String setterName = "set" + first.toUpperCase() + rest;
 		
 		try {
-			Method setter = beanClass.getMethod(setterName, new Class<?>[] {type});
+			Method setter = beanClass.getMethod(setterName, type);
 			return setter;
 		} catch (Exception e) {
 			return null;

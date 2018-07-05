@@ -96,7 +96,7 @@ public class MdlSwingExplorer {
 	 * @param oldVal
 	 * @param newVal
 	 */
-    private void fireCheckedPropertyChange(String prop, Object oldVal, Object newVal) {
+  private void fireCheckedPropertyChange(String prop, Object oldVal, Object newVal) {
 		if(oldVal != null && newVal != null && oldVal.equals(newVal)) {
 			return;
 		}
@@ -106,6 +106,7 @@ public class MdlSwingExplorer {
 		
 		firePropertyChange(prop, oldVal, newVal);
 	}
+  
 	private void firePropertyChange(String prop, Object oldVal, Object newVal) {
 		log("Property %1$s changed\n", prop);
 		
@@ -177,7 +178,7 @@ public class MdlSwingExplorer {
 	}
 
 	public Component[] getSelectedComponents() {
-		return selectedComponents.toArray(new Component[selectedComponents.size()]);
+		return selectedComponents.toArray(new Component[0]);
 	}
 
 	void addSelection(Component selection) {
@@ -247,7 +248,7 @@ public class MdlSwingExplorer {
 		this.displayedComponent = displayedComponent;
 		fireCheckedPropertyChange("displayedComponent", oldVal, displayedComponent);
 		
-		if(oldVal != null && displayedComponent != null && oldVal.equals(displayedComponent)) {
+		if(oldVal != null && oldVal.equals(displayedComponent)) {
 			return;
 		}
 		if(oldVal == displayedComponent) {
@@ -309,7 +310,7 @@ public class MdlSwingExplorer {
 			
             // basic popup and tooltip  must be shown before painting
             if(displayedComponent instanceof BasicComboPopup || displayedComponent instanceof JToolTip) {
-                ((JComponent)displayedComponent).show();
+                ((JComponent)displayedComponent).setVisible(true);
             }
             if(displayedComponent instanceof JToolTip) {
                 displayedComponent.setSize(displayedComponent.getPreferredSize());
@@ -335,7 +336,7 @@ public class MdlSwingExplorer {
             
 			//  basic popup and tooltip must be shown before painting
             if(displayedComponent instanceof BasicComboPopup || displayedComponent instanceof JToolTip) {
-                ((JComponent)displayedComponent).hide();
+                ((JComponent)displayedComponent).setVisible(false);
             }
 		}
 	}
@@ -351,7 +352,7 @@ public class MdlSwingExplorer {
 			buf.insert(0, "/");
 			
 			if(showIndex) {
-				if(index != -1 && showIndex) {
+				if(index != -1) {
 					buf.insert(0, ']');
 					buf.insert(0, index);
 					buf.insert(0, '[');
@@ -377,7 +378,7 @@ public class MdlSwingExplorer {
 	 */
 	private int getComponentIndex(Component comp) {
 		Container parent = (Container)comp.getParent();
-		if(parent == null || comp == null) {
+		if(parent == null) {
 			return -1;
 		}
 		for(int i = 0; i< parent.getComponentCount(); i++) {

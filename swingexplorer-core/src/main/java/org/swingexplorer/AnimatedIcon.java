@@ -70,7 +70,7 @@ public class AnimatedIcon implements Icon {
         
         // calculate maximal icon size and set icons to list
         maxIconSize = new Dimension(0, 0);
-        for(int i = 0; i < _icons.length; i++) {
+        for (int i = 0; i < _icons.length; i++) {
             Icon curIcon = _icons[i] == null ? EMPTY_ICON : _icons[i];
             maxIconSize.height = Math.max(curIcon.getIconHeight(), maxIconSize.height);
             maxIconSize.width = Math.max(curIcon.getIconWidth(), maxIconSize.width);
@@ -84,7 +84,7 @@ public class AnimatedIcon implements Icon {
      * @return
      */
     public Icon[] getIcons() {
-        return icons.toArray(new Icon[icons.size()]);
+        return icons.toArray(new Icon[0]);
     }
     
     AnimatedIcon(JComponent _ownerComponent) {
