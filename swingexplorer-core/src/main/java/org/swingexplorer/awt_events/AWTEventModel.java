@@ -29,20 +29,20 @@ import java.beans.PropertyChangeListener;
  */
 public interface AWTEventModel {
 
-	public void setMonitoring(boolean monitoring);
+	void setMonitoring(boolean monitoring);
 	
-	public void setFilter(Filter _filter);
+	void setFilter(Filter _filter);
 	
-	public Filter getFilter();
+	Filter getFilter();
 	
-	public boolean isMonitoring();
+	boolean isMonitoring();
 	
-	public void addPropertyChangeListener(PropertyChangeListener listener);
+	void addPropertyChangeListener(PropertyChangeListener listener);
 	
-	public void removePropertyChangeListener(PropertyChangeListener listener);
+	void removePropertyChangeListener(PropertyChangeListener listener);
 	
-	public void addEventListener(AWTEventListener listener);
+	void addEventListener(AWTEventListener listener);
 	
-	public void removeEventListener(AWTEventListener listener);
+	void removeEventListener(AWTEventListener listener);
 }
 

@@ -27,12 +27,12 @@ import java.util.EventListener;
  */
 public interface PlayerListener extends EventListener {
 	
-	public void imageRendered(ImageEvent evt);
+	void imageRendered(ImageEvent evt);
 	
-	public void stateChanged(StateEvent evt);
+	void stateChanged(StateEvent evt);
 	
-	public void operationsReset(OperationResetEvent operations);
+	void operationsReset(OperationResetEvent operations);
 	
-	public void currentOperationChanged(CurrentOperationChangeEvent evt);
+	void currentOperationChanged(CurrentOperationChangeEvent evt);
 }
 

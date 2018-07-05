@@ -31,11 +31,11 @@ public interface IDESupportMBean {
 	 * for showing right message to the user
 	 * when IDE integration is not available.
 	 */
-	public void connect();
+	void connect();
 	
 	/**
 	 * IDE plugin should call this method when
 	 * IDE is closed and connection becomes unavailable.
 	 */
-	public void disconnect();
+	void disconnect();
 }

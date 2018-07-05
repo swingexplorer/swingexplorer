@@ -29,5 +29,5 @@ import org.swingexplorer.awt_events.Filter;
  */
 public interface FilterChangeListener extends EventListener {
 
-	public void filterChanged(Filter newFilter);
+	void filterChanged(Filter newFilter);
 }
