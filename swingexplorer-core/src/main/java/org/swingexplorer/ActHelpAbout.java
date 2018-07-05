@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -28,16 +28,16 @@ import java.awt.event.ActionEvent;
  */
 @SuppressWarnings("serial")
 public class ActHelpAbout extends RichAction {
-	
-	Frame owner;
-	
-	public ActHelpAbout(Frame ownerP) {
-		setName("About");
-		setTooltip("About Swing Explorer");
-		owner = ownerP;
-	}
+    
+    Frame owner;
+    
+    public ActHelpAbout(Frame ownerP) {
+        setName("About");
+        setTooltip("About Swing Explorer");
+        owner = ownerP;
+    }
 
-	public void actionPerformed(ActionEvent e) {
-		PNLAbout.openModal(owner);
-	}
+    public void actionPerformed(ActionEvent e) {
+        PNLAbout.openModal(owner);
+    }
 }

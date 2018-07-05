@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -26,17 +26,17 @@ package org.swingexplorer;
  */
 public abstract class RichToggleAction extends RichAction {
 
-	
-	public void setSelected(boolean isSelected) {
-		putValue("selected", new Boolean(isSelected));
-	}
-	
-	public boolean isSelected() {
-		Boolean selected = (Boolean)getValue("selected");
-		if(selected == null) {
-			return false;
-		}
-		return selected.booleanValue();
-	}
+    
+    public void setSelected(boolean isSelected) {
+        putValue("selected", new Boolean(isSelected));
+    }
+    
+    public boolean isSelected() {
+        Boolean selected = (Boolean)getValue("selected");
+        if(selected == null) {
+            return false;
+        }
+        return selected.booleanValue();
+    }
 }
 

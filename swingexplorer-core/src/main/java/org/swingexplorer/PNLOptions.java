@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -138,10 +138,10 @@ public class PNLOptions extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-    	if(options !=null){
-    		options.reset();
-    		updateFromOptions();
-    	}
+        if(options !=null){
+            options.reset();
+            updateFromOptions();
+        }
     }//GEN-LAST:event_btnResetActionPerformed
     
     
@@ -162,55 +162,55 @@ public class PNLOptions extends javax.swing.JPanel {
     
     
     public void setOptions(Options _options) {
-    	options = _options;
-    	updateFromOptions();
+        options = _options;
+        updateFromOptions();
     }
     
     private void updateFromOptions() {
-    	itemListener.disable();
-    	chbDisplayPreferredSize.setSelected(options.isDisplayPreferredSize());
-    	cmbComponentIncludingBorderColor.setSelectedItem(options.getComponentIncludingBorderColor());
-    	cmbComponentWithoutBorderColor.setSelectedItem(options.getComponentWithoutBorderColor());
-    	cmbPreferredSizeColor.setSelectedItem(options.getPreferredSizeColor());
-    	itemListener.enable();
+        itemListener.disable();
+        chbDisplayPreferredSize.setSelected(options.isDisplayPreferredSize());
+        cmbComponentIncludingBorderColor.setSelectedItem(options.getComponentIncludingBorderColor());
+        cmbComponentWithoutBorderColor.setSelectedItem(options.getComponentWithoutBorderColor());
+        cmbPreferredSizeColor.setSelectedItem(options.getPreferredSizeColor());
+        itemListener.enable();
     }
     
     private void updateOptions() {
-    	options.setDisplayPreferredSize(chbDisplayPreferredSize.isSelected());
-    	options.setComponentIncludingBorderColor(cmbComponentIncludingBorderColor.getSelectedColor());
-    	options.setComponentWithoutBorderColor(cmbComponentWithoutBorderColor.getSelectedColor());
-    	options.setPreferredSizeColor(cmbPreferredSizeColor.getSelectedColor());
-	}
+        options.setDisplayPreferredSize(chbDisplayPreferredSize.isSelected());
+        options.setComponentIncludingBorderColor(cmbComponentIncludingBorderColor.getSelectedColor());
+        options.setComponentWithoutBorderColor(cmbComponentWithoutBorderColor.getSelectedColor());
+        options.setPreferredSizeColor(cmbPreferredSizeColor.getSelectedColor());
+    }
     
     class ItemListenerImpl implements ItemListener {
-    	
-    	private boolean disabled = false;
-    	
-    	void disable() {
-    		disabled = true;
-    	}
-    	
-    	void enable() {
-    		disabled = false;
-    	}
-    	
-		public void itemStateChanged(ItemEvent evt) {
-			if(disabled) {
-				return;
-			}
-			if(evt.getSource() == chbDisplayPreferredSize || evt.getStateChange() == evt.SELECTED) {
-				updateOptions();
-			}
-		}
+        
+        private boolean disabled = false;
+        
+        void disable() {
+            disabled = true;
+        }
+        
+        void enable() {
+            disabled = false;
+        }
+        
+        public void itemStateChanged(ItemEvent evt) {
+            if(disabled) {
+                return;
+            }
+            if(evt.getSource() == chbDisplayPreferredSize || evt.getStateChange() == evt.SELECTED) {
+                updateOptions();
+            }
+        }
     }
     
 //    public static void main(String[] args) {
-//		JFrame frm = new JFrame();
-//		PNLOptions pnlOptions = new PNLOptions();
-//		pnlOptions.setOptions(new Options());
-//		frm.add(pnlOptions);
-//		frm.setBounds(100, 100, 300, 250);
-//		frm.setVisible(true);
-//	}
+//      JFrame frm = new JFrame();
+//      PNLOptions pnlOptions = new PNLOptions();
+//      pnlOptions.setOptions(new Options());
+//      frm.add(pnlOptions);
+//      frm.setBounds(100, 100, 300, 250);
+//      frm.setVisible(true);
+//  }
 }
 

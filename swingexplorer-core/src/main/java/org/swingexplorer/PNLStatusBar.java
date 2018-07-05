@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -89,43 +89,43 @@ public class PNLStatusBar extends javax.swing.JPanel {
     
     public void setModel(MdlSwingExplorer model) {
 
-		if (model == this.model) {
-			return;
-		}
+        if (model == this.model) {
+            return;
+        }
 
-		if (this.model != null) {
-			this.model.removePropertyChangeListener(modelListener);
-		}
-		if (model != null) {
-			model.addPropertyChangeListener(modelListener);
-		}
-		this.model = model;
-		repaint();
+        if (this.model != null) {
+            this.model.removePropertyChangeListener(modelListener);
+        }
+        if (model != null) {
+            model.addPropertyChangeListener(modelListener);
+        }
+        this.model = model;
+        repaint();
    }
     
     class ModelListener implements PropertyChangeListener {
 
-		public void propertyChange(PropertyChangeEvent evt) {
-			String propName = evt.getPropertyName();
-			if ("mouseLocation".equals(propName)) {
-				Point loc = model.getMouseLocation();
-				Point absLoc = model.getMouseLocationAbsolute();
-				if (loc != null) {
-					setText(1, loc.x + "," + loc.y);
-					setText(2, absLoc.x + "," + absLoc.y);
-				} else {
-					setText(1, "");
-					setText(2, "");
-				}
-			}
-			if ("statusText".equals(propName)) {
-				setText(0, model.getStatustext());
+        public void propertyChange(PropertyChangeEvent evt) {
+            String propName = evt.getPropertyName();
+            if ("mouseLocation".equals(propName)) {
+                Point loc = model.getMouseLocation();
+                Point absLoc = model.getMouseLocationAbsolute();
+                if (loc != null) {
+                    setText(1, loc.x + "," + loc.y);
+                    setText(2, absLoc.x + "," + absLoc.y);
+                } else {
+                    setText(1, "");
+                    setText(2, "");
+                }
+            }
+            if ("statusText".equals(propName)) {
+                setText(0, model.getStatustext());
 
-			}
-		}
-	}
+            }
+        }
+    }
 
-	
+    
     
     public void setText(int section, String text) {
         switch(section) {

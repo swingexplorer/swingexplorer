@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -54,122 +54,122 @@ import javax.swing.UIManager;
  */
 @SuppressWarnings("serial")
 public class PNLAbout extends javax.swing.JPanel {
-	
-	
+    
+    
     
     /** Creates new form PNLAbout */
     public PNLAbout() {
         
-    	Font titleFont = UIManager.getFont("Label.font").deriveFont(20f);
-    	Font copyrightFont = UIManager.getFont("Label.font").deriveFont(Font.PLAIN);
-    	
-    	JLabel lblLogo = new JLabel();
-    	lblLogo.setIcon(Icons.appLogo());
-    	
-    	JLabel lblTitle = new JLabel();
-    	lblTitle.setVerticalTextPosition(SwingConstants.TOP);
-    	lblTitle.setHorizontalTextPosition(SwingConstants.LEFT);
-    	lblTitle.setText("Swing Explorer");
-		lblTitle.setFont(titleFont);
-    	
-    	JLabel lblVersion = new JLabel();
-    	lblVersion.setText("Version: " + SysUtils.getApplicationVersion());
-    	
-    	String webLink = "http://swingexplorer.github.io";
-    	
-    	JLabel lblWeblink = new JLabel();
-    	lblWeblink.setText("<HTML><FONT color=\"#000099\"><U>" + webLink + "</U></FONT></HTML>");
-    	lblWeblink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-    	lblWeblink.addMouseListener(new MouseAdapter() {
-    		@Override
-    		public void mousePressed(MouseEvent e) {
-    			lblWeblink.setText("<HTML><FONT color=\"#009999\"><U>" + webLink + "</U></FONT></HTML>");
-    		}
-    		@Override
-    		public void mouseReleased(MouseEvent e) {
-    			lblWeblink.setText("<HTML><FONT color=\"#000099\"><U>" + webLink + "</U></FONT></HTML>");
-    		}
-    		@Override
-    		public void mouseClicked(MouseEvent e) {
-    			if(!SysUtils.openBrowser(webLink)) {
-    				
-    				int res = JOptionPane.showOptionDialog(PNLAbout.this, "Sorry, we cannot open browser on your platform!\nWould you like to copy the link to clipboard?.", "Error", 
-            				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-    				if(res == JOptionPane.YES_OPTION) {
-	            		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-	            		clipboard.setContents(new StringSelection(webLink), null);
-    				}
-            	}
-    		}
-		});
-    	
-    	JLabel lblCopyright = new JLabel();
-    	lblCopyright.setFont(copyrightFont);
-    	int year = Calendar.getInstance().get(Calendar.YEAR);
-    	lblCopyright.setText("\u00a9 Swing Explorer team 2007-" + year);
-    	
-    	
-    	JPanel pnlGrid = new JPanel();
-    	pnlGrid.setLayout(new GridBagLayout());
-    	pnlGrid.add(lblTitle, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
-    	pnlGrid.add(lblLogo, new GridBagConstraints(1, 0, 1, 2, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
-    	pnlGrid.add(lblVersion, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 5, 0, 5), 0, 0));
-    	pnlGrid.add(lblWeblink, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 5, 20, 5), 0, 0));
-    	
+        Font titleFont = UIManager.getFont("Label.font").deriveFont(20f);
+        Font copyrightFont = UIManager.getFont("Label.font").deriveFont(Font.PLAIN);
+        
+        JLabel lblLogo = new JLabel();
+        lblLogo.setIcon(Icons.appLogo());
+        
+        JLabel lblTitle = new JLabel();
+        lblTitle.setVerticalTextPosition(SwingConstants.TOP);
+        lblTitle.setHorizontalTextPosition(SwingConstants.LEFT);
+        lblTitle.setText("Swing Explorer");
+        lblTitle.setFont(titleFont);
+        
+        JLabel lblVersion = new JLabel();
+        lblVersion.setText("Version: " + SysUtils.getApplicationVersion());
+        
+        String webLink = "http://swingexplorer.github.io";
+        
+        JLabel lblWeblink = new JLabel();
+        lblWeblink.setText("<HTML><FONT color=\"#000099\"><U>" + webLink + "</U></FONT></HTML>");
+        lblWeblink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblWeblink.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                lblWeblink.setText("<HTML><FONT color=\"#009999\"><U>" + webLink + "</U></FONT></HTML>");
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                lblWeblink.setText("<HTML><FONT color=\"#000099\"><U>" + webLink + "</U></FONT></HTML>");
+            }
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(!SysUtils.openBrowser(webLink)) {
+                    
+                    int res = JOptionPane.showOptionDialog(PNLAbout.this, "Sorry, we cannot open browser on your platform!\nWould you like to copy the link to clipboard?.", "Error", 
+                            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                    if(res == JOptionPane.YES_OPTION) {
+                        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                        clipboard.setContents(new StringSelection(webLink), null);
+                    }
+                }
+            }
+        });
+        
+        JLabel lblCopyright = new JLabel();
+        lblCopyright.setFont(copyrightFont);
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        lblCopyright.setText("\u00a9 Swing Explorer team 2007-" + year);
+        
+        
+        JPanel pnlGrid = new JPanel();
+        pnlGrid.setLayout(new GridBagLayout());
+        pnlGrid.add(lblTitle, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
+        pnlGrid.add(lblLogo, new GridBagConstraints(1, 0, 1, 2, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
+        pnlGrid.add(lblVersion, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 5, 0, 5), 0, 0));
+        pnlGrid.add(lblWeblink, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 5, 20, 5), 0, 0));
+        
         setLayout(new BorderLayout());
         add(pnlGrid, BorderLayout.NORTH);
         add(lblCopyright, BorderLayout.SOUTH);
     }
     
     public static void openModal(Frame owner) {
-	    final JDialog dlgAbout = new JDialog(owner, "About", true);
-		
-		dlgAbout.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		
-		PNLAbout pnlAbout = new PNLAbout();
-		dlgAbout.add(pnlAbout);
-		dlgAbout.pack();
-		GuiUtils.center(owner, dlgAbout);
-		dlgAbout.setVisible(true);
+        final JDialog dlgAbout = new JDialog(owner, "About", true);
+        
+        dlgAbout.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        
+        PNLAbout pnlAbout = new PNLAbout();
+        dlgAbout.add(pnlAbout);
+        dlgAbout.pack();
+        GuiUtils.center(owner, dlgAbout);
+        dlgAbout.setVisible(true);
     }
     
-	static class CloseButton extends JButton {
-		
-		public CloseButton() {
-			setBorderPainted(false);
-			setOpaque(false);
-		}
-		
-		@Override
-		protected void paintComponent(Graphics g) {
+    static class CloseButton extends JButton {
+        
+        public CloseButton() {
+            setBorderPainted(false);
+            setOpaque(false);
+        }
+        
+        @Override
+        protected void paintComponent(Graphics g) {
 
-			
-			ButtonModel model = getModel();
-			if(model.isPressed() ) {
-				g.setColor(Color.GRAY);
-				g.drawRect(1, 1, getWidth() - 2, getHeight() - 2);
-				g.drawLine(1, 1, getWidth() - 2, getHeight() - 2);
-				g.drawLine(getWidth() - 2, 2, 2, getHeight() - 2);
-			}  else  {
-				g.setColor(Color.GRAY);
-				g.drawRect(0, 0, getWidth() - 2, getHeight() - 2);
-				g.drawLine(0, 0, getWidth() - 2, getHeight() - 2);
-				g.drawLine(getWidth() - 2, 0, 0, getHeight() - 2);
+            
+            ButtonModel model = getModel();
+            if(model.isPressed() ) {
+                g.setColor(Color.GRAY);
+                g.drawRect(1, 1, getWidth() - 2, getHeight() - 2);
+                g.drawLine(1, 1, getWidth() - 2, getHeight() - 2);
+                g.drawLine(getWidth() - 2, 2, 2, getHeight() - 2);
+            }  else  {
+                g.setColor(Color.GRAY);
+                g.drawRect(0, 0, getWidth() - 2, getHeight() - 2);
+                g.drawLine(0, 0, getWidth() - 2, getHeight() - 2);
+                g.drawLine(getWidth() - 2, 0, 0, getHeight() - 2);
 
-			}
-		}
-		
-		public Dimension getPreferredSize() {
-			return new Dimension(13, 13);
-		}
-	}
+            }
+        }
+        
+        public Dimension getPreferredSize() {
+            return new Dimension(13, 13);
+        }
+    }
 
-	public static void main(String[] args) {
-		JFrame frm = new JFrame();
-		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frm.setBounds(100,  100, 400, 300);
-		frm.setVisible(true);
-		openModal(frm);
-	}
+    public static void main(String[] args) {
+        JFrame frm = new JFrame();
+        frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frm.setBounds(100,  100, 400, 300);
+        frm.setVisible(true);
+        openModal(frm);
+    }
 }
 

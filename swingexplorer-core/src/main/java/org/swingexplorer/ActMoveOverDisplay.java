@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -29,29 +29,29 @@ import java.awt.event.MouseMotionListener;
  * @author Maxim Zakharenkov
  */
 public class ActMoveOverDisplay extends MouseAdapter implements MouseMotionListener  {
-	
-	PNLGuiDisplay display;
-	MdlSwingExplorer model;
-	
-	ActMoveOverDisplay(PNLGuiDisplay displayP, MdlSwingExplorer modelP) {
-		display = displayP;
-		model = modelP;
-	}
+    
+    PNLGuiDisplay display;
+    MdlSwingExplorer model;
+    
+    ActMoveOverDisplay(PNLGuiDisplay displayP, MdlSwingExplorer modelP) {
+        display = displayP;
+        model = modelP;
+    }
 
-	public void mouseMoved(MouseEvent e) {
-		Component over = display.getDisplayedComponentAt(e.getPoint());
-		model.setCurrentComponent(over);
-		if(over != null) {
-			model.setStatustext(model.getComponentPath(over, false));
+    public void mouseMoved(MouseEvent e) {
+        Component over = display.getDisplayedComponentAt(e.getPoint());
+        model.setCurrentComponent(over);
+        if(over != null) {
+            model.setStatustext(model.getComponentPath(over, false));
             model.setMouseLocation(e.getPoint());
-		}
-	}
-	
-	public void mouseExited(MouseEvent e) {
-		model.setCurrentComponent(null);
-		model.setMouseLocation(null);
-	}
+        }
+    }
+    
+    public void mouseExited(MouseEvent e) {
+        model.setCurrentComponent(null);
+        model.setMouseLocation(null);
+    }
 
-	public void mouseDragged(MouseEvent e) {
-	}
+    public void mouseDragged(MouseEvent e) {
+    }
 }

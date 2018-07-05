@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -41,16 +41,16 @@ public class ActTreeSelectionChanged implements TreeSelectionListener {
     }
 
     public void valueChanged(TreeSelectionEvent e) {
-	    TreePath[] paths = e.getPaths();
-		for (TreePath curPath : paths) {
+        TreePath[] paths = e.getPaths();
+        for (TreePath curPath : paths) {
 
-			Component component = pnlComponentTree.getComponent(curPath);
+            Component component = pnlComponentTree.getComponent(curPath);
 
-			if (e.isAddedPath(curPath)) {
-				model.addSelection(component);
-			} else {
-				model.removeSelection(component);
-			}
-		}
+            if (e.isAddedPath(curPath)) {
+                model.addSelection(component);
+            } else {
+                model.removeSelection(component);
+            }
+        }
     }    
 }

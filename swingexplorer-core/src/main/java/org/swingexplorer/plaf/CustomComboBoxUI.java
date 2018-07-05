@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -40,8 +40,8 @@ import sun.swing.DefaultLookup;
 public class CustomComboBoxUI extends MetalComboBoxUI {
 
     
-	EtchedBorder border = new EtchedBorder();
-	
+    EtchedBorder border = new EtchedBorder();
+    
     @Override
     protected void installDefaults() {
         super.installDefaults();
@@ -52,9 +52,9 @@ public class CustomComboBoxUI extends MetalComboBoxUI {
     public void paint( Graphics g, JComponent c ) {
         hasFocus = comboBox.hasFocus();
         if ( !comboBox.isEditable() ) {
-        	
-        	// calculate rectangle excluding border
-        	Insets ins = border.getBorderInsets(c);
+            
+            // calculate rectangle excluding border
+            Insets ins = border.getBorderInsets(c);
             Rectangle r = super.rectangleForCurrentValue();
             r = new Rectangle(r.x + ins.left, r.y + ins.top, r.width - ins.left - ins.right, r.height - ins.top - ins.bottom);
             

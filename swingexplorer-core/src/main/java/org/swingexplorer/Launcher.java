@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -48,37 +48,37 @@ public class Launcher implements Runnable {
     
     public IDESupport ideSupport;
     
-	public FRMSwingExplorer frmMain;
-	public PNLPlayerControls pnlPlayerControls;
-	public JDialog dlgPlayerControls;	
-	public MdlSwingExplorer model = new MdlSwingExplorer();
+    public FRMSwingExplorer frmMain;
+    public PNLPlayerControls pnlPlayerControls;
+    public JDialog dlgPlayerControls;   
+    public MdlSwingExplorer model = new MdlSwingExplorer();
     public Player player = new Player();
     
-	private PersonalizerRegistry personalizerRegistry;
+    private PersonalizerRegistry personalizerRegistry;
     
     
-	public void run() {
-		// register JMX bean for IDE support
+    public void run() {
+        // register JMX bean for IDE support
         ideSupport = IDESupport.registerMBean();
         EDTDebugQueue.initMonitoring();
-		
+        
         // create frame
         frmMain = new FRMSwingExplorer();
         frmMain.setName("frmMain");
         frmMain.addWindowListener(new WindowAdapter() {
-        	public void windowClosing(WindowEvent evt) {
-        		exitApplication();
-        	}
+            public void windowClosing(WindowEvent evt) {
+                exitApplication();
+            }
         });
         
-		// we use own L&F for swing explorer to avoid conflict with application's L&F
+        // we use own L&F for swing explorer to avoid conflict with application's L&F
         PlafUtils.applyCustomLookAndFeel(frmMain.getContentPane());
-		
+        
         // load options and set to interested parties
         Options options =  new Options();
         options.load();
         model.setOptions(options);
-		player.setOptions(options);
+        player.setOptions(options);
         frmMain.setApplication(this);
         personalizerRegistry = new PersonalizerRegistry(frmMain, options);
         
@@ -93,32 +93,32 @@ public class Launcher implements Runnable {
         personalizerRegistry.addPersonalizer("pnlEventProperties.tblProperties", new TablePersonalizer("eventDetailTableColumnSizes"));
         personalizerRegistry.addPersonalizer("pnlPropertySheet.tblProperties", new TablePersonalizer("propertyTableColumnSizes"));
 
-		// open frame
-		frmMain.setVisible(true);
-	}
-	
-	public void showMessageDialog(String message) {
-		JOptionPane.showMessageDialog(frmMain, message);
-	}
+        // open frame
+        frmMain.setVisible(true);
+    }
+    
+    public void showMessageDialog(String message) {
+        JOptionPane.showMessageDialog(frmMain, message);
+    }
 
-	private void exitApplication() {
-		int res = JOptionPane.showOptionDialog(frmMain, "Do you want to finish application or close Swing Explorer window?", "Exit", JOptionPane.DEFAULT_OPTION, 
-				JOptionPane.QUESTION_MESSAGE,null, new Object[]{"Exit Application", "Close Window", "Cancel"}, "Exit");
-		
-		// save personalization state onto options
-		personalizerRegistry.saveState();
-		
-		// save options to file
-		Options opts = model.getOptions();
-		opts.save();
-		
-		if(res == 0) {
-			System.exit(0);
-		} else if(res == 1){
-			frmMain.dispose();
-		}
-	}
-	
+    private void exitApplication() {
+        int res = JOptionPane.showOptionDialog(frmMain, "Do you want to finish application or close Swing Explorer window?", "Exit", JOptionPane.DEFAULT_OPTION, 
+                JOptionPane.QUESTION_MESSAGE,null, new Object[]{"Exit Application", "Close Window", "Cancel"}, "Exit");
+        
+        // save personalization state onto options
+        personalizerRegistry.saveState();
+        
+        // save options to file
+        Options opts = model.getOptions();
+        opts.save();
+        
+        if(res == 0) {
+            System.exit(0);
+        } else if(res == 1){
+            frmMain.dispose();
+        }
+    }
+    
 
     static final String HELP = 
             "Swing Explorer application can be executed in 2 modes:\n" +
@@ -167,25 +167,25 @@ public class Launcher implements Runnable {
      * @param args the user program class, and any additional arguments to pass to
      *             its main() method
      */
-	public static void main(String[] args) {
-        
+    public static void main(String[] args) {
+
         Method mainMethod = null;
         Class<?> mainClass = null;
         String[] newArgs = null;
         
-    	if(args.length == 0) {
+        if(args.length == 0) {
             System.err.println("ERROR: Command line arguments have to be specified for Simple mode");
             System.err.println(HELP);
             return;
         }
-    	newArgs = new String[args.length - 1];
-		for (int i = 0; i < newArgs.length; i++) {
-			newArgs[i] = args[i + 1];
-		}
-		
+        newArgs = new String[args.length - 1];
+        for (int i = 0; i < newArgs.length; i++) {
+            newArgs[i] = args[i + 1];
+        }
+        
         try {
             mainClass = Class.forName(args[0]);
-			mainMethod = mainClass.getMethod("main", new Class[]{String[].class});
+            mainMethod = mainClass.getMethod("main", new Class[]{String[].class});
         } catch(ClassNotFoundException ex) {
             String msg = MessageFormat.format("ERROR: can not find class {0} specified as argument. Please check classpath and class name.", args[0]);
             System.err.println(msg);
@@ -207,7 +207,7 @@ public class Launcher implements Runnable {
             System.err.println(msg);
             ex.printStackTrace(System.err);
         }
-	}
+    }
 
 }
 

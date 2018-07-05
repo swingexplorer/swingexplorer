@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -36,14 +36,14 @@ import javax.swing.table.JTableHeader;
  */
 public class CustomTableHeaderUI extends BasicTableHeaderUI {
 
-	@Override
-	protected void installDefaults() {
-		super.installDefaults();
-		JComponent c = (JComponent) header.getDefaultRenderer();
+    @Override
+    protected void installDefaults() {
+        super.installDefaults();
+        JComponent c = (JComponent) header.getDefaultRenderer();
         
         header.setDefaultRenderer(new HeaderCellRenderer());
-		c.setBorder(new MetalBorders.TableHeaderBorder());
-	}
+        c.setBorder(new MetalBorders.TableHeaderBorder());
+    }
     
     
     static class HeaderCellRenderer extends DefaultTableCellRenderer {

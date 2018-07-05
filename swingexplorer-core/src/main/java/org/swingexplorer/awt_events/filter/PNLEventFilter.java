@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -42,17 +42,17 @@ public class PNLEventFilter extends javax.swing.JPanel {
     }
     
     void initActions() {
-    	actEventFilterChanged = new ActEventFilterChanged(this);
-    	ItemListener itemListenerProxy = new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				if(!itemEventsDisabled) {
-					commit();
-					fireFilterChanged();
-				}
-			}
-    	};
-    	
-    	int count = this.getComponentCount();
+        actEventFilterChanged = new ActEventFilterChanged(this);
+        ItemListener itemListenerProxy = new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if(!itemEventsDisabled) {
+                    commit();
+                    fireFilterChanged();
+                }
+            }
+        };
+        
+        int count = this.getComponentCount();
         for(int i = 0; i < count; i ++) {
             Component comp = getComponent(i);
             if(comp instanceof JCheckBox) {
@@ -62,51 +62,51 @@ public class PNLEventFilter extends javax.swing.JPanel {
     }
     
     public void addFilterChangeListener(FilterChangeListener l) {
-    	filterListeners.add(l);
+        filterListeners.add(l);
     }
     
     public void removeFilterChangeListener(FilterChangeListener l) {
-    	filterListeners.remove(l);
+        filterListeners.remove(l);
     }
     
     protected void fireFilterChanged() {
-    	for(FilterChangeListener listener: filterListeners) {
-    		listener.filterChanged(filter.clone());
-    	}
+        for(FilterChangeListener listener: filterListeners) {
+            listener.filterChanged(filter.clone());
+        }
     }
     
     public void setEditListener() {
-    	
+        
     }
     
     public void setFilter(Filter _filter) {
-    	filter = _filter.clone();
-    	
-    	itemEventsDisabled = true;
-    	chbKeyPressed.setSelected(filter.keyPressed);
-		chbKeyReleased.setSelected(filter.keyReleased);
-		chbKeyTyped.setSelected(filter.keyTyped);
-		chbMouseClicked.setSelected(filter.mouseClicked);
-		chbMouseDragged.setSelected(filter.mouseDragged);
-		chbMouseEntered.setSelected(filter.mouseEntered);
-		chbMouseExited.setSelected(filter.mouseExited);
-		chbMouseMoved.setSelected(filter.mouseMoved);
-		chbMousePressed.setSelected(filter.mousePressed);
-		chbMouseReleased.setSelected(filter.mousePressed);
-		chbMouseWeel.setSelected(filter.mouseWeel);
-		itemEventsDisabled = false; 
+        filter = _filter.clone();
+        
+        itemEventsDisabled = true;
+        chbKeyPressed.setSelected(filter.keyPressed);
+        chbKeyReleased.setSelected(filter.keyReleased);
+        chbKeyTyped.setSelected(filter.keyTyped);
+        chbMouseClicked.setSelected(filter.mouseClicked);
+        chbMouseDragged.setSelected(filter.mouseDragged);
+        chbMouseEntered.setSelected(filter.mouseEntered);
+        chbMouseExited.setSelected(filter.mouseExited);
+        chbMouseMoved.setSelected(filter.mouseMoved);
+        chbMousePressed.setSelected(filter.mousePressed);
+        chbMouseReleased.setSelected(filter.mousePressed);
+        chbMouseWeel.setSelected(filter.mouseWeel);
+        itemEventsDisabled = false; 
     }
     
     public Filter getFilter() {
-    	return filter;
+        return filter;
     }
     
     public Filter commit() {
-    	Filter newFilter = new Filter();
-    	newFilter.keyPressed = chbKeyPressed.isSelected();
-    	newFilter.mouseDragged = chbMouseDragged.isSelected();
-    	newFilter.keyPressed = chbKeyPressed.isSelected();
-    	newFilter.keyReleased = chbKeyReleased.isSelected();
+        Filter newFilter = new Filter();
+        newFilter.keyPressed = chbKeyPressed.isSelected();
+        newFilter.mouseDragged = chbMouseDragged.isSelected();
+        newFilter.keyPressed = chbKeyPressed.isSelected();
+        newFilter.keyReleased = chbKeyReleased.isSelected();
         newFilter.keyTyped = chbKeyTyped.isSelected();
         newFilter.mouseEntered = chbMouseEntered.isSelected();
         newFilter.mouseClicked = chbMouseClicked.isSelected();
@@ -116,7 +116,7 @@ public class PNLEventFilter extends javax.swing.JPanel {
         newFilter.mouseWeel = chbMouseWeel.isSelected();
         newFilter.mousePressed = chbMousePressed.isSelected();
         filter = newFilter;
-    	return newFilter;
+        return newFilter;
     }
     
     
@@ -245,8 +245,8 @@ public class PNLEventFilter extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setAllSelected(boolean selected) {
-    	itemEventsDisabled = true;
-    	int count = this.getComponentCount();
+        itemEventsDisabled = true;
+        int count = this.getComponentCount();
         for(int i = 0; i < count; i ++) {
             Component comp = getComponent(i);
             if(comp instanceof JCheckBox) {
@@ -256,11 +256,11 @@ public class PNLEventFilter extends javax.swing.JPanel {
         itemEventsDisabled = false;
         
         commit();
-    	fireFilterChanged();
+        fireFilterChanged();
     }
     
     private void btnSelectAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectAllActionPerformed
-    	setAllSelected(true);
+        setAllSelected(true);
     }//GEN-LAST:event_btnSelectAllActionPerformed
 
     private void btnClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearAllActionPerformed

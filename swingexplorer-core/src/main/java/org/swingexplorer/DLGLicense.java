@@ -45,62 +45,62 @@ import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public class DLGLicense extends JDialog {
 
-	private JTextArea txaLicense;
-	private JButton btnClose;
-	private JScrollPane scp;
+    private JTextArea txaLicense;
+    private JButton btnClose;
+    private JScrollPane scp;
 
-	public DLGLicense(Dialog owner) {
-		super(owner, true);
-		ByteArrayOutputStream strBuf = getLicenseText();
-		
-		txaLicense = new JTextArea();
-		txaLicense.setEditable(false);
-		txaLicense.setText(strBuf.toString());
-		btnClose = new JButton("Close");
-		
-		JPanel pnlSouth = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		pnlSouth.add(btnClose);
-		
-		scp = new JScrollPane(txaLicense);
-		this.add(scp);
-		this.add(pnlSouth, BorderLayout.SOUTH);
-		this.setTitle("License");
-		
-		btnClose.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				DLGLicense.this.dispose();
-			}
-		});
-		
-		this.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentShown(ComponentEvent e) {
-				txaLicense.scrollRectToVisible(new Rectangle(0, 0, 10, 10));
-			}
-		});
-	}
+    public DLGLicense(Dialog owner) {
+        super(owner, true);
+        ByteArrayOutputStream strBuf = getLicenseText();
+        
+        txaLicense = new JTextArea();
+        txaLicense.setEditable(false);
+        txaLicense.setText(strBuf.toString());
+        btnClose = new JButton("Close");
+        
+        JPanel pnlSouth = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        pnlSouth.add(btnClose);
+        
+        scp = new JScrollPane(txaLicense);
+        this.add(scp);
+        this.add(pnlSouth, BorderLayout.SOUTH);
+        this.setTitle("License");
+        
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                DLGLicense.this.dispose();
+            }
+        });
+        
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                txaLicense.scrollRectToVisible(new Rectangle(0, 0, 10, 10));
+            }
+        });
+    }
 
-	private ByteArrayOutputStream getLicenseText(){
-		try {
-			ByteArrayOutputStream strBuf = new ByteArrayOutputStream();
-			InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("license.txt");
-			byte[] buf = new byte[1024];
-			int count = is.read(buf);
-			while(count != -1) {
-				strBuf.write(buf, 0, count);
-				count = is.read(buf);
-			}
-			return strBuf;
-		} catch(IOException ex) {
-			return null;
-		}
-	}
-	
-	public static final void open(Dialog owner) {
-		DLGLicense dlg = new DLGLicense(owner);
-		dlg.setModal(true);
-		dlg.setSize(500, 300);
-		GuiUtils.center(owner, dlg);
-		dlg.setVisible(true);
-	}
+    private ByteArrayOutputStream getLicenseText(){
+        try {
+            ByteArrayOutputStream strBuf = new ByteArrayOutputStream();
+            InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("license.txt");
+            byte[] buf = new byte[1024];
+            int count = is.read(buf);
+            while(count != -1) {
+                strBuf.write(buf, 0, count);
+                count = is.read(buf);
+            }
+            return strBuf;
+        } catch(IOException ex) {
+            return null;
+        }
+    }
+    
+    public static final void open(Dialog owner) {
+        DLGLicense dlg = new DLGLicense(owner);
+        dlg.setModal(true);
+        dlg.setSize(500, 300);
+        GuiUtils.center(owner, dlg);
+        dlg.setVisible(true);
+    }
 }

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -31,26 +31,26 @@ import org.swingexplorer.graphics.Player.PState;
  */
 public class StateEvent extends EventObject {
 
-	private PState newState;
-	private PState oldState;
-	
-	public StateEvent(Player source, PState oldStateP, PState newStateP) {
-		super(source);
-		newState = newStateP;
-		oldState = oldStateP;
-	}
+    private PState newState;
+    private PState oldState;
+    
+    public StateEvent(Player source, PState oldStateP, PState newStateP) {
+        super(source);
+        newState = newStateP;
+        oldState = oldStateP;
+    }
 
-	public Player getPlayer() {
-		return (Player)source;
-	}
-	
-	
-	public PState getNewState() {
-		return newState;
-	}
-	
-	public PState getOldState() {
-		return oldState;
-	}
+    public Player getPlayer() {
+        return (Player)source;
+    }
+    
+    
+    public PState getNewState() {
+        return newState;
+    }
+    
+    public PState getOldState() {
+        return oldState;
+    }
 }
 

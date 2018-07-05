@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -31,50 +31,50 @@ import javax.swing.JToggleButton;
  */
 public class RichToggleButton extends JToggleButton {
 
-	SelectionStateListener selectionStateListener;
-	
-	
-	public RichToggleButton() {
-		selectionStateListener = new SelectionStateListener();
-	}
-	
-	public RichToggleButton(Action a) {
-		this();
-		setAction(a);
-	}
-	
-	
-	@Override
-	public void setAction(Action a) {
-		if(a instanceof RichToggleAction) {
-			setToggleAction((RichToggleAction)a);
-		} else {
-			super.setAction(a);
-		}
-	}
-	
-	public void setToggleAction(RichToggleAction newAction) {
-		if(newAction == getAction()) {
-			return;
-		}
-		
-		if(newAction == null) {
-			Action curAction = getAction();
-			if(curAction != null) {
-				curAction.removePropertyChangeListener(selectionStateListener);
-			}
-		}
-		newAction.addPropertyChangeListener(selectionStateListener);		
-		super.setAction(newAction);
-	}
-	
-	class SelectionStateListener implements PropertyChangeListener {
+    SelectionStateListener selectionStateListener;
+    
+    
+    public RichToggleButton() {
+        selectionStateListener = new SelectionStateListener();
+    }
+    
+    public RichToggleButton(Action a) {
+        this();
+        setAction(a);
+    }
+    
+    
+    @Override
+    public void setAction(Action a) {
+        if(a instanceof RichToggleAction) {
+            setToggleAction((RichToggleAction)a);
+        } else {
+            super.setAction(a);
+        }
+    }
+    
+    public void setToggleAction(RichToggleAction newAction) {
+        if(newAction == getAction()) {
+            return;
+        }
+        
+        if(newAction == null) {
+            Action curAction = getAction();
+            if(curAction != null) {
+                curAction.removePropertyChangeListener(selectionStateListener);
+            }
+        }
+        newAction.addPropertyChangeListener(selectionStateListener);        
+        super.setAction(newAction);
+    }
+    
+    class SelectionStateListener implements PropertyChangeListener {
 
-		public void propertyChange(PropertyChangeEvent evt) {
-			if(evt.getPropertyName().equals("selected")) {
-				setSelected((Boolean)evt.getNewValue());
-			}
-		}
-	}
+        public void propertyChange(PropertyChangeEvent evt) {
+            if(evt.getPropertyName().equals("selected")) {
+                setSelected((Boolean)evt.getNewValue());
+            }
+        }
+    }
 }
 

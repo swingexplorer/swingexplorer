@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -35,44 +35,44 @@ import org.swingexplorer.plaf.CustomButtonUI;
  */
 public class RichToolbar extends JToolBar {
 
-	public AbstractButton addActionEx(Action a) {
-		String text = a != null ? (String) a.getValue(Action.NAME) : null;
-		Icon icon = a != null ? (Icon) a.getValue(Action.SMALL_ICON) : null;
-		boolean enabled = a != null ? a.isEnabled() : true;
-		String tooltip = a != null ? (String) a
-				.getValue(Action.SHORT_DESCRIPTION) : null;
+    public AbstractButton addActionEx(Action a) {
+        String text = a != null ? (String) a.getValue(Action.NAME) : null;
+        Icon icon = a != null ? (Icon) a.getValue(Action.SMALL_ICON) : null;
+        boolean enabled = a != null ? a.isEnabled() : true;
+        String tooltip = a != null ? (String) a
+                .getValue(Action.SHORT_DESCRIPTION) : null;
 
-				
-		AbstractButton b;
-		
-		if(a instanceof RichToggleAction) {
-			b = new RichToggleButton((RichToggleAction)a);
-			b.setText("");
-		} else {
-			b = new JButton(text, icon) {
-				protected PropertyChangeListener createActionPropertyChangeListener(
-						Action a) {
-					PropertyChangeListener pcl = createActionChangeListener(this);
-					if (pcl == null) {
-						pcl = super.createActionPropertyChangeListener(a);
-					}
-					return pcl;
-				}
-			};
-			b.setUI(new CustomButtonUI());
-		}
-		
-		if (icon != null) {
-			b.putClientProperty("hideActionText", Boolean.TRUE);
-		}
-		b.setHorizontalTextPosition(JButton.CENTER);
-		b.setVerticalTextPosition(JButton.BOTTOM);
-		b.setEnabled(enabled);
-		b.setToolTipText(tooltip);
-		
-		b.setAction(a);
-	    add(b);
-	    return null;
-	 }	
+                
+        AbstractButton b;
+        
+        if(a instanceof RichToggleAction) {
+            b = new RichToggleButton((RichToggleAction)a);
+            b.setText("");
+        } else {
+            b = new JButton(text, icon) {
+                protected PropertyChangeListener createActionPropertyChangeListener(
+                        Action a) {
+                    PropertyChangeListener pcl = createActionChangeListener(this);
+                    if (pcl == null) {
+                        pcl = super.createActionPropertyChangeListener(a);
+                    }
+                    return pcl;
+                }
+            };
+            b.setUI(new CustomButtonUI());
+        }
+        
+        if (icon != null) {
+            b.putClientProperty("hideActionText", Boolean.TRUE);
+        }
+        b.setHorizontalTextPosition(JButton.CENTER);
+        b.setVerticalTextPosition(JButton.BOTTOM);
+        b.setEnabled(enabled);
+        b.setToolTipText(tooltip);
+        
+        b.setAction(a);
+        add(b);
+        return null;
+     }  
 }
 

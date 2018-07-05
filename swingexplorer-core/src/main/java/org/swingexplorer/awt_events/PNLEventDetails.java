@@ -17,27 +17,27 @@ import org.swingexplorer.properties.PNLPropertySheet;
  */
 public class PNLEventDetails extends javax.swing.JPanel {
 
-	 private org.swingexplorer.properties.PNLPropertySheet pnlEventProperties;
-	 
+     private org.swingexplorer.properties.PNLPropertySheet pnlEventProperties;
+     
     /** Creates new form PNLEventDetails */
     public PNLEventDetails() {
-    	setLayout(new BorderLayout());
-    	pnlEventProperties = new PNLPropertySheet();
-    	add(pnlEventProperties, BorderLayout.CENTER);
-    	pnlEventProperties.setName("pnlEventProperties");
+        setLayout(new BorderLayout());
+        pnlEventProperties = new PNLPropertySheet();
+        add(pnlEventProperties, BorderLayout.CENTER);
+        pnlEventProperties.setName("pnlEventProperties");
     }
     
     public void setEvent(AWTEvent evt) {
-    	pnlEventProperties.setBean(evt);
+        pnlEventProperties.setBean(evt);
     }
     
     public AWTEvent getEvent() {
-    	return (AWTEvent)pnlEventProperties.getBean();
+        return (AWTEvent)pnlEventProperties.getBean();
     }
     
     @Override
     public void setToolTipText(String text) {
-    	pnlEventProperties.setToolTipText(text);
+        pnlEventProperties.setToolTipText(text);
     }
     
     @Override

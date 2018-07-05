@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -28,15 +28,15 @@ import javax.swing.JOptionPane;
  * @author  Maxim Zakharenkov
  */
 public class ActHelp extends RichAction {
-	
-	public ActHelp() {
-		setName("User documentation");
-		setTooltip("User documentation");
-	}
+    
+    public ActHelp() {
+        setName("User documentation");
+        setTooltip("User documentation");
+    }
 
-	public void actionPerformed(ActionEvent e) {
-		if(!SysUtils.openBrowser("http://www.swingexplorer.com/?page=documentation")) {
-			JOptionPane.showMessageDialog(null, "Can not open browser!", "Error", JOptionPane.ERROR_MESSAGE);
-		}
-	}
+    public void actionPerformed(ActionEvent e) {
+        if(!SysUtils.openBrowser("http://www.swingexplorer.com/?page=documentation")) {
+            JOptionPane.showMessageDialog(null, "Can not open browser!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -29,5 +29,5 @@ import org.swingexplorer.awt_events.Filter;
  */
 public interface FilterChangeListener extends EventListener {
 
-	public void filterChanged(Filter newFilter);
+    public void filterChanged(Filter newFilter);
 }

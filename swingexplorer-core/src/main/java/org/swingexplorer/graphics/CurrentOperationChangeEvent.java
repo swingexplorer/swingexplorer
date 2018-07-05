@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -27,22 +27,22 @@ import java.util.EventObject;
  */
 public class CurrentOperationChangeEvent extends EventObject {
 
-	Operation currentOperation;
-	Operation oldOperation;
-	
-	public CurrentOperationChangeEvent(Player source, Operation currentOp, Operation oldOp) {
-		super(source);
-		currentOperation = currentOp;
-		oldOperation = oldOp;
-	}
+    Operation currentOperation;
+    Operation oldOperation;
+    
+    public CurrentOperationChangeEvent(Player source, Operation currentOp, Operation oldOp) {
+        super(source);
+        currentOperation = currentOp;
+        oldOperation = oldOp;
+    }
 
-	public Operation getCurrentOperation() {
-		return currentOperation;
-	}
+    public Operation getCurrentOperation() {
+        return currentOperation;
+    }
 
-	public Operation getOldOperation() {
-		return oldOperation;
-	}
+    public Operation getOldOperation() {
+        return oldOperation;
+    }
 
 }
 

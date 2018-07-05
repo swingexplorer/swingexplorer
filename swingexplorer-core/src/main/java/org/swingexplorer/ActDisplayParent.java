@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -52,7 +52,7 @@ public class ActDisplayParent extends RichAction {
             application.model.setDisplayedComponentAndUpdateImage(parent);
             application.model.setSelection(comp);
         } catch (DisplayableException ex) {
-        	application.showMessageDialog(ex.getMessage());
+            application.showMessageDialog(ex.getMessage());
         }
     }
 

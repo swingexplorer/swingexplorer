@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -60,9 +60,9 @@ public class IDESupport extends NotificationBroadcasterSupport implements IDESup
         IDESupport mBean = new IDESupport();
         
         if(port == -1) {
-        	mBean.bound = false;
-        	Log.ideSupport.info("No management port is specified. IDE support is off");
-        	return mBean;
+            mBean.bound = false;
+            Log.ideSupport.info("No management port is specified. IDE support is off");
+            return mBean;
         }
         
         // create and register Mbean
@@ -93,11 +93,11 @@ public class IDESupport extends NotificationBroadcasterSupport implements IDESup
     
     public void requestOpenSourceCode(String className, int lineNo) throws IDENotConnectedException {
         if(!bound) {
-        	throw new IDENotConnectedException();
+            throw new IDENotConnectedException();
         }
         
         if(!connected) {
-        	throw new IDENotConnectedException();
+            throw new IDENotConnectedException();
         }
         
         Notification notification = new Notification("requestOpenSourceCode", this, notificationNumber++, System.currentTimeMillis());
@@ -111,23 +111,23 @@ public class IDESupport extends NotificationBroadcasterSupport implements IDESup
     }
 
     public void requestCheckedOpenSourceCode(String className, int lineNo, Component owner) {
-    	try {
-        	requestOpenSourceCode(className, lineNo);
-    	} catch(IDENotConnectedException ex) {
-    		JOptionPane.showMessageDialog(owner, 
-    				"Can not open source code. IDE connection is not available.\n" +
-    				"The connection is available only when application is launched\n" +
-    				"from IDE using Swing Explorer plug-in.");
-    	}
+        try {
+            requestOpenSourceCode(className, lineNo);
+        } catch(IDENotConnectedException ex) {
+            JOptionPane.showMessageDialog(owner, 
+                    "Can not open source code. IDE connection is not available.\n" +
+                    "The connection is available only when application is launched\n" +
+                    "from IDE using Swing Explorer plug-in.");
+        }
     }
     
 
-	public void connect() {
-		connected = true;
-	}
+    public void connect() {
+        connected = true;
+    }
 
 
-	public void disconnect() {
-		connected = false;
-	}
+    public void disconnect() {
+        connected = false;
+    }
 }

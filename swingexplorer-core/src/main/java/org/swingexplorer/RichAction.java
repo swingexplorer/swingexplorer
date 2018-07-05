@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -29,27 +29,27 @@ import javax.swing.Icon;
 @SuppressWarnings("serial")
 public abstract class RichAction extends AbstractAction {
 
-	protected Launcher application;
-	
-	public void setName(String name) {
-		putValue(NAME, name);
-	}
-	public void setTooltip(String tooltip) {
-		putValue(SHORT_DESCRIPTION, tooltip);
-	}
-	public void setIcon(Icon ico) {
-		putValue(SMALL_ICON, ico);
-	}
-	public void setIcon(String iconResource) {
+    protected Launcher application;
+    
+    public void setName(String name) {
+        putValue(NAME, name);
+    }
+    public void setTooltip(String tooltip) {
+        putValue(SHORT_DESCRIPTION, tooltip);
+    }
+    public void setIcon(Icon ico) {
+        putValue(SMALL_ICON, ico);
+    }
+    public void setIcon(String iconResource) {
         setIcon(GuiUtils.getImageIcon(Icons.BASE_PATH + iconResource));
-	}
-	
-	public void setApplication(Launcher app) {
-		application = app;
-	}
-	
-	public Launcher getApplication() {
-		return application;
-	}
+    }
+    
+    public void setApplication(Launcher app) {
+        application = app;
+    }
+    
+    public Launcher getApplication() {
+        return application;
+    }
 }
 

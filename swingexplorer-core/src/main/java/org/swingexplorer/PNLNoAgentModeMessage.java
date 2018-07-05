@@ -23,12 +23,12 @@ public class PNLNoAgentModeMessage extends javax.swing.JPanel {
     public PNLNoAgentModeMessage() {
         initComponents();
         lblMessage.setText("<html> This functionality is available only when application<br>" +
-        						   "is executed with instrumentation agent!<br> " +
-        						   "You should run your program using the following command line:<br> </html>");
+                                   "is executed with instrumentation agent!<br> " +
+                                   "You should run your program using the following command line:<br> </html>");
         txaCommand.setText("java -javaagent:swag.jar\n" +
-        				   "    -Xbootclasspath/p:swag.jar\n" +
-        				   "    -classpath <your_class_path>;swexpl.jar\n" +
-        				   "    org.swingexplorer.Launcher <Your_main_class>");
+                           "    -Xbootclasspath/p:swag.jar\n" +
+                           "    -classpath <your_class_path>;swexpl.jar\n" +
+                           "    org.swingexplorer.Launcher <Your_main_class>");
     }
     
     /** This method is called from within the constructor to
@@ -100,6 +100,6 @@ public class PNLNoAgentModeMessage extends javax.swing.JPanel {
      * Open dialog
      */
     public static void openDialog(Component parent) {
-    	JOptionPane.showMessageDialog(parent, new PNLNoAgentModeMessage());
+        JOptionPane.showMessageDialog(parent, new PNLNoAgentModeMessage());
     }
 }

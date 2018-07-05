@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -26,5 +26,5 @@ import java.awt.Graphics;
  * @author Maxim Zakharenkov
  */
 public interface Callback {
-	void operationPerformed(Operation op, Graphics g);
+    void operationPerformed(Operation op, Graphics g);
 }

@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -54,7 +54,7 @@ public class MdlEDTMonitor {
         boolean old = monitorViolations;
         monitorViolations = _monitorViolations;
         if(monitorViolations) {
-        	Agent.setMonitorEDTViolations(true);
+            Agent.setMonitorEDTViolations(true);
             Agent.setProblemListener(problemListenerRedispatcher);
         } else {
             Agent.setProblemListener(null);

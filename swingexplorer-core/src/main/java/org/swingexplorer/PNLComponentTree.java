@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -53,10 +53,10 @@ import javax.swing.tree.TreePath;
  */
 public class PNLComponentTree extends javax.swing.JPanel {
     
-	static final DefaultMutableTreeNode EMPTY_ALL_TREE_ROOT = new DefaultMutableTreeNode(new TreeNodeObject(null, "root"));
-	static final DefaultMutableTreeNode EMPTY_DISPLAYED_TREE_ROOT = new DefaultMutableTreeNode(new TreeNodeObject(null, "No Component is displayed"));
-	
-	/** Creates new form ComponentTree */
+    static final DefaultMutableTreeNode EMPTY_ALL_TREE_ROOT = new DefaultMutableTreeNode(new TreeNodeObject(null, "root"));
+    static final DefaultMutableTreeNode EMPTY_DISPLAYED_TREE_ROOT = new DefaultMutableTreeNode(new TreeNodeObject(null, "No Component is displayed"));
+    
+    /** Creates new form ComponentTree */
     public PNLComponentTree() {
         initComponents();
         
@@ -126,22 +126,22 @@ public class PNLComponentTree extends javax.swing.JPanel {
     }
     
     public void setRoot(DefaultMutableTreeNode root) {
-    	// memorize expansions
-    	TreePath pathToRoot = new TreePath(treAll.getModel().getRoot());
-    	Enumeration<TreePath> expandPaths = treAll.getExpandedDescendants(pathToRoot);
+        // memorize expansions
+        TreePath pathToRoot = new TreePath(treAll.getModel().getRoot());
+        Enumeration<TreePath> expandPaths = treAll.getExpandedDescendants(pathToRoot);
 
         // because "setRoot" clears selection we need to 
         // disable selection notification so that MdsSwingExplorer
         // do not know about temporary losing of selection
         disableSelectionNotification();
         
-    	// set root model
-    	((DefaultTreeModel)treAll.getModel()).setRoot(root);
-   	
-    	// restore expansions
+        // set root model
+        ((DefaultTreeModel)treAll.getModel()).setRoot(root);
+    
+        // restore expansions
         GuiUtils.expandTreePaths(treAll, expandPaths);
 
-    	updateDisplayedComponentTree();
+        updateDisplayedComponentTree();
         
         // restore selection from MdsSwingExplorer ane enable
         // selection notification back
@@ -177,108 +177,108 @@ public class PNLComponentTree extends javax.swing.JPanel {
     
     
     private DefaultTreeModel getTreeModel(JTree tree) {
-    	return (DefaultTreeModel)tree.getModel();
+        return (DefaultTreeModel)tree.getModel();
     }
     
     public Component getSelectedComponent() {
-    	if(tbpTrees.getSelectedComponent() == scpTreeAll) {    	
-    		return getComponent(treAll.getSelectionPath());
-    	} else {
-    		return getComponent(treDisplayed.getSelectionPath());
-    	}
+        if(tbpTrees.getSelectedComponent() == scpTreeAll) {     
+            return getComponent(treAll.getSelectionPath());
+        } else {
+            return getComponent(treDisplayed.getSelectionPath());
+        }
     }
     
     public void setModel(MdlSwingExplorer model) {
 
-		if (model == this.model) {
-			return;
-		}
+        if (model == this.model) {
+            return;
+        }
 
-		if (this.model != null) {
-			this.model.removePropertyChangeListener(modelListener);
-		}
-		if (model != null) {
-			model.addPropertyChangeListener(modelListener);
-		}
-		this.model = model;
-		repaint();
-	}
+        if (this.model != null) {
+            this.model.removePropertyChangeListener(modelListener);
+        }
+        if (model != null) {
+            model.addPropertyChangeListener(modelListener);
+        }
+        this.model = model;
+        repaint();
+    }
     
     public static Component getComponent(TreePath path) {
-		if(path == null) {
-			return null;
-		}
-		DefaultMutableTreeNode node =  (DefaultMutableTreeNode) path.getLastPathComponent();
-		
-		Object obj = node.getUserObject();
-		if(!(obj instanceof TreeNodeObject)) {
-			return null;
-		}
-		TreeNodeObject treeNodeObject = (TreeNodeObject)obj; 
-		
-		return treeNodeObject.getComponent();
+        if(path == null) {
+            return null;
+        }
+        DefaultMutableTreeNode node =  (DefaultMutableTreeNode) path.getLastPathComponent();
+        
+        Object obj = node.getUserObject();
+        if(!(obj instanceof TreeNodeObject)) {
+            return null;
+        }
+        TreeNodeObject treeNodeObject = (TreeNodeObject)obj; 
+        
+        return treeNodeObject.getComponent();
     }
 
     TreePath getComponentPath(JTree tree, Component comp) {
-    	TreePath[] paths = getComponentPaths(tree, comp);    	
-    	return paths.length == 0 ? null : paths[0]; 
+        TreePath[] paths = getComponentPaths(tree, comp);       
+        return paths.length == 0 ? null : paths[0]; 
     }
     
     // returns component paths for given tree
     TreePath[] getComponentPaths(JTree tree, Component...components) {
 
-    	log("getComponentPaths");
-    	
-    	List<?> compList = Arrays.asList(components);
-    	ArrayList<TreePath> paths = new ArrayList<TreePath>();
+        log("getComponentPaths");
+        
+        List<?> compList = Arrays.asList(components);
+        ArrayList<TreePath> paths = new ArrayList<TreePath>();
 
-	    //  iterating all tree elements 
-    	
-    	DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
-    	
-		Enumeration<?> preEnum = root.preorderEnumeration();
-		while(preEnum.hasMoreElements()) {
-			DefaultMutableTreeNode node = (DefaultMutableTreeNode) preEnum.nextElement();
-			TreeNodeObject obj = (TreeNodeObject) node.getUserObject();
-			
-			// check if the component in the array 
-			if(compList.contains(obj.getComponent())) {
-				 TreeNode[] pathArray = getTreeModel(tree).getPathToRoot(node);
-				 
-				 TreePath path = new TreePath(pathArray);
-				 paths.add(path);
-			}
-		}
-		
-		return paths.toArray(new TreePath[paths.size()]);
+        //  iterating all tree elements 
+        
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
+        
+        Enumeration<?> preEnum = root.preorderEnumeration();
+        while(preEnum.hasMoreElements()) {
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) preEnum.nextElement();
+            TreeNodeObject obj = (TreeNodeObject) node.getUserObject();
+            
+            // check if the component in the array 
+            if(compList.contains(obj.getComponent())) {
+                 TreeNode[] pathArray = getTreeModel(tree).getPathToRoot(node);
+                 
+                 TreePath path = new TreePath(pathArray);
+                 paths.add(path);
+            }
+        }
+        
+        return paths.toArray(new TreePath[paths.size()]);
     }
     
     public void setSelectComponents(Component[] components) {
-    	log("setSelectComponents");
-    	
-    	// select components in All tree
-    	TreePath[] paths = getComponentPaths(treAll, components);
+        log("setSelectComponents");
+        
+        // select components in All tree
+        TreePath[] paths = getComponentPaths(treAll, components);
         
           // remove selection listeners temporary to avoid notification
         disableSelectionNotification();
         
-    	treAll.setSelectionPaths(paths);
+        treAll.setSelectionPaths(paths);
         
-    	if(paths.length > 0) {
-    		treAll.scrollPathToVisible(paths[0]);
-    	}
-    	
-    	// select component in Displayed tree
-    	paths = getComponentPaths(treDisplayed, components);
+        if(paths.length > 0) {
+            treAll.scrollPathToVisible(paths[0]);
+        }
         
-    	treDisplayed.setSelectionPaths(paths);
+        // select component in Displayed tree
+        paths = getComponentPaths(treDisplayed, components);
+        
+        treDisplayed.setSelectionPaths(paths);
 
 
         enableSelectionNotification();
         
-    	if(paths.length > 0) {
-    		treDisplayed.scrollPathToVisible(paths[0]);
-    	}
+        if(paths.length > 0) {
+            treDisplayed.scrollPathToVisible(paths[0]);
+        }
     }
     
     
@@ -292,59 +292,59 @@ public class PNLComponentTree extends javax.swing.JPanel {
         treDisplayed.getSelectionModel().addTreeSelectionListener(actTreeSelectionChanged);
     }
     
-	public void setTreeSelectionAction(TreeSelectionListener _actTreeSelectionChanged) {
+    public void setTreeSelectionAction(TreeSelectionListener _actTreeSelectionChanged) {
         actTreeSelectionChanged =_actTreeSelectionChanged;
-		enableSelectionNotification();
-	}
-	
-	public void setDefaultTreeAction(final Action act) {
-		MouseListener mouseListener = new MouseListener(act);
-		treAll.addMouseListener(mouseListener);
-		treDisplayed.addMouseListener(mouseListener);
-		treAll.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "default");
-		treAll.getActionMap().put("default", act);
-		treDisplayed.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "default");
-		treDisplayed.getActionMap().put("default", act);
-	}
-	
-	private final class MouseListener extends MouseAdapter {
-		private final Action act;
+        enableSelectionNotification();
+    }
+    
+    public void setDefaultTreeAction(final Action act) {
+        MouseListener mouseListener = new MouseListener(act);
+        treAll.addMouseListener(mouseListener);
+        treDisplayed.addMouseListener(mouseListener);
+        treAll.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "default");
+        treAll.getActionMap().put("default", act);
+        treDisplayed.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "default");
+        treDisplayed.getActionMap().put("default", act);
+    }
+    
+    private final class MouseListener extends MouseAdapter {
+        private final Action act;
 
-		private MouseListener(Action act) {
-			super();
-			this.act = act;
-		}
+        private MouseListener(Action act) {
+            super();
+            this.act = act;
+        }
 
-		public void mouseClicked(MouseEvent e) {
-			if (e.getClickCount() > 1) {
-		        // fire aciton on double click:
-				JTree tree = (JTree)e.getSource();
-		        TreePath path = tree.getPathForLocation( e.getX(), e.getY() );
-		
-		        if (path != null) {
-		        	e.consume();
-		        	act.actionPerformed(new ActionEvent(tree, 0, ""));		            	
-		        }
-		     }
-		}
-		
-		@Override
-		public void mousePressed(MouseEvent e) {
-			if (e.isPopupTrigger()) {
-				showPopup(e);
-			}
-		}
-		
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() > 1) {
+                // fire aciton on double click:
+                JTree tree = (JTree)e.getSource();
+                TreePath path = tree.getPathForLocation( e.getX(), e.getY() );
+        
+                if (path != null) {
+                    e.consume();
+                    act.actionPerformed(new ActionEvent(tree, 0, ""));                      
+                }
+             }
+        }
+        
+        @Override
+        public void mousePressed(MouseEvent e) {
+            if (e.isPopupTrigger()) {
+                showPopup(e);
+            }
+        }
+        
         
         @Override
         public void mouseReleased(MouseEvent e) {
             if (e.isPopupTrigger()) {
-            	showPopup(e);
+                showPopup(e);
             }
         }
         
         private void showPopup(MouseEvent e) {
-        	// selected node under mouse cursor and show popup menu if set
+            // selected node under mouse cursor and show popup menu if set
             Point mousePoint = e.getPoint();
             JTree tree = (JTree)e.getSource();
             int row = tree.getRowForLocation( mousePoint.x, mousePoint.y );
@@ -356,14 +356,14 @@ public class PNLComponentTree extends javax.swing.JPanel {
                 popupMenu.show(tree, e.getX(), e.getY());
             }
         }
-	}
+    }
 
-	static class TreeNodeObject {
+    static class TreeNodeObject {
         WeakReference<Component> objRef;
-		String name;
+        String name;
         
         
-		TreeNodeObject(Component component, String _name) {
+        TreeNodeObject(Component component, String _name) {
             
             objRef = new WeakReference<Component>(component);
             if(component == null) {
@@ -371,42 +371,42 @@ public class PNLComponentTree extends javax.swing.JPanel {
                 return;
             }
             name = _name;
-		}
-		
-		public Component getComponent() {
-			return (Component) objRef.get();
-		}
-		
-		public String toString() {
-			return name;
-		}
-		
-		public boolean equals(Object o) {
-			if(!(o instanceof TreeNodeObject)) {
-				return false;
-			}
-			
-			TreeNodeObject castedO = (TreeNodeObject)o;
-			return castedO.objRef.get() == objRef.get();
-		}
-	}
-	
-	class ModelListener implements PropertyChangeListener {
+        }
+        
+        public Component getComponent() {
+            return (Component) objRef.get();
+        }
+        
+        public String toString() {
+            return name;
+        }
+        
+        public boolean equals(Object o) {
+            if(!(o instanceof TreeNodeObject)) {
+                return false;
+            }
+            
+            TreeNodeObject castedO = (TreeNodeObject)o;
+            return castedO.objRef.get() == objRef.get();
+        }
+    }
+    
+    class ModelListener implements PropertyChangeListener {
 
-		public void propertyChange(PropertyChangeEvent evt) {
-			String propName = evt.getPropertyName();
-			if ("selectedComponents".equals(propName)) {
-				setSelectComponents(model.getSelectedComponents());
-			} else if("displayedComponent".equals(propName)) {
-				updateDisplayedComponentTree();				
-			}
-		}
-	}
+        public void propertyChange(PropertyChangeEvent evt) {
+            String propName = evt.getPropertyName();
+            if ("selectedComponents".equals(propName)) {
+                setSelectComponents(model.getSelectedComponents());
+            } else if("displayedComponent".equals(propName)) {
+                updateDisplayedComponentTree();             
+            }
+        }
+    }
 
 
-	
-	void log(String msg) {
-//		System.out.println("[PNLComponentTree] " + msg);
-	}
+    
+    void log(String msg) {
+//      System.out.println("[PNLComponentTree] " + msg);
+    }
 }
 

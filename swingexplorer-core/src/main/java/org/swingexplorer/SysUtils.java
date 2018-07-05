@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -31,8 +31,8 @@ import java.net.URL;
  * @author  Maxim Zakharenkov
  */
 public abstract class SysUtils {
-	
-	public static final String KEY_SHOW_EXPLORER_WINDOW = "swex.showwin";
+    
+    public static final String KEY_SHOW_EXPLORER_WINDOW = "swex.showwin";
     public static final String KEY_LOG_OPTIONS = "swex.log";
     public static final String KEY_LOG_CONSOLE = "swex.log.console";
     public static final String KEY_MONITOR_EDT_VIOLATIONS = "swex.vmonitor";
@@ -40,14 +40,14 @@ public abstract class SysUtils {
     public static final String KEY_MONITOR_EDT_EXCEPTIONS = "swex.emonitor";
     public static final String KEY_MANAGEMENT_PORT = "swex.mport";
 
-	
-	/**
-	 * Show explorer window in the tree or not
-	 * @return
-	 */
-	public static boolean isShowExplorerWindow() {
-		return getBoolean(KEY_SHOW_EXPLORER_WINDOW);
-	}
+    
+    /**
+     * Show explorer window in the tree or not
+     * @return
+     */
+    public static boolean isShowExplorerWindow() {
+        return getBoolean(KEY_SHOW_EXPLORER_WINDOW);
+    }
     
     /** 
      * Checks if EDT violations should be monitored immediately
@@ -93,13 +93,13 @@ public abstract class SysUtils {
         return getInt(KEY_MANAGEMENT_PORT);
     }
     
-	private static boolean getBoolean(String key) {
-		try {
-			return Boolean.getBoolean(key);
-		} catch(SecurityException ex) {
-			return false;
-		}
-	}
+    private static boolean getBoolean(String key) {
+        try {
+            return Boolean.getBoolean(key);
+        } catch(SecurityException ex) {
+            return false;
+        }
+    }
     
     private static int getInt(String key) {
         try {
@@ -108,44 +108,44 @@ public abstract class SysUtils {
             return -1;
         }
     }
-	
-	public static String getJavaVersion() {
-		return System.getProperty("java.specification.version");
-	}
-	
-	/**
-	 * Opens given URI in the browser
-	 * @param strUri
-	 * @return true if operation succeded and false if not
-	 */
-	public static boolean openBrowser(String strUri) {
+    
+    public static String getJavaVersion() {
+        return System.getProperty("java.specification.version");
+    }
+    
+    /**
+     * Opens given URI in the browser
+     * @param strUri
+     * @return true if operation succeded and false if not
+     */
+    public static boolean openBrowser(String strUri) {
         
-		try {
-	        Desktop.getDesktop().browse(new URL(strUri).toURI());
-	        return true;
-	    } catch (Exception e) {
-	        return false;
-	    }
-	}
+        try {
+            Desktop.getDesktop().browse(new URL(strUri).toURI());
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     /**
-	 * Returns version-specific directory where Swing Explorer
-	 * stores own files.
-	 * @param autoCreate - indecates if directory should be created if it does
+     * Returns version-specific directory where Swing Explorer
+     * stores own files.
+     * @param autoCreate - indecates if directory should be created if it does
      * not exist
-	 * @return full path
-	 */
-	public static String getHomeDirectory(boolean autoCreate) {
+     * @return full path
+     */
+    public static String getHomeDirectory(boolean autoCreate) {
 
-		// the exactly same implementation of this method is
-		// also presented in the both in the SysUtils class 
-		// and in the NB plug-in's Installer class 
-		// making any changes here please also copy them
-		// into both places
+        // the exactly same implementation of this method is
+        // also presented in the both in the SysUtils class 
+        // and in the NB plug-in's Installer class 
+        // making any changes here please also copy them
+        // into both places
 
 
-		// obtain version, if version not found - we are in development mode
-		String version = SysUtils.class.getPackage().getImplementationVersion();
+        // obtain version, if version not found - we are in development mode
+        String version = SysUtils.class.getPackage().getImplementationVersion();
         if(version == null) {
             version = "0.0.0";// development version
         }
@@ -153,35 +153,35 @@ public abstract class SysUtils {
         String strDir =  System.getProperty("user.home") + "/.swex/" + version;
 
         // auto-create if necessary
-		if(autoCreate) {
-			File dir = new File(strDir);
-			if(!dir.exists()) {
-				dir.mkdirs();
-			}
-		}
-		return strDir;
-	}
-	
-	public static String getOptionFilePath(boolean autoCreateDirectory) {
-		String dir = getHomeDirectory(autoCreateDirectory);
-		return dir + "/options.properties";
-	}
-	
-	
-	/**
-	 * Determines if logging options (levels, categories).
-	 * @return
-	 */
-	public static String getLogOptions() {
-		return System.getProperty(KEY_LOG_OPTIONS);
-	}
-	
-	/**
-	 * Determines if logging to console should be done instead of file.
-	 * @return
-	 */
-	public static boolean isLogToConsole() {
-		return Boolean.getBoolean(KEY_LOG_CONSOLE);
-	}
+        if(autoCreate) {
+            File dir = new File(strDir);
+            if(!dir.exists()) {
+                dir.mkdirs();
+            }
+        }
+        return strDir;
+    }
+    
+    public static String getOptionFilePath(boolean autoCreateDirectory) {
+        String dir = getHomeDirectory(autoCreateDirectory);
+        return dir + "/options.properties";
+    }
+    
+    
+    /**
+     * Determines if logging options (levels, categories).
+     * @return
+     */
+    public static String getLogOptions() {
+        return System.getProperty(KEY_LOG_OPTIONS);
+    }
+    
+    /**
+     * Determines if logging to console should be done instead of file.
+     * @return
+     */
+    public static boolean isLogToConsole() {
+        return Boolean.getBoolean(KEY_LOG_CONSOLE);
+    }
 }
 

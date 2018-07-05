@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -654,18 +654,18 @@ final public class GuiUtils {
      * @return
      */
     public static String formatElementToHTML(StackTraceElement elem) {
-		// taking only class name before $ (in case of inner class)
-		String className = elem.getClassName(); 
-		className = className.split("\\$")[0];
-		String href = className + ":" + elem.getLineNumber();
-		
-		return
-		elem.getClassName() + "." + elem.getMethodName() +
+        // taking only class name before $ (in case of inner class)
+        String className = elem.getClassName(); 
+        className = className.split("\\$")[0];
+        String href = className + ":" + elem.getLineNumber();
+        
+        return
+        elem.getClassName() + "." + elem.getMethodName() +
         (elem.isNativeMethod() ? "(Native Method)" :
          (elem.getFileName() != null && elem.getLineNumber() >= 0 ?
-          "(<a href=\"" + href + "\">" + elem.getFileName() + ":" + elem.getLineNumber() + "</a>)" :        	  
+          "(<a href=\"" + href + "\">" + elem.getFileName() + ":" + elem.getLineNumber() + "</a>)" :              
           (elem.getFileName() != null ?  "("+elem.getFileName()+")" : "(Unknown Source)")));
-	}
+    }
     
     
     /**
@@ -675,32 +675,32 @@ final public class GuiUtils {
      * @return null if component not found
      */
     public static Component findComponentByName(Container parent, String beanName) {
-		
-		if(beanName.equals(parent.getName())) {
-			return parent;
-		}
-		
-		// iterate over component hierarchy
-		LinkedList<Container> parentList = new LinkedList<Container>();
-		parentList.add(parent);
-		do {
-			Container curParent = parentList.removeFirst();
-			int count = curParent.getComponentCount();
-			for(int i = 0; i < count; i ++) {
-				Component comp = curParent.getComponent(i);
-				
-				if(beanName.equals(comp.getName())) {
-					// component found
-					return comp; 
-				}
-				
-				if(comp instanceof Container) {
-					parentList.add((Container)comp);
-				}
-			}
-		} while(!parentList.isEmpty());
-		
-		return null;
-	}
+        
+        if(beanName.equals(parent.getName())) {
+            return parent;
+        }
+        
+        // iterate over component hierarchy
+        LinkedList<Container> parentList = new LinkedList<Container>();
+        parentList.add(parent);
+        do {
+            Container curParent = parentList.removeFirst();
+            int count = curParent.getComponentCount();
+            for(int i = 0; i < count; i ++) {
+                Component comp = curParent.getComponent(i);
+                
+                if(beanName.equals(comp.getName())) {
+                    // component found
+                    return comp; 
+                }
+                
+                if(comp instanceof Container) {
+                    parentList.add((Container)comp);
+                }
+            }
+        } while(!parentList.isEmpty());
+        
+        return null;
+    }
 }
 

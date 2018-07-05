@@ -1,6 +1,6 @@
 /*
  *   Swing Explorer. Tool for developers exploring Java/Swing-based application internals. 
- * 	 Copyright (C) 2012, Maxim Zakharenkov
+ *   Copyright (C) 2012, Maxim Zakharenkov
  *
  *   This library is free software; you can redistribute it and/or
  *   modify it under the terms of the GNU Lesser General Public
@@ -27,22 +27,22 @@ import java.text.ParseException;
  */
 public class IntegerConverter implements Converter<Integer> {
 
-	public Integer fromString(String strValue) throws ParseException {
-		if(strValue == null) {
-			return null;
-		}
-		try {
-			return Integer.parseInt(strValue);
-		} catch(NumberFormatException ex) {
-			throw new ParseException("Error parsing \"" + strValue + "\" to Integer", 0);
-		}
-	}
+    public Integer fromString(String strValue) throws ParseException {
+        if(strValue == null) {
+            return null;
+        }
+        try {
+            return Integer.parseInt(strValue);
+        } catch(NumberFormatException ex) {
+            throw new ParseException("Error parsing \"" + strValue + "\" to Integer", 0);
+        }
+    }
 
-	public String toString(Integer value) {
-		if(value == null) {
-			return null;
-		}
-		return value.toString();
-	}
+    public String toString(Integer value) {
+        if(value == null) {
+            return null;
+        }
+        return value.toString();
+    }
 
 }
