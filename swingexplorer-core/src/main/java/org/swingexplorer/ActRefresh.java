@@ -41,7 +41,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import org.swingexplorer.PNLComponentTree.TreeNodeObject;
+import org.swingexplorer.PnlComponentTree.TreeNodeObject;
 
 
 /**
@@ -50,7 +50,7 @@ import org.swingexplorer.PNLComponentTree.TreeNodeObject;
  */
 public class ActRefresh extends RichAction {
 
-	PNLComponentTree pnlComponentTree;
+	PnlComponentTree pnlComponentTree;
     
     // the fields used for detecting
     // changes in the component hierarchy
@@ -59,7 +59,7 @@ public class ActRefresh extends RichAction {
     Component lastAncestor;
     MdlSwingExplorer mdlSwingExplorer;
     
-	public ActRefresh(PNLComponentTree _pnlComponentTree, MdlSwingExplorer _mdlSwingExplorer) {
+	public ActRefresh(PnlComponentTree _pnlComponentTree, MdlSwingExplorer _mdlSwingExplorer) {
 		setName("Refresh");
 		setTooltip("<html>Refresh tree and<br> displayed component</html>");
 		setIcon("refresh.png");

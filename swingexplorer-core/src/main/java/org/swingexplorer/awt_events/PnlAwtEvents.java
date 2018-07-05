@@ -42,10 +42,10 @@ import org.swingexplorer.plaf.CustomTableHeaderUI;
  *
  * @author Maxim Zakharenkov
  */
-public class PNLAwtEvents extends javax.swing.JPanel {
+public class PnlAwtEvents extends javax.swing.JPanel {
 
-	/** Creates new form PNLEvents */
-    public PNLAwtEvents() {
+	/** Creates new form PnlAwtEvents */
+    public PnlAwtEvents() {
         initComponents();
         tblEvents.setName("tblEvents");
         
@@ -155,7 +155,7 @@ public class PNLAwtEvents extends javax.swing.JPanel {
     private void initComponents() {
 
         sppMasterDetail = new javax.swing.JSplitPane();
-        pnlEventDetails = new org.swingexplorer.awt_events.PNLEventDetails();
+        pnlEventDetails = new org.swingexplorer.awt_events.PnlEventDetails();
         scpTable = new javax.swing.JScrollPane();
         tblEvents = new javax.swing.JTable();
         txtStatus = new javax.swing.JTextField();
@@ -239,7 +239,7 @@ public class PNLAwtEvents extends javax.swing.JPanel {
     javax.swing.JButton btnShowFilter;
     private javax.swing.JButton btnShowSource;
     private javax.swing.JButton btnStart;
-    org.swingexplorer.awt_events.PNLEventDetails pnlEventDetails;
+    org.swingexplorer.awt_events.PnlEventDetails pnlEventDetails;
     private javax.swing.JScrollPane scpTable;
     private javax.swing.JSplitPane sppMasterDetail;
     private javax.swing.JTable tblEvents;

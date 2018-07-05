@@ -36,7 +36,7 @@ import javax.swing.UIManager;
 
 import org.swingexplorer.RichAction;
 import org.swingexplorer.awt_events.filter.FilterChangeListener;
-import org.swingexplorer.awt_events.filter.PNLEventFilter;
+import org.swingexplorer.awt_events.filter.PnlEventFilter;
 
 /**
  *
@@ -45,12 +45,12 @@ import org.swingexplorer.awt_events.filter.PNLEventFilter;
 public class ActShowFilter extends RichAction {
 
 	
-	PNLAwtEvents owner;
+	PnlAwtEvents owner;
 	JPopupMenu popup;
 	boolean selected = false;
     JDialog dlg;
 
-	public ActShowFilter(PNLAwtEvents _owner) {
+	public ActShowFilter(PnlAwtEvents _owner) {
 		owner =_owner;
 		setName("Filter");
 
@@ -65,7 +65,7 @@ public class ActShowFilter extends RichAction {
             dlg = new JDialog((Frame)wndAncestor);
             dlg.setTitle("Event filter");
             dlg.setUndecorated(true);
-            PNLEventFilter pnlFilter = new PNLEventFilter();
+            PnlEventFilter pnlFilter = new PnlEventFilter();
             pnlFilter.setBorder(UIManager.getBorder("PopupMenu.border"));// new LineBorder(Color.BLACK));
             dlg.add(pnlFilter);
             

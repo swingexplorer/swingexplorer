@@ -45,7 +45,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
       <SubComponents>
-        <Component class="org.swingexplorer.PNLComponentTree" name="pnlComponentTree">
+        <Component class="org.swingexplorer.PnlComponentTree" name="pnlComponentTree">
           <Properties>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[0, 0]"/>
@@ -127,7 +127,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class="org.swingexplorer.PNLGuiDisplay" name="pnlGuiDisplay">
+                    <Container class="org.swingexplorer.PnlGuiDisplay" name="pnlGuiDisplay">
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -158,7 +158,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="org.swingexplorer.PNLSelectionProperties" name="pnlProperties">
+                    <Component class="org.swingexplorer.PnlSelectionProperties" name="pnlProperties">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="Properties" toolTip="Proberties of the selected component">
@@ -168,7 +168,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="org.swingexplorer.additiontrace.PNLAdditionTrace" name="pnlAdditionTrace">
+                    <Component class="org.swingexplorer.additiontrace.PnlAdditionTrace" name="pnlAdditionTrace">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="Addition trace" toolTip="&lt;html&gt;Stack trace of the instruction&lt;br&gt;&#xa;where the selected component&lt;br&gt;&#xa;was added into a container&lt;/html&gt;">
@@ -178,7 +178,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="org.swingexplorer.PNLPlayerControls" name="pnlPlayerControls">
+                    <Component class="org.swingexplorer.PnlPlayerControls" name="pnlPlayerControls">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -195,7 +195,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="org.swingexplorer.awt_events.PNLAwtEvents" name="pnlAWTEvents">
+                    <Component class="org.swingexplorer.awt_events.PnlAwtEvents" name="pnlAWTEvents">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="AWT Events" toolTip="AWT event monitor">
@@ -205,7 +205,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="org.swingexplorer.edt_monitor.PNLEDTMonitor" name="pnlEDTMonitor">
+                    <Component class="org.swingexplorer.edt_monitor.PnlEDTMonitor" name="pnlEDTMonitor">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="EDT monitor" toolTip="&lt;html&gt;Event Dispatch thread&lt;br&gt;&#xa;problem monitor&#xa;&lt;/html&gt;">
@@ -215,7 +215,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="org.swingexplorer.PNLOptions" name="pnlOptions">
+                    <Component class="org.swingexplorer.PnlOptions" name="pnlOptions">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="Options">
@@ -232,7 +232,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="org.swingexplorer.PNLStatusBar" name="pnlStatusBar">
+    <Component class="org.swingexplorer.PnlStatusBar" name="pnlStatusBar">
     </Component>
     <Container class="org.swingexplorer.RichToolbar" name="tlbMain">
       <Properties>

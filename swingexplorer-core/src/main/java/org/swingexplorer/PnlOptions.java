@@ -26,10 +26,10 @@ import java.awt.event.ItemListener;
  *
  * @author Maxim Zakharenkov
  */
-public class PNLOptions extends javax.swing.JPanel {
+public class PnlOptions extends javax.swing.JPanel {
     
-    /** Creates new form PNLOptions */
-    public PNLOptions() {
+    /** Creates new form PnlOptions */
+    public PnlOptions() {
         initComponents();
         
         cmbComponentIncludingBorderColor.addItemListener(itemListener);
@@ -206,7 +206,7 @@ public class PNLOptions extends javax.swing.JPanel {
     
 //    public static void main(String[] args) {
 //		JFrame frm = new JFrame();
-//		PNLOptions pnlOptions = new PNLOptions();
+//		PnlOptions pnlOptions = new PnlOptions();
 //		pnlOptions.setOptions(new Options());
 //		frm.add(pnlOptions);
 //		frm.setBounds(100, 100, 300, 250);

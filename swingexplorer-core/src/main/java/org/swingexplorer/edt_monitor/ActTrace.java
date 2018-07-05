@@ -32,9 +32,9 @@ import org.swingexplorer.instrument.Problem;
  */
 public class ActTrace extends RichAction {
 
-    PNLEDTMonitor owner;
+    PnlEDTMonitor owner;
     
-    public ActTrace(PNLEDTMonitor _owner) {
+    public ActTrace(PnlEDTMonitor _owner) {
         owner = _owner;
     }
     

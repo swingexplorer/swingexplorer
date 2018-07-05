@@ -29,9 +29,9 @@ import org.swingexplorer.RichAction;
  */
 public class ActClear extends RichAction {
 
-    PNLEDTMonitor owner;
+    PnlEDTMonitor owner;
     
-    public ActClear(PNLEDTMonitor _owner) {
+    public ActClear(PnlEDTMonitor _owner) {
         owner = _owner;
     }
     

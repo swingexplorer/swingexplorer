@@ -31,9 +31,9 @@ import org.swingexplorer.idesupport.IDESupport;
 public class ActOpenSourceCode implements HyperlinkListener {
 	
 	IDESupport ideSupport;
-	private PNLAdditionTrace owner;
+	private PnlAdditionTrace owner;
 	
-	ActOpenSourceCode(PNLAdditionTrace _owner) {
+	ActOpenSourceCode(PnlAdditionTrace _owner) {
 		owner = _owner;
 	}
 	

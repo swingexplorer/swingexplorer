@@ -33,10 +33,10 @@ import org.swingexplorer.awt_events.Filter;
  *
  * @author  Maxim Zakharenkov
  */
-public class PNLEventFilter extends javax.swing.JPanel {
+public class PnlEventFilter extends javax.swing.JPanel {
     
-    /** Creates new form PNLEventFilter */
-    public PNLEventFilter() {
+    /** Creates new form PnlEventFilter */
+    public PnlEventFilter() {
         initComponents();
         initActions();
     }

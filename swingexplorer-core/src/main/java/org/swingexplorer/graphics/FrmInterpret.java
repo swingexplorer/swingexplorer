@@ -41,7 +41,7 @@ import java.util.concurrent.Executors;
  * 
  * @author Maxim Zakharenkov
  */
-public class FRMInterpret extends Frame {
+public class FrmInterpret extends Frame {
 
 	Button btnStep = new Button("Step");
 	Button btnRun = new Button("Run");
@@ -50,7 +50,7 @@ public class FRMInterpret extends Frame {
 	
 	ExecutorService execService;
 	
-	private FRMInterpret(XGraphics xg) {
+	private FrmInterpret(XGraphics xg) {
 		setLayout(new BorderLayout());
 		Panel pnlButtons = new Panel(new GridLayout(2, 1));
 		Panel pnlEast = new Panel(new BorderLayout());
@@ -159,7 +159,7 @@ public class FRMInterpret extends Frame {
 	
 	
 	public static void open(XGraphics xg) {
-		FRMInterpret frm = new FRMInterpret(xg);
+		FrmInterpret frm = new FrmInterpret(xg);
 		frm.setBounds(400, 400, 500, 500);
 		frm.setVisible(true);
 		frm.doStart();

@@ -51,7 +51,7 @@ import javax.swing.tree.TreePath;
 
 import org.swingexplorer.GuiUtils;
 import org.swingexplorer.Icons;
-import org.swingexplorer.PNLNoAgentModeMessage;
+import org.swingexplorer.PnlNoAgentModeMessage;
 import org.swingexplorer.idesupport.IDESupport;
 import org.swingexplorer.instrument.Problem;
 import org.swingexplorer.instrument.ProblemListener;
@@ -60,10 +60,10 @@ import org.swingexplorer.instrument.ProblemListener;
  *
  * @author  Maxim Zakharenkov
  */
-public class PNLEDTMonitor extends javax.swing.JPanel {
+public class PnlEDTMonitor extends javax.swing.JPanel {
     
-    /** Creates new form PNLEDTMonitor */
-    public PNLEDTMonitor() {
+    /** Creates new form PnlEDTMonitor */
+    public PnlEDTMonitor() {
         initComponents();
         setModel(new MdlEDTMonitor());
         
@@ -276,7 +276,7 @@ public class PNLEDTMonitor extends javax.swing.JPanel {
     
     private void chbEDTViolationsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbEDTViolationsItemStateChanged
         if(!mdlMonitor.isViolationMonitoringAvailable() && evt.getStateChange() == ItemEvent.SELECTED) {
-        	PNLNoAgentModeMessage.openDialog(this);
+        	PnlNoAgentModeMessage.openDialog(this);
             chbEDTViolations.setSelected(false);
             return;
         }

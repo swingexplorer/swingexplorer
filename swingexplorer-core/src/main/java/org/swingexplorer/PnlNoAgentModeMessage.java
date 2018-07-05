@@ -1,5 +1,5 @@
 /*
- * PNLMessage.java
+ * PnlNoAgentModeMessage.java
  *
  * Created on March 9, 2008, 3:25 PM
  */
@@ -17,10 +17,10 @@ import javax.swing.JOptionPane;
  *
  * @author  Maxim Zakharenkov
  */
-public class PNLNoAgentModeMessage extends javax.swing.JPanel {
+public class PnlNoAgentModeMessage extends javax.swing.JPanel {
     
-    /** Creates new form PNLMessage */
-    public PNLNoAgentModeMessage() {
+    /** Creates new form PnlNoAgentModeMessage */
+    public PnlNoAgentModeMessage() {
         initComponents();
         lblMessage.setText("<html> This functionality is available only when application<br>" +
         						   "is executed with instrumentation agent!<br> " +
@@ -100,6 +100,6 @@ public class PNLNoAgentModeMessage extends javax.swing.JPanel {
      * Open dialog
      */
     public static void openDialog(Component parent) {
-    	JOptionPane.showMessageDialog(parent, new PNLNoAgentModeMessage());
+    	JOptionPane.showMessageDialog(parent, new PnlNoAgentModeMessage());
     }
 }

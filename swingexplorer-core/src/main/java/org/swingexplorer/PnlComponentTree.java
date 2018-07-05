@@ -51,13 +51,13 @@ import javax.swing.tree.TreePath;
  *
  * @author  Maxim Zakharenkov
  */
-public class PNLComponentTree extends javax.swing.JPanel {
+public class PnlComponentTree extends javax.swing.JPanel {
     
 	static final DefaultMutableTreeNode EMPTY_ALL_TREE_ROOT = new DefaultMutableTreeNode(new TreeNodeObject(null, "root"));
 	static final DefaultMutableTreeNode EMPTY_DISPLAYED_TREE_ROOT = new DefaultMutableTreeNode(new TreeNodeObject(null, "No Component is displayed"));
 	
 	/** Creates new form ComponentTree */
-    public PNLComponentTree() {
+    public PnlComponentTree() {
         initComponents();
         
         tbpTrees.setName("tbpTrees");
@@ -406,7 +406,7 @@ public class PNLComponentTree extends javax.swing.JPanel {
 
 	
 	void log(String msg) {
-//		System.out.println("[PNLComponentTree] " + msg);
+//		System.out.println("[PnlComponentTree] " + msg);
 	}
 }
 

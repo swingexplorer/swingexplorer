@@ -27,10 +27,10 @@ import java.beans.PropertyChangeListener;
  *
  * @author  Maxim Zakharenkov
  */
-public class PNLStatusBar extends javax.swing.JPanel {
+public class PnlStatusBar extends javax.swing.JPanel {
     
-    /** Creates new form PNLStatusBar */
-    public PNLStatusBar() {
+    /** Creates new form PnlStatusBar */
+    public PnlStatusBar() {
         initComponents();
     }
     

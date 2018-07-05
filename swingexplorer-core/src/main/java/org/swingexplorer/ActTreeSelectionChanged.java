@@ -32,10 +32,10 @@ import javax.swing.tree.TreePath;
 public class ActTreeSelectionChanged implements TreeSelectionListener {
     
     MdlSwingExplorer model;
-    PNLComponentTree pnlComponentTree;
+    PnlComponentTree pnlComponentTree;
     
     /* Creates a new instance of ActTreeSelectionChanged */
-    public ActTreeSelectionChanged(MdlSwingExplorer modelP, PNLComponentTree pnlComponentTreeP) {
+    public ActTreeSelectionChanged(MdlSwingExplorer modelP, PnlComponentTree pnlComponentTreeP) {
         model = modelP;
         pnlComponentTree = pnlComponentTreeP;
     }

@@ -46,10 +46,10 @@ import org.swingexplorer.graphics.StateEvent;
  *
  * @author  Maxim Zakharenkov
  */
-public class PNLSwingExplorer extends javax.swing.JPanel {
+public class PnlSwingExplorer extends javax.swing.JPanel {
     
-    /** Creates new form PNLSwingExplorer */
-    public PNLSwingExplorer() {
+    /** Creates new form PnlSwingExplorer */
+    public PnlSwingExplorer() {
     	initComponents();
         sppMain.setName("sppMain");
         sppRight.setName("sppRight");
@@ -117,21 +117,21 @@ public class PNLSwingExplorer extends javax.swing.JPanel {
     private void initComponents() {
 
         sppMain = new javax.swing.JSplitPane();
-        pnlComponentTree = new org.swingexplorer.PNLComponentTree();
+        pnlComponentTree = new org.swingexplorer.PnlComponentTree();
         pnlWorkArea = new javax.swing.JPanel();
         txtPath = new javax.swing.JTextField();
         lblDisplayedPath = new javax.swing.JLabel();
         sppRight = new javax.swing.JSplitPane();
         scpDisplay = new javax.swing.JScrollPane();
-        pnlGuiDisplay = new org.swingexplorer.PNLGuiDisplay();
+        pnlGuiDisplay = new org.swingexplorer.PnlGuiDisplay();
         tbpBottom = new javax.swing.JTabbedPane();
-        pnlProperties = new org.swingexplorer.PNLSelectionProperties();
-        pnlAdditionTrace = new org.swingexplorer.additiontrace.PNLAdditionTrace();
-        pnlPlayerControls = new org.swingexplorer.PNLPlayerControls();
-        pnlAWTEvents = new org.swingexplorer.awt_events.PNLAwtEvents();
-        pnlEDTMonitor = new org.swingexplorer.edt_monitor.PNLEDTMonitor();
-        pnlOptions = new org.swingexplorer.PNLOptions();
-        pnlStatusBar = new org.swingexplorer.PNLStatusBar();
+        pnlProperties = new org.swingexplorer.PnlSelectionProperties();
+        pnlAdditionTrace = new org.swingexplorer.additiontrace.PnlAdditionTrace();
+        pnlPlayerControls = new org.swingexplorer.PnlPlayerControls();
+        pnlAWTEvents = new org.swingexplorer.awt_events.PnlAwtEvents();
+        pnlEDTMonitor = new org.swingexplorer.edt_monitor.PnlEDTMonitor();
+        pnlOptions = new org.swingexplorer.PnlOptions();
+        pnlStatusBar = new org.swingexplorer.PnlStatusBar();
         tlbMain = new org.swingexplorer.RichToolbar();
 
         sppMain.setBorder(null);
@@ -228,15 +228,15 @@ public class PNLSwingExplorer extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblDisplayedPath;
-    private org.swingexplorer.awt_events.PNLAwtEvents pnlAWTEvents;
-    private org.swingexplorer.additiontrace.PNLAdditionTrace pnlAdditionTrace;
-    private org.swingexplorer.PNLComponentTree pnlComponentTree;
-    private org.swingexplorer.edt_monitor.PNLEDTMonitor pnlEDTMonitor;
-    private org.swingexplorer.PNLGuiDisplay pnlGuiDisplay;
-    private org.swingexplorer.PNLOptions pnlOptions;
-    private org.swingexplorer.PNLPlayerControls pnlPlayerControls;
-    private org.swingexplorer.PNLSelectionProperties pnlProperties;
-    private org.swingexplorer.PNLStatusBar pnlStatusBar;
+    private org.swingexplorer.awt_events.PnlAwtEvents pnlAWTEvents;
+    private org.swingexplorer.additiontrace.PnlAdditionTrace pnlAdditionTrace;
+    private org.swingexplorer.PnlComponentTree pnlComponentTree;
+    private org.swingexplorer.edt_monitor.PnlEDTMonitor pnlEDTMonitor;
+    private org.swingexplorer.PnlGuiDisplay pnlGuiDisplay;
+    private org.swingexplorer.PnlOptions pnlOptions;
+    private org.swingexplorer.PnlPlayerControls pnlPlayerControls;
+    private org.swingexplorer.PnlSelectionProperties pnlProperties;
+    private org.swingexplorer.PnlStatusBar pnlStatusBar;
     private javax.swing.JPanel pnlWorkArea;
     private javax.swing.JScrollPane scpDisplay;
     private javax.swing.JSplitPane sppMain;

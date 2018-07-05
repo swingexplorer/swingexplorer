@@ -1,5 +1,5 @@
 /*
- * PNLSelectionProperties.java
+ * PnlSelectionProperties.java
  *
  * Created on March 9, 2008, 8:39 PM
  */
@@ -11,21 +11,21 @@ import java.awt.Component;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import org.swingexplorer.properties.PNLPropertySheet;
+import org.swingexplorer.properties.PnlPropertySheet;
 
 /**
  *
  * @author  Maxim Zakharenkov
  */
-public class PNLSelectionProperties extends javax.swing.JPanel {
+public class PnlSelectionProperties extends javax.swing.JPanel {
 	
-	PNLPropertySheet pnlPropertySheet;
+	PnlPropertySheet pnlPropertySheet;
     MdlSwingExplorer model;
     ModelListener modelListener = new ModelListener();
 	
-    /** Creates new form PNLSelectionProperties */
-    public PNLSelectionProperties() {
-    	pnlPropertySheet = new PNLPropertySheet();
+    /** Creates new form PnlSelectionProperties */
+    public PnlSelectionProperties() {
+    	pnlPropertySheet = new PnlPropertySheet();
     	setLayout(new BorderLayout());
     	add(pnlPropertySheet, BorderLayout.CENTER);
         pnlPropertySheet.setColumnSize(0, 130);

@@ -56,7 +56,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
       <SubComponents>
-        <Component class="org.swingexplorer.awt_events.PNLEventDetails" name="pnlEventDetails">
+        <Component class="org.swingexplorer.awt_events.PnlEventDetails" name="pnlEventDetails">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Selected event details"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

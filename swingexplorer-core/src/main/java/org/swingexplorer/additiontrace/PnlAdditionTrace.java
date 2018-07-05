@@ -37,10 +37,10 @@ import org.swingexplorer.instrument.Agent;
  * 
  * @author Maxim Zakharenkov
  */
-public class PNLAdditionTrace extends javax.swing.JPanel {
+public class PnlAdditionTrace extends javax.swing.JPanel {
     
-    /** Creates new form PNLAdditionTrace */
-    public PNLAdditionTrace() {
+    /** Creates new form PnlAdditionTrace */
+    public PnlAdditionTrace() {
         initComponents();
         
         txtTrace.setEditorKit(new NoWrapEditorKit());
