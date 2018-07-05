@@ -35,7 +35,8 @@ public abstract class AbstractOnResizePersonalizer<T extends Component> implemen
 
 	protected Options options;
 	protected T component;
-	
+
+	@SuppressWarnings("unchecked")
 	public void install(Options _options, Component _component) {
 		component = (T)_component;
 		options = _options;

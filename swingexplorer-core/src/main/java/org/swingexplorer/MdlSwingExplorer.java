@@ -310,7 +310,7 @@ public class MdlSwingExplorer {
 			
             // basic popup and tooltip  must be shown before painting
             if(displayedComponent instanceof BasicComboPopup || displayedComponent instanceof JToolTip) {
-                ((JComponent)displayedComponent).show();
+                ((JComponent)displayedComponent).setVisible(true);
             }
             if(displayedComponent instanceof JToolTip) {
                 displayedComponent.setSize(displayedComponent.getPreferredSize());
@@ -336,7 +336,7 @@ public class MdlSwingExplorer {
             
 			//  basic popup and tooltip must be shown before painting
             if(displayedComponent instanceof BasicComboPopup || displayedComponent instanceof JToolTip) {
-                ((JComponent)displayedComponent).hide();
+                ((JComponent)displayedComponent).setVisible(false);
             }
 		}
 	}
