@@ -21,6 +21,7 @@ package org.swingexplorer.beans;
 
 import java.awt.Color;
 import java.text.ParseException;
+import java.util.Arrays;
 
 /**
  *
@@ -36,7 +37,7 @@ public class ColorConverter implements Converter<Color> {
 		String[] strRgb = strValue.split(",");
 		
 		if(strRgb.length < 3 || strRgb.length > 4) {
-			throw new ParseException("Wrong color string \"" + strRgb + "\" Number of color components must be either 3 of 4 (r,g,b,alpha)",0);
+			throw new ParseException("Wrong color string \"" + Arrays.toString(strRgb) + "\" Number of color components must be either 3 of 4 (r,g,b,alpha)",0);
 		}
 		try {
 			

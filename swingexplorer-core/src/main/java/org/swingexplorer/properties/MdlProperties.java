@@ -48,9 +48,8 @@ public class MdlProperties extends AbstractTableModel {
 	String[] colNames = new String[] {"name", "value"};
 	
     // properties shown first of all at the beginning
-    HashSet<String> firstKeys = new HashSet<String>(Arrays.asList(new String[] {
-                    "size", "opaque", "class", "constraints", "location", "locationOnScreen", "visible", "layout", "border", "borderInsets"            
-                }));
+    HashSet<String> firstKeys = new HashSet<String>(Arrays.asList("size", "opaque", "class", "constraints", "location",
+        "locationOnScreen", "visible", "layout", "border", "borderInsets"));
     
     
     
@@ -88,15 +87,15 @@ public class MdlProperties extends AbstractTableModel {
             }
 
 			// obtain property value
-			if(propName != null) {
-				Object result;
-				try {
-					result = m.invoke(bean, new Object[0]);
-					String strRes = valueToString(result);
-					map.put(propName, strRes);
-				} catch (Exception e) {} 
-			}
-		}
+            Object result;
+            try {
+                result = m.invoke(bean);
+                String strRes = valueToString(result);
+                map.put(propName, strRes);
+            } catch (Exception e) {
+
+            }
+        }
         
         if(bean instanceof JComponent) {
             Border border =((JComponent)bean).getBorder();
@@ -118,25 +117,23 @@ public class MdlProperties extends AbstractTableModel {
 	private String constraintsAsString(JComponent bean) throws Exception {
 		Container parent = bean.getParent();
         LayoutManager layout = parent.getLayout();
-        Method methGetConstraints = layout.getClass().getMethod("getConstraints", new Class[]{Component.class});
-        Object result = methGetConstraints.invoke(layout, new Object[]{bean});
+        Method methGetConstraints = layout.getClass().getMethod("getConstraints", Component.class);
+        Object result = methGetConstraints.invoke(layout, bean);
         
         if(result instanceof GridBagConstraints) {
         	GridBagConstraints gbc = (GridBagConstraints)result;
-        	
-        	String strValue =
-        	"gridx: " + gbc.gridx + ", "
-        	+ "gridy:" + gbc.gridy + ", "
-        	+ "gridwidth:" + gbc.gridwidth + ", "
-        	+ "gridheight:" + gbc.gridheight + ", "
-        	+ "weightx:" + gbc.weightx + ", "
-        	+ "weighty:" + gbc.weighty + ", "
-        	+ "anchor:" + gbc.anchor + ", "
-        	+ "fill:" + gbc.fill + ", "
-        	+ "insets:" + gbc.insets + ", "
-        	+ "ipadx:" + gbc.ipadx + ", "
-        	+ "ipady:" + gbc.ipady + "";
-        	return strValue;
+
+            return "gridx: " + gbc.gridx + ", "
+                + "gridy:" + gbc.gridy + ", "
+                + "gridwidth:" + gbc.gridwidth + ", "
+                + "gridheight:" + gbc.gridheight + ", "
+                + "weightx:" + gbc.weightx + ", "
+                + "weighty:" + gbc.weighty + ", "
+                + "anchor:" + gbc.anchor + ", "
+                + "fill:" + gbc.fill + ", "
+                + "insets:" + gbc.insets + ", "
+                + "ipadx:" + gbc.ipadx + ", "
+                + "ipady:" + gbc.ipady + "";
         }
         return "" + result;
 	}
@@ -216,7 +213,6 @@ public class MdlProperties extends AbstractTableModel {
 		} catch (Exception e) {
 			properties = new String[0][0];
 			e.printStackTrace();
-			return;
 		} finally {
 			fireTableDataChanged();
 		}

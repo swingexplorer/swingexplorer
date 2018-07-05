@@ -149,10 +149,7 @@ public class ActRefresh extends RichAction {
                 return false;
             }
         }
-        if(enum2.hasMoreElements()) {
-            return false;
-        }
-        return true;
+        return !enum2.hasMoreElements();
     }
     
     
@@ -168,7 +165,7 @@ public class ActRefresh extends RichAction {
 		boolean forJDK15; 
 		try {
 			//	Try JRE 1.6 first through reflection
-			Method meth = Window.class.getMethod("getWindows", new Class[0]);
+			Method meth = Window.class.getMethod("getWindows");
 			allWindows = (Window[])meth.invoke(Window.class, new Object[0]);
 			forJDK15 = false;
 		} catch (Exception e) {
@@ -204,7 +201,7 @@ public class ActRefresh extends RichAction {
 			list.add(curWindow);
 		}
 		
-		addChildren(root, list.toArray(new Window[list.size()]), forJDK15);		
+		addChildren(root, list.toArray(new Window[0]), forJDK15);
 	}
 	
 	String getWindowTitle(Window wnd) {
@@ -218,19 +215,19 @@ public class ActRefresh extends RichAction {
 	}
 	
 	void addChildren(DefaultMutableTreeNode root, Window[] windows, boolean forJRE15) {
-		for (int i = 0; i < windows.length; i++) {
-			TreeNodeObject object = new TreeNodeObject(windows[i], getWindowTitle(windows[i]));
-			DefaultMutableTreeNode child = new DefaultMutableTreeNode(object);
-			root.add(child);
-			addChildren(child, windows[i]);
-			
-			if(forJRE15) {
-				// for JRE 1.5 we need to get also owned dialogs since they are not
-				// available from Frame.getFrames()
-				Window[] ownedWnds = windows[i].getOwnedWindows();
-				addChildren(root, ownedWnds, forJRE15);
-			}
-		}
+        for (Window window : windows) {
+            TreeNodeObject object = new TreeNodeObject(window, getWindowTitle(window));
+            DefaultMutableTreeNode child = new DefaultMutableTreeNode(object);
+            root.add(child);
+            addChildren(child, window);
+
+            if (forJRE15) {
+                // for JRE 1.5 we need to get also owned dialogs since they are not
+                // available from Frame.getFrames()
+                Window[] ownedWnds = window.getOwnedWindows();
+                addChildren(root, ownedWnds, forJRE15);
+            }
+        }
 		
 	}
 	
@@ -245,7 +242,7 @@ public class ActRefresh extends RichAction {
 			} else {
 				// Next try to obtain description as "getText" if available
 	            try {
-	                Method meth = comp.getClass().getMethod("getText", new Class[0]);
+	                Method meth = comp.getClass().getMethod("getText");
 	                String result = (String)meth.invoke(comp, new Object[0]);
 	                name = comp.getClass().getSimpleName() + "(" + result + ")";
 	            } catch (Exception e) {
@@ -324,7 +321,7 @@ public class ActRefresh extends RichAction {
     
 	static Frame getSharedOwnerFrame() {
 		try {
-			Method meth = SwingUtilities.class.getDeclaredMethod("getSharedOwnerFrame", new Class[]{});
+			Method meth = SwingUtilities.class.getDeclaredMethod("getSharedOwnerFrame");
 			meth.setAccessible(true);
 			return (Frame)meth.invoke(null, new Object[]{});
 		} catch (Exception e) {

@@ -28,7 +28,7 @@ public abstract class RichToggleAction extends RichAction {
 
 	
 	public void setSelected(boolean isSelected) {
-		putValue("selected", new Boolean(isSelected));
+		putValue("selected", isSelected);
 	}
 	
 	public boolean isSelected() {
@@ -36,7 +36,7 @@ public abstract class RichToggleAction extends RichAction {
 		if(selected == null) {
 			return false;
 		}
-		return selected.booleanValue();
+		return selected;
 	}
 }
 

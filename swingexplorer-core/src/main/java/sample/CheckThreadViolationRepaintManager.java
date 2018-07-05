@@ -22,12 +22,7 @@ package sample;
 
 import java.lang.ref.WeakReference;
 
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.RepaintManager;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 /**
  * <p>This class is used to detect Event Dispatch Thread rule violations<br>
@@ -139,7 +134,7 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
 
     static void test() {
         JFrame frame = new JFrame("Am I on EDT?");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(new JButton("JButton"));
         frame.pack();
         frame.setVisible(true);
@@ -149,7 +144,7 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
     //this test must pass
     static void imageUpdateTest() {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         JEditorPane editor = new JEditorPane();
         frame.setContentPane(editor);
         editor.setContentType("text/html");

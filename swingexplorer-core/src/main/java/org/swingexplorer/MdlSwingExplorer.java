@@ -97,7 +97,7 @@ public class MdlSwingExplorer {
 	 * @param newVal
 	 */
 	protected void fireCheckedPropertyChange(String prop, Object oldVal, Object newVal) {
-		if(oldVal != null && newVal != null && oldVal.equals(newVal)) {
+		if(oldVal != null && oldVal.equals(newVal)) {
 			return;
 		}
 		if(oldVal == newVal) {
@@ -106,6 +106,7 @@ public class MdlSwingExplorer {
 		
 		firePropertyChange(prop, oldVal, newVal);
 	}
+
 	protected void firePropertyChange(String prop, Object oldVal, Object newVal) {
 		log("Property %1$s changed\n", prop);
 		
@@ -177,7 +178,7 @@ public class MdlSwingExplorer {
 	}
 
 	public Component[] getSelectedComponents() {
-		return selectedComponents.toArray(new Component[selectedComponents.size()]);
+		return selectedComponents.toArray(new Component[0]);
 	}
 
 	public void addSelection(Component selection) {
@@ -248,7 +249,7 @@ public class MdlSwingExplorer {
 		this.displayedComponent = displayedComponent;
 		fireCheckedPropertyChange("displayedComponent", oldVal, displayedComponent);
 		
-		if(oldVal != null && displayedComponent != null && oldVal.equals(displayedComponent)) {
+		if(oldVal != null && oldVal.equals(displayedComponent)) {
 			return;
 		}
 		if(oldVal == displayedComponent) {
@@ -352,7 +353,7 @@ public class MdlSwingExplorer {
 			buf.insert(0, "/");
 			
 			if(showIndex) {
-				if(index != -1 && showIndex) {
+				if(index != -1) {
 					buf.insert(0, ']');
 					buf.insert(0, index);
 					buf.insert(0, '[');
@@ -378,7 +379,7 @@ public class MdlSwingExplorer {
 	 */
 	private int getComponentIndex(Component comp) {
 		Container parent = (Container)comp.getParent();
-		if(parent == null || comp == null) {
+		if(parent == null) {
 			return -1;
 		}
 		for(int i = 0; i< parent.getComponentCount(); i++) {
