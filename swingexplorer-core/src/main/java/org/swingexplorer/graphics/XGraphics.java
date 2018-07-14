@@ -37,7 +37,7 @@ import java.io.PrintStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-import org.swingexplorer.Log;
+import org.swingexplorer.internal.Log;
 
 /**
  * 

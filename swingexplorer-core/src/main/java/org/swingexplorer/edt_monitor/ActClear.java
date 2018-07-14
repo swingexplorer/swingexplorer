@@ -21,7 +21,7 @@ package org.swingexplorer.edt_monitor;
 
 import java.awt.event.ActionEvent;
 
-import org.swingexplorer.RichAction;
+import org.swingexplorer.internal.RichAction;
 
 /**
  *

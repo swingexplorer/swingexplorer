@@ -21,7 +21,7 @@ package org.swingexplorer.awt_events;
 
 import java.awt.event.ActionEvent;
 
-import org.swingexplorer.RichAction;
+import org.swingexplorer.internal.RichAction;
 
 
 /**

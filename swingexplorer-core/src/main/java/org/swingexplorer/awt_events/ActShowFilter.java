@@ -34,7 +34,7 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import org.swingexplorer.RichAction;
+import org.swingexplorer.internal.RichAction;
 import org.swingexplorer.awt_events.filter.FilterChangeListener;
 import org.swingexplorer.awt_events.filter.PnlEventFilter;
 

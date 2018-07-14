@@ -23,7 +23,7 @@ import java.awt.Component;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-import org.swingexplorer.Options;
+import org.swingexplorer.internal.Options;
 
 /**
  * Helper class to make personalizer implementation easier.
