@@ -18,7 +18,7 @@
  * 
  *  $Header: /zpool01/javanet/scm/svn/tmp/cvs2svn/swingexplorer/src/sample/FRMPerson.java,v 1.6 2008-04-09 10:39:57 maxz1 Exp $
  */
-package sample;
+package com.example;
 
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
 public class FrmPerson extends javax.swing.JFrame {
     
     /** Creates new form FrmPerson */
-    private FrmPerson() {
+    FrmPerson() {
         initComponents();
     }
     
@@ -125,7 +125,7 @@ public class FrmPerson extends javax.swing.JFrame {
         cmbCountry.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "England", "Belgium", "France", "Spain", "Italy", "Germany" }));
 
         lblDescription.setFont(new java.awt.Font("Tahoma", 1, 12));
-        lblDescription.setText("This is sample Swing application to demonstrate Swing Explorer");
+        lblDescription.setText("This is a sample Swing application to demonstrate Swing Explorer");
 
         btnModalDialog.setText("Modal Dialog");
         btnModalDialog.addActionListener(new java.awt.event.ActionListener() {
@@ -346,18 +346,6 @@ public class FrmPerson extends javax.swing.JFrame {
         int zero = 0;
         int j = i/zero;
     }//GEN-LAST:event_btnExceptionInEDTActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FrmPerson frmPerson = new FrmPerson();
-                frmPerson.setVisible(true);
-            }
-        });
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCheckEDT;
