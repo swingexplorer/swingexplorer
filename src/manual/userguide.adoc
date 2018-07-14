@@ -1,0 +1,142 @@
+Swing Explorer User Guide
+=========================
+Maxim Zakharenkov
+:toc:
+:website: http://swingexplorer.org
+
+Swing Explorer is a GUI tool for examining the internals of Java Swing GUIs.
+
+.This document
+**********************************************************************
+This document is a work in progress.
+
+If you find problems with it, you can submit them as Issue Requests on
+the Swing Explorer Issue Tracker at https://github.com/swingexplorer/swingexplorer/issues.
+**********************************************************************
+
+
+Introduction
+------------
+
+Swing Explorer is a GUI tool for examining the internals of Java Swing GUIs. It
+provides a graphical display of the user interface, along with inspectors that
+show the structure and properties of the Swing and AWT Component objects that
+it is composed of.
+
+Swing Explorer also includes Java Agent functionality for monitoring the Event
+Dispatch Thread ("EDT") to trace component additions, and detect EDT "violations".
+
+Swing Explorer can be used as a command line tool or as a library.
+
+
+Installation
+------------
+
+To install Swing Explorer, download the distribution from the
+https://github.com/swingexplorer/swingexplorer/releases[Releases page] for the
+https://github.com/swingexplorer[`swingexplorer` GitHub project].
+
+Requirements
+~~~~~~~~~~~~
+
+Swing Explorer requires Java 1.8 or later.
+
+Running Swing Explorer
+----------------------
+
+Using the swexpl command line tool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Swing Explorer comes with a tool called **swexpl** that makes it easy to launch Swing Explorer from the command line. You point it at your program's JARs and main class, and it takes care of pulling in Swing Explorer and calling the launcher.
+
+The **swexpl** tool is found in the `bin/` subdirectory of the Swing Explorer distribution.
+
+Usage:
+
+```
+swexpl [--no-agent] -cp <classpath> <mainclass>
+```
+
+Arguments:
+
+* `-cp <classpath>`
+** The path to your user program's classes. The `<classpath>` argument is a colon-separated list of paths to the JARs or classes in your program. There is no need to include the Swing Explorer JARs; they will be added automatically.
+* `--no-agent`
+** By default, Swing Explorer runs some instrumentation code as a Java Agent enabling additional EDT-monitoring functionality. If for some reason you need to disable this behavior, pass `--no-agent`, and it will run without the Agent functionality.
+* `<mainclass>`
+** The `<mainclass>` argument is the fully-qualified name of your program's main class.
+
+
+Examples:
+
+```
+swexpl -cp path/to/MyProgram.jar com.example.myprogram.MainClass
+swexpl --agent -cp path/to/MyProgram.jar com.example.myprogram.MainClass
+```
+
+On Windows, the `swexpl.bat` command serves the same purpose and takes the same arguments, with the exception that the `--no-agent` option, if present, must be first.
+
+Using Swing Explorer as a library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also use Swing Explorer as a library in your program. To do so, get the Swing Explorer JARs (`swingexplorer-agent-<version>.jar` and `swingexplorer-core-<version>.jar`) and their dependencies (found in the `lib/` directory of the distribution) on your Java classpath. Then either:
+
+* Use `org.swingexplorer.Launcher` as the main class of your program, supplying the name of your own program's main class as a command line argument, or
+* Call `org.swingexplorer.Launcher.launch()` after your program has started.
+
+For examples on how this can be done, see the source code for `swexpl`, found in `bin/` in the Swing Explorer distribution, or in `src/dist-files/bin` in the `swingexplorer` repository.
+
+Including Swing Explorer using Maven
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are using Maven, then you can include Swing Explorer and its dependencies in your project simply by specifying a Maven dependency for Swing Explorer in your project's `pom.xml` file.
+
+.POM.XML Dependency Definition
+-----------------------------------
+    <dependency>
+        <groupId>org.swingexplorer</groupId>
+        <artifactId>swingexplorer</artifactId>
+        <version>1.7.0</version>
+    </dependency>
+-----------------------------------
+
+
+Swing Explorer IDE Plugins
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There have been some IDE plugins written to enable use of Swing Explorer inside Java IDEs. These
+are distributed separately from Swing Explorer itself.
+
+The JetBrains IntelliJ plugin for Swing Explorer can be found at
+https://plugins.jetbrains.com/plugin/8385-swingexplorer-integration-v2.
+
+The Eclipse plugin for Swing Explorer is no longer readily available online, but if you happen
+to have a copy of it sitting around, it will probably still work with the current
+release of Swing Explorer.
+
+
+The Swing Explorer interface
+----------------------------
+
+
+**********************************************************************
+TODO: Complete this section.
+**********************************************************************
+
+image::images/swing_explorer_hints.jpg[]
+
+image::images/swing_explorer_swing_set.jpg[]
+
+Hacking on Swing Explorer
+-------------------------
+
+This section is for users who wish to develop Swing Explorer itself, or
+create IDE plugins for use with it.
+
+The source code for Swing Explorer can be found on GitHub at
+https://github.com/swingexplorer/swingexplorer.
+
+**********************************************************************
+TODO: Complete this section.
+**********************************************************************
+
