@@ -216,8 +216,7 @@ public class Launcher implements Runnable {
         String userProgramClassSimpleName = (ixLastDot >= 0) ? userProgramClassName.substring(ixLastDot + 1)
             : userProgramClassName;
         String appDisplayName = "Swing Explorer - " + userProgramClassSimpleName;
-        String osName = System.getProperty("os.name").toLowerCase();
-        if (osName.contains("mac")) {
+        if (SysUtils.isMacOS()) {
             System.setProperty("apple.awt.application.name", appDisplayName);
         }
     }

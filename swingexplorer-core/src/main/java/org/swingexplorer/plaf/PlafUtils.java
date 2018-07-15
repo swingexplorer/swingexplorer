@@ -19,6 +19,8 @@
  */
 package org.swingexplorer.plaf;
 
+import org.swingexplorer.SysUtils;
+
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -68,7 +70,11 @@ public abstract class PlafUtils {
         } else if(component instanceof JLabel) {
             ((JLabel)component).setUI(new CustomLabelUI());
         } else if(component instanceof JCheckBox) {
-            ((JCheckBox)component).setUI(new CustomCheckboxUI());
+            // Custom CheckBox PLAF is broken on macOS
+            // See https://github.com/swingexplorer/swingexplorer/issues/43
+            if (!SysUtils.isMacOS()) {
+                ((JCheckBox) component).setUI(new CustomCheckboxUI());
+            }
         } else if(component instanceof JSpinner) {
             ((JSpinner)component).setUI(new CustomSpinnerUI());
         } else if(component instanceof JComboBox) {

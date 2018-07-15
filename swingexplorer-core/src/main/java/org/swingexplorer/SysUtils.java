@@ -183,5 +183,14 @@ public abstract class SysUtils {
 	static boolean isLogToConsole() {
 		return Boolean.getBoolean(KEY_LOG_CONSOLE);
 	}
+
+    /**
+     * Whether this process is running on macOS.
+     * @return true if running on macOS
+     */
+    public static boolean isMacOS() {
+        String osName = System.getProperty("os.name").toLowerCase();
+        return osName.contains("mac");
+    }
 }
 
