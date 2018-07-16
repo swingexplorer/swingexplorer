@@ -29,6 +29,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashSet;
 
@@ -40,6 +41,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLDocument.Iterator;
@@ -137,8 +139,10 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
         try {
 			new HTMLEditorKit().read(reader, doc, 0);
 			text = doc.getText(0, doc.getLength());
-		} catch (Exception e1) {
-		} 
+		} catch (IOException | BadLocationException ex) {
+            throw new RuntimeException("Unable to get text from component at location 0: "
+                + ex.getMessage());
+		}
 		
 		
 		int idx1 = text.indexOf("(");
