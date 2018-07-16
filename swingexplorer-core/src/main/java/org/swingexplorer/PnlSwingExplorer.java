@@ -29,6 +29,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.BorderFactory;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
@@ -55,6 +56,7 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
         sppRight.setName("sppRight");
         tbpBottom.setName("tbpBottom");
         pnlProperties.setName("pnlProperties");
+        setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
         
         // animated icon for event monitor
         icoEventMonitoring = new AnimatedIcon(tbpBottom);
