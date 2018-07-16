@@ -453,7 +453,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_swing_explorer_ide_plugins">Swing Explorer IDE Plugins</a></li>
 </ul>
 </li>
-<li><a href="#_the_swing_explorer_interface">The Swing Explorer interface</a></li>
+<li><a href="#_the_swing_explorer_interface">The Swing Explorer interface</a>
+<ul class="sectlevel2">
+<li><a href="#_the_containment_tree">The containment tree</a></li>
+<li><a href="#_the_user_component_view">The user component view</a></li>
+<li><a href="#_the_info_panel">The info panel</a></li>
+</ul>
+</li>
 <li><a href="#_hacking_on_swing_explorer">Hacking on Swing Explorer</a></li>
 </ul>
 </div>
@@ -569,16 +575,20 @@ Dispatch Thread ("EDT") to trace component additions, and detect EDT "violations
 </ul>
 </div>
 <div class="paragraph">
+<p>You can also run Swing Explorer using the included "FrmPerson" example program by omitting the <code>-cp</code> option and using <code>sample.FrmPerson</code> as the mainclass.</p>
+</div>
+<div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>swexpl -cp path/to/MyProgram.jar com.example.myprogram.MainClass
-swexpl --agent -cp path/to/MyProgram.jar com.example.myprogram.MainClass</code></pre>
+swexpl --no-agent -cp path/to/MyProgram.jar com.example.myprogram.MainClass
+swexpl sample.FrmPerson</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>On Windows, the <code>swexpl.bat</code> command serves the same purpose and takes the same arguments, with the exception that the <code>--no-agent</code> option, if present, must be first.</p>
+<p>On Windows, the <code>swexpl.bat</code> command serves the same purpose and takes the same arguments.</p>
 </div>
 </div>
 <div class="sect2">
@@ -637,6 +647,125 @@ release of Swing Explorer.</p>
 <div class="sect1">
 <h2 id="_the_swing_explorer_interface">The Swing Explorer interface</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>When you run Swing Explorer with a Java Swing application, Swing Explorer&#8217;s interface
+is displayed as a separate top-level window ("Frame") in the Java program&#8217;s UI. Its window
+title will be "Swing Explorer".</p>
+</div>
+<div class="paragraph">
+<p>Here is an example of the Swing Explorer interface window, when running the included
+"sample.FrmPerson" example program.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_with_FrmPerson.png" alt="ui with FrmPerson">
+</div>
+</div>
+<div class="paragraph">
+<p>There are five main parts to the Swing Explorer interface:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A toolbar, on the top.</p>
+</li>
+<li>
+<p>The Swing component containment tree, on the left.</p>
+</li>
+<li>
+<p>A view of the user program&#8217;s Swing interface, in the center.</p>
+</li>
+<li>
+<p>An info panel with various tabs, on the bottom right.</p>
+</li>
+<li>
+<p>A status bar, on the far bottom.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/swing_explorer_hints.jpg" alt="swing explorer hints">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_containment_tree">The containment tree</h3>
+<div class="paragraph">
+<p>The left-hand side of the Swing Explorer UI holds a tree that shows the structure,
+or containment relationships, of the Swing components in the explored user interface.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/containment_tree.png" alt="containment tree">
+</div>
+</div>
+<div class="paragraph">
+<p>When the "All Roots" tab is selected, each root Frame or Window is displayed as the root
+of the structure tree. When the "Displayed" tab is selected, the tree is rooted at
+the selected component (the same one that is displayed in the user program view in
+the center of the UI).</p>
+</div>
+<div class="paragraph">
+<p>Each node in the tree is labeled with the simple class name of that component. Additional
+information, such as a JLabel or JButton&#8217;s text contents, or indictators of a special
+component role like the glass pane or content pane in a JRootPane, are displayed in
+parentheses after the class name.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_user_component_view">The user component view</h3>
+<div class="paragraph">
+<p>The center area of the Swing Explorer UI contains a view of the user program&#8217;s interface.
+When you double-click on a component in the containment tree, that component becomes the
+top component displayed in the user component view area. The "Displayed:" readout above
+the user component view reflects the class name of the displayed component.</p>
+</div>
+<div class="paragraph">
+<p>The user program view will vary depending on what application you are running Swing
+Explorer in. For example, here is Swing Explorer running with the classic "Swing Set"
+demo application.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/swing_explorer_swing_set.jpg" alt="swing explorer swing set">
+</div>
+</div>
+<div class="paragraph">
+<p>When you move your mouse over the user component view, it highlights components
+and shows their sizes, including preferred size, size with border, and size without
+border. These are the red and green outlines you see in the default configuration.
+(The outline colors can be changed under Options.)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_info_panel">The info panel</h3>
+<div class="paragraph">
+<p>The bottom right part of the Swing Explorer UI, immediately below the user component
+view, is an info panel with various tabs. This area contains detailed info about
+selected components, and tools you can use to get more information about your Swing
+interface.</p>
+</div>
+<div class="sect3">
+<h4 id="_the_properties_tab">The Properties tab</h4>
+<div class="paragraph">
+<p>The Properties tab displays a listing of the JavaBeans style properties of the
+currently selected component. The "name" column shows the Bean property name.
+The "value" column shows the toString() representation of the value of each
+property.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/tab_properties.png" alt="tab properties">
+</div>
+</div>
+<div class="paragraph">
+<p>Some specific commonly-used properties, like <code>border</code>, <code>class</code>, and <code>layout</code>,
+are displayed at the top of the Properties list. All other properties are
+displayed in alphabetical order below them.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_addition_trace_tab">The Addition trace tab</h4>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -646,12 +775,133 @@ release of Swing Explorer.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/swing_explorer_hints.jpg" alt="swing explorer hints">
+<img src="images/tab_addition_trace_not_available.png" alt="tab addition trace not available">
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_player_tab">The Player tab</h4>
+<div class="paragraph">
+<p>The Player tab records Swing method invocations and allows you to play them
+back, watching their effects as they happen. When you select an event in
+the Player tab, or play the events back, the user component view is updated
+to show the component state as of that event.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/swing_explorer_swing_set.jpg" alt="swing explorer swing set">
+<img src="images/tab_player_event_371.png" alt="tab player event 371">
+</div>
+</div>
+<div class="paragraph">
+<p>To play back events, press the right-triangle Play button
+(<span class="image"><img src="images/play_button.png" alt="Play" title="Play"></span>).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/player_event_playback.gif" alt="player event playback">
+</div>
+</div>
+<div class="paragraph">
+<p>You can step through events one at a time using the "&lt;" and "&gt;" buttons. And
+you can "scrub" through the entire history of events using the slider on
+the right hand side of the Player toolbar.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/player_event_scrubbing.gif" alt="player event scrubbing">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_awt_events_tab">The AWT Events tab</h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/tab_awt_events.png" alt="tab awt events">
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>TODO: Complete this section.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_edt_monitor_tab">The EDT monitor tab</h4>
+<div class="paragraph">
+<p>The EDT monitor tab lets you monitor events related to the Swing Event
+Dispatch Thread ("EDT"). These include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>EDT violations, where something that should have happened on the EDT
+was done on a different thread.</p>
+</li>
+<li>
+<p>EDT exceptions, where an unhandled thrown Exception "bubbles up" to the
+top of the EDT&#8217;s call stack.</p>
+</li>
+<li>
+<p>EDT hangs, where an operation on the EDT takes longer than a specified
+time.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The EDT monitor tab looks like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/tab_edt_monitor_empty.png" alt="tab edt monitor empty">
+</div>
+</div>
+<div class="paragraph">
+<p>To turn on monitoring for any of those items, click the appropriate
+check box at the top of the EDT monitor tab&#8217;s panel. Monitoring will
+continue as long as the check box is checked. You can tell that monitoring
+is active because an animated spinner will display in the EDT Monitor
+tab.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/edt_monitor_spinner_in_action.gif" alt="edt monitor spinner in action">
+</div>
+</div>
+<div class="paragraph">
+<p>When the EDT monitor notices a relevant event, an item for it will be
+added to the list in the EDT monitor tab.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/edt_monitor_items.png" alt="edt monitor items">
+</div>
+</div>
+<div class="paragraph">
+<p>You can expand these items to see a stack trace indicating "where" they
+occurred. If you are using Swing Explorer inside an IDE with a plug-in,
+these stack traces will include hyperlinks to the relevant lines in the
+source code.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/edt_monitor_items_expanded.png" alt="edt monitor items expanded">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_options_tab">The Options tab</h4>
+<div class="paragraph">
+<p>The Options tab contains options controlling Swing Explorer&#8217;s own behavior.
+These include the outline colors used to highlight hovered-over
+component boundaries, and whether preferred-size boundaries are shown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/tab_options.png" alt="tab options">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -679,7 +929,7 @@ create IDE plugins for use with it.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-14 05:36:17 EDT
+Last updated 2018-07-15 20:40:51 EDT
 </div>
 </div>
 </body>

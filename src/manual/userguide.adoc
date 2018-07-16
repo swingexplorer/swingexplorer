@@ -66,15 +66,17 @@ Arguments:
 * `<mainclass>`
 ** The `<mainclass>` argument is the fully-qualified name of your program's main class.
 
+You can also run Swing Explorer using the included "FrmPerson" example program by omitting the `-cp` option and using `sample.FrmPerson` as the mainclass.
 
 Examples:
 
 ```
 swexpl -cp path/to/MyProgram.jar com.example.myprogram.MainClass
-swexpl --agent -cp path/to/MyProgram.jar com.example.myprogram.MainClass
+swexpl --no-agent -cp path/to/MyProgram.jar com.example.myprogram.MainClass
+swexpl sample.FrmPerson
 ```
 
-On Windows, the `swexpl.bat` command serves the same purpose and takes the same arguments, with the exception that the `--no-agent` option, if present, must be first.
+On Windows, the `swexpl.bat` command serves the same purpose and takes the same arguments.
 
 Using Swing Explorer as a library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -118,14 +120,170 @@ release of Swing Explorer.
 The Swing Explorer interface
 ----------------------------
 
+When you run Swing Explorer with a Java Swing application, Swing Explorer's interface 
+is displayed as a separate top-level window ("Frame") in the Java program's UI. Its window
+title will be "Swing Explorer".
+
+Here is an example of the Swing Explorer interface window, when running the included
+"sample.FrmPerson" example program.
+
+image::images/ui_with_FrmPerson.png[]
+
+There are five main parts to the Swing Explorer interface:
+
+1. A toolbar, on the top.
+2. The Swing component containment tree, on the left.
+3. A view of the user program's Swing interface, in the center.
+4. An info panel with various tabs, on the bottom right.
+5. A status bar, on the far bottom.
+
+image::images/swing_explorer_hints.jpg[]
+
+The containment tree
+~~~~~~~~~~~~~~~~~~~~
+
+The left-hand side of the Swing Explorer UI holds a tree that shows the structure,
+or containment relationships, of the Swing components in the explored user interface.
+
+image::images/containment_tree.png[]
+
+When the "All Roots" tab is selected, each root Frame or Window is displayed as the root
+of the structure tree. When the "Displayed" tab is selected, the tree is rooted at
+the selected component (the same one that is displayed in the user program view in
+the center of the UI).
+
+Each node in the tree is labeled with the simple class name of that component. Additional
+information, such as a JLabel or JButton's text contents, or indictators of a special
+component role like the glass pane or content pane in a JRootPane, are displayed in 
+parentheses after the class name.
+
+The user component view
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The center area of the Swing Explorer UI contains a view of the user program's interface.
+When you double-click on a component in the containment tree, that component becomes the 
+top component displayed in the user component view area. The "Displayed:" readout above
+the user component view reflects the class name of the displayed component.
+
+The user program view will vary depending on what application you are running Swing
+Explorer in. For example, here is Swing Explorer running with the classic "Swing Set"
+demo application.
+
+image::images/swing_explorer_swing_set.jpg[]
+
+When you move your mouse over the user component view, it highlights components
+and shows their sizes, including preferred size, size with border, and size without
+border. These are the red and green outlines you see in the default configuration.
+(The outline colors can be changed under Options.)
+
+The info panel
+~~~~~~~~~~~~~~
+
+The bottom right part of the Swing Explorer UI, immediately below the user component
+view, is an info panel with various tabs. This area contains detailed info about 
+selected components, and tools you can use to get more information about your Swing
+interface.
+
+The Properties tab
+^^^^^^^^^^^^^^^^^^
+
+The Properties tab displays a listing of the JavaBeans style properties of the 
+currently selected component. The "name" column shows the Bean property name.
+The "value" column shows the toString() representation of the value of each
+property.
+
+image::images/tab_properties.png[]
+
+Some specific commonly-used properties, like `border`, `class`, and `layout`,
+are displayed at the top of the Properties list. All other properties are
+displayed in alphabetical order below them.
+
+The Addition trace tab
+^^^^^^^^^^^^^^^^^^^^^^
 
 **********************************************************************
 TODO: Complete this section.
 **********************************************************************
 
-image::images/swing_explorer_hints.jpg[]
+image::images/tab_addition_trace_not_available.png[]
 
-image::images/swing_explorer_swing_set.jpg[]
+
+The Player tab
+^^^^^^^^^^^^^^
+
+The Player tab records Swing method invocations and allows you to play them
+back, watching their effects as they happen. When you select an event in
+the Player tab, or play the events back, the user component view is updated
+to show the component state as of that event.
+
+image::images/tab_player_event_371.png[]
+
+To play back events, press the right-triangle Play button 
+(image:images/play_button.png[Play, title="Play"]).
+
+image::images/player_event_playback.gif[]
+
+You can step through events one at a time using the "<" and ">" buttons. And
+you can "scrub" through the entire history of events using the slider on
+the right hand side of the Player toolbar.
+
+image::images/player_event_scrubbing.gif[]
+
+
+The AWT Events tab
+^^^^^^^^^^^^^^^^^^
+
+image::images/tab_awt_events.png[]
+
+**********************************************************************
+TODO: Complete this section.
+**********************************************************************
+
+The EDT monitor tab
+^^^^^^^^^^^^^^^^^^^
+
+The EDT monitor tab lets you monitor events related to the Swing Event
+Dispatch Thread ("EDT"). These include:
+
+* EDT violations, where something that should have happened on the EDT
+was done on a different thread.
+* EDT exceptions, where an unhandled thrown Exception "bubbles up" to the
+top of the EDT's call stack.
+* EDT hangs, where an operation on the EDT takes longer than a specified
+time.
+
+The EDT monitor tab looks like this:
+
+image::images/tab_edt_monitor_empty.png[]
+
+To turn on monitoring for any of those items, click the appropriate
+check box at the top of the EDT monitor tab's panel. Monitoring will
+continue as long as the check box is checked. You can tell that monitoring
+is active because an animated spinner will display in the EDT Monitor
+tab.
+
+image::images/edt_monitor_spinner_in_action.gif[]
+
+When the EDT monitor notices a relevant event, an item for it will be
+added to the list in the EDT monitor tab.
+
+image::images/edt_monitor_items.png[]
+
+You can expand these items to see a stack trace indicating "where" they 
+occurred. If you are using Swing Explorer inside an IDE with a plug-in,
+these stack traces will include hyperlinks to the relevant lines in the
+source code.
+
+image::images/edt_monitor_items_expanded.png[]
+
+The Options tab
+^^^^^^^^^^^^^^^
+
+The Options tab contains options controlling Swing Explorer's own behavior.
+These include the outline colors used to highlight hovered-over
+component boundaries, and whether preferred-size boundaries are shown.
+
+image::images/tab_options.png[]
 
 Hacking on Swing Explorer
 -------------------------
