@@ -107,6 +107,7 @@ public class PnlAbout extends javax.swing.JPanel {
         setLayout(new BorderLayout());
         add(pnlGrid, BorderLayout.NORTH);
         add(lblCopyright, BorderLayout.SOUTH);
+        setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
     }
     
     static void openModal(Frame owner) {
@@ -116,6 +117,7 @@ public class PnlAbout extends javax.swing.JPanel {
 		
 		PnlAbout pnlAbout = new PnlAbout();
 		dlgAbout.add(pnlAbout);
+		dlgAbout.setResizable(false);
 		dlgAbout.pack();
 		GuiUtils.center(owner, dlgAbout);
 		dlgAbout.setVisible(true);
