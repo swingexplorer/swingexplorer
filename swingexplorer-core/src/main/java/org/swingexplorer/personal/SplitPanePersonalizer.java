@@ -21,7 +21,7 @@ package org.swingexplorer.personal;
 
 import javax.swing.JSplitPane;
 
-import org.swingexplorer.Log;
+import org.swingexplorer.internal.Log;
 
 /**
  * Saves/loads divider location for SplitPane

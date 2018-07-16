@@ -23,7 +23,7 @@ import java.awt.Component;
 
 import javax.swing.JFrame;
 
-import org.swingexplorer.Options;
+import org.swingexplorer.internal.Options;
 
 /**
  *

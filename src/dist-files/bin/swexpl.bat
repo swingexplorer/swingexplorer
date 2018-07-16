@@ -1,6 +1,6 @@
 :: swexpl.bat - launch a program with Swing Explorer attached
 ::
-::   swexpl [--classpath <path>] [--agent] <main_class>
+::   swexpl [--classpath <path>] [--no-agent] <main_class> [<user_program_args> ...]
 ::
 :: This tool launches a user Java program with Swing Explorer attached. The
 :: user program is specified using the classpath and main class name.
@@ -27,6 +27,10 @@
 ::
 ::      The fully-qualified name of the main Java class in your program. This is the
 ::      class that defines the main() method that you want to run.
+::
+::   * <user_program_args>
+::
+::      Additional arguments to pass on to the user program's main() method.
 
 @echo off
 
@@ -82,7 +86,7 @@ if "%user_classpath"=="" (
 )
 
 if "%use_agent%"=="y" (
-    %java% -javaagent:%agent_jar_file% -Xbootclasspath/a:%agent_classpath% -cp %eff_classpath% org.swingexplorer.launcher %user_mainclass%
+    %java% -javaagent:%agent_jar_file% -Xbootclasspath/a:%agent_classpath% -cp %eff_classpath% org.swingexplorer.launcher %user_mainclass% %1 %2 %3 %4 %5 %6 %7 %8 %9
 ) else (
-    %java% -cp "%eff_classpath%;%agent_classpath%" org.swingexplorer.Launcher %user_mainclass%
+    %java% -cp "%eff_classpath%;%agent_classpath%" org.swingexplorer.Launcher %user_mainclass% %1 %2 %3 %4 %5 %6 %7 %8 %9
 )

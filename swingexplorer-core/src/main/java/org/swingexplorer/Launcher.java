@@ -20,114 +20,19 @@
 package org.swingexplorer;
 
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
 
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import org.swingexplorer.edt_monitor.EDTDebugQueue;
-import org.swingexplorer.graphics.Player;
-import org.swingexplorer.idesupport.IDESupport;
-import org.swingexplorer.personal.FramePersonalizer;
-import org.swingexplorer.personal.PersonalizerRegistry;
-import org.swingexplorer.personal.SplitPanePersonalizer;
-import org.swingexplorer.personal.TabbedPanePersonalizer;
-import org.swingexplorer.personal.TablePersonalizer;
-import org.swingexplorer.plaf.PlafUtils;
-
+import org.swingexplorer.internal.*;
 
 /**
  * 
  * @author Maxim Zakharenkov
  */
-public class Launcher implements Runnable {
-    
-    public IDESupport ideSupport;
-    
-	FrmSwingExplorer frmMain;
-	public PnlPlayerControls pnlPlayerControls;
-	JDialog dlgPlayerControls;
-	public MdlSwingExplorer model = new MdlSwingExplorer();
-    public Player player = new Player();
-    
-	private PersonalizerRegistry personalizerRegistry;
-    
-    
-	public void run() {
-		// register JMX bean for IDE support
-        ideSupport = IDESupport.registerMBean();
-        EDTDebugQueue.initMonitoring();
-		
-        // create frame
-        frmMain = new FrmSwingExplorer();
-        frmMain.setName("frmMain");
-        frmMain.addWindowListener(new WindowAdapter() {
-        	public void windowClosing(WindowEvent evt) {
-        		exitApplication();
-        	}
-        });
-        
-		// we use own L&F for swing explorer to avoid conflict with application's L&F
-        PlafUtils.applyCustomLookAndFeel(frmMain.getContentPane());
-		
-        // load options and set to interested parties
-        Options options =  new Options();
-        options.load();
-        model.setOptions(options);
-		player.setOptions(options);
-        frmMain.setApplication(this);
-        personalizerRegistry = new PersonalizerRegistry(frmMain, options);
-        
-        // add component personalizers
-        personalizerRegistry.addPersonalizer("frmMain", new FramePersonalizer());
-        personalizerRegistry.addPersonalizer("sppMain", new SplitPanePersonalizer("verticalDividerLocation"));
-        personalizerRegistry.addPersonalizer("sppRight", new SplitPanePersonalizer("horizontalDividerLocation"));
-        personalizerRegistry.addPersonalizer("sppMasterDetail", new SplitPanePersonalizer("eventTabDividerLocation"));
-        personalizerRegistry.addPersonalizer("tbpTrees", new TabbedPanePersonalizer("selectedTreeTabIndex"));
-        personalizerRegistry.addPersonalizer("tbpBottom", new TabbedPanePersonalizer("selectedToolTabIndex"));
-        personalizerRegistry.addPersonalizer("tblEvents", new TablePersonalizer("eventTableColumnSizes"));
-        personalizerRegistry.addPersonalizer("pnlEventProperties.tblProperties", new TablePersonalizer("eventDetailTableColumnSizes"));
-        personalizerRegistry.addPersonalizer("pnlPropertySheet.tblProperties", new TablePersonalizer("propertyTableColumnSizes"));
+public class Launcher {
 
-		// open frame
-		frmMain.setVisible(true);
-	}
-	
-	public void showMessageDialog(String message) {
-		JOptionPane.showMessageDialog(frmMain, message);
-	}
-
-	private void exitApplication() {
-		int res = JOptionPane.showOptionDialog(frmMain, "Do you want to finish application or close Swing Explorer window?", "Exit", JOptionPane.DEFAULT_OPTION, 
-				JOptionPane.QUESTION_MESSAGE,null, new Object[]{"Exit Application", "Close Window", "Cancel"}, "Exit");
-		
-		// save personalization state onto options
-		personalizerRegistry.saveState();
-		
-		// save options to file
-		Options opts = model.getOptions();
-		opts.save();
-		
-		if(res == 0) {
-			System.exit(0);
-		} else if(res == 1){
-			frmMain.dispose();
-		}
-	}
-	
-
-    static final String HELP = 
-            "Swing Explorer application can be executed in 2 modes:\n" +
-            "Simple mode (faster):\n" +
-            "  java -cp swingexplorer-core-<version>.jar[;<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n" +
-            "\n" +
-            "Agent mode (slower, but has a bit more functionality):\n" +
-            "  java -javaagent:swingexplorer-agent-<version>.jar -Xbootclasspath/a:swingexplorer-agent-<version>.jar -cp swingexplorer-core-<version>.jar;[<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n";
-	
     /**
      * Launch the Swing Explorer GUI.
      *
@@ -136,12 +41,14 @@ public class Launcher implements Runnable {
      * is useful for programs that wish to use Swing Explorer as a library and
      * launch it on their own initiative after the application has started.
      *
+     * If you are using Launcher's main() method, you do not need to call this.
+     *
      * Does not throw exceptions. If an error occurs during launching, the stack
      * trace is printed to standard error.
      */
 	public static void launch() {
         try {
-            final Launcher app = new Launcher();
+            final Application app = new Application();
             SwingUtilities.invokeAndWait(app);
         } catch (Exception e) {
             System.err.println("An error occurred while starting Swing Explorer: " + e.getMessage());
@@ -210,6 +117,14 @@ public class Launcher implements Runnable {
             ex.printStackTrace(System.err);
         }
 	}
+
+    private static final String HELP =
+        "Swing Explorer application can be executed in 2 modes:\n" +
+            "Simple mode (faster):\n" +
+            "  java -cp swingexplorer-core-<version>.jar[;<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n" +
+            "\n" +
+            "Agent mode (slower, but has a bit more functionality):\n" +
+            "  java -javaagent:swingexplorer-agent-<version>.jar -Xbootclasspath/a:swingexplorer-agent-<version>.jar -cp swingexplorer-core-<version>.jar;[<your_class_path>] org.swingexplorer.Launcher <your_main_class>\n";
 
     private static void customizeProgramAppearance(String userProgramClassName) {
         int ixLastDot = userProgramClassName.lastIndexOf('.');

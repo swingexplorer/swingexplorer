@@ -23,9 +23,9 @@ import java.awt.Component;
 import java.awt.Container;
 import java.util.LinkedList;
 
-import org.swingexplorer.GuiUtils;
-import org.swingexplorer.Log;
-import org.swingexplorer.Options;
+import org.swingexplorer.internal.GuiUtils;
+import org.swingexplorer.internal.Log;
+import org.swingexplorer.internal.Options;
 
 /**
  *

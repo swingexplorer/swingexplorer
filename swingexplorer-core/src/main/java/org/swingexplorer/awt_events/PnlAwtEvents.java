@@ -33,7 +33,7 @@ import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.JTableHeader;
 
-import org.swingexplorer.RichAction;
+import org.swingexplorer.internal.RichAction;
 import org.swingexplorer.plaf.CustomTableHeaderUI;
 
 

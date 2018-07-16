@@ -33,8 +33,8 @@ import javax.management.remote.JMXConnectorServerFactory;
 import javax.management.remote.JMXServiceURL;
 import javax.swing.JOptionPane;
 
-import org.swingexplorer.Log;
-import org.swingexplorer.SysUtils;
+import org.swingexplorer.internal.Log;
+import org.swingexplorer.internal.SysUtils;
 
 /**
  *

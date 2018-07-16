@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
-import org.swingexplorer.RichAction;
+import org.swingexplorer.internal.RichAction;
 import org.swingexplorer.instrument.Problem;
 
 /**
