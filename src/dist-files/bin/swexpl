@@ -2,7 +2,7 @@
 #
 # swexpl - launch a program with Swing Explorer attached
 #
-#   swexpl [--classpath <path>] [--no-agent] <main_class>
+#   swexpl [--classpath <path>] [--no-agent] <main_class> [<user_program_args> ...]
 #
 # This tool launches a user Java program with Swing Explorer attached. The
 # user program is specified using the classpath and main class name.
@@ -30,6 +30,10 @@
 #
 #      The fully-qualified name of the main Java class in your program. This is the
 #      class that defines the main() method that you want to run.
+#
+#   * <user_program_args>
+#
+#      Additional arguments to pass on to the user program's main() method.
 
 
 swexpl_version=@SWINGEXPLORER_VERSION@
@@ -44,6 +48,7 @@ lib_dir="$dist_dir/lib"
 
 use_agent=1
 
+user_mainclass=""
 declare -a ARGS
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -61,22 +66,17 @@ while [[ $# -gt 0 ]]; do
         shift
         ;;
     *)
-        ARGS+=("$1")
+        user_mainclass="$1"
         shift
+        break
         ;;
   esac
 done
 
-if [[ ${#ARGS[@]} -gt 1 ]]; then
-  echo "Error: Too many arguments" >&2
-  exit 1
-fi
-if [[ ${#ARGS[@]} == 0 ]]; then
+if [[ ${user_mainclass} == "" ]]; then
   echo "Error: You must specify a main class to run" >&2
   exit 1
 fi
-
-user_mainclass="${ARGS[0]}"
 
 # Set up Java and run the program with Swing Explorer
 
@@ -101,7 +101,7 @@ if [[ -n "$user_classpath" ]]; then
 fi
 
 if [[ "$use_agent" == 1 ]]; then
-  "$java" -javaagent:"${agent_jar_file}" -Xbootclasspath/a:"${agent_classpath}" -cp "$classpath" org.swingexplorer.Launcher "$user_mainclass"
+  "$java" -javaagent:"${agent_jar_file}" -Xbootclasspath/a:"${agent_classpath}" -cp "$classpath" org.swingexplorer.Launcher "$user_mainclass" "$@"
 else
-  "$java" -cp "$classpath:$agent_classpath" org.swingexplorer.Launcher "$user_mainclass"
+  "$java" -cp "$classpath:$agent_classpath" org.swingexplorer.Launcher "$user_mainclass" "$@"
 fi
