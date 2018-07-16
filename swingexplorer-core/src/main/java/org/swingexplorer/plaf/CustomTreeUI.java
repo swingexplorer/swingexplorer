@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.plaf.metal.MetalTreeUI;
 
-import org.swingexplorer.Icons;
+import org.swingexplorer.internal.Icons;
 
 /**
  *

@@ -21,7 +21,7 @@ package org.swingexplorer.personal;
 
 import javax.swing.JTabbedPane;
 
-import org.swingexplorer.Log;
+import org.swingexplorer.internal.Log;
 
 /**
  *

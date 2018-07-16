@@ -28,8 +28,8 @@ import java.io.StringReader;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.EditorKit;
 
-import org.swingexplorer.GuiUtils;
-import org.swingexplorer.MdlSwingExplorer;
+import org.swingexplorer.internal.GuiUtils;
+import org.swingexplorer.internal.MdlSwingExplorer;
 import org.swingexplorer.idesupport.IDESupport;
 import org.swingexplorer.instrument.Agent;
 

@@ -33,8 +33,8 @@ import javax.swing.RepaintManager;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 
-import org.swingexplorer.GuiUtils;
-import org.swingexplorer.Options;
+import org.swingexplorer.internal.GuiUtils;
+import org.swingexplorer.internal.Options;
 
 
 

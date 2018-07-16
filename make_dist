@@ -14,7 +14,7 @@ mkdir -p "$dist"/lib
 
 
 # Assemble files
-cp $M2_REPO/org/jdesktop/swing-layout/1.0.3/swing-layout-1.0.3.jar "$dist"/lib
+cp $M2_REPO/org/swinglabs/swing-layout/1.0.3/swing-layout-1.0.3.jar "$dist"/lib
 cp $M2_REPO/javassist/javassist/3.12.1.GA/javassist-3.12.1.GA.jar "$dist"/lib
 cp swingexplorer-core/target/swingexplorer-core-$VERSION.jar "$dist"
 cp swingexplorer-agent/target/swingexplorer-agent-$VERSION.jar "$dist"

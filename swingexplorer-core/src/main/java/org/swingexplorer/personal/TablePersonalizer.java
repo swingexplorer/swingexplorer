@@ -22,7 +22,7 @@ package org.swingexplorer.personal;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
-import org.swingexplorer.Log;
+import org.swingexplorer.internal.Log;
 
 /**
  *

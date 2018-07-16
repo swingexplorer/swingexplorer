@@ -21,9 +21,7 @@ package org.swingexplorer.personal;
 
 import java.awt.Component;
 
-import javax.swing.JComponent;
-
-import org.swingexplorer.Options;
+import org.swingexplorer.internal.Options;
 
 /**
  * Class responsible for saving/restoring state of a component

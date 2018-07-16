@@ -49,9 +49,9 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
-import org.swingexplorer.GuiUtils;
-import org.swingexplorer.Icons;
-import org.swingexplorer.PnlNoAgentModeMessage;
+import org.swingexplorer.internal.GuiUtils;
+import org.swingexplorer.internal.Icons;
+import org.swingexplorer.internal.PnlNoAgentModeMessage;
 import org.swingexplorer.idesupport.IDESupport;
 import org.swingexplorer.instrument.Problem;
 import org.swingexplorer.instrument.ProblemListener;

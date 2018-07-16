@@ -35,7 +35,7 @@ import javax.swing.JComponent;
 import javax.swing.border.Border;
 import javax.swing.table.AbstractTableModel;
 
-import org.swingexplorer.Log;
+import org.swingexplorer.internal.Log;
 
 /**
  *
