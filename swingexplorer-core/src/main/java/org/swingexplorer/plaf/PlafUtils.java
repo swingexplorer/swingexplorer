@@ -19,8 +19,6 @@
  */
 package org.swingexplorer.plaf;
 
-import org.swingexplorer.SysUtils;
-
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -35,6 +33,8 @@ import javax.swing.JSpinner;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTree;
+
+import org.swingexplorer.internal.SysUtils;
 
 /**
  *
@@ -78,9 +78,9 @@ public abstract class PlafUtils {
         } else if(component instanceof JSpinner) {
             ((JSpinner)component).setUI(new CustomSpinnerUI());
         } else if(component instanceof JComboBox) {
-            ((JComboBox)component).setUI(new CustomComboBoxUI());
+            ((JComboBox<?>)component).setUI(new CustomComboBoxUI());
         } else if(component instanceof JList) {
-            ((JList)component).setUI(new CustomListUI());
+            ((JList<?>)component).setUI(new CustomListUI());
         }
     }
     
