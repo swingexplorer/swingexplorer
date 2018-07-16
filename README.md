@@ -14,7 +14,7 @@ With Swing Explorer you can:
 
 Below is shown how basic Swing application is inspected by Swing Explorer.
 More detailed information about Swing Explorer can be found in the User Manual (**TBD**).  
-![Swing Explorer](docs/swing_explorer_hints.jpg)
+![Swing Explorer](docs/swing_explorer_hints.png)
 
 ## Running Swing Explorer with your application
 
