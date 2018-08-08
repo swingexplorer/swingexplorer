@@ -19,7 +19,7 @@ cp $M2_REPO/javassist/javassist/3.12.1.GA/javassist-3.12.1.GA.jar "$dist"/lib
 cp swingexplorer-core/target/swingexplorer-core-$VERSION.jar "$dist"
 cp swingexplorer-agent/target/swingexplorer-agent-$VERSION.jar "$dist"
 cp -pR src/dist-files/* "$dist"
-cp -pR README.md docs manual "$dist"
+cp -pR README.md docs manual VERSION "$dist"
 
 cd dist
 

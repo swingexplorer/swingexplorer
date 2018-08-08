@@ -37,6 +37,7 @@
 set user_classpath=
 set use_agent=y
 set user_mainclass=
+set swexpl_version=@SWINGEXPLORER_VERSION@
 
 set bin_dir=%~dp0
 set bin_dir=%bin_dir:~0,-1%
@@ -45,7 +46,6 @@ pushd %bin_dir%
 cd /d ..
 set dist_dir=%cd%
 set lib_dir=%dist_dir%\lib
-set /p swexpl_version=<VERSION
 popd
 
 :Loop
@@ -86,7 +86,7 @@ if "%user_classpath"=="" (
 )
 
 if "%use_agent%"=="y" (
-    %java% -javaagent:%agent_jar_file% -Xbootclasspath/a:%agent_classpath% -cp %eff_classpath% org.swingexplorer.launcher %user_mainclass% %1 %2 %3 %4 %5 %6 %7 %8 %9
+    %java% -javaagent:%agent_jar_file% -Xbootclasspath/a:%agent_classpath% -cp %eff_classpath% org.swingexplorer.Launcher %user_mainclass% %1 %2 %3 %4 %5 %6 %7 %8 %9
 ) else (
     %java% -cp "%eff_classpath%;%agent_classpath%" org.swingexplorer.Launcher %user_mainclass% %1 %2 %3 %4 %5 %6 %7 %8 %9
 )
