@@ -121,10 +121,10 @@ public class Agent {
             // so that eliminate subsequent call checkings  
             Integer entries = (Integer)threadMarks.get(Thread.currentThread());
                if(entries == null) {
-                   entries = new Integer(1);
+                   entries = 1;
                    notifyProblemListener();
                }
-             threadMarks.put(Thread.currentThread(), new Integer(entries.intValue() + 1));
+             threadMarks.put(Thread.currentThread(), entries + 1);
         }
     }
     
@@ -148,12 +148,12 @@ public class Agent {
             // so that eliminate subsequent call checkings  
             Integer entries = (Integer)threadMarks.get(Thread.currentThread());
                if(entries == null) {
-                   entries = new Integer(1);
+                   entries = 1;
                    // in difference with checkEDT() we don't
                    // notify listener because method is considered thread safe
                    // and all internal calls to non thread safe methods are legal
                }
-             threadMarks.put(Thread.currentThread(), new Integer(entries.intValue() + 1));
+             threadMarks.put(Thread.currentThread(), entries + 1);
         }
     }
     
@@ -163,8 +163,8 @@ public class Agent {
         if (!javax.swing.SwingUtilities.isEventDispatchThread()) {
             Integer entries = (Integer) threadMarks.get(Thread.currentThread());
             if (entries != null) {
-                entries = new Integer(entries.intValue() - 1);
-                if (entries.intValue() == 1) {
+                entries = entries - 1;
+                if (entries == 1) {
                     threadMarks.remove(Thread.currentThread());
                 } else {
                     threadMarks.put(Thread.currentThread(), entries);
