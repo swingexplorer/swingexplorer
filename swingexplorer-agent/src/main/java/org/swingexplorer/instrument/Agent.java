@@ -25,9 +25,7 @@ import java.lang.instrument.IllegalClassFormatException;
 import java.lang.instrument.Instrumentation;
 import java.security.ProtectionDomain;
 import java.text.MessageFormat;
-import java.util.Hashtable;
-import java.util.Vector;
-import java.util.WeakHashMap;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javassist.ClassPool;
@@ -54,7 +52,7 @@ public class Agent {
     static boolean instrumented = false;
     
     // problems are stored in this vector before listener is added to the agent
-    static Vector<Problem> futureProblems = new Vector<Problem>();
+    static List<Problem> futureProblems = Collections.synchronizedList(new ArrayList<>());
 
     // keeps all stack traces o
     static WeakHashMap<Component, StackTraceElement[]> componentAddImplStackTraces = new WeakHashMap<Component, StackTraceElement[]>();
