@@ -28,6 +28,7 @@ import java.text.MessageFormat;
 import java.util.Hashtable;
 import java.util.Vector;
 import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javassist.ClassPool;
 import javassist.CtClass;
@@ -47,7 +48,7 @@ public class Agent {
     // marks already visited methods in one thread. Used for thread violation checking
     // to not report same violation multiple times when other methods are called from
     // violating method
-    static java.util.Hashtable<Thread, Integer> threadMarks = new Hashtable<Thread, Integer>();
+    static ConcurrentHashMap<Thread, Integer> threadMarks = new ConcurrentHashMap<>();
 
     static ProblemListener problemListener;
     static boolean instrumented = false;
@@ -146,7 +147,7 @@ public class Agent {
         if(!javax.swing.SwingUtilities.isEventDispatchThread()) {
             // if we are not in EDT then memorise this thread
             // so that eliminate subsequent call checkings  
-            Integer entries = (Integer)threadMarks.get(Thread.currentThread());
+            Integer entries = threadMarks.get(Thread.currentThread());
                if(entries == null) {
                    entries = new Integer(1);
                    // in difference with checkEDT() we don't
@@ -161,7 +162,7 @@ public class Agent {
     /** Removes thread mark for this call */
     public static void finalizeCheckEDT() {
         if (!javax.swing.SwingUtilities.isEventDispatchThread()) {
-            Integer entries = (Integer) threadMarks.get(Thread.currentThread());
+            Integer entries = threadMarks.get(Thread.currentThread());
             if (entries != null) {
                 entries = new Integer(entries.intValue() - 1);
                 if (entries.intValue() == 1) {
