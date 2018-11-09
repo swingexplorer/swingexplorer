@@ -51,7 +51,8 @@ public class LocalAWTEventModel implements AWTEventModel {
 		owner = _owner;
 		filter = new Filter();
 	}
-	
+
+	@Override
 	public void addEventListener(AWTEventListener listener) {
 		if(listener == null) {
 			throw new NullPointerException("Listener can not be null");
@@ -59,10 +60,12 @@ public class LocalAWTEventModel implements AWTEventModel {
 		listeners.add(listener);
 	}
 
+	@Override
 	public void removeEventListener(AWTEventListener listener) {
 		listeners.remove(listener);
 	}
 
+	@Override
 	public void setMonitoring(boolean _monitoring) {
 		if(_monitoring == monitoring) {
 			return;
@@ -76,27 +79,29 @@ public class LocalAWTEventModel implements AWTEventModel {
 		monitoring = _monitoring;
 		firePropertyChanged("monitoring", !monitoring, monitoring);
 	}
-	
+
+	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
         if (changeSupport == null) {
         	changeSupport = new PropertyChangeSupport(this);
         }
         changeSupport.addPropertyChangeListener(listener);
     }
-	
+
+    @Override
 	public void removePropertyChangeListener(PropertyChangeListener listener) {
         if (changeSupport != null) {
         	changeSupport.removePropertyChangeListener(listener);
         }
     }
-	
+
 	private void firePropertyChanged(String propertyName, Object oldValue, Object newValue) {
 		if(changeSupport != null) {
 			changeSupport.firePropertyChange(propertyName, oldValue, newValue);
 		}
 	}
 	
-	
+	@Override
 	public boolean isMonitoring() {
 		return monitoring;
 	}
@@ -127,6 +132,7 @@ public class LocalAWTEventModel implements AWTEventModel {
 	
 	class Dispatcher implements AWTEventListener {
 
+	    @Override
 		public void eventDispatched(AWTEvent event) {
 			if(!isMatchFilter(event)) {
 				return;
@@ -142,12 +148,14 @@ public class LocalAWTEventModel implements AWTEventModel {
 		}
 	}
 
+	@Override
 	public void setFilter(Filter _filter) {
 		Filter old = filter;
 		filter = _filter;	
 		changeSupport.firePropertyChange("filter", old, filter);
 	}
-	
+
+	@Override
 	public Filter getFilter() {
 		return filter;
 	}

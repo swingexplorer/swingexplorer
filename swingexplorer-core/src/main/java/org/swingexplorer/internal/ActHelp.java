@@ -34,6 +34,7 @@ public class ActHelp extends RichAction {
 		setTooltip("User documentation");
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(!SysUtils.openBrowser("http://www.swingexplorer.com/?page=documentation")) {
 			JOptionPane.showMessageDialog(null, "Can not open browser!", "Error", JOptionPane.ERROR_MESSAGE);

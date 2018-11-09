@@ -121,12 +121,12 @@ public class IDESupport extends NotificationBroadcasterSupport implements IDESup
     	}
     }
     
-
+    @Override
 	public void connect() {
 		connected = true;
 	}
 
-
+    @Override
 	public void disconnect() {
 		connected = false;
 	}

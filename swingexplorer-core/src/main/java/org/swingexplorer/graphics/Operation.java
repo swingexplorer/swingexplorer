@@ -84,7 +84,8 @@ public class Operation {
 	boolean isDispose() {
 		return "dispose".equals(method.getName());
 	}
-	
+
+	@Override
 	public String toString() {
 		if(isEndOperation()) {
 			return "END.";

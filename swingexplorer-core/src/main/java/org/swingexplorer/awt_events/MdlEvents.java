@@ -129,15 +129,18 @@ public class MdlEvents extends AbstractTableModel {
 	public String getColumnName(int column) {
 		return columns[column].getName();
 	}
-	
+
+	@Override
 	public int getColumnCount() {
 		return columns.length;
 	}
 
+	@Override
 	public int getRowCount() {
 		return events.size();
 	}
 
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return columns[columnIndex].getValue(rowIndex);
 	}

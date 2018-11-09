@@ -29,6 +29,7 @@ import java.text.ParseException;
  */
 public class StrokeConverter implements Converter<Stroke> {
 
+    @Override
 	public Stroke fromString(String strValue) throws ParseException {
 		if(strValue == null) {
 			return null;
@@ -40,6 +41,7 @@ public class StrokeConverter implements Converter<Stroke> {
 		}
 	}
 
+	@Override
 	public String toString(Stroke value) {
 		if(value == null) {
 			return null;

@@ -65,6 +65,7 @@ public class ColorComboBox extends JComboBox<Color> {
 	}
 
 	@SuppressWarnings("unchecked")
+    @Override
 	public void setRenderer(ListCellRenderer aRenderer) {
         super.setRenderer(aRenderer);
     }
@@ -79,7 +80,8 @@ public class ColorComboBox extends JComboBox<Color> {
 		ColorCellRenderer() {
 			setPreferredSize(new Dimension(50, 20));
 		}
-		
+
+		@Override
 		public Component getListCellRendererComponent(JList _list, Object _value,
 				int _index, boolean _isSelected, boolean _cellHasFocus) {
 			super.getListCellRendererComponent(_list, _value, _index, _isSelected, _cellHasFocus);
@@ -112,6 +114,7 @@ public class ColorComboBox extends JComboBox<Color> {
 		frm.setBounds(new java.awt.Rectangle(100, 100, 200, 200));
 		ColorComboBox cmb = new ColorComboBox();
 		cmb.addItemListener(new java.awt.event.ItemListener(){
+		    @Override
 			public void itemStateChanged(java.awt.event.ItemEvent e) {
 				System.out.println(" Changed " + e);
 			}

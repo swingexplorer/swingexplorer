@@ -36,6 +36,7 @@ public class ActZoomIn extends RichAction {
         model = modelP;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		// 
 		double curScale = model.getDisplayScale();

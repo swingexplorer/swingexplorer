@@ -38,7 +38,8 @@ public class ActStopEventMonitoring extends RichAction {
 		setIcon("stop.png");
 		model = modelP;
 	}
-	
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.setMonitoring(false);
 	}

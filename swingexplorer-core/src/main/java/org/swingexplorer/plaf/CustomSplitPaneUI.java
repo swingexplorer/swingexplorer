@@ -34,6 +34,7 @@ public class CustomSplitPaneUI extends BasicSplitPaneUI {
 	    	return new CustomSplitPaneUI();
 	    }
 
+	    @Override
 	    protected void installDefaults() {
 	    	super.installDefaults();
 	    	getDivider().setDividerSize(3);
@@ -43,6 +44,7 @@ public class CustomSplitPaneUI extends BasicSplitPaneUI {
 	    /**
 	      * Creates the default divider.
 	      */
+	    @Override
 	    public BasicSplitPaneDivider createDefaultDivider() {
 	    	return new CustomSplitPaneDivider(this);
 	    }

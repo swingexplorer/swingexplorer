@@ -53,6 +53,7 @@ public class PnlNoAgentModeMessage extends javax.swing.JPanel {
 
         btnCopy.setText("Copy to clipboard");
         btnCopy.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCopyActionPerformed(evt);
             }

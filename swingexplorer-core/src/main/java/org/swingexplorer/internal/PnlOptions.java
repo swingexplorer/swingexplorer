@@ -62,6 +62,7 @@ public class PnlOptions extends javax.swing.JPanel {
         btnReset.setText("Reset");
         btnReset.setToolTipText("Reset options to defaults");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
             }
@@ -193,7 +194,8 @@ public class PnlOptions extends javax.swing.JPanel {
     	void enable() {
     		disabled = false;
     	}
-    	
+
+    	@Override
 		public void itemStateChanged(ItemEvent evt) {
 			if(disabled) {
 				return;

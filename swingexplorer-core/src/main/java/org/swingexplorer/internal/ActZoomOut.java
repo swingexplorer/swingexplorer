@@ -35,7 +35,8 @@ public class ActZoomOut extends RichAction {
         setIcon("zoom_out.png");
 		this.model = model;
 	}
-	
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		double curScale = model.getDisplayScale();
 		

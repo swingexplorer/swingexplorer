@@ -34,7 +34,8 @@ class ActClear extends RichAction {
     ActClear(PnlEDTMonitor _owner) {
         owner = _owner;
     }
-    
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         owner.clearProblems();
     }

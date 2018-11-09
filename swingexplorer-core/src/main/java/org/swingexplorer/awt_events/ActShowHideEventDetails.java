@@ -31,6 +31,7 @@ import org.swingexplorer.internal.RichAction;
  */
 public class ActShowHideEventDetails extends RichAction {
 
+    @Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 

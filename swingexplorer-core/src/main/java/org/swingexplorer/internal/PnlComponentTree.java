@@ -315,6 +315,7 @@ public class PnlComponentTree extends javax.swing.JPanel {
 			this.act = act;
 		}
 
+		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (e.getClickCount() > 1) {
 		        // fire aciton on double click:
@@ -376,11 +377,13 @@ public class PnlComponentTree extends javax.swing.JPanel {
 		public Component getComponent() {
 			return (Component) objRef.get();
 		}
-		
+
+		@Override
 		public String toString() {
 			return name;
 		}
-		
+
+		@Override
 		public boolean equals(Object o) {
 			if(!(o instanceof TreeNodeObject)) {
 				return false;
@@ -393,6 +396,7 @@ public class PnlComponentTree extends javax.swing.JPanel {
 	
 	class ModelListener implements PropertyChangeListener {
 
+        @Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			String propName = evt.getPropertyName();
 			if ("selectedComponents".equals(propName)) {

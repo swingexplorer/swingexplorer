@@ -41,7 +41,8 @@ public class ActDumpAdditionTrace extends RichAction {
         pnlComponentTree = _pnlComponentTree;
         mdlSwingExplorer = _mdlSwingExplorer;
 	}
-	
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(!Agent.isInstrumented()) {
 			PnlNoAgentModeMessage.openDialog(pnlComponentTree);

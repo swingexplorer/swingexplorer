@@ -69,7 +69,8 @@ public class Player {
 			name = nameP;
 		}
 		String name;
-		
+
+		@Override
 		public String toString() {
 			return name;
 		}
@@ -78,6 +79,7 @@ public class Player {
     /** Creates a new instance of Player */
     public Player() {
     	playTimer = new Timer(50, new ActionListener() {
+    	    @Override
 			public void actionPerformed(ActionEvent e) {
 				doStep();
 				if(getCurrentOperation().isEndOperation()) {

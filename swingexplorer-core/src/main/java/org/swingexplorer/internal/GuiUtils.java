@@ -356,6 +356,7 @@ final public class GuiUtils {
             if (action != null) {
 
                 JMenuItem item = new JMenuItem(action) {
+                    @Override
                     public void setText(String text) {
                         super.setText(GuiUtils.getTextWithoutMnemonic(text));
                     }
@@ -405,6 +406,7 @@ final public class GuiUtils {
         // Adding listener. If added after size settings - will not be added if
         // one of arguments is NULL.
         component.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
             public void componentResized(ComponentEvent e) {
                 Dimension curSize = component.getSize();
                 if (curSize.width < minSize.width || curSize.height < minSize.height) {
@@ -481,6 +483,7 @@ final public class GuiUtils {
 
         // Adding exit listener
         frame.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }

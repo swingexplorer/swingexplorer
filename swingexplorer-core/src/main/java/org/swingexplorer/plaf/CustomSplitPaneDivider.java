@@ -36,7 +36,8 @@ public class CustomSplitPaneDivider extends BasicSplitPaneDivider {
 	CustomSplitPaneDivider(BasicSplitPaneUI ui) {
 		super(ui);		
 	}
-	
+
+	@Override
 	public void setDividerSize(int newSize) {
         dividerSize = newSize;
     }

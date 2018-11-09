@@ -105,6 +105,7 @@ public class PnlStatusBar extends javax.swing.JPanel {
     
     class ModelListener implements PropertyChangeListener {
 
+        @Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			String propName = evt.getPropertyName();
 			if ("mouseLocation".equals(propName)) {

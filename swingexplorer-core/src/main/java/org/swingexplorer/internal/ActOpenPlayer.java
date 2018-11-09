@@ -40,7 +40,8 @@ public class ActOpenPlayer extends RichToggleAction {
 		setIcon(DefaultIcon.INSTANCE);
 		model = modelP;
 	}
-	
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		setSelected(!isSelected());
 		

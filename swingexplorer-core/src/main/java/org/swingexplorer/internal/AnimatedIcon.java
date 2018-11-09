@@ -46,15 +46,18 @@ public class AnimatedIcon implements Icon {
     private Timer timer;
     private int iconNumber = 0;
     private boolean inProgress = false;
-    
+
+    @Override
     public int getIconHeight() {
         return currentIcon.getIconHeight();
     }
 
+    @Override
     public int getIconWidth() {
         return currentIcon.getIconWidth();
     }
 
+    @Override
     public void paintIcon(Component c, Graphics g, int x, int y) {
         currentIcon.paintIcon(c, g, x, y);
     }
@@ -95,11 +98,13 @@ public class AnimatedIcon implements Icon {
             // this is necessary to switch off timer when
             // progress indicator becomes invisible
             ownerComponent.addComponentListener(new ComponentAdapter() {
+                @Override
                 public void componentHidden(ComponentEvent e) {
                     if(inProgress) {
                         timer.stop();
                     }
                 }
+                @Override
                 public void componentShown(ComponentEvent e) {
                     if(inProgress) {
                         timer.start();
@@ -113,6 +118,7 @@ public class AnimatedIcon implements Icon {
     
     private void initActions(){
         timer = new Timer(100, new ActionListener(){
+            @Override
             public void actionPerformed(ActionEvent e) {
                 if(icons.size() > 0) {
                     iconNumber = (iconNumber + 1) % icons.size();
@@ -179,13 +185,16 @@ public class AnimatedIcon implements Icon {
             }
             icon = _icon;
         }
-        
+
+        @Override
         public int getIconHeight() {
             return maxIconSize.height;
         }
+        @Override
         public int getIconWidth() {
             return maxIconSize.width;
         }
+        @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
 
             // calculate shift of icon
@@ -208,12 +217,15 @@ public class AnimatedIcon implements Icon {
     
     // icon for inactive state
     class EmptyIcon implements Icon {
+        @Override
         public int getIconHeight() {
             return maxIconSize.height;
         }
+        @Override
         public int getIconWidth() {
             return maxIconSize.width;
         }
+        @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
         }
     }

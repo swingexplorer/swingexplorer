@@ -158,7 +158,8 @@ public class PnlAbout extends javax.swing.JPanel {
 
 			}
 		}
-		
+
+		@Override
 		public Dimension getPreferredSize() {
 			return new Dimension(13, 13);
 		}

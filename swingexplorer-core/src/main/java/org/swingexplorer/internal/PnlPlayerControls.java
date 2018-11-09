@@ -72,7 +72,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
         lstOperations.setModel(new OperationListModel());
         lstOperations.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstOperations.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+            @Override public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstOperationsValueChanged(evt);
             }
         });
@@ -80,18 +80,18 @@ public class PnlPlayerControls extends javax.swing.JPanel {
 
         slider.setValueIsAdjusting(true);
         slider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            @Override public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderStateChanged(evt);
             }
         });
         slider.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
+            @Override public void mouseReleased(java.awt.event.MouseEvent evt) {
                 sliderMouseReleased(evt);
             }
         });
 
         spinner.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            @Override public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spinnerStateChanged(evt);
             }
         });
@@ -327,17 +327,21 @@ public class PnlPlayerControls extends javax.swing.JPanel {
     }
     
     class PlayerListenerImpl implements PlayerListener {
+        @Override
         public void imageRendered(ImageEvent evt) {
         }
 
+        @Override
 		public void operationsReset(OperationResetEvent evt) {
 			updateOperationList();
 		}
 
+		@Override
 		public void stateChanged(StateEvent evt) {
 			updateActionAvailabilityFromState(evt.getNewState());
 		}
 
+		@Override
 		public void currentOperationChanged(CurrentOperationChangeEvent evt) {
 			blockEventsFromControls = true;
         	Operation op = evt.getCurrentOperation();
@@ -366,11 +370,13 @@ public class PnlPlayerControls extends javax.swing.JPanel {
     		 super.fireIntervalAdded(this, 0, operations.length - 1);
     		}
     	}
-    	
+
+    	@Override
 		public int getSize() {
 			return operations.length;
 		}
 
+		@Override
 		public Operation getElementAt(int index) {
 			return operations[index];
 		}    	
@@ -382,6 +388,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
             setTooltip("Play");
             setIcon("play.png");
         }
+        @Override
         public void actionPerformed(ActionEvent e) {
             Player player = getPlayer();
             player.play();
@@ -392,6 +399,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
             setTooltip("Play Step");
             setIcon("play_step.png");
         }
+        @Override
         public void actionPerformed(ActionEvent e) {
             Player player = getPlayer();
             player.playStep();
@@ -402,6 +410,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
             setTooltip("Pause");
             setIcon("pause.png");
         }
+        @Override
         public void actionPerformed(ActionEvent e) {
             Player player = getPlayer();
             player.pause();
@@ -413,6 +422,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
             setTooltip("Go to start");
             setIcon("to_start.png");
         }
+        @Override
         public void actionPerformed(ActionEvent e) {
             Player player = getPlayer();
             player.seek(0);
@@ -424,6 +434,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
             setTooltip("Go to end");
             setIcon("to_end.png");
         }
+        @Override
         public void actionPerformed(ActionEvent e) {
             Player player = getPlayer();
             player.seek(player.getOperationCount() - 1);
@@ -435,6 +446,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
             setTooltip("Play step back");
             setIcon("play_step_back.png");
         }
+        @Override
         public void actionPerformed(ActionEvent e) {
             Player player = getPlayer();
             player.playStepBack();
@@ -446,6 +458,7 @@ public class PnlPlayerControls extends javax.swing.JPanel {
             setTooltip("Dump current operation's stack trace");
             setName("Trace");
         }
+        @Override
         public void actionPerformed(ActionEvent e) {
             Player player = getPlayer();
             Operation op = player.getCurrentOperation();

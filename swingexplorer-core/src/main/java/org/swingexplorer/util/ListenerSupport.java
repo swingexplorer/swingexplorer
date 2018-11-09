@@ -67,6 +67,7 @@ public class ListenerSupport<L> {
     }
     
     class InvocationHandlerImpl implements InvocationHandler {
+        @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             
             Object[] arrListeners;

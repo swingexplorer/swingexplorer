@@ -95,7 +95,7 @@ public class FrmSwingExplorer extends JFrame {
 			public void componentShown(ComponentEvent e) {
  			    // invoke refresh
 		        SwingUtilities.invokeLater(new Runnable() {
-		        	public void run() {  
+		        	@Override public void run() {
 		        		pnlSwingExplorer.actRefresh.actionPerformed(null);
 		        	}
 		        });

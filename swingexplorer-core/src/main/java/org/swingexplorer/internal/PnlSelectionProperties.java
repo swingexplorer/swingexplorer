@@ -34,6 +34,7 @@ public class PnlSelectionProperties extends javax.swing.JPanel {
     }
     
     class ModelListener implements PropertyChangeListener {
+        @Override
         public void propertyChange(PropertyChangeEvent evt) {
             String propName = evt.getPropertyName();
             if (!"selectedComponents".equals(propName)) {

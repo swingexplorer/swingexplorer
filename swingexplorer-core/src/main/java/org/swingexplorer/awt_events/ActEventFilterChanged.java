@@ -35,7 +35,8 @@ public class ActEventFilterChanged implements ItemListener {
 	public ActEventFilterChanged(PnlEventFilter _owner) {
 		owner = _owner;
 	}
-	
+
+	@Override
 	public void itemStateChanged(ItemEvent e) {
 		Filter filter = owner.commit();
 	}

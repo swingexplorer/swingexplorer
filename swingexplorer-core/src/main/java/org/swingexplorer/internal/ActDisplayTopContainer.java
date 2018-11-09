@@ -36,7 +36,8 @@ public class ActDisplayTopContainer extends RichAction {
         application = _launcher;
         setIcon("display_top.png");
     }
-    
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         try {
             Component comp = application.model.getDisplayedComponent();

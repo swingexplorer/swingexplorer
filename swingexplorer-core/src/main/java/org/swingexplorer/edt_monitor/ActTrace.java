@@ -37,7 +37,8 @@ public class ActTrace extends RichAction {
     ActTrace(PnlEDTMonitor _owner) {
         owner = _owner;
     }
-    
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         Problem[] problems = owner.getSelectedProblems();
         if(problems == null) {

@@ -37,12 +37,14 @@ import javax.swing.text.html.HTMLEditorKit.HTMLFactory;
 public class NoWrapEditorKit extends HTMLEditorKit {
 
     private ViewFactory defaultFactory=new WrapColumnFactory();
+    @Override
     public ViewFactory getViewFactory() {
         return defaultFactory;
     }
 }
 
 class WrapColumnFactory extends HTMLFactory {
+    @Override
 	public View create(Element elem) {
 	    String kind = elem.getName();
 	    if (kind.equals("p")) {
@@ -57,10 +59,12 @@ class NoWrapParagraphView extends ParagraphView {
         super(elem);
     }
 
+    @Override
     public void layout(int width, int height) {
         super.layout(Short.MAX_VALUE, height);
     }
 
+    @Override
     public float getMinimumSpan(int axis) {
         return super.getPreferredSpan(axis);
     }

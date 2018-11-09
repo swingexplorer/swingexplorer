@@ -67,6 +67,7 @@ public class DlgLicense extends JDialog {
 		this.setTitle("License");
 		
 		btnClose.addActionListener(new ActionListener() {
+		    @Override
 			public void actionPerformed(ActionEvent arg0) {
 				DlgLicense.this.dispose();
 			}

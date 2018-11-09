@@ -27,6 +27,7 @@ import java.text.ParseException;
  */
 public class IntegerConverter implements Converter<Integer> {
 
+    @Override
 	public Integer fromString(String strValue) throws ParseException {
 		if(strValue == null) {
 			return null;
@@ -38,6 +39,7 @@ public class IntegerConverter implements Converter<Integer> {
 		}
 	}
 
+	@Override
 	public String toString(Integer value) {
 		if(value == null) {
 			return null;

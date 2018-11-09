@@ -50,6 +50,7 @@ public class RichToolbar extends JToolBar {
 			b.setText("");
 		} else {
 			b = new JButton(text, icon) {
+			    @Override
 				protected PropertyChangeListener createActionPropertyChangeListener(
 						Action a) {
 					PropertyChangeListener pcl = createActionChangeListener(this);

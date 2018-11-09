@@ -127,6 +127,7 @@ public class PnlAdditionTrace extends javax.swing.JPanel {
 	
 	
 	class ModelListener implements PropertyChangeListener {
+	    @Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			if("selectedComponents".equals(evt.getPropertyName())) {
 				Component[] selected = model.getSelectedComponents();

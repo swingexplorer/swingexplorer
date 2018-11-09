@@ -38,6 +38,7 @@ public class ActMoveOverDisplay extends MouseAdapter implements MouseMotionListe
 		model = modelP;
 	}
 
+	@Override
 	public void mouseMoved(MouseEvent e) {
 		Component over = display.getDisplayedComponentAt(e.getPoint());
 		model.setCurrentComponent(over);
@@ -46,12 +47,14 @@ public class ActMoveOverDisplay extends MouseAdapter implements MouseMotionListe
             model.setMouseLocation(e.getPoint());
 		}
 	}
-	
+
+	@Override
 	public void mouseExited(MouseEvent e) {
 		model.setCurrentComponent(null);
 		model.setMouseLocation(null);
 	}
 
+	@Override
 	public void mouseDragged(MouseEvent e) {
 	}
 }

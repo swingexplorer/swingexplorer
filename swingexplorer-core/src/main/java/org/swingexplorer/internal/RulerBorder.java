@@ -35,15 +35,17 @@ public class RulerBorder implements Border{
 	
 	MdlSwingExplorer model;
 	
-	
+	@Override
 	public Insets getBorderInsets(Component c) {
 		return new Insets(20, 20, 0, 0);
 	}
 
+	@Override
 	public boolean isBorderOpaque() {
 		return true;
 	}
 
+	@Override
 	public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
 		g.setColor(c.getBackground());
 		g.fillRect(0, 0, 20, 20);

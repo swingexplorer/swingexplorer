@@ -99,7 +99,8 @@ public class ActRefresh extends RichAction {
 //            }
 //        }, 0xFFFFFFFFFFFFFFFL);
 	}
-	
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		Log.general.debug("Refresh component tree");

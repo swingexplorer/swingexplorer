@@ -98,6 +98,7 @@ public class XGraphics extends Graphics2D {
 		return detachOps;
 	}
 
+	@Override
 	public void finalize() {
 		callback = null;
 		

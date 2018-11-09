@@ -27,7 +27,7 @@ public class Application implements Runnable {
 
     private PersonalizerRegistry personalizerRegistry;
 
-
+    @Override
     public void run() {
         // register JMX bean for IDE support
         ideSupport = IDESupport.registerMBean();
@@ -37,7 +37,7 @@ public class Application implements Runnable {
         frmMain = new FrmSwingExplorer();
         frmMain.setName("frmMain");
         frmMain.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent evt) {
+            @Override public void windowClosing(WindowEvent evt) {
                 exitApplication();
             }
         });
