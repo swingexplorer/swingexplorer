@@ -6,7 +6,7 @@
     <groupId>org.swingexplorer</groupId>
     <artifactId>swingexplorer</artifactId>
     <packaging>pom</packaging>
-    <version>1.7.0</version>
+    <version>1.8.0-SNAPSHOT</version>
 
     <name>Swing Explorer</name>
     <description>Tool for inspecting Swing GUI internals</description>
