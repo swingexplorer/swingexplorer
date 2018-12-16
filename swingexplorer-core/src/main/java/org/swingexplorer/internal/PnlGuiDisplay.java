@@ -331,6 +331,7 @@ public class PnlGuiDisplay extends JComponent {
 
 	class ModelListener implements PropertyChangeListener {
 
+	    @Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			String propName = evt.getPropertyName();
 			if ("displayedComponentImage".equals(propName)) {
@@ -369,7 +370,7 @@ public class PnlGuiDisplay extends JComponent {
 		repaint();
 	}
 
-
+	@Override
 	public Dimension getPreferredSize() {
 
 		if(model == null) {

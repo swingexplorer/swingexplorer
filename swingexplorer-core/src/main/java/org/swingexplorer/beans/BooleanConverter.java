@@ -27,6 +27,7 @@ import java.text.ParseException;
  */
 public class BooleanConverter implements Converter<Boolean> {
 
+    @Override
 	public Boolean fromString(String strValue) throws ParseException {
 		if(strValue == null) {
 			return null;
@@ -40,6 +41,7 @@ public class BooleanConverter implements Converter<Boolean> {
 		throw new ParseException("Can not convert \"" + strValue + "\" to boolean", 0);
 	}
 
+	@Override
 	public String toString(Boolean value) {
 		if(value == null) {
 			return null;

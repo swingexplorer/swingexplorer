@@ -45,6 +45,7 @@ public class ActShowEventSource extends RichAction {
 		setTooltip("Select component the event comes from");
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		AWTEvent evt = pnlAwtEvents.getSelectedEvent();
 		if(evt == null) {

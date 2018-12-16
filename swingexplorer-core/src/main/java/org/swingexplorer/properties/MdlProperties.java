@@ -197,6 +197,7 @@ public class MdlProperties extends AbstractTableModel {
 			}
             
             Arrays.sort(properties, new Comparator<String[]>() {
+                @Override
                 public int compare(String[] o1, String[] o2) {
                     String key1 = o1[0];
                     String key2 = o2[0];
@@ -227,15 +228,18 @@ public class MdlProperties extends AbstractTableModel {
 	public Object getBean() {
 		return bean;
 	}
-	
+
+	@Override
 	public int getColumnCount() {
 		return 2;
 	}
 
+	@Override
 	public int getRowCount() {
 		return properties.length;
 	}
 
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return properties[rowIndex][columnIndex];
 	}

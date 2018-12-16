@@ -60,11 +60,13 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
         this.completeCheck = completeCheck;
     }
 
+    @Override
     public synchronized void addInvalidComponent(JComponent component) {
         checkThreadViolations(component);
         super.addInvalidComponent(component);
     }
 
+    @Override
     public void addDirtyRegion(JComponent component, int x, int y, int w, int h) {
         checkThreadViolations(component);
         super.addDirtyRegion(component, x, y, w, h);
@@ -116,7 +118,7 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
         RepaintManager.setCurrentManager(new CheckThreadViolationRepaintManager());
         //Valid code  
         SwingUtilities.invokeAndWait(new Runnable() {
-            public void run() {
+            @Override public void run() {
                 test();
             }
         });
@@ -126,7 +128,7 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
         //Invalide code (stack trace expected) 
 //        test();
         SwingUtilities.invokeAndWait(new Runnable() {
-            public void run() {
+            @Override public void run() {
                 imageUpdateTest();
             }
         });
@@ -158,7 +160,7 @@ public class CheckThreadViolationRepaintManager extends RepaintManager {
     static void repaintTest() {
         try {
             SwingUtilities.invokeAndWait(new Runnable() {
-                public void run() {
+                @Override public void run() {
                     test = new JButton();
                     test.setSize(100, 100);
                 }

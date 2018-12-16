@@ -129,12 +129,14 @@ public class PnlAwtEvents extends javax.swing.JPanel {
     }
     
     class ModelListener implements AWTEventListener {
+        @Override
 		public void eventDispatched(AWTEvent event) {
 			addEvent(event);			
 		}    	
     }
 
     public class ModelPropertyChangeListener implements PropertyChangeListener {
+        @Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			if("monitoring".equals(evt.getPropertyName())) {
 				if((Boolean)evt.getNewValue()) {

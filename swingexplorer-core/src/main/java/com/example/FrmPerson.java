@@ -68,6 +68,7 @@ public class FrmPerson extends javax.swing.JFrame {
 
         btnCheckEDT.setText("jButton1");
         btnCheckEDT.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCheckEDTActionPerformed(evt);
             }
@@ -82,6 +83,7 @@ public class FrmPerson extends javax.swing.JFrame {
 
         pnlGender.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Gender"));
         pnlGender.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlGenderMouseClicked(evt);
             }
@@ -129,6 +131,7 @@ public class FrmPerson extends javax.swing.JFrame {
 
         btnModalDialog.setText("Modal Dialog");
         btnModalDialog.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModalDialogActionPerformed(evt);
             }
@@ -136,6 +139,7 @@ public class FrmPerson extends javax.swing.JFrame {
 
         btnOwnerlessModalDialog.setText("Ownerless Modal Dialog");
         btnOwnerlessModalDialog.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOwnerlessModalDialogActionPerformed(evt);
             }
@@ -143,6 +147,7 @@ public class FrmPerson extends javax.swing.JFrame {
 
         btnModelessDialog.setText("Modeless Dialog");
         btnModelessDialog.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModelessDialogActionPerformed(evt);
             }
@@ -150,6 +155,7 @@ public class FrmPerson extends javax.swing.JFrame {
 
         btnOwnerlessModelessDialog.setText("Ownerless Modeless Dialog");
         btnOwnerlessModelessDialog.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOwnerlessModelessDialogActionPerformed(evt);
             }
@@ -158,6 +164,7 @@ public class FrmPerson extends javax.swing.JFrame {
         btnThreadViolation.setText("Thread Violation");
         btnThreadViolation.setToolTipText("<html>\nPress this button to simulate<br>\nthread violation.<br> \nCalls method of swing component<br> \nfrom non AWT Dispatch Thread.\n</html>\n");
         btnThreadViolation.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThreadViolationActionPerformed(evt);
             }
@@ -166,6 +173,7 @@ public class FrmPerson extends javax.swing.JFrame {
         btnEdtHang.setText("EDT Hang");
         btnEdtHang.setToolTipText("<html>\nSimulate long operation in<br>\nAWT dispatch thread causing<br>\nhanging for 2 seconds\n</html>");
         btnEdtHang.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEdtHangActionPerformed(evt);
             }
@@ -174,6 +182,7 @@ public class FrmPerson extends javax.swing.JFrame {
         btnThreadViolation2.setText("Thread Violation 2");
         btnThreadViolation2.setToolTipText("<html>Calls \"repaint()\" method in a separate thread.<br>\nThe method is considered as thread safe and should<br>\nnot be caught by violation monitor\n</html>");
         btnThreadViolation2.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThreadViolation2ActionPerformed(evt);
             }
@@ -182,6 +191,7 @@ public class FrmPerson extends javax.swing.JFrame {
         btnThreadViolation3.setText("Thread Violation 3");
         btnThreadViolation3.setToolTipText("<html>imageUpdate method is called <br>\ninside Swing in a separate thread and should<br>\nnot be caught by violation monitor\n</html>");
         btnThreadViolation3.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThreadViolation3ActionPerformed(evt);
             }
@@ -189,6 +199,7 @@ public class FrmPerson extends javax.swing.JFrame {
 
         btnExceptionInEDT.setText("Exception in EDT");
         btnExceptionInEDT.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExceptionInEDTActionPerformed(evt);
             }
@@ -306,6 +317,7 @@ public class FrmPerson extends javax.swing.JFrame {
 
     private void btnThreadViolationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThreadViolationActionPerformed
         new Thread() {
+            @Override
             public void run() {
                 rbnFemale.setToolTipText("Sample");
 //                rbnFemale.scrollRectToVisible(null);
@@ -323,6 +335,7 @@ public class FrmPerson extends javax.swing.JFrame {
     
     private void btnThreadViolation2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThreadViolation2ActionPerformed
         new Thread() {
+            @Override
             public void run() {
                 rbnFemale.repaint();
             }

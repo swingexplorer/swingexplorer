@@ -44,6 +44,7 @@ public class CustomTabbedPaneUI extends MetalTabbedPaneUI {
 			int selectedIndex, int x, int y, int w, int h) {
 	}
 
+	@Override
 	protected void paintContentBorder(Graphics g, int tabPlacement,
 			int selectedIndex) {
 		int width = tabPane.getWidth();
@@ -76,6 +77,7 @@ public class CustomTabbedPaneUI extends MetalTabbedPaneUI {
 		paintContentBorderTopEdge(g, tabPlacement, selectedIndex, x, y, w, h);
 	}
 
+	@Override
 	protected void paintTabBackground(Graphics g, int tabPlacement,
 			int tabIndex, int x, int y, int w, int h, boolean isSelected) {
 		int slantWidth = h / 2;

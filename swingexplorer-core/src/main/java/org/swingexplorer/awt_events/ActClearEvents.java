@@ -36,7 +36,8 @@ class ActClearEvents extends RichAction {
 		setName("Clear");
 		setTooltip("Clear events");
 	}
-	
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
         owner.clearEvents();
 	}

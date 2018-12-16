@@ -41,7 +41,8 @@ public class ActDisplayComponent extends RichAction {
 		model = modelP;
                 pnlComponentTree = pnlComponentTreeP;
 	}
-	
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		Component selected = pnlComponentTree.getSelectedComponent();
         try {

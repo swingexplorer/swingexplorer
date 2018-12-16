@@ -62,6 +62,7 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
         icoEventMonitoring.setIcons(Icons.monitor());
         AWTEventModel awtEventModel = pnlAWTEvents.getEventModel();
         awtEventModel.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if("monitoring".equals(evt.getPropertyName())) {
                     Boolean value = (Boolean)evt.getNewValue();
@@ -84,6 +85,7 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
         icoEDTMonitoring.setIcons(Icons.monitor());
         final MdlEDTMonitor mdlEDTMonitor = pnlEDTMonitor.getModel();
         mdlEDTMonitor.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if("monitorViolations".equals(evt.getPropertyName()) ||  
                     "monitorHangs".equals(evt.getPropertyName()) ||
@@ -378,6 +380,7 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
     		}
     		application.model.setDisplayScale(Double.parseDouble(item.toString())/100);	
     	}
+    	@Override
 		public void itemStateChanged(ItemEvent e) {
 			if(ItemEvent.SELECTED == e.getStateChange()) {
 				if(!cmbScale.isPopupVisible()) {
@@ -385,11 +388,14 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
 				}
 			}			
 		}
+		@Override
 		public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
 			changeScale();		
 		}
+		@Override
 		public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
 		}
+		@Override
 		public void popupMenuCanceled(PopupMenuEvent e) {
 		}
     }
@@ -401,7 +407,7 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
 
     
     class ModelListener implements PropertyChangeListener {
-
+        @Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			String propName = evt.getPropertyName();
 			if ("displayedComponent".equals(propName)) {
@@ -416,7 +422,7 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
 	}
     
     class PlayerListenerImpl implements PlayerListener {
-    	
+    	@Override
 		public void imageRendered(ImageEvent evt) {
             // listener should be removed and restored after
             // setDisplayedComponentImage to avoid redundant reaction on
@@ -430,12 +436,15 @@ public class PnlSwingExplorer extends javax.swing.JPanel {
             application.model.addPropertyChangeListener(listener);
 		}
 
+		@Override
 		public void stateChanged(StateEvent evt) {
 		}
 
+		@Override
 		public void operationsReset(OperationResetEvent operations) {
 		}
 
+		@Override
 		public void currentOperationChanged(CurrentOperationChangeEvent evt) {
 			
 		}

@@ -36,7 +36,8 @@ public class ActOpenSourceCode implements HyperlinkListener {
 	ActOpenSourceCode(PnlAdditionTrace _owner) {
 		owner = _owner;
 	}
-	
+
+	@Override
 	public void hyperlinkUpdate(HyperlinkEvent e) {
 		if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
 			

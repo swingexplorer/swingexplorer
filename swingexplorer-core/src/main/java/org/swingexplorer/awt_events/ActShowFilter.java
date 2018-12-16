@@ -56,7 +56,8 @@ public class ActShowFilter extends RichAction {
 
         
 	}
-	
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
         if(dlg == null) {
             //  create undecorated dialog
@@ -83,14 +84,14 @@ public class ActShowFilter extends RichAction {
             dlg.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ESCAPE"/**/), "esc_action"/**/
             );
             dlg.getRootPane().getActionMap().put("esc_action"/**/, new AbstractAction() {
-                public void actionPerformed(ActionEvent e) {
+                @Override public void actionPerformed(ActionEvent e) {
                     dlg.setVisible(false);
                 }
             });
             pnlFilter.setFilter(owner.getEventModel().getFilter());
             
             pnlFilter.addFilterChangeListener(new FilterChangeListener() {
-                public void filterChanged(Filter newFilter) {
+                @Override public void filterChanged(Filter newFilter) {
                     owner.getEventModel().setFilter(newFilter);
                 }
             });

@@ -33,13 +33,15 @@ public class FramePersonalizer implements Personalizer {
 	
 	private Options options;
 	private JFrame frame;
-	
+
+	@Override
 	public void install(Options _options, Component _component) {
 		options = _options;
 		frame = (JFrame)_component;
 		frame.setBounds(_options.getWindowX(), _options.getWindowY(), _options.getWindowWidth(), _options.getWindowHeight());
 	}
 
+	@Override
 	public void saveState() {
 		options.setWindowX(frame.getX());
 		options.setWindowY(frame.getY());

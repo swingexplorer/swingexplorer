@@ -40,6 +40,7 @@ public class ActTreeSelectionChanged implements TreeSelectionListener {
         pnlComponentTree = pnlComponentTreeP;
     }
 
+    @Override
     public void valueChanged(TreeSelectionEvent e) {
 	    TreePath[] paths = e.getPaths();
 		for (TreePath curPath : paths) {

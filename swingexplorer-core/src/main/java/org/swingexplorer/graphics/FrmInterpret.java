@@ -65,11 +65,13 @@ public class FrmInterpret extends Frame {
 		xgraphics = xg;		
 		
 		btnRun.addActionListener(new ActionListener() {
+		    @Override
 			public void actionPerformed(ActionEvent e) {
 				callback.run();
 			}
 		});
 		btnStep.addActionListener(new ActionListener() {
+		    @Override
 			public void actionPerformed(ActionEvent e) {
 				doStep();
 			}			
@@ -78,8 +80,7 @@ public class FrmInterpret extends Frame {
 		execService = Executors.newSingleThreadExecutor();
 		
 		addWindowListener(new WindowAdapter(){
-
-
+            @Override
 			public void windowClosing(WindowEvent e) {
 				dispose();
 				execService.shutdown();
@@ -92,6 +93,7 @@ public class FrmInterpret extends Frame {
 
 	private void doStart() {
 		Runnable runnable = new Runnable() {
+		    @Override
 			public void run() {	
 				try {
 					xgraphics.interpret(drawing.getGraphics(), xgraphics.getOperationCount(), callback);
@@ -117,6 +119,7 @@ public class FrmInterpret extends Frame {
 			isRunning = true;
 			notify();
 		}
+		@Override
 		public synchronized void operationPerformed(Operation op, Graphics g) {
 			Graphics drg = drawing.getGraphics().create();
 			drg.setColor(g.getColor());

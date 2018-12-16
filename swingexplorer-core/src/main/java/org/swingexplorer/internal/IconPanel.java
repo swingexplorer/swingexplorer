@@ -74,7 +74,8 @@ public class IconPanel extends JComponent {
 	public double getScale() {
 		return scale;
 	}
-	
+
+	@Override
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
 		if(icon != null) {
@@ -91,6 +92,7 @@ public class IconPanel extends JComponent {
 		}
 	}
 
+	@Override
 	public Dimension getPreferredSize() {
 		if(icon == null) {
 			return new Dimension(0, 0);

@@ -33,7 +33,8 @@ public class ActEventSelected implements ListSelectionListener {
 	ActEventSelected(PnlAwtEvents _owner) {
 		owner = _owner;
 	}
-	
+
+	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		owner.pnlEventDetails.setEvent(owner.getSelectedEvent());
 	}

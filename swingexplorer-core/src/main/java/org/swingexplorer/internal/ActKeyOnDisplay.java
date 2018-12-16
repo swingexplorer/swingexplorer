@@ -35,16 +35,19 @@ public class ActKeyOnDisplay implements KeyListener {
 		display = displayP;
 		model = modelP;
 	}
-	
+
+	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			model.setMeasurePoint1(null);
 		}
 	}
 
+	@Override
 	public void keyReleased(KeyEvent e) {
 	}
 
+	@Override
 	public void keyTyped(KeyEvent e) {
 	}
 }

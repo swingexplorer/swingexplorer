@@ -29,6 +29,7 @@ import java.util.Arrays;
  */
 public class ColorConverter implements Converter<Color> {
 
+    @Override
 	public Color fromString(String strValue) throws ParseException {
 		if(strValue == null) {
 			return null;
@@ -59,6 +60,7 @@ public class ColorConverter implements Converter<Color> {
 		}
 	}
 
+	@Override
 	public String toString(Color value) {
 		if(value == null) {
 			return null;

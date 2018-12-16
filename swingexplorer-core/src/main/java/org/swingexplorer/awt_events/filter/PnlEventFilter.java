@@ -44,6 +44,7 @@ public class PnlEventFilter extends javax.swing.JPanel {
     void initActions() {
     	actEventFilterChanged = new ActEventFilterChanged(this);
     	ItemListener itemListenerProxy = new ItemListener() {
+    	    @Override
 			public void itemStateChanged(ItemEvent e) {
 				if(!itemEventsDisabled) {
 					commit();
@@ -167,7 +168,7 @@ public class PnlEventFilter extends javax.swing.JPanel {
         btnSelectAll.setText("Select all");
         btnSelectAll.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSelectAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            @Override public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectAllActionPerformed(evt);
             }
         });
@@ -175,7 +176,7 @@ public class PnlEventFilter extends javax.swing.JPanel {
         btnClearAll.setText("Deselect all");
         btnClearAll.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnClearAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            @Override public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearAllActionPerformed(evt);
             }
         });

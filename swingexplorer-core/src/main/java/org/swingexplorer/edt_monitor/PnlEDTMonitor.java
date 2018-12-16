@@ -74,7 +74,7 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
         JSpinner.DefaultEditor editor = (DefaultEditor)spnDelay.getEditor();
         editor.getTextField().setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
         spnDelay.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
+            @Override public void stateChanged(ChangeEvent e) {
                 mdlMonitor.setMinimalMonitoredHangTime(((Number)spnDelay.getValue()).intValue());
             }
         });
@@ -96,9 +96,9 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
         initActions();
         
         treProblems.addMouseMotionListener(new MouseMotionListener() {
-			public void mouseDragged(MouseEvent e) {
+			@Override public void mouseDragged(MouseEvent e) {
 			}
-			public void mouseMoved(MouseEvent e) {
+			@Override public void mouseMoved(MouseEvent e) {
 		        if(getLink(e.getPoint()) != null) {
 		        	treProblems.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				} else {
@@ -202,7 +202,7 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
         chbEDTViolations.setText("EDT violations");
         chbEDTViolations.setToolTipText("Monitor violations of event diapatch thread");
         chbEDTViolations.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            @Override public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbEDTViolationsItemStateChanged(evt);
             }
         });
@@ -212,7 +212,7 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
         chbHangs.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chbHangs.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         chbHangs.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            @Override public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbHangsItemStateChanged(evt);
             }
         });
@@ -229,7 +229,7 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
 
         chbEDTExceptions.setText("EDT exceptions");
         chbEDTExceptions.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            @Override public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbEDTExceptionsItemStateChanged(evt);
             }
         });
@@ -384,6 +384,7 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
 
     
     class ProblemListenerImpl implements ProblemListener {
+        @Override
         public void problemOccured(Problem problem) {
             addProblem(problem);
         }
@@ -391,6 +392,7 @@ public class PnlEDTMonitor extends javax.swing.JPanel {
     
     
     class ModelPropertyChangeListener implements PropertyChangeListener {
+        @Override
         public void propertyChange(PropertyChangeEvent evt) {
             if("monitorViolations".equals(evt.getPropertyName())) {
                 chbEDTViolations.setSelected((Boolean)evt.getNewValue());

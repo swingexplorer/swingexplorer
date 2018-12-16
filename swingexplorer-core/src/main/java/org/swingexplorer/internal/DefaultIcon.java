@@ -37,15 +37,18 @@ public class DefaultIcon implements Icon {
     private DefaultIcon() {
     }
 
+    @Override
     public void paintIcon(Component c, Graphics g, int x, int y) {
         g.setColor(Color.BLUE);
         g.fillRect(x, y, getIconWidth(),getIconHeight());
     }
 
+    @Override
     public int getIconWidth() {
         return 16;
     }
 
+    @Override
     public int getIconHeight() {
         return 16;
     }    

@@ -41,7 +41,8 @@ public class ActOpenSourceCode extends RichAction {
         setTooltip("Open sourcecode in IDE");
         owner = _owner;
     }
-    
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         
         Operation op = owner.player.getCurrentOperation();

@@ -37,6 +37,7 @@ public class ActHelpAbout extends RichAction {
 		owner = ownerP;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		PnlAbout.openModal(owner);
 	}

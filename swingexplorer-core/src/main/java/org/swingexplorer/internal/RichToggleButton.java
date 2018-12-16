@@ -70,7 +70,7 @@ public class RichToggleButton extends JToggleButton {
 	}
 	
 	class SelectionStateListener implements PropertyChangeListener {
-
+        @Override
 		public void propertyChange(PropertyChangeEvent evt) {
 			if(evt.getPropertyName().equals("selected")) {
 				setSelected((Boolean)evt.getNewValue());

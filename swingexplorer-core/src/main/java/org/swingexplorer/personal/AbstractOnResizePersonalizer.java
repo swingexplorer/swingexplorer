@@ -37,6 +37,7 @@ public abstract class AbstractOnResizePersonalizer<T extends Component> implemen
 	protected T component;
 
 	@SuppressWarnings("unchecked")
+    @Override
 	public void install(Options _options, Component _component) {
 		component = (T)_component;
 		options = _options;
@@ -45,7 +46,7 @@ public abstract class AbstractOnResizePersonalizer<T extends Component> implemen
 	
 	class ResizeListener extends ComponentAdapter{
     	int count = 0;
-    	public void componentResized(ComponentEvent e) {
+    	@Override public void componentResized(ComponentEvent e) {
     		applyState();
     		component.removeComponentListener(this);
 		}
@@ -60,6 +61,7 @@ public abstract class AbstractOnResizePersonalizer<T extends Component> implemen
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public abstract void saveState();
 }
 

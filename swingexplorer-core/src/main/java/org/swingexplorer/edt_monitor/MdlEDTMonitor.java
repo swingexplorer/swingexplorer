@@ -108,10 +108,11 @@ public class MdlEDTMonitor {
             
         }
 
+        @Override
         public void problemOccured(final Problem problem) {
             // notify all listeners about the problem in the EDT
             SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
+                @Override public void run() {
                     listenerSupport.getDispatcher().problemOccured(problem);
                 }
             });

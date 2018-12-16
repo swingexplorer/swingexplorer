@@ -87,11 +87,13 @@ public class AnimatedLabel extends JLabel {
             // this is necessary to switch off timer when
             // progress indicator becomes invisible
             addComponentListener(new ComponentAdapter() {
+                @Override
                 public void componentHidden(ComponentEvent e) {
                     if(inProgress) {
                         timer.stop();
                     }
                 }
+                @Override
                 public void componentShown(ComponentEvent e) {
                     if(inProgress) {
                         timer.start();
@@ -105,6 +107,7 @@ public class AnimatedLabel extends JLabel {
     
     private void initActions(){
         timer = new Timer(100, new ActionListener(){
+            @Override
             public void actionPerformed(ActionEvent e) {
                 if(icons.size() > 0) {
                     iconNumber = (iconNumber + 1) % icons.size();
@@ -171,13 +174,16 @@ public class AnimatedLabel extends JLabel {
             }
             icon = _icon;
         }
-        
+
+        @Override
         public int getIconHeight() {
             return maxIconSize.height;
         }
+        @Override
         public int getIconWidth() {
             return maxIconSize.width;
         }
+        @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
 
             // calculate shift of icon
@@ -200,12 +206,15 @@ public class AnimatedLabel extends JLabel {
     
     // icon for inactive state
     class EmptyIcon implements Icon {
+        @Override
         public int getIconHeight() {
             return maxIconSize.height;
         }
+        @Override
         public int getIconWidth() {
             return maxIconSize.width;
         }
+        @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
         }
     }

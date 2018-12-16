@@ -46,7 +46,8 @@ public class CustomComboBoxUI extends MetalComboBoxUI {
         comboBox.setFont(PlafUtils.CUSTOM_FONT);
         
     }
-    
+
+    @Override
     public void paint( Graphics g, JComponent c ) {
         hasFocus = comboBox.hasFocus();
         if ( !comboBox.isEditable() ) {
@@ -63,6 +64,7 @@ public class CustomComboBoxUI extends MetalComboBoxUI {
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public void paintCurrentValue(Graphics g,Rectangle bounds,boolean hasFocus) {
         ListCellRenderer renderer = comboBox.getRenderer();
         Component c;

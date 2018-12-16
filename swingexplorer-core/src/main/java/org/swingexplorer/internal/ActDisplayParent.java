@@ -36,7 +36,8 @@ public class ActDisplayParent extends RichAction {
         application = _launcher;
         setIcon("display_parent.png");
     }
-    
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         try {
             Component comp = application.model.getDisplayedComponent();
