@@ -35,8 +35,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/swingexplorer/swingexplorer.git</connection>
-        <developerConnection>scm:git:ssh://github.com:swingexplorer/swingexplorer-.git</developerConnection>
+        <connection>scm:git:https://github.com/swingexplorer/swingexplorer.git</connection>
+        <developerConnection>scm:git:https://github.com/swingexplorer/swingexplorer.git</developerConnection>
         <url>https://github.com/swingexplorer/swingexplorer</url>
     </scm>
 
