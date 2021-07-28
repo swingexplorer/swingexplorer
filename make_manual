@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# make_manual
-#
-# Generates the user manual.
-# This should be run before make_dist.
-
-asciidoctor --destination-dir manual src/manual/*.adoc
-
